@@ -3,6 +3,7 @@ ru:
     name: "KG BLOGS"
   nav:
     home: 'Главная'
+    profile: 'Профиль'
     personal: 'Про жизнь'
     work: 'Про работу'
     films: 'Про фильмы'
