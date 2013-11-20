@@ -5,12 +5,23 @@ header {
   padding: 15px 150px;
   width: 100%;
 
+  a {
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
   a.logo {
     float: left;
   }
+
+  .profile {
+    float: right;
+  }
   
   nav.main-menu {
-    margin: 5px 40px;
+    margin: 0px 40px;
 
     ul li {
       float: left;
@@ -40,13 +51,6 @@ header {
       content: "";
       display: none;
       margin: 0;
-    }
-    
-    ul li a {
-      color: #000;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
     }
   }
 }
