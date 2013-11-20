@@ -1,0 +1,21 @@
+!!! 5
+%head
+  %meta{ :charset => "utf-8" }
+  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+  
+  %title= content_for?(:title) ? "#{yield(:title)} - #{t('application.name')}" : t('application.name')
+
+  = stylesheet_link_tag 'application'
+  
+  = csrf_meta_tag
+
+%body
+
+  = render partial: 'shared/header'
+  
+  %section#content
+    = yield
+  
+  = render partial: 'shared/footer'
+
+  = javascript_include_tag 'application'

@@ -1,0 +1,10 @@
+ru:
+  application:
+    name: "KG BLOGS"
+  nav:
+    home: 'Главная'
+    personal: 'Про жизнь'
+    work: 'Про работу'
+    films: 'Про фильмы'
+    books: 'Про книги'
+    projects: 'Про проекты'
