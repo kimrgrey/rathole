@@ -1,21 +1,12 @@
 header {
   background: none repeat scroll 0 0 #FFFFFF;
   border-bottom: 1px solid #E9E9E9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.75);
   padding: 15px 150px;
   width: 100%;
 
   a.logo {
     float: left;
-    text-transform: uppercase;
-    font-family: 'Lato',sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #C1C0C0;
-    text-decoration: none;
-  }
-
-  a.logo:hover, a.logo:focus {
-    color: #38B49D;
   }
   
   nav.main-menu {
@@ -33,7 +24,7 @@ header {
     }
 
     ul li a:after {
-      color: #636467;
+      color: #000;
       content: "•";
       float: right;
       font-size: 12px;
@@ -52,14 +43,10 @@ header {
     }
     
     ul li a {
-      color: #C1C0C0;
+      color: #000;
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
-    }
-
-    ul li a:hover, ul li a:focus {
-      color: #38B49D;
     }
   }
 }
