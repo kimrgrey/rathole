@@ -11,9 +11,8 @@ header {
 
   .profile {
     float: right;
-    
+
     > a {
-      color: $links-color;
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
@@ -47,7 +46,6 @@ header {
     }
 
     > ul > li > a {
-      color: $links-color;
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
