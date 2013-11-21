@@ -2,5 +2,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree ./lib
 //= require_tree .
