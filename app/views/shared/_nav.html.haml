@@ -2,11 +2,14 @@
   %ul
     %li
       %a{href: root_path}= t('nav.home')
+    %li
+      %a{href: root_path}= t('nav.profile.main')
     %li.dropdown
-      %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}}= t('nav.profile.main')
+      %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.main')
       %ul.dropdown-menu
         %li
-          %a{href: new_post_path}= icon 'pencil', t('nav.profile.new_post')        
+          %a{href: new_post_path}= icon 'pencil', t('nav.blog.post')        
+          %a{href: imports_path}= icon 'download', t('nav.blog.imports')
     %li
       %a{href: '#'}= t('nav.personal')
     %li

@@ -79,9 +79,12 @@ ru:
     home: 'Главная'
     profile: 
       main: 'Профиль'
-      new_post: 'Новый пост'
       account: 'Аккаунт'
       logout: 'Выйти'
+    blog: 
+      main: 'Блог'
+      post: 'Новый пост'
+      imports: 'Импорт'
     personal: 'Про жизнь'
     work: 'Про работу'
     films: 'Про фильмы'
