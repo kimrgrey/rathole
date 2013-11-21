@@ -1,32 +1,4 @@
-- (1..10).each do 
-  .post 
-    .clip
-    .clamp
-    %h2
-      %a{href: '#'} Lorem ipsum dolor sit amet
-    .details
-      %span.date 22 August, 2013
-      %span.date kimrgrey
-      %span.comments 12 Comments
-    .body
-      %img.avatar{src: image_path('avatar.png')}
-      - (1..5).each do
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at dignissim nisl, ullamcorper commodo tellus. Maecenas et varius dolor, eget eleifend quam. 
-          Vivamus ante ligula, consectetur a aliquam eu, commodo sit amet lectus. Praesent molestie purus non ligula egestas viverra. Ut tincidunt metus id eros tristique, 
-          eget scelerisque odio aliquet. Fusce rutrum adipiscing velit sit amet pellentesque. Phasellus eu egestas sapien.
-        %p
-          Maecenas in massa leo. Donec ut tincidunt odio. Curabitur vitae semper turpis. Nam eget tortor non nibh tempor fringilla ac at lorem. Morbi interdum nisi neque, 
-          ut tincidunt mi commodo non. Mauris vulputate ut eros a imperdiet. Donec est quam, tempus a nisi vestibulum, porta condimentum neque. Nulla non sagittis lacus. 
-          Donec pellentesque nisl et libero lobortis vestibulum. Mauris feugiat nisl sed egestas imperdiet. Quisque nec tincidunt lectus, nec fermentum mi. 
-          Aenean feugiat augue non posuere tempor. Nullam euismod nisl ut tristique viverra. Aenean eleifend, orci ac tempus semper, mauris eros tincidunt libero, 
-          sit amet tristique nisi eros eget tortor. Mauris consequat luctus malesuada. Etiam non elementum eros, et cursus nibh. Donec sollicitudin libero risus, 
-          ut adipiscing turpis imperdiet sit amet. Sed commodo orci sem, eget ullamcorper felis iaculis sed. Nunc pellentesque sit amet mauris vitae eleifend. 
-          Suspendisse accumsan semper lacus quis dictum. Duis iaculis lobortis sagittis. Quisque fringilla sapien sagittis elit aliquet, nec accumsan 
-          felis malesuada. Cras rutrum mauris quis velit sagittis facilisis. Phasellus nec lorem accumsan, molestie purus nec, ullamcorper enim. Class aptent 
-          taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    .links
-      %a{href: '#', class: 'btn btn-default'} Continue reading...
-  .clearfix
+- @posts.each do |post|
+  = render partial: 'posts/post', locals: {post: post}
       
 

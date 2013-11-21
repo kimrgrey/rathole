@@ -10,11 +10,11 @@
   = csrf_meta_tag
 
 %body
-
-  = render partial: 'shared/header'
+  .wrapper
+    = render partial: 'shared/header'
   
-  %section#content
-    = yield
+    %section#content
+      = yield
   
   = render partial: 'shared/footer'
 

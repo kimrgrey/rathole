@@ -1,0 +1,28 @@
+%nav.main-menu
+  %ul
+    %li
+      %a{href: root_path}= t('nav.home')
+    %li.dropdown
+      %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}}= t('nav.profile.main')
+      %ul.dropdown-menu
+        %li
+          %a{href: new_post_path}= icon 'pencil', t('nav.profile.new_post')        
+    %li
+      %a{href: '#'}= t('nav.personal')
+    %li
+      %a{href: '#'}= t('nav.work')
+    %li
+      %a{href: '#'}= t('nav.films')
+    %li
+      %a{href: '#'}= t('nav.books')
+    %li
+      %a{href: '#'}= t('nav.projects')
+.profile.dropdown
+  %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}} 
+    kimrgrey
+  %ul.dropdown-menu
+    %li
+      %a{href: '#'}= icon 'user', t('nav.profile.account')
+    %li.divider
+    %li
+      %a{href: '#'}= icon 'sign-out', t('nav.profile.logout')

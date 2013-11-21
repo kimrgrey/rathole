@@ -1,9 +1,8 @@
+@import 'commons';
+
 footer {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border-bottom: 1px solid #E9E9E9;
-  box-shadow: 0 0 10px rgba(0,0,0,0.75);
-  padding: 15px 150px;
-  width: 100%;
+  @include paper;
+
+  height: 60px;
   text-align: center; 
-  color: #000;
 }

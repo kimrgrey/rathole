@@ -1,31 +1,9 @@
 %header
   %a.logo{href: root_url}
     %img{src: image_url('logo.png')}
-  %nav.main-menu
-    %ul
-      %li
-        %a{href: root_path}= t('nav.home')
-      %li
-        %a{href: '#'}= t('nav.profile')
-      %li
-        %a{href: '#'}= t('nav.personal')
-      %li
-        %a{href: '#'}= t('nav.work')
-      %li
-        %a{href: '#'}= t('nav.films')
-      %li
-        %a{href: '#'}= t('nav.books')
-      %li
-        %a{href: '#'}= t('nav.projects')
-  .profile.dropdown
-    %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}} 
-      kimrgrey
-    %ul.dropdown-menu
-      %li
-        %a{href: '#'} Profile
-      %li.divider
-      %li
-        %a{href: '#'} Logout
+
+  = render partial: 'shared/nav'
+  
   .clearfix
       
         

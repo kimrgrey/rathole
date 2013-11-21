@@ -1,29 +1,41 @@
-header {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border-bottom: 1px solid #E9E9E9;
-  box-shadow: 0 0 10px rgba(0,0,0,0.75);
-  padding: 15px 150px;
-  width: 100%;
+@import 'commons';
 
-  a {
-    color: #000;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
+header {
+  @include paper;
+
 
   a.logo {
     float: left;
   }
 
+
   .profile {
     float: right;
+    
+    > a {
+      color: $links-color;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
   }
   
-  nav.main-menu {
+  > nav.main-menu {
     margin: 0px 40px;
 
-    ul li {
+    ul .dropdown-menu > li a {
+      text-transform: none;
+      list-style: none outside none;      
+      position: relative;
+    }
+
+    ul .dropdown-menu > li a:after {
+      content: "";
+      display: none;
+      margin: 0;
+    }
+
+    > ul > li {
       float: left;
       list-style: none outside none;
       margin-right: 8px;
@@ -34,7 +46,14 @@ header {
       font-weight: 400;
     }
 
-    ul li a:after {
+    > ul > li > a {
+      color: $links-color;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    > ul > li a:after {
       color: #000;
       content: "•";
       float: right;
@@ -47,7 +66,7 @@ header {
       opacity: 0.4;
     }
 
-    ul li:last-child a:after {
+    > ul > li:last-child > a:after {
       content: "";
       display: none;
       margin: 0;

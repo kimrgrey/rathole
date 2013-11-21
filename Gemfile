@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'font-awesome-rails'
+gem 'kaminari'
+gem 'redcarpet'
 
 group :doc do
   gem 'sdoc', require: false

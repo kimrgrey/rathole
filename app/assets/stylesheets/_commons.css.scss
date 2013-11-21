@@ -1,0 +1,12 @@
+$text-color: #000000;
+$links-color: #000000;
+$hovered-links-color: #333333;
+
+@mixin paper {
+  display: block;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #E9E9E9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.75);
+  padding: 15px 150px;
+  color: $text-color;
+}
