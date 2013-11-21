@@ -6,6 +6,7 @@
   %title= content_for?(:title) ? "#{yield(:title)} - #{t('application.name')}" : t('application.name')
 
   = stylesheet_link_tag 'application'
+  = javascript_include_tag 'application'
   
   = csrf_meta_tag
 
@@ -17,5 +18,3 @@
       = yield
   
   = render partial: 'shared/footer'
-
-  = javascript_include_tag 'application'
