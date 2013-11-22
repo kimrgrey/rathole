@@ -22,3 +22,7 @@ group :development do
   gem 'thin'
   gem 'therubyracer', platforms: :ruby
 end
+
+group :production do 
+  gem 'rails_12factor'
+end
