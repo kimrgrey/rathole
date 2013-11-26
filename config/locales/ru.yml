@@ -75,6 +75,10 @@ ru:
   posts:
     post:
       continue: 'Читать дальше'
+    form:
+      save: 'Сохранить'
+      cancel: 'Отмена'
+      delete: 'Удалить'
   nav:
     home: 'Главная'
     profile: 

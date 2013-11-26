@@ -9,7 +9,7 @@
       = f.text_area :body, rows: 50, class: 'form-control', placeholder: 'What text will be in your post?'
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit 'Save', class: 'btn btn-primary'
-      = link_to 'Cancel', posts_path, class: 'btn btn-default'
-      = link_to 'Delete', post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
+      = f.submit t('.save'), class: 'btn btn-primary'
+      = link_to t('.cancel'), posts_path, class: 'btn btn-default'
+      = link_to t('.delete'), post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
 .clearfix
