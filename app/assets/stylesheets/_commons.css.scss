@@ -3,13 +3,16 @@ $links-color: #000000;
 $hovered-links-color: #333333;
 $footer-height: 60px;
 
-$break-small: 1400px;
+$break-small: 1280px;
 
 @mixin paper {
   display: block;
   background: none repeat scroll 0 0 #FFFFFF;
   border: 1px solid #E9E9E9;
   box-shadow: 0 0 10px rgba(0,0,0,0.75);
-  padding: 15px 150px;
   color: $text-color;
+  padding: 15px 100px;
+  @media screen and (max-width: $break-small) {
+  	padding: 15px 50px;  
+  }
 }

@@ -59,7 +59,10 @@
     color: #000;
     font-family: 'Lato',sans-serif;
     font-size: 16px;
-    font-weight: 500;
+    
+    @media screen and (max-width: $break-small) {
+      font-size: 14px;
+    }
 
     img.avatar {
       width: 150px;
