@@ -1,3 +1,6 @@
+require 'rouge'
+require 'rouge/plugins/redcarpet'
+
 module ApplicationHelper
 
   def page_header(main_text, small_text = nil)
@@ -10,8 +13,17 @@ module ApplicationHelper
     end
   end
 
+  class MarkdownRenderer < Redcarpet::Render::HTML
+    include Rouge::Plugins::Redcarpet
+  end
+
   def markdown(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    renderer = MarkdownRenderer.new(:filter_html => true, :hard_wrap => true, prettify: true)
+    options = {
+      fenced_code_blocks: true,
+      autolink: true
+    }
+    markdown = Redcarpet::Markdown.new(renderer, options)
     raw markdown.render(text)
   end
 

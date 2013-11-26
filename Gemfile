@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'redcarpet'
+gem 'rouge'
 
 group :doc do
   gem 'sdoc', require: false
