@@ -1,6 +1,9 @@
 $text-color: #000000;
 $links-color: #000000;
 $hovered-links-color: #333333;
+$footer-height: 60px;
+
+$break-small: 1400px;
 
 @mixin paper {
   display: block;

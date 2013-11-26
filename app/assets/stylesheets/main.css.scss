@@ -14,6 +14,14 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+a.edit {
+  text-decoration: none;
+}
+
+form {
+  @include paper;
+}
+
 body {
   background: none repeat scroll 0 0 #F2F2F2;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -22,9 +30,9 @@ body {
 
   .wrapper {
     height: auto;
-    margin: 0 auto -60px;
+    margin: 0 auto (-$footer-height);
     min-height: 100%;
-    padding: 0 0 60px;
+    padding: 0 0 $footer-height;
   }
 
   section#content {
@@ -32,10 +40,9 @@ body {
   }
 }
 
-a.edit {
-  text-decoration: none;
-}
-
-form {
+footer {
   @include paper;
+
+  height: $footer-height;
+  text-align: center; 
 }
