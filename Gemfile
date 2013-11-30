@@ -14,6 +14,7 @@ gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'redcarpet'
 gem 'rouge'
+gem 'devise'
 
 group :doc do
   gem 'sdoc', require: false
@@ -22,6 +23,7 @@ end
 group :development do 
   gem 'thin'
   gem 'therubyracer', platforms: :ruby
+  gem 'letter_opener_web'
 end
 
 group :production do 
