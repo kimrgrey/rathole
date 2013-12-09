@@ -80,6 +80,7 @@ ru:
       cancel: 'Отмена'
       delete: 'Удалить'
   nav:
+    menu: 'Меню'
     home: 'Главная'
     profile: 
       main: 'Профиль'
@@ -94,6 +95,7 @@ ru:
     films: 'Про фильмы'
     books: 'Про книги'
     projects: 'Про проекты'
+    sections: 'Разделы'
   activerecord:
     attributes:
       post:

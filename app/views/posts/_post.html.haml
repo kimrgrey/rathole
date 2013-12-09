@@ -4,7 +4,7 @@
     = edit_link post
     %a{href: post_path(post)}= post.title
   .details
-    %span.date 
+    %span.user 
       %a{href: '#'}= icon 'user', 'kimrgrey'
     %span.date 
       %a{href: '#'}= icon 'calendar', l(post.created_at)

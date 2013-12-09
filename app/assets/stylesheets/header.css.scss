@@ -8,27 +8,52 @@ header {
   top: 0px;
   width: 100%;
   z-index: 100;
-  height: 80px;
+  padding: 0;
+  height: 40px; 
+
+  @media(min-width: $extra-small-device) {
+    padding: 15px 25px;
+    height: 80px;  
+  }
   opacity: 0.90;
   
   a.logo {
     float: left;
+    @media(max-width: $extra-small-device) {
+      display: none;
+    }
   }
 
   .profile {
     float: right;
+    display: none;
+    @media(min-width: $extra-small-device) {
+      display: inline-block;
+    }
 
     > a { 
-      font-weight: 600;
-      @media screen and (max-width: $break-small) {
-        font-size: 11px;
-      }
       text-transform: uppercase;
+      font-size: 12px;
+      @media(min-width: $medium-device) {
+        font-size: 14px;
+      }
+      @media(min-width: $large-device) {
+        font-size: 16px;
+      }
     }
   }
   
   > nav.main-menu {
-    margin: 0px 40px;
+    margin: 0px 5px;
+    @media(min-width: $extra-small-device) {
+      margin: 12px 40px;
+    }
+
+    > ul > li {
+      @media(min-width: $extra-small-device) {
+        display: inline-block;
+      }
+    }
 
     ul .dropdown-menu > li a {
       text-transform: none;
@@ -52,16 +77,24 @@ header {
     }
 
     > ul > li > a {
-      font-weight: 600;
-      @media screen and (max-width: $break-small) {
-        font-size: 11px;
+      font-size: 12px;
+      @media(min-width: $medium-device) {
+        font-size: 14px;
+      }
+      @media(min-width: $large-device) {
+        font-size: 16px;
       }
       text-transform: uppercase;
     }
 
     > ul > li a:after {
       color: #000;
-      content: "•";
+      @media(min-width: $extra-small-device) {
+        content: "|";
+      }
+      @media(min-width: $large-device) {
+        content: "•";
+      }
       float: right;
       font-size: 12px;
       font-weight: 400;

@@ -3,7 +3,10 @@ $links-color: #000000;
 $hovered-links-color: #333333;
 $footer-height: 60px;
 
-$break-small: 1280px;
+$extra-small-device: 560px;
+$small-device: 750px;
+$medium-device: 970px;
+$large-device: 1400px;
 
 @mixin paper {
   display: block;
@@ -11,8 +14,14 @@ $break-small: 1280px;
   border: 1px solid #E9E9E9;
   box-shadow: 0 0 10px rgba(0,0,0,0.75);
   color: $text-color;
-  padding: 15px 100px;
-  @media screen and (max-width: $break-small) {
-  	padding: 15px 50px;  
+  padding: 0px 10px;
+  @media(min-width: $extra-small-device) {
+    padding: 15px 20px;
+  }
+  @media(min-width: $medium-device) {
+    padding: 15px 50px;
+  }
+  @media(min-width: $large-device) {
+  	padding: 15px 100px;
   }
 }
