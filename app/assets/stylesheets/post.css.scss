@@ -12,22 +12,25 @@
 
   
   .clip {
-    background: image-url("clip.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-    height: 44px;
+    background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 150px;
     left: 33px;
     position: absolute;
-    top: -20px;
-    width: 18px;
+    top: -60px;
+    width: 100px;
     z-index: 10;
+    @media(max-width: $extra-small-device) {
+      display: none;
+    }
   }
 
   .clamp {
-    background: image-url("clamp.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-    height: 66px;
+    background: image-url("rat-chump.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 100px;
     position: absolute;
-    right: -20px;
-    top: -15px;
-    width: 42px;
+    right: -30px;
+    top: -35px;
+    width: 60px;
     z-index: 10;
   }
 
