@@ -25,3 +25,11 @@ $large-device: 1400px;
   	padding: 15px 100px;
   }
 }
+
+@mixin container {
+  position: relative;
+  border-radius: 0 0 6px 6px;  
+  clear: both;
+  max-width: 1200px;
+  margin: 20px auto;
+}

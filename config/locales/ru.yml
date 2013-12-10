@@ -96,8 +96,27 @@ ru:
     books: 'Про книги'
     projects: 'Про проекты'
     sections: 'Разделы'
+    sign_in: 'Вход'
+    sign_up: 'Регистрация'
+  devise:
+    sessions:
+      new: 
+        page_header: 'Вход на сайт'
+        submit: 'Войти'
+    shared:
+      links:
+        sign_in: 'Хотите войти на сайт?'
+        sign_up: 'Хотите пройти регистрацию?'
+        forget_password: 'Забыли свой пароль?'
+        confirmation_instructions: "Не получили инструкции по активации аккаунта?"
+        unlock_instructions: "Не получили инструкции по разблокировке аккаунта?"
+        sign_in_with: "Войти при помощи %{provider}"
   activerecord:
     attributes:
       post:
         title: 'Заголовок'
         body: 'Текст'
+      user:
+        email: 'Почта'
+        password: 'Пароль'
+        remember_me: 'Запомнить меня'

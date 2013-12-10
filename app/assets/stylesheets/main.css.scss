@@ -18,8 +18,27 @@ a.edit {
   text-decoration: none;
 }
 
-form {
-  @include paper;
+.clip {
+  background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 150px;
+  left: 33px;
+  position: absolute;
+  top: -60px;
+  width: 100px;
+  z-index: 10;
+  @media(max-width: $extra-small-device) {
+    display: none;
+  }
+}
+
+.clamp {
+  background: image-url("rat-chump.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 100px;
+  position: absolute;
+  right: -30px;
+  top: -35px;
+  width: 60px;
+  z-index: 10;
 }
 
 body {
@@ -40,6 +59,24 @@ body {
     @media(min-width: $extra-small-device) {
       padding: 120px 40px;
     }
+  }
+}
+
+h2 {
+  display: block;
+  text-align: center;
+  a {
+    font-family: "Lato",sans-serif;
+    margin-top: 0;
+    padding: 0;    
+    
+    font-size: 18px;
+    @media(min-width: $extra-small-device) {
+      font-size: 24px;
+    }
+    @media(min-width: $medium-device) {
+      font-size: 28px;
+    } 
   }
 }
 

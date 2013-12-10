@@ -35,5 +35,5 @@
           %a{href: '#'}= icon 'sign-out', t('nav.profile.logout')
   - else
     .profile
-      %a.signin{href: new_user_session_path}= 'Sign In'
-      %a.singup{href: new_user_registration_path}= 'Sign Up'
+      %a.signin{href: new_user_session_path}= t('nav.sign_in')
+      %a.singup{href: new_user_registration_path}= t('nav.sign_up')

@@ -1,0 +1,10 @@
+@import 'commons';
+
+div.signin {
+  @include paper;
+  @include container;
+}
+
+a.devise-link {
+  display: block;
+}
