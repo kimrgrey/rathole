@@ -1,5 +1,13 @@
 @import 'commons';
 
+.post-space {
+  height: 20px;
+
+  @media(max-width: $extra-small-device) {
+    height: 10px;
+  }
+}
+
 .post {
 
   @include paper;
