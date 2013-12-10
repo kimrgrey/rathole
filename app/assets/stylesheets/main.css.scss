@@ -43,7 +43,7 @@ a.edit {
 
 body {
   background: none repeat scroll 0 0 #F2F2F2;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: 'Droid Sans';
   font-size: 14px;
   line-height: 1.5;
 
@@ -62,11 +62,16 @@ body {
   }
 }
 
+label {
+  font-weight: normal;
+}
+
 h2 {
+  font-family: 'Capture it';
+  letter-spacing: 5px;
   display: block;
   text-align: center;
   a {
-    font-family: "Lato",sans-serif;
     margin-top: 0;
     padding: 0;    
     

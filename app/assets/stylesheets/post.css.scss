@@ -1,31 +1,22 @@
 @import 'commons';
 
-.post-space {
-  height: 20px;
-
-  @media(max-width: $extra-small-device) {
-    height: 10px;
-  }
-}
-
 .post {
-
   @include paper;
   @include container;
+
+  font-size: 12px;
+  @media(min-width: $extra-small-device) {
+    font-size: 14px;
+  }
+  @media(min-width: $medium-device) {
+    font-size: 16px;
+  }
 
   .details {
     color: #000;
     text-align: center;
     margin-bottom: 10px;
-    font-size: 10px;
-    padding: 0px;
-    @media(min-width: $small-device) {
-      font-size: 12px;
-    }
-    @media(min-width: $medium-device) {
-      padding: 10px;
-      font-size: 14px;
-    } 
+    padding: 0px; 
     span {
       margin-right: 5px;
       @media(min-width: $extra-small-device) {
@@ -43,28 +34,15 @@
 
   .body {
     color: #000;
-    font-family: 'Lato',sans-serif;
-    
-    font-size: 10px;
-    @media(min-width: $extra-small-device) {
-      font-size: 12px;
-    }
-    @media(min-width: $medium-device) {
-      font-size: 14px;
-    }
-    @media(min-width: $large-device) {
-      font-size: 16px;
-    }
 
     pre {
+      font-family: 'Arial';
       @media(max-width: $small-device) {
         display: none;
       }
-
       @media(min-width: $small-device) {
         font-size: 11px;
       }
-
       @media(min-width: $medium-device) {
         font-size: inherit;
       }
@@ -90,30 +68,30 @@
 
   .links {
     padding: 5px 0px;
-    font-size: 10px;
-    
     @media(min-width: $extra-small-device) {
       padding: 10px 0px;
-      font-size: 12px;
     }
     @media(min-width: $medium-device) {
       padding: 15px 0px;
-      font-size: 14px;    
     } 
-
     > span {
       margin-right: 25px;
     }
-
     > span.tags {
       @media(max-width: $extra-small-device) {
         display: none;
       } 
     }
-
     > span.continue {
       float: right;
       margin-right: 0px;
     }
+  }
+}
+
+.post-space {
+  height: 20px;
+  @media(max-width: $extra-small-device) {
+    height: 10px;
   }
 }

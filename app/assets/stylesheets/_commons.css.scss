@@ -33,3 +33,13 @@ $large-device: 1400px;
   max-width: 1200px;
   margin: 20px auto;
 }
+
+@font-face {
+  font-family: 'Capture it';
+  src: font-url('capture-it.ttf');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  src: font-url('droid-sans.ttf');
+}
