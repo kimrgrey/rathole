@@ -96,7 +96,7 @@ ru:
     books: 'Про книги'
     projects: 'Про проекты'
     sections: 'Разделы'
-    sign_in: 'Вход'
+    sign_in: 'Вход на сайт'
     sign_up: 'Регистрация'
   devise:
     sessions:

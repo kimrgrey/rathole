@@ -1,7 +1,7 @@
 .post 
   = clip_and_clamp
   %h2
-    = edit_link post
+    = edit_link post if user_signed_in?
     %a{href: post_path(post)}= post.title
   .details
     %span.user 
