@@ -3,4 +3,4 @@
 %p
   = t(".instructions")
 %p
-  = link_to t('.confirm'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+  = link_to t('.confirm'), confirmation_url(@resource, :confirmation_token => @token)
