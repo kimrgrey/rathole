@@ -41,7 +41,7 @@ module ApplicationHelper
     content_tag :h2, t('.page_header')
   end
 
-  def profile_path(user_name)
-    
+  def spacer 
+    content_tag :div, '', class: 'spacer'
   end
 end

@@ -1,0 +1,23 @@
+.form
+  = clip_and_clamp
+  = page_header
+  = spacer
+  = form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { method: :put, class: 'form-horizontal' } do |f|
+    = f.hidden_field :reset_password_token
+    %legend
+      = t('.instructions')
+    = render partial: 'shared/errors', locals: { model: resource }
+    .form-group
+      = f.label :password, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.password_field :password, :autofocus => true, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.password_field :password_confirmation, class: 'form-control'
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit t('.submit'), class: 'btn btn-primary'
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = render "devise/shared/links"

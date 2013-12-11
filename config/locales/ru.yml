@@ -111,10 +111,42 @@ ru:
       new: 
         page_header: 'Вход на сайт'
         submit: 'Войти'
+    confirmations:
+      new:
+        page_header: 'Хотите активировать аккаунт?'
+        instructions: 'Укажите свой адрес электронной почты, чтобы мы могли отправить вам инструкции.'
+        submit: 'Отправить'
+    unlocks:
+      new:
+        page_header: 'Хотите разблокировать аккаунт?'
+        instructions: 'Укажите свой адрес электронной почты, чтобы мы могли отправить вам инструкции.'
+        submit: 'Отправить'
+    passwords:
+      new:
+        page_header: 'Забыли свой пароль?'
+        instructions: 'Для восстановления пароля, укажите свой адрес электронной почты.'
+        submit: 'Восстановить'
+      edit:
+        page_header: 'Новый пароль'
+        instructions: 'Введите новый пароль для своего аккаунта.'
+        submit: 'Сохранить'
     registrations:
       new: 
         page_header: 'Регистрация'
         submit: 'Регистрация'
+    mailer:
+      confirmation_instructions:
+        greeting: "Добро пожаловать, %{name}!"
+        instructions: "Чтобы активировать аккаунт, просто пройдите по ссылке чуть ниже. Спасибо!"
+        confirm: "Вперед!"
+      reset_password_instructions:
+        greeting: "Привет, %{name}!"
+        instructions: "Судя по всему вы забыли свой пароль? Это не проблема! Чтобы сменить его, просто пройдите по ссылке ниже."
+        change: "Вперед!"
+      unlock_instructions:
+        greeting: "Привет, %{name}!"
+        instructions: "Судя по всему ваш аккаунт был заблокирован? Это не проблема! Чтобы разблокировать его, просто пройдите по ссылке ниже."
+        unlock: "Вперед!"
     shared:
       links:
         sign_in: 'Хотите войти на сайт?'
@@ -129,8 +161,19 @@ ru:
         title: 'Заголовок'
         body: 'Текст'
       user:
-        email: 'Почта'
+        email: 'Электронный адрес'
         user_name: 'Логин'
         password: 'Пароль'
         password_confirmation: 'Пароль еще раз'
         remember_me: 'Запомнить меня'
+        reset_password_token: 'Токен для сброса пароля'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: 'не был найден на сайте.'
+              already_confirmed: 'уже был подвтержден.'
+              not_locked: 'не был заблокирован.'
+            reset_password_token:
+              invalid: 'указан неверно.'

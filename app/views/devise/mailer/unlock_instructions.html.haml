@@ -1,0 +1,6 @@
+%p
+  %b= t(".greeting", :name => @resource.user_name)
+%p
+  = t(".instructions")
+%p
+  = link_to t(".unlock"), unlock_url(@resource, :unlock_token => @resource.unlock_token)
