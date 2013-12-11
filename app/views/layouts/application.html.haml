@@ -14,8 +14,8 @@
 %body
   .wrapper
     = render partial: 'shared/header'
-  
     %section#content
+      = render partial: 'shared/flash'
       = yield
   
   = render partial: 'shared/footer'

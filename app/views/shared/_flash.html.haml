@@ -1,0 +1,9 @@
+- flash.each do |type, message|
+  - type = :success if type == :notice
+  - type = :danger if type == :alert || type = :error
+  .flash.alert{class: "alert-#{type}"}
+    %a.close{data: {dismiss: "alert"}} &times;
+    = message
+
+- if flash.any?
+  .spacer
