@@ -166,6 +166,7 @@ ru:
         password: 'Пароль'
         password_confirmation: 'Пароль еще раз'
         remember_me: 'Запомнить меня'
+        confirmation_token: 'Токен для подвтерждения'
         reset_password_token: 'Токен для сброса пароля'
     errors:
       models:
@@ -176,4 +177,6 @@ ru:
               already_confirmed: 'уже был подвтержден.'
               not_locked: 'не был заблокирован.'
             reset_password_token:
+              invalid: 'указан неверно.'
+            confirmation_token:
               invalid: 'указан неверно.'
