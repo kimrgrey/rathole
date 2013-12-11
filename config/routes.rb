@@ -1,7 +1,10 @@
 Kgblogs::Application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letters" if Rails.env.development?
   
-  devise_for :users
+  devise_for :users, skip: [:registrations]
+  devise_scope :user do
+    resource :registration, only: [:new, :create], path: 'users', controller: 'devise/registrations', as: :user_registration
+  end
   
   resource :user, only: [:show]
 
