@@ -5,7 +5,7 @@
     %a{href: post_path(post)}= post.title
   .details
     %span.user 
-      %a{href: '#'}= icon 'user', 'kimrgrey'
+      %a{href: profile_user_path(post.user_name)}= icon 'user', post.user_name
     %span.date 
       %a{href: '#'}= icon 'calendar', l(post.created_at)
     %span.comments 

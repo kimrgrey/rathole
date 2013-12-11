@@ -2,41 +2,42 @@
   %ul
     %li
       %a{href: root_path}= t('nav.home')
+    = yield :nav if content_for? :nav
     - if user_signed_in?
-      %li
-        %a{href: root_path}= t('nav.profile.main')
       %li.dropdown
-        %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.main')
+        %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.my')
         %ul.dropdown-menu
           %li
             %a{href: new_post_path}= icon 'pencil', t('nav.blog.post')        
-            %a{href: imports_path}= icon 'download', t('nav.blog.imports')
-    - else
+            %a{href: imports_path}= icon 'download', t('nav.blog.imports')  
+    - if params[:user_name].present?
       %li
-        %a{href: new_user_registration_path}= t('nav.sign_up')
-    %li.dropdown
-      %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.sections')
-      %ul.dropdown-menu
-        %li
-          %a{href: '#'}= t('nav.personal')
-        %li
-          %a{href: '#'}= t('nav.work')
-        %li
-          %a{href: '#'}= t('nav.films')
-        %li
-          %a{href: '#'}= t('nav.books')
-        %li
-          %a{href: '#'}= t('nav.projects')
+        %a{href: profile_user_path(user_name: params[:user_name])}= t('nav.profile.of', user_name: params[:user_name])
+      %li.dropdown
+        %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.of', user_name: params[:user_name])
+        %ul.dropdown-menu
+          %li
+            %a{href: profile_posts_path(user_name: params[:user_name])}= t('nav.blog.all')
+          %li
+            %a{href: '#'}= t('nav.personal')
+          %li
+            %a{href: '#'}= t('nav.work')
+          %li
+            %a{href: '#'}= t('nav.films')
+          %li
+            %a{href: '#'}= t('nav.books')
+          %li
+            %a{href: '#'}= t('nav.projects')
   - if user_signed_in?
     .profile.dropdown
       %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}} 
-        kimrgrey
+        = current_user.user_name
       %ul.dropdown-menu
         %li
-          %a{href: '#'}= icon 'user', t('nav.profile.account')
+          %a{href: user_path}= icon 'user', t('nav.profile.account')
         %li.divider
         %li
-          %a{href: '#'}= icon 'sign-out', t('nav.profile.logout')
+          %a{href: destroy_user_session_path, data: {method: 'delete'}}= icon 'sign-out', t('nav.profile.logout')
   - else
     .profile
       %a.signin{href: new_user_session_path}= t('nav.sign_in')

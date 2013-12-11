@@ -73,6 +73,8 @@ ru:
   application:
     name: "KG BLOGS"
   posts:
+    new: 
+      page_header: 'Новый пост'
     post:
       continue: 'Читать дальше'
     form:
@@ -84,10 +86,14 @@ ru:
     home: 'Главная'
     profile: 
       main: 'Профиль'
+      of: 'Профиль %{user_name}'
       account: 'Аккаунт'
       logout: 'Выйти'
     blog: 
       main: 'Блог'
+      my: 'Мой блог'
+      of: 'Блог %{user_name}'
+      all: 'Все посты'
       post: 'Новый пост'
       imports: 'Импорт'
     personal: 'Про жизнь'
@@ -95,7 +101,9 @@ ru:
     films: 'Про фильмы'
     books: 'Про книги'
     projects: 'Про проекты'
-    sections: 'Разделы'
+    sections: 
+      main: 'Разделы'
+      of: 'Разделы %{user_name}'
     sign_in: 'Вход на сайт'
     sign_up: 'Регистрация'
   devise:
@@ -103,6 +111,10 @@ ru:
       new: 
         page_header: 'Вход на сайт'
         submit: 'Войти'
+    registrations:
+      new: 
+        page_header: 'Регистрация'
+        submit: 'Регистрация'
     shared:
       links:
         sign_in: 'Хотите войти на сайт?'
@@ -118,5 +130,7 @@ ru:
         body: 'Текст'
       user:
         email: 'Почта'
+        user_name: 'Логин'
         password: 'Пароль'
+        password_confirmation: 'Пароль еще раз'
         remember_me: 'Запомнить меня'

@@ -60,6 +60,12 @@ body {
       padding: 120px 40px;
     }
   }
+
+
+  div.form {
+    @include paper;
+    @include container;
+  }
 }
 
 label {

@@ -24,6 +24,7 @@ group :development do
   gem 'thin'
   gem 'therubyracer', platforms: :ruby
   gem 'letter_opener_web'
+  gem 'hirb-unicode'
 end
 
 group :production do 

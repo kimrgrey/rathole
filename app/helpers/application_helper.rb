@@ -36,4 +36,12 @@ module ApplicationHelper
   def edit_link(model)    
     content_tag :a, icon(:edit), href: url_for([:edit, model]) , class: 'edit'
   end
+
+  def page_header
+    content_tag :h2, t('.page_header')
+  end
+
+  def profile_path(user_name)
+    
+  end
 end
