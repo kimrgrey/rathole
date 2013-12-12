@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   before_action :load_current_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :load_other_user, only: [:index, :show]
   
-  def show
-  end
-
   private
 
   def load_current_user

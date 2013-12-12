@@ -6,14 +6,14 @@ Kgblogs::Application.routes.draw do
     resource :registration, only: [:new, :create], path: 'users', controller: 'devise/registrations', as: :user_registration
   end
   
-  resource :user, only: [:show]
+  resource :user
 
   resources :posts
   resources :imports, except: [:edit, :update]
 
   get ':user_name' => 'posts#index'
   scope ':user_name', as: 'profile' do
-    resource :user
+    resource :user, only: [:show]
     resources :posts, only: [:index, :show]
   end
   

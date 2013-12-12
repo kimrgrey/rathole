@@ -1,0 +1,13 @@
+@import 'commons';
+
+.profile {
+  .avatar {
+    text-align: center;
+    img { 
+      width: 200px; 
+    }
+    @media(max-width: $medium-device) {
+      margin-bottom: 25px;
+    }
+  }
+}

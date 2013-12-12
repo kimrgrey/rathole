@@ -81,6 +81,9 @@ ru:
       save: 'Сохранить'
       cancel: 'Отмена'
       delete: 'Удалить'
+  users:
+    show:
+      page_header: 'Профиль пользователя'
   nav:
     menu: 'Меню'
     home: 'Главная'
