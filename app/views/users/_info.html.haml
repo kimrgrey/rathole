@@ -3,22 +3,22 @@
     %img{src: image_path('avatar.png')}
   .col-md-9
     .panel.panel-default
-      .panel-heading Информация о пользователе  
+      .panel-heading= t('.header') 
       %table.table
         %tbody
           %tr
-            %th= 'Логин'
-            %td= 'kimrgrey'
+            %th= t('.user_name')
+            %td= @user.user_name
           %tr
-            %th= 'Последний раз был на сайте'
-            %td= '11.12.2013 15:15:09'
+            %th= t('.sign_up_at')
+            %td= l @user.created_at
           %tr
-            %th= 'Дата регистрации'
-            %td= '11.12.2013 15:15:09'
+            %th= t('.last_sign_in_at')
+            %td= l @user.last_sign_in_at
           %tr
-            %th= 'Количество комментариев'
+            %th= t('.posts')
+            %td= @user.posts_count
+          %tr
+            %th= t('.comments')
             %td= '138'
-          %tr
-            %th= 'Количество постов'
-            %td= '68'
           

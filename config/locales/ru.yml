@@ -84,6 +84,13 @@ ru:
   users:
     show:
       page_header: 'Профиль пользователя'
+    info:
+      header: 'Пользователь'
+      user_name: 'Логин'
+      last_sign_in_at: 'Заходил'
+      sign_up_at: 'Присоединился'
+      comments: 'Комментариев'
+      posts: 'Постов'
   nav:
     menu: 'Меню'
     home: 'Главная'
