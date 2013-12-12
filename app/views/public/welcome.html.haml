@@ -2,6 +2,5 @@
   - unless user_signed_in?
     %li
       %a{href: new_user_registration_path}= t('nav.sign_up')
-- @posts.each do |post|
-  = render partial: 'posts/post', locals: {post: post}
-  .spacer
+
+= render partial: 'posts/list', locals: { posts: @posts, preview: true }

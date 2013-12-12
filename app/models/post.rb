@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
   belongs_to :section, counter_cache: true
 
   delegate :user_name, to: :user, prefix: false
+
+  def preview
+    body.split("\r\n\r\n").first
+  end
 end
