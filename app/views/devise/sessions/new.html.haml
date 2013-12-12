@@ -1,7 +1,7 @@
 = content_for :nav do
   %li
     %a{href: new_user_registration_path}= t('nav.sign_up')
-.form
+.container
   = clip_and_clamp
   = page_header
   = form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'} do |f|
