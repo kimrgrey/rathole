@@ -52,11 +52,7 @@ class PostsController < ApplicationController
   end
 
   def load_other_user
-    if params[:user_name].present?
-      @user = User.where(user_name: params[:user_name]).first || not_found
-    else
-      @user = current_user
-    end
+    @user = User.where(user_name: params[:user_name]).first || not_found if params[:user_name].present?
   end
 
   def load_current_user
@@ -64,6 +60,6 @@ class PostsController < ApplicationController
   end
 
   def load_posts
-    @posts = @user.posts
+    @posts = @user ? @user.posts : Post.all
   end
 end
