@@ -2,42 +2,18 @@
   %ul
     %li
       %a{href: root_path}= t('nav.home')
+    
     = yield :nav if content_for? :nav
+    
     - if user_signed_in?
-      %li.dropdown
-        %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.my')
-        %ul.dropdown-menu
-          %li
-            %a{href: new_post_path}= icon 'pencil', t('nav.blog.post')        
-            %a{href: imports_path}= icon 'download', t('nav.blog.imports')  
-    - if params[:user_name].present?
-      %li
-        %a{href: profile_user_path(user_name: params[:user_name])}= t('nav.profile.of', user_name: params[:user_name])
-      %li.dropdown
-        %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}= t('nav.blog.of', user_name: params[:user_name])
-        %ul.dropdown-menu
-          %li
-            %a{href: profile_posts_path(user_name: params[:user_name])}= t('nav.blog.all')
-          %li
-            %a{href: '#'}= t('nav.personal')
-          %li
-            %a{href: '#'}= t('nav.work')
-          %li
-            %a{href: '#'}= t('nav.films')
-          %li
-            %a{href: '#'}= t('nav.books')
-          %li
-            %a{href: '#'}= t('nav.projects')
+      = render partial: 'shared/nav/my'
+      - if params[:user_name].present? && params[:user_name] != current_user.user_name
+        = render partial: 'shared/nav/profile'
+    - else
+      - if params[:user_name].present?
+        = render partial: 'shared/nav/profile'
+      
   - if user_signed_in?
-    .profile.dropdown
-      %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}} 
-        = current_user.user_name
-      %ul.dropdown-menu
-        %li
-          %a{href: user_path}= icon 'user', t('nav.profile.account')
-        %li.divider
-        %li
-          %a{href: destroy_user_session_path, data: {method: 'delete'}}= icon 'sign-out', t('nav.profile.logout')
+    = render partial: 'shared/nav/account'
   - else
-    .profile
-      %a.signin{href: new_user_session_path}= t('nav.sign_in')
+    = render partial: 'shared/nav/guest'

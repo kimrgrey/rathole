@@ -3,11 +3,22 @@
 .profile {
   .avatar {
     text-align: center;
+    margin-bottom: 25px;
     img { 
       width: 200px; 
     }
-    @media(max-width: $medium-device) {
-      margin-bottom: 25px;
+  }
+
+  .sections {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 10px;
+
+    .badge {
+      margin: 3px;
+      a {
+        color: #FFF;
+      }
     }
   }
 }

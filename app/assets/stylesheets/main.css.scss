@@ -26,7 +26,7 @@ a.edit {
   top: -60px;
   width: 100px;
   z-index: 10;
-  @media(max-width: $extra-small-device) {
+  @media(max-width: $small-device) {
     display: none;
   }
 }
@@ -57,6 +57,35 @@ body {
   .container {
     @include paper;
     @include container; 
+
+    @media(min-width: $extra-small-device) {
+      width: auto;
+    }
+    @media (min-width: $large-device) {
+      width: 1200px;
+    }
+  }
+
+  label {
+    font-weight: normal;
+  }
+
+  h2 {
+    font-family: 'Capture it';
+    letter-spacing: 5px;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    @media(min-width: $extra-small-device) {
+      font-size: 24px;
+    }
+    @media(min-width: $medium-device) {
+      font-size: 28px;
+    } 
+    a {
+      margin-top: 0;
+      padding: 0;    
+    }
   }
 
   .spacer {
@@ -71,29 +100,6 @@ body {
     @media(min-width: $extra-small-device) {
       padding: 120px 40px;
     }
-  }
-}
-
-label {
-  font-weight: normal;
-}
-
-h2 {
-  font-family: 'Capture it';
-  letter-spacing: 5px;
-  display: block;
-  text-align: center;
-  a {
-    margin-top: 0;
-    padding: 0;    
-    
-    font-size: 18px;
-    @media(min-width: $extra-small-device) {
-      font-size: 24px;
-    }
-    @media(min-width: $medium-device) {
-      font-size: 28px;
-    } 
   }
 }
 

@@ -1,0 +1,8 @@
+%li.dropdown
+  %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+    = params[:user_name]
+  %ul.dropdown-menu
+    %li
+      %a{href: profile_posts_path(user_name: params[:user_name])}= t('nav.blog.all')
+    %li.divider
+    = render partial: 'shared/nav/sections'

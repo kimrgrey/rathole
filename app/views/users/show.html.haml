@@ -1,6 +1,7 @@
 .profile.container
   = clip_and_clamp
   = page_header
+  = render partial: 'users/avatar'   
   = render partial: 'users/info'
-  = render partial: 'users/sections_and_tags'
+  = render partial: 'users/sections'
   = render partial: 'posts/list', locals: { posts: @posts, preview: true }
