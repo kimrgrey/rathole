@@ -21,4 +21,10 @@
       }
     }
   }
+
+  .post .clamp {
+    @media(max-width: $medium-device) {
+      display: none;
+    }
+  }
 }
