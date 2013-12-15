@@ -20,4 +20,4 @@
       = tags ['тестовый', 'набор', 'тегов']
     - if preview
       %span.continue
-        %a{href: post_path(post)}= icon 'book', t('.continue')
+        %a{href: profile_post_path(post.user_name, post)}= icon 'book', t('.continue')

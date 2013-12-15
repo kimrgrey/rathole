@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :user_name, uniqueness: true
 
   has_many :posts
+  has_many :sections
 
   def last_posts(count = 5) 
     posts.order('posts.created_at DESC').limit(count)

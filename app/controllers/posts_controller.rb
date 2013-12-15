@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @sections = @user.sections
     @post = @posts.build
   end
 

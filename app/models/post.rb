@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 
   delegate :user_name, to: :user, prefix: false
 
-  def preview
-    body.split("\r\n\r\n").first
+  def preview(lines = 2)
+    body.split("\r\n\r\n").first(lines).join("\r\n\r\n")
   end
 end

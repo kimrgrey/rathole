@@ -78,6 +78,9 @@ ru:
     post:
       continue: 'Читать дальше'
     form:
+      placeholders: 
+        title: 'Какой заголовок будет у вашего поста?'
+        body: 'Что бы вы хотели написать в нем?'
       save: 'Сохранить'
       cancel: 'Отмена'
       delete: 'Удалить'
@@ -170,6 +173,8 @@ ru:
       post:
         title: 'Заголовок'
         body: 'Текст'
+        section: 'Тематика'
+        section_id: 'Тематика'
       user:
         email: 'Электронный адрес'
         user_name: 'Логин'
