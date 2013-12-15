@@ -1,23 +1,23 @@
-.post 
+.container.post
   = clip_and_clamp
   %h2
     = edit_link post if user_signed_in?
     %a{href: profile_post_path(post.user_name, post)}= post.title
-  .details
+  .row.details
     %span.user 
       %a{href: profile_user_path(post.user_name)}= icon 'user', post.user_name
     %span.date 
       %a{href: '#'}= icon 'calendar', l(post.created_at)
     %span.comments 
       %a{href: '#'}= icon 'comments', '12'
-  .body
+  .row.body
     %img.avatar{src: image_path('avatar.png')}
     = markdown(preview ? post.preview : post.body)
-  .links
-    %span.comments
+  .row.links
+    .col-md-2.comments
       %a{href: '#'}= icon 'comments', '12'
-    %span.tags
+    .col-md-7.tags
       = tags(post.tag_list) if post.tag_list.any?
-    - if preview
-      %span.continue
+    .col-md-3.continue
+      - if preview
         %a{href: profile_post_path(post.user_name, post)}= icon 'book', t('.continue')

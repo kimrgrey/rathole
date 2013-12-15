@@ -5,7 +5,7 @@ $footer-height: 60px;
 
 $extra-small-device: 560px;
 $small-device: 780px;
-$medium-device: 970px;
+$medium-device: 995px;
 $large-device: 1400px;
 
 @mixin paper {
@@ -14,10 +14,7 @@ $large-device: 1400px;
   border: 1px solid #E9E9E9;
   box-shadow: 0 0 10px rgba(0,0,0,0.75);
   color: $text-color;
-  padding: 0px 10px;
-  @media(min-width: $extra-small-device) {
-    padding: 15px 20px;
-  }
+  padding: 15px 25px;
   @media(min-width: $medium-device) {
     padding: 15px 50px;
   }

@@ -1,9 +1,6 @@
 @import 'commons';
 
 .post {
-  @include paper;
-  @include container;
-
   font-size: 12px;
   @media(min-width: $extra-small-device) {
     font-size: 14px;
@@ -67,24 +64,16 @@
   }
 
   .links {
-    padding: 5px 0px;
-    @media(min-width: $extra-small-device) {
-      padding: 10px 0px;
+    padding-top: 15px;
+
+    > div {
+      padding: 0;
     }
-    @media(min-width: $medium-device) {
-      padding: 15px 0px;
-    } 
-    > span {
-      margin-right: 25px;
-    }
-    > span.tags {
-      @media(max-width: $extra-small-device) {
-        display: none;
-      } 
-    }
-    > span.continue {
-      float: right;
-      margin-right: 0px;
+  
+    > div.continue a {
+      @media(min-width: $medium-device) {
+        float: right;
+      }
     }
   }
 }
