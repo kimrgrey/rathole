@@ -75,12 +75,19 @@ ru:
   posts:
     new: 
       page_header: 'Новый пост'
+    create:
+      success: 'Поздравляем! Ваш пост был успешно сохранен!'
+    edit:
+      page_header: 'Редактирование поста'
+    update:
+      success: 'Поздравляем! Ваш пост был успешно сохранен!'
     post:
       continue: 'Читать дальше'
     form:
       placeholders: 
         title: 'Какой заголовок будет у вашего поста?'
         body: 'Что бы вы хотели написать в нем?'
+        tags: 'Может быть добавить теги?'
       save: 'Сохранить'
       cancel: 'Отмена'
       delete: 'Удалить'
@@ -175,6 +182,7 @@ ru:
         body: 'Текст'
         section: 'Тематика'
         section_id: 'Тематика'
+        tag_list: 'Теги'
       user:
         email: 'Электронный адрес'
         user_name: 'Логин'
@@ -195,3 +203,7 @@ ru:
               invalid: 'указан неверно.'
             confirmation_token:
               invalid: 'указан неверно.'
+        post:
+          attributes:
+            section:
+              blank: 'должна быть указана.'

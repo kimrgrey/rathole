@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :load_other_user, only: [:index, :show]
   
   def show
-    @posts =@user.last_posts
+    @posts = @user.last_posts
+    @sections = @user.sections
   end
 
   private

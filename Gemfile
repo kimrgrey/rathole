@@ -15,6 +15,7 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'rouge'
 gem 'devise'
+gem 'acts-as-taggable-on'
 
 group :doc do
   gem 'sdoc', require: false

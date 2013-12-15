@@ -17,7 +17,7 @@
     %span.comments
       %a{href: '#'}= icon 'comments', '12'
     %span.tags
-      = tags ['тестовый', 'набор', 'тегов']
+      = tags(post.tag_list) if post.tag_list.any?
     - if preview
       %span.continue
         %a{href: profile_post_path(post.user_name, post)}= icon 'book', t('.continue')

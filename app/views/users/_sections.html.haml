@@ -1,11 +1,4 @@
 .row.sections
-  %span.badge
-    %a{href: '#'}= t('nav.personal')
-  %span.badge  
-    %a{href: '#'}= t('nav.work')
-  %span.badge      
-    %a{href: '#'}= t('nav.films')
-  %span.badge  
-    %a{href: '#'}= t('nav.books')
-  %span.badge      
-    %a{href: '#'}= t('nav.projects')
+  - @sections.each do |section|
+    %span.badge
+      %a{href: '#'}= section.name

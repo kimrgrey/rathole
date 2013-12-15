@@ -16,6 +16,7 @@ Kgblogs::Application.routes.draw do
     resource :user, only: [:show]
     resources :posts, only: [:index, :show]
   end
-  
+
+  get 'tag/:tag', to: 'public#welcome', as: 'tag'
   root to: 'public#welcome'
 end

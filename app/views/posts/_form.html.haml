@@ -1,4 +1,5 @@
 = form_for @post, html: {class: 'form-horizontal'} do |f|
+  = render partial: 'shared/errors', locals: { model: post }
   .form-group
     = f.label :title, class: 'col-sm-2 control-label'
     .col-sm-10
@@ -11,6 +12,10 @@
     = f.label :body, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :body, rows: 50, class: 'form-control', placeholder: t('.placeholders.body')
+  .form-group
+    = f.label :tag_list, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :tag_list, class: 'form-control', placeholder: t('.placeholders.tags')
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('.save'), class: 'btn btn-primary'

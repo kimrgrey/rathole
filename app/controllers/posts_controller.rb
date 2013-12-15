@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  respond_to :html, :json
-
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :load_current_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :load_other_user, only: [:index, :show]
   before_action :load_posts
+  before_action :load_sections, only: [:new, :create, :edit, :update]
+  before_action :load_section, only: [:create, :update]
 
   def index
     @posts = @posts.order('posts.created_at DESC')
@@ -16,14 +16,18 @@ class PostsController < ApplicationController
   end
 
   def new
-    @sections = @user.sections
     @post = @posts.build
   end
 
   def create
     @post = @posts.build(post_params)
-    flash[:notice] = 'Congratulations! Post was successfully created!' if @post.save
-    respond_with @post
+    @post.section = @section
+    if @post.save
+      flash[:notice] = I18n.t('posts.create.success') 
+      redirect_to profile_post_path(@user.user_name, @post)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -32,8 +36,14 @@ class PostsController < ApplicationController
 
   def update
     @post = @posts.find(params[:id])
-    flash[:notice] = 'Congratulations! Post was successfully saved!' if @post.update(post_params)
-    respond_with @post
+    @post.attributes = post_params
+    @post.section = @section
+    if @post.save
+      flash[:notice] = I18n.t('posts.update.success') 
+      redirect_to profile_post_path(@user.user_name, @post)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -49,7 +59,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :tag_list)
   end
 
   def load_other_user
@@ -62,5 +72,13 @@ class PostsController < ApplicationController
 
   def load_posts
     @posts = @user ? @user.posts : Post.all
+  end
+
+  def load_sections
+    @sections = @user.sections
+  end
+
+  def load_section 
+    @section = @sections.where(id: params[:post][:section_id]).first if params[:post][:section_id].present?
   end
 end
