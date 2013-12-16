@@ -1,4 +1,4 @@
-= form_for @post, html: {class: 'form-horizontal'} do |f|
+= form_for [:user, @post], html: {class: 'form-horizontal'} do |f|
   = render partial: 'shared/errors', locals: { model: post }
   .form-group
     = f.label :title, class: 'col-sm-2 control-label'
@@ -19,6 +19,6 @@
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('.save'), class: 'btn btn-primary'
-      = link_to t('.cancel'), posts_path, class: 'btn btn-default'
-      = link_to t('.delete'), post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
+      = link_to t('.cancel'), user_posts_path, class: 'btn btn-default'
+      = link_to t('.delete'), user_post_path(@post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
 .clearfix

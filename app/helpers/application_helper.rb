@@ -33,8 +33,9 @@ module ApplicationHelper
     result
   end
 
-  def edit_link(model)    
-    content_tag :a, icon(:edit), href: url_for([:edit, model]) , class: 'edit'
+  def edit_link(model, href = nil)    
+    href ||= url_for [:edit, :user, model]
+    content_tag :a, icon(:edit), href: href, class: 'edit'
   end
 
   def page_header
@@ -43,5 +44,14 @@ module ApplicationHelper
 
   def spacer 
     content_tag :div, '', class: 'spacer'
+  end
+
+  def menu_item(title, href, icon_name = nil)
+    text = icon_name ? icon(icon_name, title) : title
+    content_tag :li, content_tag(:a, text, href: href)
+  end
+
+  def menu_divider
+    content_tag :li, '', class: 'divider'
   end
 end

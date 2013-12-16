@@ -1,0 +1,7 @@
+%li.dropdown
+  %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}}= user.user_name
+  %ul.dropdown-menu
+    = menu_item t('nav.profile.of', user_name: user.user_name), public_profile_path(user), 'user'
+    = menu_divider
+    - user.sections.in_order.each do |section|
+      = menu_item section.name, public_section_path(section), 'folder-open' 

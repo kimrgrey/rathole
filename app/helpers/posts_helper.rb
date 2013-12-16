@@ -4,6 +4,6 @@ module PostsHelper
   end
 
   def tags(tags)
-    icon 'tags', tags.map{|tag| content_tag :a, tag, href: tag_path(tag)}.join(', ')
+    icon 'tags', tags.map{|tag| content_tag :a, tag, href: public_tag_path(tag)}.join(', ')
   end
 end

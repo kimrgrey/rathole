@@ -1,0 +1,4 @@
+= content_for :nav do
+  = render partial: 'public/nav', locals: { user: @user }
+  
+= render partial: 'posts/post', locals: {post: @post, preview: false}

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :load_current_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :load_other_user, only: [:index, :show]
+  before_action :authenticate_user!
+  before_action :load_user
   before_action :load_posts
   before_action :load_sections, only: [:new, :create, :edit, :update]
   before_action :load_section, only: [:create, :update]
@@ -24,7 +23,7 @@ class PostsController < ApplicationController
     @post.section = @section
     if @post.save
       flash[:notice] = I18n.t('posts.create.success') 
-      redirect_to profile_post_path(@user.user_name, @post)
+      redirect_to user_post_path(@post)
     else
       render :new
     end
@@ -40,7 +39,7 @@ class PostsController < ApplicationController
     @post.section = @section
     if @post.save
       flash[:notice] = I18n.t('posts.update.success') 
-      redirect_to profile_post_path(@user.user_name, @post)
+      redirect_to user_post_path(@post)
     else
       render :edit
     end
@@ -62,16 +61,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :tag_list)
   end
 
-  def load_other_user
-    @user = User.where(user_name: params[:user_name]).first || not_found if params[:user_name].present?
-  end
-
-  def load_current_user
+  def load_user
     @user = current_user
   end
 
   def load_posts
-    @posts = @user ? @user.posts : Post.all
+    @posts = @user.posts
   end
 
   def load_sections

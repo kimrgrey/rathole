@@ -6,17 +6,16 @@ Kgblogs::Application.routes.draw do
     resource :registration, only: [:new, :create], path: 'users', controller: 'devise/registrations', as: :user_registration
   end
   
-  resource :user
-
-  resources :posts
-  resources :imports, except: [:edit, :update]
-
-  get ':user_name' => 'posts#index'
-  scope ':user_name', as: 'profile' do
-    resource :user, only: [:show]
-    resources :posts, only: [:index, :show]
+  resource :user do
+    resources :posts
+    resources :imports, except: [:edit, :update]
   end
 
-  get 'tag/:tag', to: 'public#welcome', as: 'tag'
-  root to: 'public#welcome'
+  get '/public/:user_name', to: 'public#profile'
+  get '/public/:user_name/posts', to: 'public#posts'
+  get '/public/:user_name/posts/:id', to: 'public#post'
+  get '/public/:user_name/section/:id', to: 'public#section'
+  get '/public/tag/:tag', to: 'public#posts'
+
+  root to: 'public#posts'
 end

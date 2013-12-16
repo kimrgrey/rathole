@@ -2,10 +2,10 @@
   = clip_and_clamp
   %h2
     = edit_link post if user_signed_in?
-    %a{href: profile_post_path(post.user_name, post)}= post.title
+    %a{href: public_post_path(post)}= post.title
   .row.details
     %span.user 
-      %a{href: profile_user_path(post.user_name)}= icon 'user', post.user_name
+      %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
     %span.date 
       %a{href: '#'}= icon 'calendar', l(post.created_at)
     %span.comments 
@@ -20,4 +20,4 @@
       = tags(post.tag_list) if post.tag_list.any?
     .col-md-3.continue
       - if preview
-        %a{href: profile_post_path(post.user_name, post)}= icon 'book', t('.continue')
+        %a{href: public_post_path(post)}= icon 'book', t('.continue')

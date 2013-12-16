@@ -1,0 +1,8 @@
+- unless user_signed_in?
+  = menu_item t('nav.sign_up'), new_user_registration_path
+
+- if user_signed_in?
+  = render partial: 'users/my', locals: { user: current_user }
+
+- if @user.present? && @user != current_user
+  = render partial: 'public/profile', locals: { user: @user }

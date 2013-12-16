@@ -1,0 +1,5 @@
+%li.dropdown
+  %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}}= t('.title')
+  %ul.dropdown-menu
+    %li
+      = menu_item t('.new_post'), new_user_post_path, 'pencil'

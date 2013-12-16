@@ -5,14 +5,6 @@
     
     = yield :nav if content_for? :nav
     
-    - if user_signed_in?
-      = render partial: 'shared/nav/my'
-      - if params[:user_name].present? && params[:user_name] != current_user.user_name
-        = render partial: 'shared/nav/profile'
-    - else
-      - if params[:user_name].present?
-        = render partial: 'shared/nav/profile'
-      
   - if user_signed_in?
     = render partial: 'shared/nav/account'
   - else

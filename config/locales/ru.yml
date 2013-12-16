@@ -72,6 +72,9 @@ ru:
       year: "Год"
   application:
     name: "KG BLOGS"
+  public:
+    profile:
+      page_header: 'Профиль пользователя'
   posts:
     new: 
       page_header: 'Новый пост'
@@ -94,6 +97,9 @@ ru:
   users:
     show:
       page_header: 'Профиль пользователя'
+    my:
+      title: 'Мой блог'
+      new_post: 'Новый пост'
     info:
       header: 'Пользователь'
       user_name: 'Логин'

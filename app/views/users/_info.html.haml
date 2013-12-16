@@ -3,16 +3,16 @@
     %tbody
       %tr
         %th= t('.user_name')
-        %td= @user.user_name
+        %td= user.user_name
       %tr
         %th= t('.sign_up_at')
-        %td= l @user.created_at
+        %td= l user.created_at
       %tr
         %th= t('.last_sign_in_at')
-        %td= l @user.last_sign_in_at
+        %td= l user.last_sign_in_at
       %tr
         %th= t('.posts')
-        %td= @user.posts_count
+        %td= user.posts_count
       %tr
         %th= t('.comments')
         %td= '138'
