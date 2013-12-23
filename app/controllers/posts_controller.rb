@@ -30,7 +30,8 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post =@posts.find(params[:id])
+    logger.info @posts.to_a
+    @post = @posts.find(params[:id])
   end
 
   def update
@@ -48,11 +49,12 @@ class PostsController < ApplicationController
   def destroy
     @post = @posts.find(params[:id])
     if @post.destroy
-      flash[:notice] = "Congratulations! Post was successfully deleted!"
+      flash[:notice] = I18n.t('posts.destroy.success')
+      redirect_to user_posts_path
     else
-      flash[:error] = "Sorry! Failed to delete post!"
+      flash[:error] = I18n.t('posts.destroy.failed')
+      redirect_to :back
     end
-    redirect_to :back
   end
 
   private
