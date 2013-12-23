@@ -1,0 +1,7 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: @user }
+
+.container
+  = clip_and_clamp
+  = page_header
+  = render partial: 'sections/form', locals: { section: @section }

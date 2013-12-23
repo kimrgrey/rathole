@@ -82,6 +82,24 @@ ru:
   public:
     profile:
       page_header: 'Профиль пользователя'
+  sections:
+    new:
+      page_header: 'Новый раздел'
+    create:
+      success: 'Поздравляем! В вашем блоге был создан новый раздел!'
+    update:
+      success: 'Поздравляем! Новая информация о разделе была успешно сохранена!'
+    edit:
+      page_header: 'Редактирование раздела'
+    destroy:
+      success: 'Поздравляем! Раздел был успешно удален!'
+      failed: 'Извините, но что-то пошло не так и раздел не удалось удалить...'
+    form:
+      placeholders:
+        name: 'Как будет называться раздел?'
+      save: 'Сохранить'
+      cancel: 'Отмена'
+      delete: 'Удалить'
   posts:
     new: 
       page_header: 'Новый пост'
@@ -107,10 +125,12 @@ ru:
   users:
     show:
       page_header: 'Профиль пользователя'
+      create_post: 'Новый пост'
     my:
       title: 'Мой блог'
       new_post: 'Новый пост'
       all_posts: 'Все мои посты'
+      sections: 'Разделы'
     info:
       header: 'Пользователь'
       user_name: 'Логин'
@@ -118,6 +138,8 @@ ru:
       sign_up_at: 'Присоединился'
       comments: 'Комментариев'
       posts: 'Постов'
+    sections:
+      new: 'Создать'
   nav:
     menu: 'Меню'
     home: 'Главная'
@@ -208,6 +230,9 @@ ru:
         remember_me: 'Запомнить меня'
         confirmation_token: 'Токен для подвтерждения'
         reset_password_token: 'Токен для сброса пароля'
+      section:
+        name: 'Название'
+        posts_count: 'Постов'
     errors:
       models:
         user:
@@ -224,3 +249,10 @@ ru:
           attributes:
             section:
               blank: 'должна быть указана.'
+        section:
+          attributes:
+            base:
+              restrict_dependent_destroy:
+                many: 'Увы, но нельзя удалять разделы, в которых уже есть посты...'
+            name:
+              blank: 'должно быть указано.'

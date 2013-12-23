@@ -52,7 +52,7 @@ class PostsController < ApplicationController
       flash[:notice] = I18n.t('posts.destroy.success')
       redirect_to user_posts_path
     else
-      flash[:error] = I18n.t('posts.destroy.failed')
+      flash[:error] = @section.errors[:base].any? ? @section.errors[:base].join : I18n.t('posts.destroy.failed')
       redirect_to :back
     end
   end

@@ -9,6 +9,7 @@ Kgblogs::Application.routes.draw do
   resource :user do
     resources :posts
     resources :imports, except: [:edit, :update]
+    resources :sections, except: [:index, :show]
   end
 
   get '/public/:user_name', to: 'public#profile'

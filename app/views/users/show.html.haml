@@ -1,7 +1,9 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: @user }
 .profile.container
   = clip_and_clamp
   = page_header
   = render partial: 'users/avatar', locals: { user: @user }   
   = render partial: 'users/info', locals: { user: @user }
-  = render partial: 'users/sections', locals: { user: @user }
+  = render partial: 'users/sections', locals: { user: @user, editable: true }
   = render partial: 'posts/list', locals: { posts: @posts, preview: true }

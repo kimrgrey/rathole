@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+  before_action :redirect_to_user_page, only: [:profile]
   before_action :load_user
 
   def posts
@@ -28,6 +29,10 @@ class PublicController < ApplicationController
   end
 
   private
+
+  def redirect_to_user_page
+    redirect_to user_path if user_signed_in?
+  end
 
   def load_user
     if params[:user_name].present?

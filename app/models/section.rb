@@ -3,9 +3,13 @@ class Section < ActiveRecord::Base
 
   belongs_to :user
   
-  has_many :posts
+  has_many :posts, dependent: :restrict_with_error 
 
   scope :in_order, -> { order('sections.name') }
 
   delegate :user_name, to: :user, prefix: false
+
+  def without_posts?
+    posts_count == 0
+  end
 end
