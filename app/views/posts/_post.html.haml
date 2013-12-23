@@ -11,16 +11,16 @@
         = icon 'calendar', l(post.created_at)
       %span.comments 
         - if preview
-          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', '12'
+          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
         - else
-          = icon 'comments', '12'
+          = icon 'comments', post.comments_count
     .row.body
       %img.avatar{src: image_path('avatar.png')}
       = markdown(preview ? post.preview : post.body)
     .row.links
       - if preview
         .col-md-2.comments
-          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', '12'
+          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
       .col-md-7.tags
         = tags(post.tag_list) if post.tag_list.any?
       .col-md-3.continue

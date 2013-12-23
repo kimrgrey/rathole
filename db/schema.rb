@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223163336) do
+ActiveRecord::Schema.define(version: 20131223190429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20131223163336) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "section_id"
+    t.integer  "comments_count", default: 0
   end
 
   create_table "sections", force: true do |t|
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20131223163336) do
     t.datetime "updated_at"
     t.string   "user_name"
     t.integer  "posts_count",            default: 0
+    t.integer  "comments_count",         default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
