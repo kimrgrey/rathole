@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :load_section, only: [:create, :update]
 
   def index
-    @posts = @posts.order('posts.created_at DESC')
+    @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
   end
 
