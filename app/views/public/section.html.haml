@@ -2,3 +2,4 @@
   = render partial: 'public/nav', locals: { user: @user }
 
 = render partial: 'posts/list', locals: { posts: @posts, preview: true }
+= paginate @posts

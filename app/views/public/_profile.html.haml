@@ -3,5 +3,6 @@
   %ul.dropdown-menu
     = menu_item t('nav.profile.of', user_name: user.user_name), public_profile_path(user), 'user'
     = menu_divider
+    = menu_item t('nav.blog.of', user_name: user.user_name), public_posts_path(user), 'book'
     - user.sections.in_order.each do |section|
       = menu_item section.name, public_section_path(section), 'folder-open' 

@@ -72,6 +72,13 @@ ru:
       year: "Год"
   application:
     name: "KG BLOGS"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
   public:
     profile:
       page_header: 'Профиль пользователя'
@@ -103,6 +110,7 @@ ru:
     my:
       title: 'Мой блог'
       new_post: 'Новый пост'
+      all_posts: 'Все мои посты'
     info:
       header: 'Пользователь'
       user_name: 'Логин'
@@ -121,7 +129,7 @@ ru:
     blog: 
       main: 'Блог'
       my: 'Мой блог'
-      of: 'Блог %{user_name}'
+      of: 'Все посты %{user_name}'
       all: 'Все посты'
       post: 'Новый пост'
       imports: 'Импорт'
