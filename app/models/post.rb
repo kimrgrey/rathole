@@ -9,6 +9,8 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  scope :ordered_by_default, -> { order('posts.created_at DESC') }
+
   def preview(lines = 2)
     body.split("\r\n\r\n").first(lines).join("\r\n\r\n")
   end

@@ -4,7 +4,7 @@ class PublicController < ApplicationController
   def posts
     @posts = @user ? @user.posts : Post.all
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
-    @posts = @posts.order('posts.created_at DESC')
+    @posts = @posts.ordered_by_default
     @posts = @posts.page(params[:page]).per(params[:per])
   end
 
@@ -16,6 +16,15 @@ class PublicController < ApplicationController
 
   def profile
     @posts = @user.last_posts
+    @posts = @posts.ordered_by_default
+    @posts = @posts.page(params[:page]).per(params[:per])
+  end
+
+  def section
+    @posts = @user ? @user.posts : Post.all
+    @posts = @posts.joins(:section).where(section_id: params[:id].to_i)
+    @posts = @posts.ordered_by_default
+    @posts = @posts.page(params[:page]).per(params[:per])
   end
 
   private
