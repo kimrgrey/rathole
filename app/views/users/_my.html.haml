@@ -2,7 +2,6 @@
   %a.dropdown-toggle{href: '#', data: {toggle: "dropdown"}}= t('.title')
   %ul.dropdown-menu
     = menu_item t('.new_post'), new_user_post_path, 'pencil'
-    = menu_item t('.sections'), user_sections_path, 'briefcase'
     = menu_divider
     - user.sections.in_order.each do |section|
       = menu_item section.name, public_section_path(section), 'folder-open' 
