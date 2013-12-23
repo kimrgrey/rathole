@@ -1,4 +1,4 @@
 .row.sections
   - user.sections.each do |section|
     %span.badge
-      %a{href: '#'}= section.name
+      %a{href: public_section_path(section)}= section.name
