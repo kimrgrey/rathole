@@ -30,7 +30,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    logger.info @posts.to_a
     @post = @posts.find(params[:id])
   end
 
@@ -39,6 +38,7 @@ class PostsController < ApplicationController
     @post.attributes = post_params
     @post.section = @section
     if @post.save
+      invalidate_post_caches(@post)
       flash[:notice] = I18n.t('posts.update.success') 
       redirect_to user_post_path(@post)
     else
@@ -58,6 +58,13 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def invalidate_post_caches(post)
+    editable, preview = [true, false], [true, false]
+    editable.product(preview).each do |preview, editable|
+      expire_fragment("post-#{post.id}-#{preview}-#{editable}")
+    end
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :tag_list)

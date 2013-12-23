@@ -1,23 +1,24 @@
-.container.post
-  = clip_and_clamp
-  %h2
-    = edit_link post if user_signed_in?
-    %a{href: public_post_path(post)}= post.title
-  .row.details
-    %span.user 
-      %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
-    %span.date 
-      %a{href: '#'}= icon 'calendar', l(post.created_at)
-    %span.comments 
-      %a{href: '#'}= icon 'comments', '12'
-  .row.body
-    %img.avatar{src: image_path('avatar.png')}
-    = markdown(preview ? post.preview : post.body)
-  .row.links
-    .col-md-2.comments
-      %a{href: '#'}= icon 'comments', '12'
-    .col-md-7.tags
-      = tags(post.tag_list) if post.tag_list.any?
-    .col-md-3.continue
-      - if preview
-        %a{href: public_post_path(post)}= icon 'book', t('.continue')
+- cache post_cache_key(post, preview, user_signed_in?), skip_digest: true do 
+  .container.post
+    = clip_and_clamp
+    %h2
+      = edit_link post if user_signed_in?
+      %a{href: public_post_path(post)}= post.title
+    .row.details
+      %span.user 
+        %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
+      %span.date 
+        %a{href: '#'}= icon 'calendar', l(post.created_at)
+      %span.comments 
+        %a{href: '#'}= icon 'comments', '12'
+    .row.body
+      %img.avatar{src: image_path('avatar.png')}
+      = markdown(preview ? post.preview : post.body)
+    .row.links
+      .col-md-2.comments
+        %a{href: '#'}= icon 'comments', '12'
+      .col-md-7.tags
+        = tags(post.tag_list) if post.tag_list.any?
+      .col-md-3.continue
+        - if preview
+          %a{href: public_post_path(post)}= icon 'book', t('.continue')
