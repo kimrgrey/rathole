@@ -1,4 +1,5 @@
 - flash.each do |type, message|
+  - next if message.empty? || [:timeout].include?(type)
   - class_name = 'alert-success' if [:notice].include?(type)
   - class_name = 'alert-danger' if [:alert, :error].include?(type)
   .flash.alert{class: (class_name || 'alert-info')}
