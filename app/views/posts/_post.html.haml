@@ -8,17 +8,28 @@
       %span.user 
         %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
       %span.date 
-        %a{href: '#'}= icon 'calendar', l(post.created_at)
+        = icon 'calendar', l(post.created_at)
       %span.comments 
-        %a{href: '#'}= icon 'comments', '12'
+        - if preview
+          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', '12'
+        - else
+          = icon 'comments', '12'
     .row.body
       %img.avatar{src: image_path('avatar.png')}
       = markdown(preview ? post.preview : post.body)
     .row.links
-      .col-md-2.comments
-        %a{href: '#'}= icon 'comments', '12'
+      - if preview
+        .col-md-2.comments
+          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', '12'
       .col-md-7.tags
         = tags(post.tag_list) if post.tag_list.any?
       .col-md-3.continue
         - if preview
           %a{href: public_post_path(post)}= icon 'book', t('.continue')
+  
+  - unless preview
+    .container.post
+      .row.comments
+        = render partial: 'posts/comments', locals: { post: post }
+    
+      

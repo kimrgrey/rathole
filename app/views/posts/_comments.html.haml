@@ -1,0 +1,22 @@
+%h2
+  %a{id: 'comments', href: '#comments'}= t('.comments')
+
+- @comments.each do |comment|
+  .row.header
+    .col-md-12
+      %span.badge.pull-right= icon 'calendar', l(comment.created_at)
+      %span.badge.pull-right
+        %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
+  .row.body
+    .col-md-12
+      %img.avatar{src: image_path('avatar.png')}
+      = markdown comment.body
+
+- if user_signed_in?
+  = form_tag comment_user_post_path(post), class: 'form-horizontal' do
+    .form-group
+      .col-sm-12
+        = text_area_tag :body, '', rows: 15, class: 'form-control', placeholder: t('.placeholders.body')
+    .form-group
+      .col-sm-12
+        = submit_tag t('.save'), class: 'btn btn-primary'

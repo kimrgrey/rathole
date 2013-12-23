@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 
   def show
     @post = @posts.find(params[:id])
+    @comments = @post.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
   end
 
   def new
@@ -57,6 +60,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def comment
+    @post = @posts.find(params[:id])
+    @comment = @post.comments.build(comment_params)
+    @comment.user = @user
+    if @comment.save
+      flash[:notice] = I18n.t('posts.comment.success')
+    else
+      flash[:error] = I18n.t('posts.comment.failed')
+    end
+    redirect_to :back
+  end
+
   private
 
   def invalidate_post_caches(post)
@@ -64,6 +79,10 @@ class PostsController < ApplicationController
     editable.product(preview).each do |preview, editable|
       expire_fragment("post-#{post.id}-#{preview}-#{editable}")
     end
+  end
+
+  def comment_params
+    params.permit(:body)
   end
 
   def post_params

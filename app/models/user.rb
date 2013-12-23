@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :sections
+  has_many :comments
 
   def last_posts(count = 5) 
     posts.order('posts.created_at DESC').limit(count)

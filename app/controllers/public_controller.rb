@@ -14,6 +14,9 @@ class PublicController < ApplicationController
     @posts = @user ? @user.posts : Post.all
     @posts = @posts.joins(:user)
     @post = @posts.find(params[:id])
+    @comments = @post.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
   end
 
   def profile

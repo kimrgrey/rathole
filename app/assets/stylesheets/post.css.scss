@@ -82,6 +82,28 @@
       }
     }
   }
+
+  .comments {
+    .header {
+      padding-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    span.badge {
+      font-size: 10px;
+      @media(min-width: $extra-small-device) {
+        font-size: 12px;
+      }
+      margin-left: 5px;
+      a {
+        color: #FFF;
+      }
+    }
+
+    form {
+      margin-top: 25px;
+    }
+  }
 }
 
 .post-space {

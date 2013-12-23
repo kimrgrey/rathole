@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :section, counter_cache: true
 
+  has_many :comments
+
   delegate :user_name, to: :user, prefix: false
 
   acts_as_taggable_on :tags
