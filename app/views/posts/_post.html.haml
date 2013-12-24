@@ -15,7 +15,7 @@
         - else
           = icon 'comments', post.comments_count
     .row.body
-      %img.avatar{src: image_path('avatar.png')}
+      = image_tag post.user_avatar_url(:thumb), class: 'avatar'
       = markdown(preview ? post.preview : post.body)
     .row.links
       - if preview

@@ -1,2 +1,6 @@
 .row.avatar
-  %img{src: image_path('avatar.png')} 
+  = image_tag user.avatar_url(:thumb)
+  - if user_signed_in?
+    .dropbox
+      = form_tag avatar_user_path do
+        = dropbox_chooser_input 

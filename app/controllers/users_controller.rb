@@ -7,6 +7,18 @@ class UsersController < ApplicationController
     @sections = @user.sections
   end
 
+  def avatar
+    if params[:file].present?
+      @user.avatar = open(params[:file], 'rb')
+      if @user.save
+        flash[:notice] = I18n.t('users.avatar.success')
+      else
+        flash[:error] = I18n.t('users.avatar.failed')
+      end
+    end
+    redirect_to user_path
+  end
+
   private
 
   def load_user

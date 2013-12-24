@@ -16,6 +16,8 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'devise'
 gem 'acts-as-taggable-on'
+gem 'mini_magick'
+gem 'carrierwave'
 
 group :doc do
   gem 'sdoc', require: false

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :sections
   has_many :comments
 
+  mount_uploader :avatar, AvatarUploader
+
   def last_posts(count = 5) 
     posts.order('posts.created_at DESC').limit(count)
   end

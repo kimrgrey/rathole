@@ -7,8 +7,11 @@ Kgblogs::Application.routes.draw do
   end
   
   resource :user do
+    post :avatar
     resources :posts do 
-      post :comment, on: :member
+      member do
+        post :comment
+      end
     end
     resources :imports, except: [:edit, :update]
     resources :sections, except: [:index, :show]

@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   has_many :comments
 
   delegate :user_name, to: :user, prefix: false
+  delegate :avatar_url, to: :user, prefix: true
 
   acts_as_taggable_on :tags
 
