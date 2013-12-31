@@ -83,6 +83,7 @@ ru:
     profile:
       page_header: 'Профиль пользователя'
   sections:
+    default_name: 'Про жизнь'
     new:
       page_header: 'Новый раздел'
     create:
