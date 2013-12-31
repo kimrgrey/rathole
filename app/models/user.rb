@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
+  include Authority::UserAbilities
+  include Authority::Abilities
+
+  self.authorizer = UserAuthorizer
+
+  
   validates :user_name, uniqueness: true
 
   has_many :posts

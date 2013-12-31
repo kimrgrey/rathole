@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  include Authority::Abilities
+  
+  self.authorizer = PostAuthorizer
+
   validates :title, presence: true
   validates :section, presence: true
 

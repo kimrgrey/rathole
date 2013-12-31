@@ -1,6 +1,6 @@
 .row.avatar
   = image_tag user.avatar_url(:thumb)
-  - if user_signed_in?
+  - if user_signed_in? && user.updatable_by?(current_user)
     .dropbox
       = form_tag avatar_user_path do
         = dropbox_chooser_input 

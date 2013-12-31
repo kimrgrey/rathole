@@ -12,7 +12,7 @@
       = image_tag post.user_avatar_url(:thumb), class: 'avatar'
       = markdown comment.body
 
-- if user_signed_in?
+- if user_signed_in? && current_user.can_comment?(Post)
   = form_tag comment_user_post_path(post), class: 'form-horizontal' do
     .form-group
       .col-sm-12

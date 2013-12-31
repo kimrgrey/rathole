@@ -5,4 +5,4 @@ function listenDropboxChooser() {
 }
 
 $(document).ready(listenDropboxChooser);
-
+$(document).on('page:load', listenDropboxChooser);

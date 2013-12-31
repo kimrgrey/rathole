@@ -1,8 +1,8 @@
-- cache post_cache_key(post, preview, user_signed_in?), skip_digest: true do 
+- cache post_cache_key(post, preview, user_signed_in? && current_user.can_update?(post)), skip_digest: true do 
   .container.post
     = clip_and_clamp
     %h2
-      = edit_link post if user_signed_in?
+      = edit_link post if user_signed_in? && current_user.can_update?(post)
       %a{href: public_post_path(post)}= post.title
     .row.details
       %span.user 

@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_user
-  before_action :load_posts
+
+  authorize_actions_for Post
+  
+  before_action :load_user, except: [:comment]
+  before_action :load_posts, except: [:comment]
   before_action :load_sections, only: [:new, :create, :edit, :update]
   before_action :load_section, only: [:create, :update]
 
@@ -12,6 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @posts.find(params[:id])
+    authorize_action_for(@post)
     @comments = @post.comments
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
@@ -34,10 +38,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = @posts.find(params[:id])
+    authorize_action_for(@post)
   end
 
   def update
     @post = @posts.find(params[:id])
+    authorize_action_for(@post)
     @post.attributes = post_params
     @post.section = @section
     if @post.save
@@ -51,6 +57,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = @posts.find(params[:id])
+    authorize_action_for(@post)
     if @post.destroy
       flash[:notice] = I18n.t('posts.destroy.success')
       redirect_to user_posts_path
@@ -61,9 +68,9 @@ class PostsController < ApplicationController
   end
 
   def comment
-    @post = @posts.find(params[:id])
+    @post = Post.find(params[:id])
     @comment = @post.comments.build(comment_params)
-    @comment.user = @user
+    @comment.user = current_user
     if @comment.save
       invalidate_post_caches(@post)
       flash[:notice] = I18n.t('posts.comment.success')
@@ -72,6 +79,8 @@ class PostsController < ApplicationController
     end
     redirect_to :back
   end
+
+  authority_actions comment: 'comment'
 
   private
 

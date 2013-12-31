@@ -1,10 +1,10 @@
 .row.sections
   - user.sections.each do |section|
     %span.badge
-      - if editable
+      - if editable && section.updatable_by?(current_user)
         %a{href: edit_user_section_path(section)}= icon('pencil')
       
       %a{href: public_section_path(section)}= section.name
   
-  - if editable
+  - if editable && current_user.can_create?(Section)
     %a{href: new_user_section_path}= icon('plus')
