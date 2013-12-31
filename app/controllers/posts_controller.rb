@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include CacheManagment
+  
   before_action :authenticate_user!
 
   authorize_actions_for Post
@@ -83,13 +85,6 @@ class PostsController < ApplicationController
   authority_actions comment: 'comment'
 
   private
-
-  def invalidate_post_caches(post)
-    editable, preview = [true, false], [true, false]
-    editable.product(preview).each do |preview, editable|
-      expire_fragment("post-#{post.id}-#{preview}-#{editable}")
-    end
-  end
 
   def comment_params
     params.permit(:body)

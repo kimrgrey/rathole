@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include CacheManagment
+  
   before_action :authenticate_user!
   before_action :load_user
 
@@ -11,6 +13,7 @@ class UsersController < ApplicationController
     if params[:file].present?
       @user.avatar = open(params[:file], 'rb')
       if @user.save
+        invalidate_user_cache(@user)
         flash[:notice] = I18n.t('users.avatar.success')
       else
         flash[:error] = I18n.t('users.avatar.failed')
