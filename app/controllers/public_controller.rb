@@ -3,7 +3,7 @@ class PublicController < ApplicationController
 
   def posts
     @posts = @user ? @user.posts : Post.all
-    @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    # @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
     @posts = @posts.includes(:user).includes(:section)
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])

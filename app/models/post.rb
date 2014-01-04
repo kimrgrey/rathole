@@ -14,8 +14,6 @@ class Post < ActiveRecord::Base
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
 
-  acts_as_taggable_on :tags
-
   scope :in_order, -> { order('posts.created_at DESC') }
 
   def preview(lines = 2)
