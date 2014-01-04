@@ -6,7 +6,7 @@ DAEMON_OPTS="-C $APP_ROOT/config/puma.rb -e production"
 SOCKET_PATH="$APP_ROOT/tmp/sockets"
 SOCKET_FILE="$SOCKET_PATH/rathole.socket"
 PID_PATH="$APP_ROOT/tmp/pids"
-WEB_SERVER_PID="$PID_PATH/puma.pid"
+WEB_SERVER_PID="$PID_PATH/rathole.pid"
 NAME="Rathole"
 DESC="Awesome blogging platform"
 
