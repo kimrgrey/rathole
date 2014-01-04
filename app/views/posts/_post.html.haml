@@ -22,7 +22,7 @@
         .col-md-2.comments
           %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
       .col-md-7.tags
-        = # tags(post.tag_list) if post.tag_list.any?
+        = tags(post.tags) if post.tags.any?
       .col-md-3.continue
         - if preview
           %a{href: public_post_path(post)}= icon 'book', t('.continue')
