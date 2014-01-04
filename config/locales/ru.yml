@@ -71,7 +71,7 @@ ru:
       second: "Секунд"
       year: "Год"
   application:
-    name: "KG BLOGS"
+    name: "rathole.io"
   views:
     pagination:
       first: "&laquo;"
