@@ -18,13 +18,13 @@ gem 'authority'
 gem 'acts-as-taggable-on'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'puma'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development do 
-  gem 'thin'
   gem 'spring'
   gem 'therubyracer', platforms: :ruby
   gem 'letter_opener_web'
@@ -32,5 +32,4 @@ group :development do
 end
 
 group :production do 
-  gem 'puma'
 end
