@@ -10,6 +10,7 @@ Kgblogs::Application.routes.draw do
     post :avatar
     resources :posts do 
       member do
+        post :publish
         post :comment
       end
     end

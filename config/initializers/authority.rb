@@ -14,7 +14,8 @@ Authority.configure do |config|
     :read   => 'readable',
     :update => 'updatable',
     :delete => 'deletable',
-    :comment => 'commentable' 
+    :comment => 'commentable',
+    :publish => 'publishable' 
   }
   config.logger = Rails.logger
 end

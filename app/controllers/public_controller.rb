@@ -4,6 +4,7 @@ class PublicController < ApplicationController
   def posts
     @posts = @user ? @user.posts : Post.all
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    @posts = @posts.published_only
     @posts = @posts.includes(:user).includes(:section)
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
@@ -11,7 +12,8 @@ class PublicController < ApplicationController
 
   def post
     @posts = @user ? @user.posts : Post.all
-    @posts = @posts.joins(:user)
+    @posts = @posts.includes(:user).includes(:section)
+    @posts = @posts.published_only
     @post = @posts.find(params[:id])
     @comments = @post.comments
     @comments = @comments.in_order

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104125842) do
+ActiveRecord::Schema.define(version: 20140105115338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140104125842) do
     t.integer  "section_id"
     t.integer  "comments_count", default: 0
     t.text     "tags",           default: [], array: true
+    t.integer  "state",          default: 0
   end
 
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin

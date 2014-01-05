@@ -5,12 +5,17 @@ class PostsController < ApplicationController
 
   authorize_actions_for Post
   
-  before_action :load_user, except: [:comment]
-  before_action :load_posts, except: [:comment]
+  before_action :load_user, except: [:comment, :publish]
+  before_action :load_posts, except: [:comment, :publish]
   before_action :load_sections, only: [:new, :create, :edit, :update]
   before_action :load_section, only: [:create, :update]
 
   def index
+    if params[:state] == :published
+      @posts = @posts.published_only
+    elsif params[:state] == :draft
+      @posts = @posts.draft_only
+    end
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
   end
@@ -83,6 +88,20 @@ class PostsController < ApplicationController
   end
 
   authority_actions comment: 'comment'
+
+  def publish
+    @post = Post.find(params[:id])
+    authorize_action_for(@post)
+    if @post.toggle
+      invalidate_post_caches(@post)
+      flash[:notice] = I18n.t("posts.publish.#{@post.state}.success")
+    else
+      flash[:error] =  I18n.t("posts.publish.#{@post.state}.failed")
+    end
+    redirect_to user_post_path(@post)
+  end
+
+  authority_actions publish: 'publish'
 
   private
 

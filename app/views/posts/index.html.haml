@@ -1,5 +1,5 @@
 = content_for :nav do
   = render partial: 'users/my', locals: { user: @user }
 
-= render partial: 'posts/list', locals: { posts: @posts, preview: false }
+= render partial: 'posts/list', locals: { posts: @posts, preview: true }
 = paginate @posts

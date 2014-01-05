@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   after_create :create_default_section
 
   def last_posts(count = 5) 
-    posts.order('posts.created_at DESC').limit(count)
+    posts.published_only.order('posts.created_at DESC').limit(count)
   end
 
   private
