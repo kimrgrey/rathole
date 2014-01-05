@@ -9,7 +9,7 @@
         %td= l user.created_at
       %tr
         %th= t('.last_sign_in_at')
-        %td= l user.last_sign_in_at
+        %td= user.last_sign_in_at.present ? l(user.last_sign_in_at) : t('.never')
       %tr
         %th= t('.posts')
         %td= user.posts_count

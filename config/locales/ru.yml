@@ -157,6 +157,7 @@ ru:
       header: 'Пользователь'
       user_name: 'Логин'
       last_sign_in_at: 'Заходил'
+      never: 'никогда'
       sign_up_at: 'Присоединился'
       comments: 'Комментариев'
       posts: 'Постов'
