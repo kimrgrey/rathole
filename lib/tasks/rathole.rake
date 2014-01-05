@@ -2,14 +2,14 @@ namespace :rathole do
   desc "Updates cache of counters for all models"
   task update_counters: [ :environment ] do
     User.find_each do |user|
-      User.update_counters user.id, :comments_count => user.comments.length
-      User.update_counters user.id, :posts_count => user.posts.length
+      User.reset_counters(user.id, :comments)
+      User.reset_counters(user.id, :posts)
     end
     Post.find_each do |post|
-      Post.update_counters post.id, :comments_count => post.comments.length
+      Post.reset_counters(post.id, :comments)
     end
     Section.find_each do |section|
-      Section.update_counters section.id, :posts_count => section.posts.length
+      Section.reset_counters(section.id, :posts)
     end
   end
 end
