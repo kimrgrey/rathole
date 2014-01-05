@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  DEFAULT_PREVIEW_SIZE = 2
+  SHORT_PREVIEW_SIZE = 1
+  LONG_PREVIEW_SIZE = 2
+
   include Authority::Abilities
   
   self.authorizer = PostAuthorizer
@@ -21,7 +25,14 @@ class Post < ActiveRecord::Base
   scope :draft_only, -> { where('posts.state = ?', STATE[:draft]) }
   scope :published_only, -> { where('posts.state = ?', STATE[:published]) }
 
-  def preview(lines = 2)
+  def preview(lines = Post::DEFAULT_PREVIEW_SIZE)
+    if lines.is_a?(Symbol)
+      lines = case lines
+        when :short then Post::SHORT_PREVIEW_SIZE
+        when :long then Post::LONG_PREVIEW_SIZE
+        else Post::DEFAULT_PREVIEW_SIZE
+      end
+    end
     body.split("\r\n\r\n").first(lines).join("\r\n\r\n")
   end
 
