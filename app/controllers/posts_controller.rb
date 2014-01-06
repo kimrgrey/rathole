@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   
   before_action :authenticate_user!
 
-  authorize_actions_for Post
+  authorize_actions_for Post, actions: {:publish => :update}, except: [:comment]
   
   before_action :load_user, except: [:comment, :publish]
   before_action :load_posts, except: [:comment, :publish]
@@ -87,8 +87,6 @@ class PostsController < ApplicationController
     redirect_to :back
   end
 
-  authority_actions comment: 'comment'
-
   def publish
     @post = Post.find(params[:id])
     authorize_action_for(@post)
@@ -100,8 +98,6 @@ class PostsController < ApplicationController
     end
     redirect_to user_post_path(@post)
   end
-
-  authority_actions publish: 'publish'
 
   private
 

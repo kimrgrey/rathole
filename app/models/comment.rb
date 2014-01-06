@@ -7,4 +7,5 @@ class Comment < ActiveRecord::Base
   scope :in_order, -> { order('comments.created_at ASC') }
 
   delegate :user_name, to: :user, prefix: false
+  delegate :avatar_url, to: :user, prefix: true
 end

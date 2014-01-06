@@ -3,11 +3,11 @@
     = clip_and_clamp
     %h2
       - if user_signed_in? && current_user.can_update?(post)
-        = edit_link post if user_signed_in? && current_user.can_update?(post)
+        = edit_link(post)
         %a{href: user_post_path(post)}= post.title
+        = publish_link(post)
       - else
         %a{href: public_post_path(post)}= post.title
-      = publish_link(post) if user_signed_in? && current_user.can_publish?(post)  
     .row.details
       %span.user 
         %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
