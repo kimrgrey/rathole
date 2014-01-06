@@ -1,6 +1,14 @@
 @import 'commons';
 
 .profile {
+  ul.nav {
+    margin-top: 25px;
+  }
+
+  .tab-pane {
+    padding-top: 15px;
+  }
+
   .avatar {
     text-align: center;
     margin-bottom: 25px;

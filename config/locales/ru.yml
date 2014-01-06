@@ -145,6 +145,16 @@ ru:
     show:
       page_header: 'Профиль пользователя'
       create_post: 'Новый пост'
+      tabs:
+        profile: 'Профиль'
+        settings: 'Настройки'
+    update:
+      success: 'Поздравляем! Ваш аккаунт был успешно обновлен!'
+      failed: 'Извините, не удалось обновить аккаунт...'
+    settings:
+      personal: 'Личная информация'
+      security: 'Безопасность'
+      submit: 'Сохранить'
     avatar:
       success: 'Поздравляем! Ваш аватар был успешно обновлен!'
       failed: 'Извините, не удалось обновить аватар...'
@@ -264,6 +274,7 @@ ru:
               not_found: 'не был найден на сайте.'
               already_confirmed: 'уже был подвтержден.'
               not_locked: 'не был заблокирован.'
+              blank: 'должен быть указан.'
             reset_password_token:
               invalid: 'указан неверно.'
             confirmation_token:

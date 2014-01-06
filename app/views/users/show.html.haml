@@ -3,7 +3,13 @@
 .profile.container
   = clip_and_clamp
   = page_header
-  = render partial: 'users/avatar', locals: { user: @user }   
-  = render partial: 'users/info', locals: { user: @user }
-  = render partial: 'users/sections', locals: { user: @user, editable: true }
-  = render partial: 'posts/list', locals: { posts: @posts, preview: true }
+  %ul.nav.nav-tabs
+    %li.active
+      %a{href: '#profile', data: {toggle: 'tab'}}= t('.tabs.profile')
+    %li
+      %a{href: '#settings', data: {toggle: 'tab'}}= t('.tabs.settings')
+  .tab-content
+    #profile.tab-pane.active
+      = render partial: 'users/profile', locals: {user: @user}
+    #settings.tab-pane
+      = render partial: 'users/settings', locals: {user: @user}
