@@ -1,0 +1,50 @@
+@import 'commons';
+
+.clip {
+  background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 150px;
+  left: 33px;
+  position: absolute;
+  top: -60px;
+  width: 100px;
+  z-index: 10;
+  @media(max-width: $small-device) {
+    display: none;
+  }
+}
+
+.clamp {
+  background: image-url("rat-chump.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 100px;
+  position: absolute;
+  right: -30px;
+  top: -35px;
+  width: 60px;
+  z-index: 10;
+}
+
+.keys {
+  background: image-url("rat-keys.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 120px;
+  position: absolute;
+  left: -40px;
+  top: 0px;
+  width: 100px;
+  z-index: 10; 
+  @media(max-width: $small-device) {
+    display: none;
+  }
+}
+
+.painter {
+  background: image-url("rat-painter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 120px;
+  position: absolute;
+  right: 10px;
+  bottom: -120px;
+  width: 100px;
+  z-index: 10; 
+  @media(max-width: $small-device) {
+    display: none;
+  }
+}

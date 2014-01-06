@@ -2,7 +2,7 @@
   %li
     %a{href: new_user_registration_path}= t('nav.sign_up')
 .container
-  = clip_and_clamp
+  = keys
   = page_header
   = form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'} do |f|
     = render partial: 'shared/errors', locals: { model: resource }
@@ -25,5 +25,6 @@
     .form-group
       .col-sm-offset-2.col-sm-10
         = render "devise/shared/links"
+  = painter
 
 

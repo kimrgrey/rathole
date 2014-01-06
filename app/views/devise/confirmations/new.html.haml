@@ -1,5 +1,5 @@
 .container
-  = clip_and_clamp
+  = keys
   = page_header
   = spacer
   = form_for resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { method: :post, class: 'form-horizontal' } do |f|
@@ -16,3 +16,4 @@
     .form-group
       .col-sm-offset-2.col-sm-10
         = render "devise/shared/links"
+  = painter

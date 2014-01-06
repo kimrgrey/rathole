@@ -18,29 +18,6 @@ a.edit {
   text-decoration: none;
 }
 
-.clip {
-  background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-  height: 150px;
-  left: 33px;
-  position: absolute;
-  top: -60px;
-  width: 100px;
-  z-index: 10;
-  @media(max-width: $small-device) {
-    display: none;
-  }
-}
-
-.clamp {
-  background: image-url("rat-chump.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-  height: 100px;
-  position: absolute;
-  right: -30px;
-  top: -35px;
-  width: 60px;
-  z-index: 10;
-}
-
 body {
   background: none repeat scroll 0 0 #F2F2F2;
   font-family: 'Droid Sans';
