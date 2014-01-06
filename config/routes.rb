@@ -14,7 +14,7 @@ Kgblogs::Application.routes.draw do
         post :comment
       end
     end
-    resources :imports, except: [:edit, :update]
+    resources :imports, only: [:index, :new, :create]
     resources :sections, except: [:index, :show]
   end
 

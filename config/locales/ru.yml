@@ -164,6 +164,11 @@ ru:
       new_post: 'Новый пост'
       all_posts: 'Все мои посты'
       sections: 'Разделы'
+    import_greeting:
+      header: 'У вас еще нет ни одного поста?'
+      details: 'Мы не нашли у вас ни одного поста... Самое время написать первый! А может быть вы хотите импортировать свои записи из старого блога?'
+      create_post: 'Создать пост'
+      start_import: 'Импортировать'
     info:
       header: 'Пользователь'
       user_name: 'Логин'
@@ -174,6 +179,23 @@ ru:
       posts: 'Постов'
     sections:
       new: 'Создать'
+  imports:
+    index:
+      page_header: 'Список импортов'
+      new_import: 'Импортировать'
+    table:
+      states:
+        created: 'Ожидает'
+        started: 'Начался'
+        working: 'В процессе'
+        finished: 'Закончен'
+    new:
+      page_header: 'Импорт постов'
+    create:
+      success: 'Поздравляем! Иморт постов из ЖЖ успешно запущен! Мы сообшим вам, когда все будет готово.'
+    form:
+      legend: 'Укажите ваш логин в LiveJournal, этого достаточно, чтобы выполнить импорт постов'
+      submit: 'Импортировать'
   nav:
     menu: 'Меню'
     home: 'Главная'
@@ -267,6 +289,10 @@ ru:
       section:
         name: 'Название'
         posts_count: 'Постов'
+      import:
+        lj_user: 'Логин в ЖЖ'
+        state: 'Статус'
+        updated_at: 'Обновлен'
     errors:
       models:
         user:

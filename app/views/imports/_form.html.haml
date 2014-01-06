@@ -1,0 +1,10 @@
+= form_for [user, import], html: {class: 'form-horizontal'} do |f|
+  %legend
+    = t('.legend')
+  .form-group
+    = f.label :lj_user, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :lj_user, autofocus: true, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('.submit'), class: 'btn btn-primary'

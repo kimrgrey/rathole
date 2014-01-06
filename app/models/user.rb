@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :sections
   has_many :comments
+  has_many :imports
 
   mount_uploader :avatar, AvatarUploader
 

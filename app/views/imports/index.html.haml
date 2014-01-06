@@ -1,0 +1,14 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: @user }
+
+.container
+  = clip_and_clamp
+  = page_header
+  
+  .btn-toolbar
+    .btn-group
+      %a.btn.btn-success{href: new_user_import_path}= t('.new_import')
+  
+  = render partial: 'imports/table', locals: { imports: @imports }
+
+= paginate @imports

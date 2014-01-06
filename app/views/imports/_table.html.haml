@@ -1,0 +1,13 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= Import.human_attribute_name(:lj_user)
+      %th= Import.human_attribute_name(:state)
+      %th= Import.human_attribute_name(:updated_at)
+  %tbody
+    - imports.each do |import|
+      %tr
+        %td= link_to import.lj_user, import.lj_url
+        %td= t(".states.#{import.state}")
+        %td= l import.updated_at
+

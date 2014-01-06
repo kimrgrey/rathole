@@ -6,3 +6,5 @@
     = menu_item t('nav.blog.my'), user_posts_path, 'book'
     - user.sections.in_order.each do |section|
       = menu_item section.name, public_section_path(section), 'folder-open' 
+    = menu_divider
+    = menu_item t('nav.blog.imports'), user_imports_path, 'upload'
