@@ -1,3 +1,8 @@
+- unless user_signed_in?
+  .user-links
+    = link_to t('nav.sign_in'), new_user_session_path, class: 'sign-in'  
+    = link_to t('nav.sign_up'), new_user_registration_path, class: 'sign-up'
+
 %h2
   %a{id: 'comments', href: '#comments'}= t('.comments')
 
@@ -12,6 +17,7 @@
       = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
       = markdown comment.body
 
+
 - if user_signed_in?
   = form_tag comment_user_post_path(post), class: 'form-horizontal' do
     .form-group
@@ -20,3 +26,7 @@
     .form-group
       .col-sm-12
         = submit_tag t('.save'), class: 'btn btn-primary'
+- else
+  .greeting
+    = t('.sign_in_to_comment')
+

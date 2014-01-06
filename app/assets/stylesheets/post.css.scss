@@ -89,6 +89,32 @@
       margin-bottom: 5px;
     }
 
+    .greeting {
+      text-align: center;
+      color: #000;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .user-links {
+      @media(max-width: $small-device) {
+        display: none;
+      }
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      color: #000;
+      font-style: italic;
+      font-size: 12px;
+
+      a.sign-in:after {
+        content: "•";
+        margin-left: 8px;
+        margin-right: 5px;
+        margin-top: 3px;
+      }
+    }
+
     span.badge {
       font-size: 10px;
       @media(min-width: $extra-small-device) {
