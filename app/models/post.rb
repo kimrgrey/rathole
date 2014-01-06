@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
+  delegate :name, to: :section, prefix: true
 
   enum state: [ :draft, :published ]
   

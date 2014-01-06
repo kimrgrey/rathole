@@ -22,14 +22,18 @@
       = image_tag post.user_avatar_url(:thumb), class: 'avatar'
       = markdown(preview ? post.preview : post.body)
     .row.links
-      - if preview
-        .col-md-2.comments
+      .col-md-2.comments
+        - if preview
           %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
+        - else
+          %a{href: public_section_path(post.section)}= icon 'folder-open', post.section_name
       .col-md-7.tags
         = tags(post.tags) if post.tags.any?
       .col-md-3.continue
         - if preview
           %a{href: public_post_path(post)}= icon 'book', t('.continue')
+        - else
+          %a{href: public_posts_path(post.user)}= icon 'level-up', t('nav.blog.of', user_name: post.user_name)
   
   - unless preview
     .container.post
