@@ -276,6 +276,9 @@ ru:
               already_confirmed: 'уже был подвтержден.'
               not_locked: 'не был заблокирован.'
               blank: 'должен быть указан.'
+              taken: 'уже используется.'
+            user_name:
+              invalid: 'не подходит (используйте только латинские буквы, цифры и тире)'
             reset_password_token:
               invalid: 'указан неверно.'
             confirmation_token:
