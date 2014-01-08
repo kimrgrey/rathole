@@ -1,3 +1,8 @@
+%ul#post-form-tabs.nav.nav-tabs
+  %li.active
+    %a{href: '#markdown', data: {toggle: 'tab'}}= t('.tabs.markdown')
+  %li
+    %a{href: '#html', data: {toggle: 'tab'}}= t('.tabs.html')
 = form_for [:user, post], html: {class: 'form-horizontal'} do |f|
   = render partial: 'shared/errors', locals: { model: post }
   .form-group
@@ -9,9 +14,15 @@
     .col-sm-10
       = f.collection_select :section_id, @sections, :id, :name, {}, class: 'form-control'
   .form-group
-    = f.label :body, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_area :body, rows: 50, class: 'form-control', placeholder: t('.placeholders.body')
+    .tab-content
+      #markdown.tab-pane.active
+        = f.label :body, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area :body, rows: 50, class: 'form-control', placeholder: t('.placeholders.body')
+      #html.tab-pane
+        = f.label :body_html, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area :body_html, rows: 50, disabled: true, class: 'form-control', placeholder: t('.placeholders.body')
   .form-group
     = f.label :tag_list, class: 'col-sm-2 control-label'
     .col-sm-10

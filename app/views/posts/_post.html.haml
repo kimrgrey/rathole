@@ -20,7 +20,7 @@
           = icon 'comments', post.comments_count
     .row.body
       = image_tag post.user_avatar_url(:thumb), class: 'avatar'
-      = raw(preview ? post.preview_html : post.body_html)
+      = sanitize(preview ? post.preview_html : post.body_html)
     .row.links
       .col-md-2.comments
         - if preview

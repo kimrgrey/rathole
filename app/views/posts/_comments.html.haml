@@ -15,7 +15,7 @@
   .row.body
     .col-md-12
       = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
-      = raw(comment.body_html)
+      = sanitize(comment.body_html)
 
 
 - if user_signed_in?

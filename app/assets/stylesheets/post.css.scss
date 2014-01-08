@@ -1,6 +1,5 @@
 @import 'commons';
 
-
 .container.post {
   width: auto !important;
 }
@@ -137,4 +136,8 @@
   @media(max-width: $extra-small-device) {
     height: 10px;
   }
+}
+
+#post-form-tabs {
+  margin: 20px 0px;
 }

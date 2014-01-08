@@ -135,6 +135,9 @@ ru:
       placeholders:
         body: 'Может быть как-то прокомментируете пост?'
     form:
+      tabs:
+        markdown: 'Текст'
+        html: 'HTML'
       placeholders: 
         title: 'Какой заголовок будет у вашего поста?'
         body: 'Что бы вы хотели написать в нем?'
@@ -275,6 +278,7 @@ ru:
       post:
         title: 'Заголовок'
         body: 'Текст'
+        body_html: 'Текст'
         section: 'Тематика'
         section_id: 'Тематика'
         tag_list: 'Теги'
