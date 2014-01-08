@@ -1,4 +1,8 @@
 class Comment < ActiveRecord::Base
+  include Redcarpeted
+
+  redcarpet :body
+
   validates :body, presence: true
 
   belongs_to :user, counter_cache: true

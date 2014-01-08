@@ -12,4 +12,24 @@ namespace :rathole do
       Section.reset_counters(section.id, :posts)
     end
   end
+
+  desc "Exctracts preview for all posts"
+  task extract_preview: [:environment] do 
+    Post.find_each do |post|
+      post.extract_preview_from_body!(true)
+      post.save!
+    end
+  end 
+
+  desc "Converts markdown to html for all posts and comments"
+  task convert_body: [:environment] do 
+    Post.find_each do |post|
+      post.convert_body_to_html!(true)
+      post.save!
+    end
+    Comment.find_each do |comment|
+      comment.convert_body_to_html!(true)
+      comment.save!
+    end
+  end
 end
