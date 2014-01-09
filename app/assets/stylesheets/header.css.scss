@@ -4,6 +4,7 @@ header {
   @include paper;
 
   position: fixed;
+  min-width: 300px;
   left: 0px;
   top: 0px;
   width: 100%;
