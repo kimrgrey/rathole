@@ -54,6 +54,22 @@
       color: #0086B3;
     }
 
+    p img {
+      width: 200px;
+      margin: 10px 10px; 
+
+      @media(min-width: $extra-small-device) {
+        width: 400px;
+        margin: 10px 40px; 
+      }
+      @media(min-width: $small-device) {
+        width: 600px;
+      }
+      @media(min-width: $medium-device) {
+        width: 800px;
+      }
+    }
+
     img.avatar {
       @media(max-width: $extra-small-device) {
         display: none;
