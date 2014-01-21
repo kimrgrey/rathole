@@ -6,7 +6,7 @@ set :repo_url, 'git@git.kimrgrey.org:kimrgrey/kgblogs.git'
 set :user, 'rathole'
 set :deploy_to, '/home/rathole/rathole'
 set :deploy_via, :remote_cache
-set :log_level, :debug
+set :log_level, :info
 set :keep_releases, 5
 set :linked_dirs, fetch(:linked_dirs) + %w{public/uploads}
 set :linked_files, %w{config/database.yml config/secrets.yml}
