@@ -1,4 +1,4 @@
-set :stage, :production
-set :branch, 'production'
+server 'rathole.io', user: 'rathole', roles: %w{web app db}
 
-role :all, %w{rathole@rathole.io}
+set :stage, :production
+set :branch, 'master'
