@@ -15,11 +15,10 @@ Kgblogs::Application.configure do
   config.action_mailer.default_url_options = { :host => 'rathole.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.yandex.ru",
-    :port                 => 587,
-    :user_name            => 'noreply@kimrgrey.org',
-    :password             => 'o#m0fzaiF6',
-    :authentication       => 'plain'
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    user_name: Rails.application.secrets.mandrill_user,
+    password: Rails.application.secrets.mandrill_key
   }
   config.action_mailer.raise_delivery_errors = true
 end
