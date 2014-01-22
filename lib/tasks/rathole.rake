@@ -17,6 +17,7 @@ namespace :rathole do
   task extract_preview: [:environment] do 
     Post.find_each do |post|
       post.extract_preview_from_body!(true)
+      post.convert_preview_to_html!(true)
       post.save!
     end
   end 
