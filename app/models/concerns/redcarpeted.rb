@@ -6,6 +6,15 @@ module Redcarpeted
   
   class MarkdownRenderer < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
+    include ActionView::Helpers::UrlHelper
+
+    def link(link, title, content)
+      link_to content, link, title: title, rel: 'nofollow', target: '_blank'
+    end
+
+    def autolink(link, link_type)
+      link_to link, link, rel: 'nofollow', target: '_blank'
+    end
   end
 
   def self.md2html(text)
