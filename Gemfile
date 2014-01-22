@@ -25,7 +25,7 @@ group :doc do
 end
 
 group :development do 
-  gem 'spring'
+  gem 'spring', '~> 1.1'
   gem 'therubyracer', platforms: :ruby
   gem 'letter_opener_web'
   gem 'hirb-unicode'
