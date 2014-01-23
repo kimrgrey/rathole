@@ -28,7 +28,9 @@ class PublicController < ApplicationController
 
   def section
     @posts = @user ? @user.posts : Post.all
+    @posts = @posts.published_only
     @posts = @posts.joins(:section).where(section_id: params[:id].to_i)
+    @posts = @posts.includes(:user).includes(:section)
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
   end
