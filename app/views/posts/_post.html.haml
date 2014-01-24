@@ -3,9 +3,11 @@
     = clip_and_clamp
     %h2
       - if user_signed_in? && current_user.can_update?(post)
-        = edit_link(post)
+        .actions
+          = edit_link(post)
+          = publish_link(post)
+          = public_link(post) if post.published?
         %a{href: user_post_path(post)}= post.title
-        = publish_link(post)
       - else
         %a{href: public_post_path(post)}= post.title
     .row.details

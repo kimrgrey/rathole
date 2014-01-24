@@ -17,4 +17,10 @@ module PostsHelper
       icon(post.published? ? 'unlock' : 'lock')
     end
   end
+
+  def public_link(post)
+    link_to public_post_path(post), title: I18n.t("links.posts.public") do 
+      icon 'link'
+    end
+  end
 end

@@ -79,6 +79,10 @@ ru:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+  links:
+    posts:
+      edit: 'Нажмите на эту ссылку, чтобы перейти к редактированию поста'
+      public: 'Именно по этому адресу пост досутпен всем, кроме вас.'
   public:
     profile:
       page_header: 'Профиль пользователя'

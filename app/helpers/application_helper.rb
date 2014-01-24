@@ -18,7 +18,8 @@ module ApplicationHelper
 
   def edit_link(model, href = nil)    
     href ||= url_for [:edit, :user, model]
-    content_tag :a, icon(:edit), href: href, class: 'edit'
+    pluralized_class_name = model.class.name.downcase.pluralize
+    content_tag :a, icon(:edit), href: href, class: 'edit', title: I18n.t("links.#{pluralized_class_name}.edit")
   end
 
   def page_header
