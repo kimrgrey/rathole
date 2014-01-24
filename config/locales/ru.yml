@@ -152,6 +152,9 @@ ru:
       save: 'Сохранить'
       cancel: 'Отмена'
       delete: 'Удалить'
+    pictures:
+      upload: 'Загрузить'
+      public_link: 'Публичная ссылка'
   users:
     show:
       page_header: 'Профиль пользователя'

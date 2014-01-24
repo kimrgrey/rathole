@@ -4,7 +4,7 @@
   %li
     %a{href: '#pictures', data: {toggle: 'tab'}}= t('.tabs.pictures')
 
-.tab-content
+#post-form-tabs-content.tab-content
   #form.tab-pane.active
     = form_for [:user, post], html: {id: 'post-form', class: 'form-horizontal'} do |f|
       = render partial: 'shared/errors', locals: { model: post }
@@ -42,5 +42,5 @@
           = link_to t('.cancel'), user_posts_path, class: 'btn btn-default'
           = link_to t('.delete'), user_post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
   #pictures.tab-pane
-    Hello!
+    = render partial: 'posts/pictures'
 .clearfix

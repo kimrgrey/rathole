@@ -1,0 +1,9 @@
+#pictures-list
+  .row.btn-toolbar
+    %a.btn.btn-success{href: '#'}= icon 'upload', t('.upload')
+  .row
+    - (1..10).each do |i|
+      .picture-item
+        %img{src: "http://placehold.it/800x600"}
+        .links
+          %a{href: 'http://placehold.it/800x600'}= icon 'link', t('.public_link')
