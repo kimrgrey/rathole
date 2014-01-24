@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!
   
-  authorize_actions_for Post
+  authorize_actions_for Section
   
   before_action :load_user
   before_action :load_sections
@@ -22,8 +22,8 @@ class SectionsController < ApplicationController
   end
 
   def edit
-    authorize_action_for(@section)
     @section = @sections.find(params[:id])
+    authorize_action_for(@section)
   end
 
   def update

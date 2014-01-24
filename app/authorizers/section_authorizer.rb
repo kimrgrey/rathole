@@ -1,0 +1,2 @@
+class SectionAuthorizer < BaseAuthrozier
+end
