@@ -140,6 +140,9 @@ ru:
         body: 'Может быть как-то прокомментируете пост?'
     form:
       tabs:
+        form: 'Пост'
+        pictures: 'Картинки'
+      formats:
         markdown: 'Текст'
         html: 'HTML'
       placeholders: 

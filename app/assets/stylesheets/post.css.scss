@@ -165,3 +165,25 @@
 #post-form-tabs {
   margin: 20px 0px;
 }
+
+#post-form {
+  #body-format {
+    list-style: none;
+    margin: 5px 20px;
+    li {
+      float: right;
+      margin-left: 10px;
+      display: inline-block;
+      a {
+        color: rgb(0, 134, 179);
+      }
+    }
+
+    li.active {
+      a {
+        color: rgb(0, 134, 179);
+        text-decoration: underline;
+      }
+    }
+  }
+}
