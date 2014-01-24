@@ -1,2 +1,2 @@
-class SectionAuthorizer < BaseAuthrozier
+class SectionAuthorizer < BaseAuthorizer
 end
