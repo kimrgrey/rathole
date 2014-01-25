@@ -32,7 +32,7 @@
       }
     }
 
-    span.user, span.comments {
+    span.date, span.comments {
       @media(max-width: $extra-small-device) {
         display: none;
       }
