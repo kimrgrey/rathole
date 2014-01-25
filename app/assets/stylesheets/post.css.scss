@@ -81,7 +81,10 @@
       }
       width: 150px;
       float: left; 
-      margin: 5px 10px;
+      margin: 5px 25px;
+      @media(min-width: $small-device) {
+        margin: 5px 45px;
+      }
     }
 
     p {
