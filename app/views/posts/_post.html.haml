@@ -1,45 +1,44 @@
-- cache post_cache_key(post, preview, user_signed_in?), skip_digest: true do 
-  .container.post
-    = clip_and_clamp
-    %h2
-      - if user_signed_in? && current_user.can_update?(post)
-        .actions
-          = edit_link(post)
-          = publish_link(post)
-          = public_link(post) if post.published?
-        %a{href: user_post_path(post)}= post.title
+.container.post
+  = clip_and_clamp
+  %h2
+    - if user_signed_in? && current_user.can_update?(post)
+      .actions
+        = edit_link(post)
+        = publish_link(post)
+        = public_link(post) if post.published?
+      %a{href: user_post_path(post)}= post.title
+    - else
+      %a{href: public_post_path(post)}= post.title
+  .row.details
+    %span.user 
+      %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
+    %span.date 
+      = icon 'calendar', l(post.created_at)
+    %span.comments 
+      - if preview
+        %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
       - else
-        %a{href: public_post_path(post)}= post.title
-    .row.details
-      %span.user 
-        %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
-      %span.date 
-        = icon 'calendar', l(post.created_at)
-      %span.comments 
-        - if preview
-          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
-        - else
-          = icon 'comments', post.comments_count
-    .row.body
-      = image_tag post.user_avatar_url(:thumb), class: 'avatar'
-      = sanitize(preview ? post.preview_html : post.body_html)
-    .row.links
-      .col-md-2.comments
-        - if preview
-          %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
-        - else
-          %a{href: public_section_path(post.section)}= icon 'folder-open', post.section_name
-      .col-md-7.tags
-        = tags(post.tags) if post.tags.any?
-      .col-md-3.continue
-        - if preview
-          %a{href: public_post_path(post)}= icon 'book', t('.continue')
-        - else
-          %a{href: public_posts_path(post.user)}= icon 'level-up', t('nav.blog.of', user_name: post.user_name)
-  
-  - unless preview
-    .container.post
-      .row.comments
-        = render partial: 'posts/comments', locals: { post: post }
+        = icon 'comments', post.comments_count
+  .row.body
+    = image_tag post.user_avatar_url(:thumb), class: 'avatar'
+    = sanitize(preview ? post.preview_html : post.body_html)
+  .row.links
+    .col-md-2.comments
+      - if preview
+        %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
+      - else
+        %a{href: public_section_path(post.section)}= icon 'folder-open', post.section_name
+    .col-md-7.tags
+      = tags(post.tags) if post.tags.any?
+    .col-md-3.continue
+      - if preview
+        %a{href: public_post_path(post)}= icon 'book', t('.continue')
+      - else
+        %a{href: public_posts_path(post.user)}= icon 'level-up', t('nav.blog.of', user_name: post.user_name)
+
+- unless preview
+  .container.post
+    .row.comments
+      = render partial: 'posts/comments', locals: { post: post }
     
       
