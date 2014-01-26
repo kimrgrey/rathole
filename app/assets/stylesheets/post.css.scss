@@ -201,21 +201,49 @@
   #pictures-list {
     margin: 0 auto;
     @media(min-width: $small-device) {
-      width: 600px;
+      width: $small-device - 25;
     }
     @media(min-width: $medium-device) {
-      width: 850px;
+      width: $medium-device - 35;
     }
-    
+    #content {
+      text-align: center;
+    }
     .picture-item {
+      position: relative;
       display: inline-block;
-      margin: 0px 25px 25px 15px;
+      margin: 0px 15px 15px 0px;
+      padding: 5px 20px;
+
       img {
         width: 250px;
       }
-      .links {
-        padding: 5px 0px;
+
+      a {
+        color: #000;
+      }
+
+      a.public-link {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        
+      }
+      a.delete-link {
+        position: absolute;
+        top: 25px;
+        right: 0px;
       }
     }
+  }
+}
+
+#pictures-upload-dialog {
+  .modal-body {
+    min-height: 200px;
+  }
+
+  #upload-form {
+    margin: 25px 0px; 
   }
 }

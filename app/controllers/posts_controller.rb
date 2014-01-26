@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   def edit
     @post = @posts.find(params[:id])
     authorize_action_for(@post)
+    @pictures = @user.pictures
   end
 
   def update

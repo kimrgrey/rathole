@@ -141,7 +141,7 @@ ru:
     form:
       tabs:
         form: 'Пост'
-        pictures: 'Картинки'
+        pictures: 'Изображения'
       formats:
         markdown: 'Текст'
         html: 'HTML'
@@ -155,6 +155,12 @@ ru:
     pictures:
       upload: 'Загрузить'
       public_link: 'Публичная ссылка'
+    pictures_upload_dialog:
+      upload: 'Загрузить'
+      close: 'Закрыть'
+      dialog_title: 'Загрузка изображений'
+      body_title: 'Хотите загрузить изображения?'
+      instructions: 'Чтобы начать загрузку, выберите, пожалуйста, нужные файлы и нажмите кнопку "Загрузить"'
   users:
     show:
       page_header: 'Профиль пользователя'
@@ -192,6 +198,13 @@ ru:
       posts: 'Постов'
     sections:
       new: 'Создать'
+  pictures:
+    create:
+      success: 'Поздравляем! Файл был успешно загружен на сервер!'
+      failed: 'Извините, не удалось загрузить файл на север...'
+    destroy:
+      success: 'Изображение было успешно удалено с сервера!'
+      failed: 'Извините, не удалось удалить изображение...'
   imports:
     index:
       page_header: 'Список импортов'

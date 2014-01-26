@@ -1,0 +1,19 @@
+#pictures-upload-dialog.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: 'modal'}}
+          &times;
+        %h2.modal-title= t('.dialog_title')
+      .modal-body
+        %h3= t('.body_title')
+        %p
+          = t('.instructions')
+        = form_tag upload_picture_path, id: 'upload-form' do
+          = file_field_tag :files, multiple: true
+      .modal-footer
+        %button#upload.btn.btn-primary
+          = t('.upload')
+        %button.btn.btn-default{data: {dismiss: 'modal'}}
+          = t('.close')
+      

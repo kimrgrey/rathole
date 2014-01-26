@@ -18,6 +18,9 @@ Kgblogs::Application.routes.draw do
     resources :sections, except: [:index, :show]
   end
 
+  post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
+  post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'
+
   get '/public/:user_name', to: 'public#profile'
   get '/public/:user_name/posts', to: 'public#posts'
   get '/public/:user_name/posts/:id', to: 'public#post'

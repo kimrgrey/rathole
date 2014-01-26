@@ -1,9 +1,11 @@
 #pictures-list
-  .row.btn-toolbar
-    %a.btn.btn-success{href: '#'}= icon 'upload', t('.upload')
-  .row
-    - (1..10).each do |i|
+  #toolbar.row.btn-toolbar
+    %a#upload-picture.btn.btn-success{href: '#'}= icon 'upload', t('.upload')
+  #content.row
+    - @pictures.each do |picture|
       .picture-item
-        %img{src: "http://placehold.it/800x600"}
-        .links
-          %a{href: 'http://placehold.it/800x600'}= icon 'link', t('.public_link')
+        %img{src: picture.image_url(:thumb)}
+        %a.public-link{href: picture.image_url}= icon 'link'
+        %a.delete-link{href: destroy_picture_url(picture)}= icon 'times'
+
+= render partial: 'posts/pictures_upload_dialog'

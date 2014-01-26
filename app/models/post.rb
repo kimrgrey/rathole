@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   belongs_to :section, counter_cache: true
 
   has_many :comments
+  has_many :pictures
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
