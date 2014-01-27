@@ -16,7 +16,7 @@
       width: 200px; 
     }
 
-    .dropbox {
+    .upload {
       margin-top: 10px;
     }
   }
@@ -41,6 +41,25 @@
   .post .clamp {
     @media(max-width: $medium-device) {
       display: none;
+    }
+  }
+}
+
+#avatar-upload-dialog {
+  .modal-body {
+    min-height: 200px;    
+    
+    form {
+      text-align: center;
+    }
+
+    #upload-avatar-from-desktop {
+      float: left;
+      margin: 25px 10px;
+    }
+
+    #upload-avatar-from-dropbox {
+      margin: 35px 0px;
     }
   }
 }
