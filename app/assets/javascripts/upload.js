@@ -95,7 +95,7 @@ function initAvatarUploadDialog() {
       var url = uploadForm.attr('action');
       var method = uploadForm.attr('method');
       startFileUpload(url, method, file, function(result){
-        $('#avatar-picture').attr('src', result.urls.thumb);
+        $('img.avatar').attr('src', result.urls.thumb);
       });
     }
     return false;

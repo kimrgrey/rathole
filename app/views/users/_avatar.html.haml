@@ -1,5 +1,5 @@
 .row.avatar
-  = image_tag user.avatar_url(:thumb), id: 'avatar-picture'
+  = image_tag user.avatar_url(:thumb), class: 'avatar'
   - if user_signed_in? && user.updatable_by?(current_user)
     .upload
       %a{href: '#', id: 'upload-avatar', class: 'btn btn-success'}= icon 'upload', t('.upload')
