@@ -26,7 +26,6 @@ class Post < ActiveRecord::Base
   enum state: [ :draft, :published ]
   
   scope :in_order, -> { order('posts.created_at DESC') }
-  scope :tagged_with, -> (tag) { where('posts.tags @> ARRAY[?]', tag) }
   scope :draft_only, -> { where('posts.state = ?', STATE[:draft]) }
   scope :published_only, -> { where('posts.state = ?', STATE[:published]) }
 
@@ -36,6 +35,8 @@ class Post < ActiveRecord::Base
 
   redcarpet :body
   redcarpet :preview
+
+  include Taggable
 
   def extract_preview(lines = Post::DEFAULT_PREVIEW_SIZE)
     if lines.is_a?(Symbol)
@@ -55,14 +56,6 @@ class Post < ActiveRecord::Base
       self.state = :draft
     end
     self.save
-  end
-
-  def tag_list
-    tags.join(',')
-  end
-
-  def tag_list=(tag_list)
-    self.tags = tag_list.split(',')
   end
 
   def extract_preview_from_body!(force = false)
