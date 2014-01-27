@@ -82,6 +82,12 @@ body {
       padding: 120px 40px;
     }
   }
+
+  #public-link-dialog {
+    input#link[readonly] {
+      cursor: pointer;
+    }
+  }
 }
 
 footer {

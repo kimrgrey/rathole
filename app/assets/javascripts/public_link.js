@@ -11,6 +11,10 @@ function initPublicLink() {
   $('#public-link-dialog input').focus(function(){
     $(this).select();
   });
+
+  $('#public-link-dialog input').click(function(){
+    $(this).select();
+  });
 }
 
 $(document).ready(initPublicLink);

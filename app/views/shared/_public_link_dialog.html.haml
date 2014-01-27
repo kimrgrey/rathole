@@ -12,7 +12,7 @@
         = form_tag nil do
           .form-group
             = label_tag :link, t('.label')
-            = text_field_tag :link, '', class: 'form-control'
+            = text_field_tag :link, '', class: 'form-control', readonly: true
       .modal-footer
         %a#go.btn.btn-success{href: '#'}= icon 'link', t('.go')
         %button.btn.btn-default{data: {dismiss: 'modal'}}
