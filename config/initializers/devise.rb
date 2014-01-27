@@ -1,6 +1,6 @@
 Devise.setup do |config|
   config.secret_key = Rails.application.secrets.devise_key
-  config.mailer_sender = Rails.application.secrets.devise_email
+  config.mailer_sender = Rails.application.secrets.mail_from
 
   require 'devise/orm/active_record'
 

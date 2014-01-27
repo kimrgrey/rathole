@@ -1,0 +1,10 @@
+%p
+  %b= t(".greeting", name: @user.user_name)
+%p
+  = t(".text", title: @post.title, name: @author.user_name)
+%p
+  %em= sanitize @comment.body_html
+%p
+  = link_to t('.post'), public_post_path(@post)
+%p{style: 'text-align: right'}
+  = t('.signature')

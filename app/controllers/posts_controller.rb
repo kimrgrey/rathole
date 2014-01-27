@@ -82,6 +82,7 @@ class PostsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       invalidate_post_caches(@post)
+      CommentMailer.new_comment_posted(@comment).deliver
       flash[:notice] = I18n.t('posts.comment.success')
     else
       flash[:error] = I18n.t('posts.comment.failed')
