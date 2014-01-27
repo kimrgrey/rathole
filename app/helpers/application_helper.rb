@@ -38,8 +38,4 @@ module ApplicationHelper
   def menu_divider
     content_tag :li, '', class: 'divider'
   end
-
-  def full_image_url(path)
-    request.protocol + request.host_with_port + path
-  end
 end

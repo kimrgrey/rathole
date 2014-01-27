@@ -19,7 +19,8 @@ module PostsHelper
   end
 
   def public_link(post)
-    link_to public_post_path(post), title: I18n.t("links.posts.public"), class: 'public-link' do 
+    url = request.protocol + request.host_with_port + public_post_path(post)
+    link_to url, title: I18n.t("links.posts.public"), class: 'public-link' do 
       icon 'link'
     end
   end

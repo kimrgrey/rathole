@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  include RoutesHelper
+  
   skip_before_action :verify_authenticity_token
 
   before_action :authenticate_user!
@@ -17,8 +19,8 @@ class PicturesController < ApplicationController
         result = {
           message: I18n.t('pictures.create.success'),
           urls: {
-            original: picture.image_url,
-            thumb: picture.image_url(:thumb),
+            original: full_image_url(picture.image_url),
+            thumb: full_image_url(picture.image_url(:thumb)),
             destroy: destroy_picture_path(picture)
           }
         }

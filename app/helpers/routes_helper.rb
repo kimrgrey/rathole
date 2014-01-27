@@ -33,4 +33,8 @@ module RoutesHelper
     args = args.merge(options) if options
     url_for args
   end
+
+  def full_image_url(path)
+    request.protocol + request.host_with_port + path
+  end
 end
