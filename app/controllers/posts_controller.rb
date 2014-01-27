@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 
   def new
     @post = @posts.build
+    @pictures = @user.pictures
   end
 
   def create
