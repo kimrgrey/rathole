@@ -1,0 +1,20 @@
+#public-link-dialog.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: 'modal'}}
+          &times;
+        %h2.modal-title= t('.dialog_title')
+      .modal-body
+        %h3= t('.body_title')
+        %p
+          = t('.instructions')
+        = form_tag nil do
+          .form-group
+            = label_tag :link, t('.label')
+            = text_field_tag :link, '', class: 'form-control'
+      .modal-footer
+        %a#go.btn.btn-success{href: '#'}= icon 'link', t('.go')
+        %button.btn.btn-default{data: {dismiss: 'modal'}}
+          = t('.close')
+      

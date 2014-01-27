@@ -77,11 +77,6 @@ function initPictureUpload() {
     });
     return false;
   });
-
-  $('#pictures-list').on('click', '.public-link', function(event) {
-    event.preventDefault();
-    return false;
-  });
 }
 
 function initAvatarUploadDialog() {
