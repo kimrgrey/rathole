@@ -50,6 +50,7 @@ function initUploadDialog() {
       startFileUpload(url, method, files[i], function(result) {
         item = createItem(result.urls);
         $('#pictures-list #content').append(item);
+        uploadDialog.modal('hide');
       });
     }
     return false;
@@ -96,6 +97,7 @@ function initAvatarUploadDialog() {
       var method = uploadForm.attr('method');
       startFileUpload(url, method, file, function(result){
         $('img.avatar').attr('src', result.urls.thumb);
+        uploadDialog.modal('hide');
       });
     }
     return false;
