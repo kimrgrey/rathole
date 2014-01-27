@@ -6,8 +6,8 @@ module Taggable
   end
 
   def tag_list=(tag_list)
-    self.tags = tag_list.split(',')
-  end 
+    self.tags = tag_list.split(',').map(&:strip)
+  end
 
   module ClassMethods
     def tagged_with(tag)
