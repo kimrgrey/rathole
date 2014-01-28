@@ -9,6 +9,8 @@
       %a{href: user_post_path(post)}= post.title
     - else
       %a{href: public_post_path(post)}= post.title
+  .row.avatar
+    = image_tag post.user_avatar_url(:thumb), class: 'avatar'
   .row.details
     %span.user 
       %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
@@ -20,7 +22,6 @@
       - else
         = icon 'comments', post.comments_count
   .row.body
-    = image_tag post.user_avatar_url(:thumb), class: 'avatar'
     = sanitize(preview ? post.preview_html : post.body_html)
   .row.links
     .col-md-2.comments

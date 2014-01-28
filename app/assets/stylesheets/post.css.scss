@@ -19,6 +19,21 @@
     margin-bottom: 10px;
   }
 
+  div.avatar {
+    text-align: center;
+    img.avatar {
+      @media(max-width: $extra-small-device) {
+        display: none;
+      }
+      width: 150px;
+      margin: 5px 25px;
+      @media(min-width: $small-device) {
+        margin: 5px 45px;
+      }
+    }
+  }
+
+
   .details {
     color: #000;
     text-align: center;
@@ -72,18 +87,6 @@
       }
       @media(min-width: $medium-device) {
         width: 800px;
-      }
-    }
-
-    img.avatar {
-      @media(max-width: $extra-small-device) {
-        display: none;
-      }
-      width: 150px;
-      float: left; 
-      margin: 5px 25px;
-      @media(min-width: $small-device) {
-        margin: 5px 45px;
       }
     }
 
