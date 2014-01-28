@@ -28,6 +28,7 @@ class Post < ActiveRecord::Base
   scope :in_order, -> { order('posts.created_at DESC') }
   scope :draft_only, -> { where('posts.state = ?', STATE[:draft]) }
   scope :published_only, -> { where('posts.state = ?', STATE[:published]) }
+  scope :visible_on_main, -> { where('posts.visible_on_main = ?', true) }
 
   before_validation :extract_preview_from_body!
 
