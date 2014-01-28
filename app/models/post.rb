@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
-  DEFAULT_PREVIEW_SIZE = 2
-  SHORT_PREVIEW_SIZE   = 1
-  LONG_PREVIEW_SIZE    = 2
+  DEFAULT_PREVIEW_SIZE = 750
+  SHORT_PREVIEW_SIZE   = 550
+  LONG_PREVIEW_SIZE    = 750
+  READ_MORE = "..."
 
   include Authority::Abilities
   
@@ -39,15 +40,17 @@ class Post < ActiveRecord::Base
 
   include Taggable
 
-  def extract_preview(lines = Post::DEFAULT_PREVIEW_SIZE)
-    if lines.is_a?(Symbol)
-      lines = case lines
+  def extract_preview(size = Post::DEFAULT_PREVIEW_SIZE)
+    if size.is_a?(Symbol)
+      size = case size
         when :short then Post::SHORT_PREVIEW_SIZE
         when :long then Post::LONG_PREVIEW_SIZE
         else Post::DEFAULT_PREVIEW_SIZE
       end
     end
-    body.split("\r\n\r\n").first(lines).join("\r\n\r\n")
+    result = body[0...size]
+    result << Post::READ_MORE if size < body.size
+    result
   end
 
   def toggle
