@@ -230,11 +230,17 @@ ru:
       legend: 'Укажите ваш логин в LiveJournal, этого достаточно, чтобы выполнить импорт постов'
       submit: 'Импортировать'
   post_mailer:
-    new_comment_posted: 
+    new_comment_created: 
       subject: 'Новый комментарий к вашему посту на rathole.io'
-      greeting: 'Уважаемый, %{name}!'
+      greeting: 'Уважаемый %{name}!'
       text: 'Спешим вам сообщить, что %{name} оставил комментарий к вашему посту "%{title}" на rathole.io. Возможно, вы захотите ответить? Вот, что он написал:'
       post: 'А вот ссылка на ваш пост.'
+      signature: 'С уважением, команда rathole.io.'
+    new_post_created:
+      subject: 'Новый пост на rathole.io'
+      greeting: 'Уважаемый администратор %{name}!'
+      text: 'Спешим вам сообщить, что %{name} только что опубликовал новый пост "%{title}" на rathole.io.'
+      post: 'А вот ссылка на этот пост.'
       signature: 'С уважением, команда rathole.io.'
   shared:
     public_link_dialog:

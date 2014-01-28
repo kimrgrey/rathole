@@ -82,7 +82,7 @@ class PostsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       invalidate_post_caches(@post)
-      PostMailer.new_comment_posted(@comment).deliver
+      PostMailer.new_comment_created(@comment).deliver
       flash[:notice] = I18n.t('posts.comment.success')
     else
       flash[:error] = I18n.t('posts.comment.failed')
@@ -95,6 +95,9 @@ class PostsController < ApplicationController
     authorize_action_for(@post)
     if @post.toggle
       invalidate_post_caches(@post)
+      if @post.published?
+        User.with_role(:admin).each { |admin| PostMailer.new_post_created(@post, admin).deliver } 
+      end
       flash[:notice] = I18n.t("posts.publish.#{@post.state}.success")
     else
       flash[:error] =  I18n.t("posts.publish.#{@post.state}.failed")
