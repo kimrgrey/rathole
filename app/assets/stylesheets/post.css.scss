@@ -21,18 +21,18 @@
 
   div.avatar {
     text-align: center;
-    img.avatar {
-      @media(max-width: $extra-small-device) {
-        display: none;
-      }
-      width: 150px;
-      margin: 5px 25px;
-      @media(min-width: $small-device) {
-        margin: 5px 45px;
-      }
-    }
   }
 
+  img.avatar {
+    @media(max-width: $extra-small-device) {
+      display: none;
+    }
+    width: 150px;
+    margin: 5px 25px;
+    @media(min-width: $small-device) {
+      margin: 5px 45px;
+    }
+  }
 
   .details {
     color: #000;
@@ -110,6 +110,10 @@
   }
 
   .comments {
+    img.avatar {
+      float: left;
+    }
+
     .header {
       padding-top: 5px;
       margin-bottom: 5px;
