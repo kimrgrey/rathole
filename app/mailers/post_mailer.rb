@@ -1,4 +1,4 @@
-class CommentMailer < ActionMailer::Base
+class PostMailer < ActionMailer::Base
   add_template_helper(RoutesHelper)
   
   default from: Rails.application.secrets.mail_from

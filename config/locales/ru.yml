@@ -229,7 +229,7 @@ ru:
     form:
       legend: 'Укажите ваш логин в LiveJournal, этого достаточно, чтобы выполнить импорт постов'
       submit: 'Импортировать'
-  comment_mailer:
+  post_mailer:
     new_comment_posted: 
       subject: 'Новый комментарий к вашему посту на rathole.io'
       greeting: 'Уважаемый, %{name}!'
