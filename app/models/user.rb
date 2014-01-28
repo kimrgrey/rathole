@@ -16,12 +16,26 @@ class User < ActiveRecord::Base
   has_many :imports
   has_many :pictures
 
+  scope :with_role, -> (role_name) { where("users.roles @> ARRAY[?]", role_name) }
+
   mount_uploader :avatar, AvatarUploader
 
   after_create :create_default_section
 
   def last_posts(count = 5) 
     posts.published_only.order('posts.created_at DESC').limit(count)
+  end
+
+  def has_role?(role_name)
+    roles.include?(role_name.to_s)
+  end
+
+  def admin?
+    has_role?(:admin)
+  end
+
+  def grant(role_names)
+    write_attribute(:roles, Array(role_names).map(&:to_s)) 
   end
 
   private
