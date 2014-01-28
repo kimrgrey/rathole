@@ -5,6 +5,6 @@
 %p
   %em= sanitize @comment.body_html
 %p
-  = link_to t('.post'), public_post_path(@post)
+  = link_to t('.post'), public_post_url(@post)
 %p{style: 'text-align: right'}
   = t('.signature')

@@ -27,6 +27,13 @@ module RoutesHelper
     url_for args
   end
 
+  def public_post_url(post, options = nil)
+    options ||= {}
+    options = options.merge(only_path: false, protocol: 'http')
+    public_post_path(post, options)
+  end
+  
+
   def public_tag_path(tag, options = nil)
     args = { controller: 'public', action: 'posts'}
     args = args.merge(tag: tag)

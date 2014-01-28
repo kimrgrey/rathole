@@ -1,5 +1,6 @@
 class PostMailer < ActionMailer::Base
   add_template_helper(RoutesHelper)
+  add_template_helper(PostsHelper)
   
   default from: Rails.application.secrets.mail_from
 
