@@ -72,6 +72,7 @@ GEM
     execjs (2.0.2)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
+    gemoji (1.5.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -203,6 +204,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   font-awesome-rails
+  gemoji
   haml-rails
   hirb-unicode
   jbuilder (~> 1.2)

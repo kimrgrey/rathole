@@ -19,6 +19,7 @@ gem 'acts-as-taggable-on'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'puma'
+gem 'gemoji'
 
 group :doc do
   gem 'sdoc', require: false

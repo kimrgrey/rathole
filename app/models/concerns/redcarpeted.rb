@@ -6,14 +6,25 @@ module Redcarpeted
   
   class MarkdownRenderer < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
-    include ActionView::Helpers::UrlHelper
-
+    
     def link(link, title, content)
       link_to content, link, title: title, rel: 'nofollow', target: '_blank'
     end
 
     def autolink(link, link_type)
       link_to link, link, rel: 'nofollow', target: '_blank'
+    end
+  end
+
+  def self.emojify(text)
+    text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
+      name = $1
+      if Emoji.names.include?(name) 
+        src = "/images/emoji/#{name}.png"
+        "<img src = '#{src}' class = 'emoji' alt='#{name}' />"
+      else
+        match
+      end
     end
   end
 
@@ -25,7 +36,9 @@ module Redcarpeted
         autolink: true
       }
       markdown = Redcarpet::Markdown.new(renderer, options)
-      markdown.render(text)
+      result = markdown.render(text)
+      result = emojify(result)
+      result
     end
   end
 
