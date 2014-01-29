@@ -38,4 +38,8 @@ module ApplicationHelper
   def menu_divider
     content_tag :li, '', class: 'divider'
   end
+
+  def scroll_to_top
+    content_tag :a, icon('arrow-circle-o-up'), href: '#scroll-to-top', id: 'scroll-to-top', title: I18n.t('links.back_to_top')
+  end
 end
