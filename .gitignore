@@ -4,5 +4,6 @@
 /log/*.log
 /tmp
 /public/uploads
+/public/images/emoji
 /config/secrets.yml
 /config/database.yml
