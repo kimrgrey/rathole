@@ -93,11 +93,11 @@ body {
     position: fixed;
     right: 5px;
     bottom: 0px;
-    font-size: 30px;
-    z-index: 1500;
+    font-size: 35px;
+    z-index: -1500;
     display: none;
     @media(min-width: $medium-device) {
-      font-size: 40px;
+      z-index: 1500;
     }
   }
 }
