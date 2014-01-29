@@ -14,8 +14,10 @@
         %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
   .row.body
     .col-md-12
-      = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
-      = sanitize(comment.body_html)
+      .col-md-3.col-sm-4.hidden-xs
+        = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
+      .col-md-9.col-sm-8 
+        = sanitize(comment.body_html)
 
 
 - if user_signed_in?
