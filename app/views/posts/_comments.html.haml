@@ -6,24 +6,25 @@
 %h2
   %a{id: 'comments', href: '#comments'}= t('.comments')
 
-- @comments.each do |comment|
-  .row.header
-    .col-md-12
-      %span.badge.pull-right= icon 'calendar', l(comment.created_at)
-      %span.badge.pull-right
-        = public_comment_link(comment)
-      %span.badge.pull-right
-        %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
-  .row.body
-    .col-md-12
-      .col-md-3.col-sm-4.hidden-xs
-        = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
-      .col-md-9.col-sm-8 
-        = sanitize(comment.body_html)
+#comments-list
+  - @comments.each do |comment|
+    .comment
+      .row.header
+        .col-md-12
+          %span.badge.pull-right= icon 'calendar', l(comment.created_at)
+          %span.badge.pull-right
+            = public_comment_link(comment)
+          %span.badge.pull-right
+            %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
+      .row.body  
+        .col-md-3.col-sm-4.hidden-xs
+          = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
+        .col-md-9.col-sm-8 
+          = sanitize(comment.body_html)
 
 
 - if user_signed_in?
-  = form_tag create_comment_path(post), class: 'form-horizontal' do
+  = form_tag create_comment_path(post), id: 'comments-form', class: 'form-horizontal' do
     .form-group
       .col-sm-12
         = text_area_tag :body, '', rows: 15, class: 'form-control', placeholder: t('.placeholders.body')

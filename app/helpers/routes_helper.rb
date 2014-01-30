@@ -41,6 +41,11 @@ module RoutesHelper
     url_for args
   end
 
+  def public_comment_url(comment)
+    id = "comment-#{comment.id}"
+    url = public_post_url(comment.post) + "##{id}"
+  end
+
   def full_image_url(path)
     request.protocol + request.host_with_port + path
   end
