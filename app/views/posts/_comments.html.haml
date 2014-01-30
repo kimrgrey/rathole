@@ -21,7 +21,7 @@
 
 
 - if user_signed_in?
-  = form_tag comment_user_post_path(post), class: 'form-horizontal' do
+  = form_tag create_comment_path(post), class: 'form-horizontal' do
     .form-group
       .col-sm-12
         = text_area_tag :body, '', rows: 15, class: 'form-control', placeholder: t('.placeholders.body')

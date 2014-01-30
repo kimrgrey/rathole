@@ -18,6 +18,9 @@ Kgblogs::Application.routes.draw do
     resources :sections, except: [:index, :show]
   end
 
+  post '/posts/:post_id/comment', to: 'comments#create', as: 'create_comment'
+  post '/posts/:post_id/comment/:id/destroy', to: 'comments#destroy', as: 'destroy_comment'
+
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'
 

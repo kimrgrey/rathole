@@ -3,10 +3,10 @@ class PostsController < ApplicationController
   
   before_action :authenticate_user!
 
-  authorize_actions_for Post, actions: {:publish => :update}, except: [:comment]
+  authorize_actions_for Post, actions: {:publish => :update}
   
-  before_action :load_user, except: [:comment, :publish]
-  before_action :load_posts, except: [:comment, :publish]
+  before_action :load_user, except: [:publish]
+  before_action :load_posts, except: [:publish]
   before_action :load_sections, only: [:new, :create, :edit, :update]
   before_action :load_section, only: [:create, :update]
 
@@ -76,20 +76,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def comment
-    @post = Post.find(params[:id])
-    @comment = @post.comments.build(comment_params)
-    @comment.user = current_user
-    if @comment.save
-      invalidate_post_caches(@post)
-      PostMailer.new_comment_created(@comment).deliver
-      flash[:notice] = I18n.t('posts.comment.success')
-    else
-      flash[:error] = I18n.t('posts.comment.failed')
-    end
-    redirect_to :back
-  end
-
   def publish
     @post = Post.find(params[:id])
     authorize_action_for(@post)
@@ -106,10 +92,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def comment_params
-    params.permit(:body)
-  end
 
   def post_params
     params.require(:post).permit(:title, :body, :tag_list)
