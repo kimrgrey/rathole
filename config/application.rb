@@ -11,5 +11,6 @@ module Kgblogs
     config.after_initialize do
       ActionView::Base.sanitized_allowed_attributes += ['rel', 'target']
     end
+    config.autoload_paths << "#{config.root}/app/validators"
   end
 end

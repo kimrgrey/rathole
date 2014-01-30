@@ -24,11 +24,11 @@ Kgblogs::Application.routes.draw do
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'
 
-  get '/public/:user_name', to: 'public#profile'
-  get '/public/:user_name/posts', to: 'public#posts'
-  get '/public/:user_name/posts/:id', to: 'public#post'
-  get '/public/:user_name/section/:id', to: 'public#section'
-  get '/public/tag/:tag', to: 'public#posts'
+  get '/:user_name', to: 'public#profile'
+  get '/:user_name/posts', to: 'public#posts'
+  get '/:user_name/posts/:id', to: 'public#post'
+  get '/:user_name/section/:id', to: 'public#section'
+  get '/tag/:tag', to: 'public#posts'
 
   root to: 'public#posts'
 end
