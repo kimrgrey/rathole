@@ -7,5 +7,6 @@
   = render partial: 'users/avatar', locals: { user: @user }   
   = render partial: 'users/info', locals: { user: @user }
   = render partial: 'users/sections', locals: { user: @user, editable: false }
+  = render partial: 'users/stickers', locals: { user: @user }
   = render partial: 'posts/list', locals: { posts: @posts, preview: true }
   = paginate @posts

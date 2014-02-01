@@ -1,0 +1,3 @@
+.row.stickers
+  - ['post_number_1', 'post_number_10', 'post_number_100'].each do |name|
+    = image_tag "stickers/#{name}.png", title: t(".#{name}"), class: 'sticker', alt: name
