@@ -1,7 +1,7 @@
 = render partial: 'users/avatar', locals: { user: user }   
 = render partial: 'users/info', locals: { user: user }
 = render partial: 'users/sections', locals: { user: user, editable: true }
-= render partial: 'users/stickers', locals: { user: user }
+= render partial: 'users/stickers', locals: { stickers: stickers }
 - if @posts.any?
   = render partial: 'posts/list', locals: { posts: @posts, preview: true }
 - else

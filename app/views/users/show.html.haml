@@ -10,6 +10,6 @@
       %a{href: '#settings', data: {toggle: 'tab'}}= t('.tabs.settings')
   .tab-content
     #profile.tab-pane.active
-      = render partial: 'users/profile', locals: {user: @user}
+      = render partial: 'users/profile', locals: {user: @user, stickers: @stickers}
     #settings.tab-pane
       = render partial: 'users/settings', locals: {user: @user}

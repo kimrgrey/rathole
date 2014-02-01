@@ -25,6 +25,7 @@ class PublicController < ApplicationController
     @posts = @user.last_posts
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
+    @stickers = @user.stickers
   end
 
   def section
