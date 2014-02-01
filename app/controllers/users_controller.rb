@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     @posts = @user.last_posts
     @sections = @user.sections
-    @sections = @user.stickers
+    @stickers = @user.stickers
   end
 
   def update
