@@ -33,4 +33,11 @@ namespace :rathole do
       comment.save!
     end
   end
+
+  desc "Recreates versions for all avatars"
+  task recreate_avatars: [:environment] do
+    User.find_each do |user|
+      user.avatar.recreate_versions! if user.avatar.present?
+    end
+  end
 end
