@@ -10,7 +10,7 @@ namespace :stickers do
   desc "Distribute sticker for the first post"
   task post_number_1: [:environment] do 
     User.find_each do |user|
-      if user.posts_count > 0 
+      if user.posts.published_only.count > 0 
         user.stickers << Sticker.with_code(Sticker::POST_NUMBER_1)
         user.save!
       end 
