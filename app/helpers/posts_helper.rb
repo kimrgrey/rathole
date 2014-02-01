@@ -23,4 +23,11 @@ module PostsHelper
       icon 'link'
     end
   end
+
+  def without_emoji(text)
+    text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
+      name = $1
+      Emoji.names.include?(name) ? '' : name
+    end
+  end
 end
