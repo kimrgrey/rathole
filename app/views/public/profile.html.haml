@@ -1,3 +1,6 @@
+= content_for :meta do
+  = render partial: 'users/opengraph', locals: { user: @user }
+
 = content_for :nav do
   = render partial: 'public/nav', locals: { user: @user }
   
