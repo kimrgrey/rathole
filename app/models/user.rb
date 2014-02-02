@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
 
   after_create :create_default_section
 
+  include Redcarpeted
+
+  redcarpet :about
+
+
   def last_posts(count = 5) 
     posts.published_only.order('posts.created_at DESC').limit(count)
   end

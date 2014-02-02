@@ -10,7 +10,11 @@
   .form-group
     = f.label :user_name, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.email_field :user_name, class: 'form-control'
+      = f.text_field :user_name, class: 'form-control'
+  .form-group
+    = f.label :about, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :about, rows: 10, class: 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('.submit'), class: 'btn btn-primary'    

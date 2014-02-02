@@ -201,12 +201,15 @@ ru:
       sign_up_at: 'Присоединился'
       comments: 'Комментариев'
       posts: 'Постов'
+      about: 'О себе'
     sections:
       new: 'Создать'
     stickers:
       post_number_1: 'За смелость написать первый пост'
       post_number_10: 'За мудрость десяти пустов'
       post_number_100: 'За славный путь в сотню записей'
+    about:
+      signature: 'Пользователь %{name} о себе'
   pictures:
     create:
       success: 'Поздравляем! Файл был успешно загружен на сервер!'
@@ -342,6 +345,7 @@ ru:
       user:
         email: 'Электронный адрес'
         user_name: 'Логин'
+        about: 'О себе'
         password: 'Пароль'
         password_confirmation: 'Пароль еще раз'
         remember_me: 'Запомнить меня'

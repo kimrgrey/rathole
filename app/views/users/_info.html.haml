@@ -1,9 +1,13 @@
 .row
-  %table.table
+  %table.table.info
     %tbody
       %tr
         %th= t('.user_name')
         %td= user.user_name
+      - if user.about.present?        
+        %tr
+          %th= t('.about')
+          %td= sanitize(user.about_html)
       %tr
         %th= t('.sign_up_at')
         %td= l user.created_at
