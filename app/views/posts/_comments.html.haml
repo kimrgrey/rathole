@@ -11,6 +11,8 @@
     .col-md-12
       %span.badge.pull-right= icon 'calendar', l(comment.created_at)
       %span.badge.pull-right
+        = public_comment_link(comment)
+      %span.badge.pull-right
         %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
   .row.body
     .col-md-12

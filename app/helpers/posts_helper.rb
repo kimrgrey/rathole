@@ -24,6 +24,14 @@ module PostsHelper
     end
   end
 
+  def public_comment_link(comment) 
+    id = "comment-#{comment.id}"
+    url = public_post_url(comment.post) + "##{id}"
+    link_to url, class: 'public-link', id: id do 
+      icon 'link'
+    end
+  end
+
   def without_emoji(text)
     text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
       name = $1
