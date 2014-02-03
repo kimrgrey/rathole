@@ -56,12 +56,15 @@ function initCommentsForm() {
   var url = commentForm.attr('action');
   commentForm.submit(function(event){
     event.preventDefault();
+    var button = commentForm.find('input[type=submit]');
+    button.attr('disabled', 'disabled');
     var body = commentForm.find('#body');
     $.post(url, {body: body.val()}, function(response){
       var comment = $('<div>').addClass('comment');
       comment.append(buildCommentHeader(response.id, response.url, response.date, response.author));
       comment.append(buildCommentBody(response.author, response.body));
       $('#comments-list').append(comment);
+      button.removeAttr('disabled');
     });
     body.val('');
     return false;
