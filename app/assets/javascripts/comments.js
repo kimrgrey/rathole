@@ -56,13 +56,14 @@ function initCommentsForm() {
   var url = commentForm.attr('action');
   commentForm.submit(function(event){
     event.preventDefault();
-    var body = commentForm.find('#body').val();
-    $.post(url, {body: body}, function(response){
+    var body = commentForm.find('#body');
+    $.post(url, {body: body.val()}, function(response){
       var comment = $('<div>').addClass('comment');
       comment.append(buildCommentHeader(response.id, response.url, response.date, response.author));
       comment.append(buildCommentBody(response.author, response.body));
       $('#comments-list').append(comment);
     });
+    body.val('');
     return false;
   });
 }
