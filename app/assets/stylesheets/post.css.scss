@@ -57,6 +57,18 @@
   .body {
     color: #000;
 
+    ul {
+   
+      li {
+        list-style-type: none;
+      }
+
+      li:before {
+        content: "\2014";
+        margin-right: 5px;
+      }
+    }
+
     pre {
       font-family: 'Arial';
       @media(max-width: $small-device) {
