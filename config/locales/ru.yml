@@ -380,6 +380,10 @@ ru:
               invalid: 'указан неверно.'
         post:
           attributes:
+            title:
+              blank: 'должен быть указан.'
+            body:
+              blank: 'должен что-то содержать.'
             section:
               blank: 'должна быть указана.'
         section:

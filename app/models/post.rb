@@ -10,7 +10,6 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
   validates :body, presence: true
-  validates :preview, presence: true
   validates :section, presence: true
   validates :user, presence: true
 
