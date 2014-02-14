@@ -20,6 +20,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'puma'
 gem 'gemoji'
+gem 'newrelic_rpm'
 
 group :doc do
   gem 'sdoc', require: false
