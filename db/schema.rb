@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140202143942) do
+ActiveRecord::Schema.define(version: 20140214135729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -76,6 +77,14 @@ ActiveRecord::Schema.define(version: 20140202143942) do
   create_table "stickers_users", force: true do |t|
     t.integer "user_id"
     t.integer "sticker_id"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "author_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -18,6 +18,7 @@ class Post < ActiveRecord::Base
 
   has_many :comments
   has_many :pictures
+  has_many :subscriptions
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
@@ -31,6 +32,8 @@ class Post < ActiveRecord::Base
   scope :visible_on_main, -> { where('posts.visible_on_main = ?', true) }
 
   before_validation :extract_preview_from_body!
+
+  before_create :subscribe_author!
 
   include Redcarpeted
 
@@ -64,6 +67,20 @@ class Post < ActiveRecord::Base
   def extract_preview_from_body!(force = false)
     if force || body_changed?
       self.preview = extract_preview(Post::DEFAULT_PREVIEW_SIZE)
+    end
+  end
+
+  def subscribe!(user)
+    subscriptions.find_or_create_by!(subscriber_id: user.id)
+  end
+
+  def subscribe_author!
+    subscribe!(user)
+  end
+
+  def subscribe_commentators!
+    comments.each do |comment|
+      subscribe!(comment.user)
     end
   end
 end

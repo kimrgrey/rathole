@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :imports
   has_many :pictures
+  has_many :subscriptions, foreign_key: 'subscriber_id'
 
   has_and_belongs_to_many :stickers
 
@@ -43,6 +44,10 @@ class User < ActiveRecord::Base
 
   def grant(role_names)
     write_attribute(:roles, Array(role_names).map(&:to_s)) 
+  end
+
+  def subscribe_on_post!(post)
+    subscriptions.find_or_create_by!(post_id: post.id)
   end
 
   private

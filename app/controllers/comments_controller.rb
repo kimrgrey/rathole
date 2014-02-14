@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  include CacheManagment
   include RoutesHelper
   
   before_action :authenticate_user!
@@ -12,7 +11,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.json do
         if @comment.save
-          PostMailer.new_comment_created(@comment).deliver
+          @user.subscribe_on_post!(@post)
+          send_notification_emails
           render 'created'
         else
           render 'failed'
@@ -26,6 +26,12 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def send_notification_emails
+    @post.subscriptions.each do |subscription|
+      PostMailer.notify_subscriber_about_comment(subscription.subscriber, @comment).deliver
+    end
+  end
 
   def load_user
     @user = current_user

@@ -4,12 +4,12 @@ class PostMailer < ActionMailer::Base
   
   default from: Rails.application.secrets.mail_from
 
-  def new_comment_created(comment)
+  def notify_subscriber_about_comment(subscriber, comment)
+    @subscriber = subscriber
     @comment = comment
     @post = comment.post
     @author = comment.user
-    @user = @post.user
-    mail(to: @user.email, subject: I18n.t('post_mailer.new_comment_created.subject')) unless @author == @user
+    mail(to: @subscriber.email, subject: I18n.t('post_mailer.notify_subscriber_about_comment.subject')) unless @subscriber == @author
   end
 
   def new_post_created(post, admin)

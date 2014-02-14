@@ -40,4 +40,18 @@ namespace :rathole do
       user.avatar.recreate_versions! if user.avatar.present?
     end
   end
+
+  desc "Subscribe authors on their posts"
+  task subscribe_authors: [:environment] do
+    Post.find_each do |post|
+      post.subscribe_author!
+    end
+  end
+
+  desc "Subscribe commentators on posts"
+  task subscribe_commentators: [:environment] do
+    Post.find_each do |post|
+      post.subscribe_commentators!
+    end
+  end
 end
