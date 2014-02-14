@@ -3,8 +3,8 @@ module PostsHelper
     icon 'tags', tags.map{|tag| content_tag :a, tag, href: public_tag_path(tag)}.join(', ')
   end
 
-  def post_cache_key(post, preview, editable)
-    "post-#{post.id}-#{preview}-#{editable}"
+  def post_cache_key(post, preview)
+    "post:#{post.id}:#{post.updated_at.to_i}:#{preview}"
   end
 
   def publish_link(post)

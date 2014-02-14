@@ -22,7 +22,8 @@
       - else
         = icon 'comments', post.comments_count
   .row.body
-    = sanitize(preview ? post.preview_html : post.body_html)
+    - cache post_cache_key(post, preview) do
+      = sanitize(preview ? post.preview_html : post.body_html)
   .row.links
     .col-md-2.comments
       - if preview
