@@ -70,8 +70,10 @@
   ul.subscriptions {
     li {
       list-style: none;
+      margin-bottom: 10px;
       @media(max-width: $small-device) {
         list-style: circle;
+        margin-bottom: 5px;
       }
     }
 
