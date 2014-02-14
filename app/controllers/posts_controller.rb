@@ -1,6 +1,4 @@
-class PostsController < ApplicationController
-  include CacheManagment
-  
+class PostsController < ApplicationController  
   before_action :authenticate_user!
 
   authorize_actions_for Post, actions: {:publish => :update}
@@ -57,7 +55,6 @@ class PostsController < ApplicationController
     @post.attributes = post_params
     @post.section = @section
     if @post.save
-      invalidate_post_caches(@post)
       flash[:notice] = I18n.t('posts.update.success') 
       redirect_to user_post_path(@post)
     else
@@ -82,7 +79,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize_action_for(@post)
     if @post.toggle
-      invalidate_post_caches(@post)
       if @post.published?
         User.with_role(:admin).each { |admin| PostMailer.new_post_created(@post, admin).deliver } 
       end

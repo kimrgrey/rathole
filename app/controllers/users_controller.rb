@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include CacheManagment
-
   skip_before_action :verify_authenticity_token, only: [:avatar]
 
   before_action :authenticate_user!
@@ -16,7 +14,6 @@ class UsersController < ApplicationController
   def update
     @user.attributes = user_params
     if @user.save
-      invalidate_user_cache(@user)
       flash[:notice] = I18n.t('users.update.success')
       redirect_to user_path
     else
