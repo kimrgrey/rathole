@@ -166,6 +166,7 @@ ru:
       tabs:
         profile: 'Профиль'
         settings: 'Настройки'
+        subscriptions: 'Подписки'
     update:
       success: 'Поздравляем! Ваш аккаунт был успешно обновлен!'
       failed: 'Извините, не удалось обновить аккаунт...'
@@ -204,6 +205,11 @@ ru:
       about: 'О себе'
     sections:
       new: 'Создать'
+    subscriptions:
+      header: 'Подписки'
+      descriptions: 'Вы подписаны на уведомления следующих постах.'
+      you_subscribed_on_post: 'Вы подписаны на пост'
+      of_author: 'автора'
     stickers:
       post_number_1: 'За смелость написать первый пост'
       post_number_10: 'За мудрость десяти пустов'

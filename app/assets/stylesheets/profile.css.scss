@@ -66,6 +66,25 @@
       display: none;
     }
   }
+
+  ul.subscriptions {
+    li {
+      list-style: none;
+      @media(max-width: $small-device) {
+        list-style: circle;
+      }
+    }
+
+    a {
+      margin: 0px 5px;
+    }
+
+    img {
+      @media(max-width: $small-device) {
+        display: none;
+      }
+    }
+  }
 }
 
 #avatar-upload-dialog {

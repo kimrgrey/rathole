@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @posts = @user.last_posts
     @sections = @user.sections
     @stickers = @user.stickers
+    @subscriptions = @user.subscriptions
   end
 
   def update

@@ -4,4 +4,6 @@ class Subscription < ActiveRecord::Base
   belongs_to :post
 
   validates :subscriber, presence: true
+
+  delegate :title, to: :post, prefix: true
 end
