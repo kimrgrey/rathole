@@ -2,11 +2,7 @@ module PostsHelper
   def tags(tags)
     icon 'tags', tags.map{|tag| content_tag :a, tag, href: public_tag_path(tag)}.join(', ')
   end
-
-  def post_cache_key(post, preview)
-    "post:#{post.id}:#{post.updated_at.to_i}:#{preview}"
-  end
-
+  
   def publish_link(post)
     options = {
       href: publish_user_post_path(post), 

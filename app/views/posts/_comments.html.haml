@@ -20,7 +20,8 @@
         .col-md-3.col-sm-4.hidden-xs
           = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
         .col-md-9.col-sm-8 
-          = sanitize(comment.body_html)
+          - cache comment_cache_key(comment) do
+            = sanitize(comment.body_html)
 
 
 - if user_signed_in?

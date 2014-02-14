@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = @posts.find(params[:id])
     authorize_action_for(@post)
     @comments = @post.comments
+    @comments = @comments.includes(:user)
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
   end

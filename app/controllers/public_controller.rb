@@ -17,6 +17,7 @@ class PublicController < ApplicationController
     @posts = @posts.published_only
     @post = @posts.find(params[:id])
     @comments = @post.comments
+    @comments = @comments.includes(:user)
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
   end
