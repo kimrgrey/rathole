@@ -9,7 +9,7 @@ class Section < ActiveRecord::Base
   
   has_many :posts, dependent: :restrict_with_error 
 
-  scope :in_order, -> { order('sections.name') }
+  scope :in_order, ->{ order('sections.name') }
 
   delegate :user_name, to: :user, prefix: false
 

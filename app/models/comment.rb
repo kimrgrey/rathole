@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :post, counter_cache: true
 
-  scope :in_order, -> { order('comments.created_at ASC') }
+  scope :in_order, ->{ order('comments.created_at ASC') }
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true

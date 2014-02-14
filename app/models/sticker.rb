@@ -8,5 +8,5 @@ class Sticker < ActiveRecord::Base
 
   has_and_belongs_to_many :users
 
-  scope :with_code, -> (code) { Sticker.where(code: code).first }
+  scope :with_code, ->(code){ Sticker.where(code: code).first }
 end
