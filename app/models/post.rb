@@ -33,7 +33,7 @@ class Post < ActiveRecord::Base
 
   before_validation :extract_preview_from_body!
 
-  before_create :subscribe_author!
+  after_create :subscribe_author!
 
   include Redcarpeted
 
@@ -74,8 +74,16 @@ class Post < ActiveRecord::Base
     subscriptions.find_or_create_by!(subscriber_id: user.id)
   end
 
+  def subscribe(user)
+    subscriptions.find_or_initialize_by(subscriber_id: user.id)
+  end
+
   def subscribe_author!
     subscribe!(user)
+  end
+
+  def subscribe_author
+    subscribe(user)
   end
 
   def subscribe_commentators!
