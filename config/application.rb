@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env)
 
-module Kgblogs
+module Rathole
   class Application < Rails::Application
     config.i18n.default_locale = :ru
     config.time_zone = 'Moscow'

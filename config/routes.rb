@@ -1,4 +1,4 @@
-Kgblogs::Application.routes.draw do
+Rathole::Application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letters" if Rails.env.development?
   
   devise_for :users, skip: [:registrations]

@@ -1,7 +1,5 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: kgblogs_development
+  database: rathole_development
   pool: 5
-  username: kgblogs
-  password: kgblogs
