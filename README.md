@@ -1,5 +1,5 @@
-Rathole: One more awesome blogging platform.
-===============================================
+Rathole
+==========
 
 ## Как запустить у себя?
 
