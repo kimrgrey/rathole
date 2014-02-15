@@ -6,5 +6,8 @@
 /public/uploads
 /public/images
 /public/images/emoji
+/config/deploy/*.rb
+/config/deploy.rb
 /config/secrets.yml
 /config/database.yml
+/config/newrelic.yml
