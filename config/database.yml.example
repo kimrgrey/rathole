@@ -3,3 +3,4 @@ development:
   encoding: unicode
   database: rathole_development
   pool: 5
+  user: rathole
