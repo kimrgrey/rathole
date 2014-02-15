@@ -2,7 +2,7 @@ lock '3.1.0'
 
 set :application, 'rathole'
 set :scm, :git
-set :repo_url, 'git@git.kimrgrey.org:kimrgrey/kgblogs.git'
+set :repo_url, 'https://github.com/kimrgrey/rathole.git'
 set :user, 'rathole'
 set :deploy_to, '/home/rathole/rathole'
 set :deploy_via, :remote_cache
