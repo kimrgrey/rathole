@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :stickers
 
-  scope :with_role, ->(role_name){ where("users.roles @> ARRAY[?]", role_name) }
+  scope :with_role, -> (role_name) { where("users.roles @> ARRAY[?]", role_name) }
+  scope :admins, -> { with_role(:admin) }
 
   mount_uploader :avatar, AvatarUploader
 

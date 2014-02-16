@@ -80,9 +80,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize_action_for(@post)
     if @post.toggle
-      if @post.published?
-        User.with_role(:admin).each { |admin| PostMailer.new_post_created(@post, admin).deliver } 
-      end
       flash[:notice] = I18n.t("posts.publish.#{@post.state}.success")
     else
       flash[:error] =  I18n.t("posts.publish.#{@post.state}.failed")

@@ -34,6 +34,7 @@ class Post < ActiveRecord::Base
   before_validation :extract_preview_from_body!
 
   after_create :subscribe_author!
+  after_save :fire_post_created_event!
 
   include Redcarpeted
 
@@ -89,6 +90,15 @@ class Post < ActiveRecord::Base
   def subscribe_commentators!
     comments.each do |comment|
       subscribe!(comment.user)
+    end
+  end
+
+  def fire_post_created_event!
+    if state_changed? && published?
+      event = Events::PostCreatedEvent.new
+      event.post = self
+      event.author = self.user
+      event.save!
     end
   end
 end

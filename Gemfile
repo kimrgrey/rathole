@@ -22,6 +22,7 @@ gem 'puma'
 gem 'gemoji'
 gem 'newrelic_rpm'
 gem 'whenever', :require => false
+gem 'delayed_job_active_record'
 
 group :doc do
   gem 'sdoc', require: false
