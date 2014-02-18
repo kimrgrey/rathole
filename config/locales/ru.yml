@@ -176,8 +176,16 @@ ru:
       submit: 'Сохранить'
     avatar:
       upload: 'Загрузить аватар'
+      subscribe: 'Подписаться'
+      unsubscribe: 'Отписаться'
       success: 'Поздравляем! Ваш аватар был успешно обновлен!'
       failed: 'Извините, не удалось обновить аватар...'
+    subscribe:
+      success: 'Поздравляем! Вы успешно подписаны на автора %{name}!'
+      failed: 'Извините, что-то пошло не так и нам не удалось оформить подписку...'
+    unsubscribe:
+      success: 'Поздравляем! Вы успешно отписались от автора %{name}!'
+      failed: 'Извините, что-то пошло не так и нам не удалось разорвать подписку...'
     avatar_upload_dialog:
       dialog_title: 'Загрузка аватара'
       body_title: 'Хотите загрузить аватар?'
@@ -208,8 +216,11 @@ ru:
     subscriptions:
       header: 'Подписки'
       descriptions: 'Вы подписаны на уведомления следующих постах.'
+    subscription_on_post:
       you_subscribed_on_post: 'Вы подписаны на пост'
       of_author: 'автора'
+    subscription_on_author:
+      you_subscribed_on_author: 'Вы подписаны на автора'
     stickers:
       post_number_1: 'За смелость написать первый пост'
       post_number_10: 'За мудрость десяти пустов'

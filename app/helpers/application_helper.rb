@@ -42,4 +42,12 @@ module ApplicationHelper
   def scroll_to_top
     content_tag :a, icon('arrow-circle-o-up'), href: '#scroll-to-top', id: 'scroll-to-top', title: I18n.t('links.back_to_top')
   end
+
+  def subscription_link(user)
+    if current_user.subscribed_on?(user)
+      link_to icon('unlink', t('users.avatar.unsubscribe')), unsubscribe_user_path(author_id: user.id), class: 'btn btn-success', method: 'post'
+    else
+      link_to icon('link', t('users.avatar.subscribe')), subscribe_user_path(author_id: user.id), class: 'btn btn-success', method: 'post'
+    end
+  end
 end

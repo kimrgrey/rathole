@@ -51,8 +51,43 @@ class User < ActiveRecord::Base
     write_attribute(:roles, Array(role_names).map(&:to_s)) 
   end
 
+  def subscribe_on_post(post)
+    subscriptions.find_or_create_by(post_id: post.id)
+  end
+
   def subscribe_on_post!(post)
     subscriptions.find_or_create_by!(post_id: post.id)
+  end
+
+  def subscribe_on_author(author)
+    subscriptions.find_or_create_by(author_id: author.id)
+  end
+
+  def unsubscribe_on_author(author)
+    subscription = subscriptions.find_by(author_id: author.id)
+    subscription.destroy if subscription.present?
+  end
+
+  def subscribe_on_author!(author)
+    subscriptions.find_or_create_by!(author_id: author.id)
+  end
+
+  def subscribed_on?(user_or_post)
+    if user_or_post.is_a?(User)
+      subscribed_on_user?(user_or_post)
+    elsif user_or_post.is_a?(User)
+      subscribed_on_post?(user_or_post)
+    else
+      false
+    end
+  end
+
+  def subscribed_on_user?(user)
+    subscriptions.find_by(author_id: user.id).present?
+  end
+
+  def subscribed_on_post?(post)
+    subscriptions.find_by(post_id: post.id).present?
   end
 
   private

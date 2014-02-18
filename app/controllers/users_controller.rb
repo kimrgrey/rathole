@@ -24,6 +24,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def subscribe
+    @author = User.find(params[:author_id])
+    if @user.subscribe_on_author(@author)
+      flash[:notice] = I18n.t('users.subscribe.success', name: @author.user_name)
+    else
+      flash[:error] = I18n.t('users.subscribe.failed')
+    end
+    redirect_to :back
+  end
+
+  def unsubscribe
+    @author = User.find(params[:author_id])
+    if @user.unsubscribe_on_author(@author)
+      flash[:notice] = I18n.t('users.unsubscribe.success', name: @author.user_name)
+    else
+      flash[:error] = I18n.t('users.unsubscribe.failed')
+    end
+    redirect_to :back
+  end
+
   def avatar
     input = request.body.read
     tmp = Tempfile.new('avatar')

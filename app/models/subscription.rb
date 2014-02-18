@@ -6,4 +6,12 @@ class Subscription < ActiveRecord::Base
   validates :subscriber, presence: true
 
   delegate :title, to: :post, prefix: true
+
+  def on_author?
+    author.present?
+  end
+
+  def on_post?
+    post.present?
+  end
 end

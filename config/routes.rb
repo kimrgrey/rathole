@@ -8,6 +8,8 @@ Rathole::Application.routes.draw do
   
   resource :user do
     post :avatar
+    post :subscribe
+    post :unsubscribe
     resources :posts do 
       member do
         post :publish

@@ -2,8 +2,7 @@
 %ul.subscriptions
   - subscriptions.each do |subscription|
     %li
-      = image_tag subscription.post.user_avatar_url(:small)
-      = t('.you_subscribed_on_post')
-      = link_to icon('book', subscription.post_title), public_post_path(subscription.post)
-      = t('.of_author')
-      = link_to icon('user', subscription.post.user_name), public_profile_path(subscription.post.user)
+      - if subscription.on_post?
+        = render partial: 'users/subscription_on_post', locals: {subscription: subscription}
+      - elsif subscription.on_author?
+        = render partial: 'users/subscription_on_author', locals: {subscription: subscription}
