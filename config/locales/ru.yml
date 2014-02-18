@@ -265,10 +265,16 @@ ru:
       text: 'Спешим вам сообщить, что %{name} оставил комментарий к посту "%{title}" на rathole.io. Возможно, вы захотите ответить? Вот, что он написал:'
       post: 'А вот ссылка на пост.'
       signature: 'С уважением, команда rathole.io.'
-    new_post_created:
+    notify_admin_about_post:
       subject: 'Новый пост на rathole.io'
       greeting: 'Уважаемый администратор %{name}!'
       text: 'Спешим вам сообщить, что %{name} только что опубликовал новый пост "%{title}" на rathole.io.'
+      post: 'А вот ссылка на этот пост.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_subscriber_about_post:
+      subject: 'Новый пост на rathole.io'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим вам сообщить, что автор %{name}, на которого вы подписаны, только что опубликовал новый пост "%{title}" на rathole.io.'
       post: 'А вот ссылка на этот пост.'
       signature: 'С уважением, команда rathole.io.'
   shared:

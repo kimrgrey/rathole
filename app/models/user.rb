@@ -90,6 +90,10 @@ class User < ActiveRecord::Base
     subscriptions.find_by(post_id: post.id).present?
   end
 
+  def subscribers
+    Subscription.where(author_id: self.id).map(&:subscriber)
+  end
+
   private
 
   def create_default_section

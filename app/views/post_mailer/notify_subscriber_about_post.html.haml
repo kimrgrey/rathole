@@ -1,0 +1,8 @@
+%p
+  %b= t(".greeting", name: @subscriber.user_name)
+%p
+  = t(".text", title: @post.title, name: @author.user_name)
+%p
+  = link_to t('.post'), public_post_url(@post)
+%p{style: 'text-align: right'}
+  = t('.signature')
