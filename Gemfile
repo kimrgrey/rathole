@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem 'puma'
 gem 'gemoji'
 gem 'newrelic_rpm'
+gem 'whenever', :require => false
 
 group :doc do
   gem 'sdoc', require: false

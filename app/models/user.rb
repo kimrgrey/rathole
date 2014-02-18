@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
 
   redcarpet :about
 
+  def assign_sticker!(sticker)
+    stickers << sticker unless stickers.include?(sticker) 
+    save!
+  end
 
   def last_posts(count = 5) 
     posts.published_only.order('posts.created_at DESC').limit(count)
