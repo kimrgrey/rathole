@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
+  include Authority::Abilities
   include Redcarpeted
-
+  
   redcarpet :body
 
   validates :body, presence: true

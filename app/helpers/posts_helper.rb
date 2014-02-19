@@ -23,7 +23,7 @@ module PostsHelper
   def public_comment_link(comment) 
     id = "comment-#{comment.id}"
     url = public_post_url(comment.post) + "##{id}"
-    link_to url, class: 'public-link', id: id do 
+    link_to url, class: 'public-link' do 
       icon 'link'
     end
   end

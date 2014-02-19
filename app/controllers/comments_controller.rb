@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_user
 
+  authorize_actions_for Comment
+
   def create  
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -12,7 +14,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    redirect_to :back
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    authorize_action_for(@comment)
+    @comment.destroy
   end
 
   private
