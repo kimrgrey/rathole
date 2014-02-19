@@ -6,6 +6,12 @@ module RoutesHelper
     url_for args
   end
 
+  def public_profile_url(user, options = nil)
+    options ||= {}
+    options = options.merge(only_path: false, protocol: 'http')
+    public_profile_path(user, options)
+  end
+
   def public_posts_path(user, options = nil)
     args = { controller: 'public', action: 'posts'}
     args = args.merge(user_name: user.user_name)

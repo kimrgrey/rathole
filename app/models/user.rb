@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   after_create :create_default_section
+  after_create :fire_user_created_event!
 
   include Redcarpeted
 
@@ -99,5 +100,11 @@ class User < ActiveRecord::Base
   def create_default_section
     section = sections.build(name: I18n.t('sections.default_name'))
     section.save!
+  end
+
+  def fire_user_created_event!
+    event = Events::UserCreatedEvent.new
+    event.user = self
+    event.save!
   end
 end

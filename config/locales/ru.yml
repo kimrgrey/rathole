@@ -279,6 +279,13 @@ ru:
       text: 'Спешим вам сообщить, что автор %{name}, на которого вы подписаны, только что опубликовал новый пост "%{title}" на rathole.io.'
       post: 'А вот ссылка на этот пост.'
       signature: 'С уважением, команда rathole.io.'
+  user_mailer:
+    notify_admin_about_registration:
+      subject: 'Новый пользователь на rathole.io'
+      greeting: 'Уважаемый администратор %{name}!'
+      text: 'Спешим вам сообщить, что %{name} только что создал аккаунт на rathole.io.'
+      user: 'А вот ссылка на его профиль.'
+      signature: 'С уважением, команда rathole.io.'
   shared:
     public_link_dialog:
       dialog_title: 'Публичная ссылка'
