@@ -13,7 +13,6 @@ Rathole::Application.routes.draw do
     resources :posts do 
       member do
         post :publish
-        post :comment
       end
     end
     resources :imports, only: [:index, :new, :create]
