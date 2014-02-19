@@ -8,15 +8,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = @user
-    respond_to do |format|
-      format.json do
-        if @comment.save
-          render 'created'
-        else
-          render 'failed'
-        end
-      end
-    end
+    @comment.save
   end
 
   def destroy

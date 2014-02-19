@@ -1,0 +1,17 @@
+- unless user_signed_in?
+  .user-links
+    = link_to t('nav.sign_in'), new_user_session_path, class: 'sign-in'  
+    = link_to t('nav.sign_up'), new_user_registration_path, class: 'sign-up'
+
+%h2
+  %a{id: 'comments', href: '#comments'}= t('.comments')
+
+#comments-list
+  - @comments.each do |comment|
+    = render partial: 'comments/comment', locals: { comment: comment }
+
+
+- if user_signed_in?
+  = render partial: 'comments/form', locals: { post: post }
+- else
+  = render partial: 'comments/greeting'

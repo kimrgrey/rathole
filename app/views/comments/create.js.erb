@@ -1,0 +1,4 @@
+<% if @comment.valid? %>
+  var comment = "<%= j render(partial: 'comments/comment', locals: { comment: @comment }) %>";
+  $('#comments-list').append(comment);
+<% end %>

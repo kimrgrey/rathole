@@ -1,0 +1,14 @@
+.comment
+  .row.header
+    .col-md-12
+      %span.badge.pull-right= icon 'calendar', l(comment.created_at)
+      %span.badge.pull-right
+        = public_comment_link(comment)
+      %span.badge.pull-right
+        %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
+  .row.body  
+    .col-md-3.col-sm-4.hidden-xs
+      = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
+    .col-md-9.col-sm-8 
+      - cache comment_cache_key(comment) do
+        = sanitize(comment.body_html)
