@@ -3,7 +3,7 @@ class Events::PostCreatedEvent < Events::Event
   hstore :properties, :author, 'User'
 
   after_create :send_mail_to_admins
-  after_create :send_mail_to_subscribers
+  after_create :send_mails_to_subscribers
   
   def send_mail_to_admins
     User.admins.each do |admin| 
@@ -11,7 +11,7 @@ class Events::PostCreatedEvent < Events::Event
     end
   end
 
-  def send_mail_to_subscribers
+  def send_mails_to_subscribers
     author.subscribers.each do |subscriber|
       PostMailer.notify_subscriber_about_post(post, subscriber).deliver unless subscriber.admin?
     end

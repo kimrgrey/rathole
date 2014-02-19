@@ -12,4 +12,19 @@ class Comment < ActiveRecord::Base
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
+
+  after_create :subscribe_user_on_post!
+  after_create :fire_comment_created_event!
+
+  def subscribe_user_on_post!
+    user.subscribe_on_post!(post)
+  end
+
+  def fire_comment_created_event!
+    event = Events::CommentCreatedEvent.new
+    event.comment = self
+    event.author = user
+    event.post = post
+    event.save!
+  end
 end
