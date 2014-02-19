@@ -1,6 +1,6 @@
 class Events::PostCreatedEvent < Events::Event
-  hstore :properties, :post, 'Post'
-  hstore :properties, :author, 'User'
+  hstore :properties, :post
+  hstore :properties, :author, class_name: 'User'
 
   after_create :send_mail_to_admins
   after_create :send_mails_to_subscribers

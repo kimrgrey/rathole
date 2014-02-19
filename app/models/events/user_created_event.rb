@@ -1,5 +1,5 @@
 class Events::UserCreatedEvent < Events::Event
-  hstore :properties, :user, 'User'
+  hstore :properties, :user
 
   after_create :send_mails_to_admins
 

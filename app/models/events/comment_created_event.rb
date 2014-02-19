@@ -1,7 +1,7 @@
 class Events::CommentCreatedEvent < Events::Event
-  hstore :properties, :comment, 'Comment'
-  hstore :properties, :author, 'User'
-  hstore :properties, :post, 'Post'
+  hstore :properties, :comment
+  hstore :properties, :author, class_name: 'User'
+  hstore :properties, :post
 
   after_create :send_mails_to_subscribers
 
