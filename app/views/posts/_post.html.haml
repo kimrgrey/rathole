@@ -7,6 +7,7 @@
           = yield(:actions)
         - else
           = render partial: 'posts/actions', locals: { post: post }
+    - if user_signed_in? && current_user.can_update?(post) 
       %a{href: user_post_path(post)}= post.title
     - else
       %a{href: public_post_path(post)}= post.title
