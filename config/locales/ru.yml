@@ -381,6 +381,11 @@ ru:
           total: 'Всего пользователей: %{count}'
         posts:
           total: 'Всего постов: %{count}'
+      statistics:
+        events_count: 'События'
+        posts_count: 'Посты'
+        users_count: 'Пользователи'
+        comments_count: 'Комментарии'
     users:
       show:
         page_header: 'Профиль пользователя'

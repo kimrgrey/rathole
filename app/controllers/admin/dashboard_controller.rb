@@ -10,6 +10,20 @@ class Admin::DashboardController < Admin::AdminController
     @posts = @posts.page(params[:page]).per(params[:per])
   end
 
+  def statistics
+    records = StatisticalRecord.order(:date)
+    events = records.map { |event| [event.date.to_time.to_i * 1000, event.events_count] }
+    users = records.map { |event| [event.date.to_time.to_i * 1000, event.users_count] }
+    posts = records.map { |event| [event.date.to_time.to_i * 1000, event.posts_count] }
+    comments = records.map { |event| [event.date.to_time.to_i * 1000, event.comments_count] }
+    @data = [
+      { color: 'red', name: 'events_count', values: events },
+      { color: 'blue', name: 'posts_count', values: posts },
+      { color: 'yellow', name: 'users_count', values: users },
+      { color: 'purple', name: 'comments_count', values: comments }
+    ]
+  end
+
   private
 
   def load_user

@@ -27,6 +27,7 @@ Rathole::Application.routes.draw do
         post :show_on_main
       end
     end
+    get '/statistics', to: 'dashboard#statistics'
     root to: 'dashboard#home'
   end
 

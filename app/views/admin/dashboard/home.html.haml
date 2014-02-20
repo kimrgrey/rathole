@@ -5,7 +5,7 @@
   = page_header
   = clip_and_clamp
   .dashboard
-    
+    #statistics-flot-placeholder{data: {url: admin_statistics_url}}
     .row
       %strong= t('.users.total', count: User.count)
       = render partial: 'admin/users/table', locals: { users: @users }
