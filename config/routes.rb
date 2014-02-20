@@ -19,6 +19,17 @@ Rathole::Application.routes.draw do
     resources :sections, except: [:index, :show]
   end
 
+  namespace :admin do 
+    resources :users, only: [:show, :destroy]
+    resources :posts, only: [:show, :destroy] do
+      member do 
+        post :hide_from_main
+        post :show_on_main
+      end
+    end
+    root to: 'dashboard#home'
+  end
+
   post '/posts/:post_id/comment', to: 'comments#create', as: 'create_comment'
   post '/posts/:post_id/comment/:id/destroy', to: 'comments#destroy', as: 'destroy_comment'
 

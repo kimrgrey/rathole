@@ -1,0 +1,7 @@
+- if current_user.can_update?(post)
+  = edit_link(post)
+  = publish_link(post)
+  = public_link(post) if post.published?
+
+- if current_user.admin?
+  = post_on_main_link(post) if post.published?

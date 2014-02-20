@@ -1,0 +1,14 @@
+.admin {
+  .dashboard {
+    margin-top: 45px;
+
+    div.pagination ul.pagination {
+      border: none;
+      box-shadow: none;
+    }
+
+    tbody tr {
+      cursor: pointer;
+    }
+  }
+}

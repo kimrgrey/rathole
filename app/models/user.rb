@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :user_name, uniqueness: true, format: {with: /\A[a-zA-Z0-9_-]{3,100}$\Z/}, user_name: true
 
   has_many :posts
-  has_many :sections
+  has_many :sections, dependent: :destroy
   has_many :comments
   has_many :imports
   has_many :pictures

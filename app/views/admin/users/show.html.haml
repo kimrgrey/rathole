@@ -1,0 +1,13 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: current_user }
+
+.profile.container
+  = clip_and_clamp
+  = page_header
+
+  = render partial: 'admin/users/avatar', locals: { user: @user }
+  = render partial: 'users/info', locals: { user: @user }
+  = render partial: 'users/sections', locals: { user: @user, editable: false }
+  = render partial: 'users/stickers', locals: { stickers: @stickers }
+  - if @posts.any?
+    = render partial: 'posts/list', locals: { posts: @posts, preview: true }

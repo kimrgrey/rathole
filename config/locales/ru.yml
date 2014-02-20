@@ -319,6 +319,11 @@ ru:
       of: 'Разделы %{user_name}'
     sign_in: 'Вход на сайт'
     sign_up: 'Регистрация'
+    admin:
+      title: 'Админка'
+      dashboard: 'Панель управления'
+      users: 'Пользователи'
+      posts: 'Посты'
   devise:
     sessions:
       new: 
@@ -368,16 +373,46 @@ ru:
         confirmation_instructions: "Не получили инструкции по активации аккаунта?"
         unlock_instructions: "Не получили инструкции по разблокировке аккаунта?"
         sign_in_with: "Войти при помощи %{provider}"
+  admin:
+    dashboard:
+      home:
+        page_header: 'Панель управления'
+        users:
+          total: 'Всего пользователей: %{count}'
+        posts:
+          total: 'Всего постов: %{count}'
+    users:
+      show:
+        page_header: 'Профиль пользователя'
+      avatar:
+        destroy: 'Удалить'
+      destroy:
+        success: 'Готово! Пользователь был успешно удален с сайта.'
+        failed: 'Извините, не удалось удалить пользователя.'
+    posts:
+      destroy:
+        success: 'Готово! Пост был успешно удален с сайта.'
+        failed: 'Извините, не удалось удалить пост.'
+      show_on_main:
+        success: 'Готово! Пост был успешно показан на главной странице сайта.'
+        failed: 'Извините, не удалось показать пост на главной странице сайта.'
+      hide_from_main:
+        success: 'Готово! Пост был успешно удален с главной страницы сайта.'
+        failed: 'Извините, не удалось удалить пост с главной страницы сайта.'
   activerecord:
     attributes:
       post:
+        id: 'Номер'
         title: 'Заголовок'
         body: 'Текст'
         body_html: 'Текст'
         section: 'Тематика'
         section_id: 'Тематика'
         tag_list: 'Теги'
+        created_at: 'Дата публикации'
+        user_name: 'Автор'
       user:
+        id: 'Номер'
         email: 'Электронный адрес'
         user_name: 'Логин'
         about: 'О себе'
@@ -386,6 +421,7 @@ ru:
         remember_me: 'Запомнить меня'
         confirmation_token: 'Токен для подвтерждения'
         reset_password_token: 'Токен для сброса пароля'
+        created_at: 'Дата регистрации'
       section:
         name: 'Название'
         posts_count: 'Постов'

@@ -1,0 +1,14 @@
+%table.table.table-bordered.table-hover
+  %thead
+    %tr
+      %th= User.human_attribute_name(:id)
+      %th= User.human_attribute_name(:user_name)
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:created_at)
+  %tbody
+    - users.each do |user|
+      %tr{data: {url: admin_user_url(user)}}
+        %td= user.id
+        %td= user.user_name
+        %td= user.email
+        %td= l user.created_at

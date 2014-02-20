@@ -34,4 +34,12 @@ module PostsHelper
       Emoji.names.include?(name) ? '' : name
     end
   end
+
+  def post_on_main_link(post)
+    if post.visible_on_main?
+      link_to icon('eye-slash'), hide_from_main_admin_post_path(post), method: 'post'
+    else
+      link_to icon('eye'), show_on_main_admin_post_path(post), method: 'post'
+    end
+  end
 end

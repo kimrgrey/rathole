@@ -1,0 +1,14 @@
+%table.table.table-bordered.table-hover
+  %thead
+    %tr
+      %th= Post.human_attribute_name(:id)
+      %th= Post.human_attribute_name(:title)
+      %th= Post.human_attribute_name(:user_name)
+      %th= Post.human_attribute_name(:created_at)
+  %tbody
+    - posts.each do |post|
+      %tr{data: {url: admin_post_url(post)}}
+        %td= post.id
+        %td= post.title
+        %td= post.user_name
+        %td= l post.created_at

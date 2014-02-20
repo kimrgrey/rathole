@@ -1,0 +1,4 @@
+.row.avatar
+  = image_tag user.avatar_url(:thumb), class: 'avatar'
+  .actions  
+    = link_to icon('times', t('.destroy')), admin_user_path(user), class: 'btn btn-danger', method: 'delete'

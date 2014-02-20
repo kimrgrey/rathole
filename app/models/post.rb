@@ -16,9 +16,9 @@ class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :section, counter_cache: true
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :pictures
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
@@ -64,6 +64,16 @@ class Post < ActiveRecord::Base
     end
     self.save
   end
+
+  def show_on_main
+    update(visible_on_main: true)
+  end
+
+  def hide_from_main
+    update(visible_on_main: false)
+  end
+
+  
 
   def extract_preview_from_body!(force = false)
     if force || body_changed?

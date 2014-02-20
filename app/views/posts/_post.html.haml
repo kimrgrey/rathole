@@ -1,11 +1,12 @@
 .container.post
   = clip_and_clamp
   %h2
-    - if user_signed_in? && current_user.can_update?(post)
+    - if user_signed_in?
       .actions
-        = edit_link(post)
-        = publish_link(post)
-        = public_link(post) if post.published?
+        - if content_for?(:actions)
+          = yield(:actions)
+        - else
+          = render partial: 'posts/actions', locals: { post: post }
       %a{href: user_post_path(post)}= post.title
     - else
       %a{href: public_post_path(post)}= post.title

@@ -1,0 +1,19 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: @user }
+
+.admin.container
+  = page_header
+  = clip_and_clamp
+  .dashboard
+    
+    .row
+      %strong= t('.users.total', count: User.count)
+      = render partial: 'admin/users/table', locals: { users: @users }
+      = paginate @users
+    
+    %hr
+    
+    .row
+      %strong= t('.posts.total', count: Post.count)
+      = render partial: 'admin/posts/table', locals: { posts: @posts }
+      = paginate @posts
