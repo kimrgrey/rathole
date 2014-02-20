@@ -73,8 +73,6 @@ class Post < ActiveRecord::Base
     update(visible_on_main: false)
   end
 
-  
-
   def extract_preview_from_body!(force = false)
     if force || body_changed?
       self.preview = extract_preview(Post::DEFAULT_PREVIEW_SIZE)

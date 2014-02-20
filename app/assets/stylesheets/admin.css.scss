@@ -10,5 +10,9 @@
     tbody tr {
       cursor: pointer;
     }
+
+    tbody tr.info td {
+      background-color: #D9EDF7;
+    }
   }
 }
