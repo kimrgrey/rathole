@@ -29,7 +29,7 @@ group :doc do
 end
 
 group :development do 
-  gem 'spring', '~> 1.1'
+  gem 'spring', github: 'rails/spring'
   gem 'therubyracer', platforms: :ruby
   gem 'letter_opener_web'
   gem 'hirb-unicode'
