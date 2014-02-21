@@ -25,6 +25,7 @@ gem 'whenever', :require => false
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'delayed-web', github: 'thebestday/delayed-web'
+gem 'sitemap_generator'
 
 group :doc do
   gem 'sdoc', require: false
