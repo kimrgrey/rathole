@@ -1,9 +1,9 @@
 json.values do
-  json.array!(@data) do |json, item|
+  json.array!(@data) do |item|
     json.color item[:color]
     json.label I18n.t("admin.dashboard.statistics.#{item[:name]}")
     json.data do
-      json.array!(item[:values]) do |json, value|
+      json.array!(item[:values]) do |value|
         json.array!(value)
       end
     end
