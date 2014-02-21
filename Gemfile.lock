@@ -3,11 +3,14 @@ GIT
   revision: cefc00db7f6bb38d18415ec31c0a9bdd13239811
   specs:
     spring (1.1.1)
+
+GIT
   remote: git://github.com/thebestday/delayed-web.git
   revision: 0d54a3c2616409c07f742f8449ece904a515e7c4
   specs:
     delayed-web (0.0.1)
       rails (>= 3.2.13, < 4.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
