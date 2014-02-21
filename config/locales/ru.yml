@@ -324,6 +324,7 @@ ru:
       dashboard: 'Панель управления'
       users: 'Пользователи'
       posts: 'Посты'
+      jobs: 'Очередь задач'
   devise:
     sessions:
       new: 

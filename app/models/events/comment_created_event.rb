@@ -7,7 +7,7 @@ class Events::CommentCreatedEvent < Events::Event
 
   def send_mails_to_subscribers
     post.subscriptions.each do |subscription|
-      PostMailer.notify_subscriber_about_comment(subscription.subscriber, comment).deliver
+      PostMailer.delay.notify_subscriber_about_comment(subscription.subscriber, comment)
     end
   end
 end

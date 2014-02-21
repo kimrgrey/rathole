@@ -22,7 +22,9 @@ gem 'puma'
 gem 'gemoji'
 gem 'newrelic_rpm'
 gem 'whenever', :require => false
+gem 'daemons'
 gem 'delayed_job_active_record'
+gem 'delayed-web', github: 'thebestday/delayed-web'
 
 group :doc do
   gem 'sdoc', require: false

@@ -5,7 +5,7 @@ class Events::UserCreatedEvent < Events::Event
 
   def send_mails_to_admins
     User.admins.each do |admin| 
-      UserMailer.notify_admin_about_registration(user, admin).deliver
+      UserMailer.delay.notify_admin_about_registration(user, admin)
     end
   end
 end

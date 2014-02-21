@@ -3,7 +3,11 @@ GIT
   revision: cefc00db7f6bb38d18415ec31c0a9bdd13239811
   specs:
     spring (1.1.1)
-
+  remote: git://github.com/thebestday/delayed-web.git
+  revision: 0d54a3c2616409c07f742f8449ece904a515e7c4
+  specs:
+    delayed-web (0.0.1)
+      rails (>= 3.2.13, < 4.1.0)
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,6 +73,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    daemons (1.1.9)
     delayed_job (4.0.0)
       activesupport (>= 3.0, < 4.1)
     delayed_job_active_record (4.0.0)
@@ -217,6 +222,8 @@ DEPENDENCIES
   capistrano3-puma
   carrierwave
   coffee-rails (~> 4.0.0)
+  daemons
+  delayed-web!
   delayed_job_active_record
   devise
   font-awesome-rails

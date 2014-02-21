@@ -19,16 +19,23 @@ Rathole::Application.routes.draw do
     resources :sections, except: [:index, :show]
   end
 
-  namespace :admin do 
-    resources :users, only: [:show, :destroy]
-    resources :posts, only: [:show, :destroy] do
-      member do 
-        post :hide_from_main
-        post :show_on_main
+  authenticated :user, -> (user) { user.admin? } do
+    mount Delayed::Web::Engine, at: '/jobs'
+    
+    namespace :admin do 
+      resources :users, only: [:show, :destroy]
+      resources :posts, only: [:show, :destroy] do
+        member do 
+          post :hide_from_main
+          post :show_on_main
+        end
       end
+      
+      get '/jobs', to: redirect('/jobs'), as: 'jobs'
+      get '/statistics', to: 'dashboard#statistics'
+      
+      root to: 'dashboard#home'
     end
-    get '/statistics', to: 'dashboard#statistics'
-    root to: 'dashboard#home'
   end
 
   post '/posts/:post_id/comment', to: 'comments#create', as: 'create_comment'

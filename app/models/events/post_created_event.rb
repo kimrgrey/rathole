@@ -7,13 +7,13 @@ class Events::PostCreatedEvent < Events::Event
   
   def send_mail_to_admins
     User.admins.each do |admin| 
-      PostMailer.notify_admin_about_post(post, admin).deliver if admin != author
+      PostMailer.delay.notify_admin_about_post(post, admin) if admin != author
     end
   end
 
   def send_mails_to_subscribers
     author.subscribers.each do |subscriber|
-      PostMailer.notify_subscriber_about_post(post, subscriber).deliver unless subscriber.admin?
+      PostMailer.delay.notify_subscriber_about_post(post, subscriber) unless subscriber.admin?
     end
   end
 end
