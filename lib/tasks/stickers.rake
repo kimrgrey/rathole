@@ -38,6 +38,7 @@ namespace :stickers do
     sticker = Sticker.with_code(Sticker::BEST_AUTHOR)
     if sticker
       max_posts_count = User.maximum(:posts_count) || 0
+      User.joins(:stickers).where('users.posts_count < ?', max_posts_count).where(stickers: {code: Sticker::BEST_AUTHOR}).find_each { |user| user.remove_sticker!(sticker) }
       User.where(posts_count: max_posts_count).find_each { |user| user.assign_sticker!(sticker) }
     end
   end
@@ -48,6 +49,7 @@ namespace :stickers do
     sticker = Sticker.with_code(Sticker::BEST_COMMENTATOR)
     if sticker
       max_comments_count = User.maximum(:comments_count) || 0
+      User.joins(:stickers).where('users.comments_count < ?', max_comments_count).where(stickers: {code: Sticker::BEST_COMMENTATOR}).find_each { |user| user.remove_sticker!(sticker) }
       User.where(comments_count: max_comments_count).find_each { |user| user.assign_sticker!(sticker) }
     end
   end

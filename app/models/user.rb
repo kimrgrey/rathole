@@ -33,8 +33,17 @@ class User < ActiveRecord::Base
   redcarpet :about
 
   def assign_sticker!(sticker)
-    stickers << sticker unless stickers.include?(sticker) 
-    save!
+    unless stickers.include?(sticker) 
+      stickers << sticker 
+      save!
+    end
+  end
+
+  def remove_sticker!(sticker)
+    if stickers.include?(sticker)
+      stickers.delete(sticker) 
+      save!
+    end
   end
 
   def last_posts(count = 5) 
