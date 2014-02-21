@@ -57,6 +57,7 @@ namespace :rathole do
 
   desc "Collects statistical data"
   task collect_statistic: [:environment] do 
-    StatisticalRecord.collect_and_save! if StatisticalRecord.find_by(date: Date.today).nil?
+    date = Date.today - 1.day
+    StatisticalRecord.collect_and_save!(date) if StatisticalRecord.find_by(date: date).nil?
   end
 end
