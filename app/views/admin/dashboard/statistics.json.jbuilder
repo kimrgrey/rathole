@@ -24,4 +24,9 @@ json.options do
       json.show true
     end
   end
+
+  json.legend do 
+    json.show true
+    json.position "nw"
+  end
 end
