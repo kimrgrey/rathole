@@ -6,7 +6,7 @@ class StatisticalRecord < ActiveRecord::Base
   validates :events_count, presence: true
 
   def self.collect_and_save!(date = nil)
-    date ||= Time.zone.today - 1.day
+    date ||= Time.zone.today
     record = StatisticalRecord.new
     record.users_count = User.where('users.created_at::date = ?', date).count
     record.posts_count = Post.where('posts.created_at::date = ?', date).count
