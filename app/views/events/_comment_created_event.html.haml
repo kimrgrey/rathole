@@ -1,0 +1,10 @@
+.event
+  = image_tag event.author.avatar_url(:small)
+  .text
+    = icon 'clock-o', l(event.updated_at) + ':'
+    = t('.user')
+    = link_to icon('user', event.author.user_name), public_profile_path(event.author)
+    = t('.comment_on_post')
+    = link_to icon('book', event.post.title), public_post_path(event.post)
+    
+    

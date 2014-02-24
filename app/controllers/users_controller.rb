@@ -44,6 +44,11 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def events
+    @events = @user.events(Time.now - 1.week, Time.now)
+    @events = @events.order('events.updated_at DESC')
+  end
+
   def avatar
     input = request.body.read
     tmp = Tempfile.new('avatar')

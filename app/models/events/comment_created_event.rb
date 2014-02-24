@@ -3,11 +3,15 @@ class Events::CommentCreatedEvent < Events::Event
   hstore :properties, :author, class_name: 'User'
   hstore :properties, :post
 
-  after_create :send_mails_to_subscribers
+  after_create :deliver_event_to_subscribers
 
-  def send_mails_to_subscribers
+  def deliver_event_to_subscribers
     post.subscriptions.each do |subscription|
-      PostMailer.delay.notify_subscriber_about_comment(subscription.subscriber, comment)
+      subscriber = subscription.subscriber
+      if subscriber != author
+        PostMailer.delay.notify_subscriber_about_comment(subscriber, comment)
+        subscriber.add_event(self)
+      end
     end
   end
 end

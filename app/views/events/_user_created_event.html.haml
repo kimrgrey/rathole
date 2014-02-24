@@ -1,0 +1,8 @@
+.event
+  = image_tag event.user.avatar_url(:small)
+  .text
+    = icon 'clock-o', l(event.updated_at) + ':'
+    = t('.user')
+    = link_to icon('user', event.user.user_name), public_profile_path(event.user)
+    = t('.created_account')
+    

@@ -1,0 +1,30 @@
+@import 'commons';
+
+#events {
+  min-width: 400px;
+
+  #events-list {
+    padding: 45px 0px;
+    background: image-url('timeline.png') 25px 0 repeat-y;
+
+    .event {
+      min-width: 350px;
+
+      img {
+        float: left;
+        margin-bottom: 25px;
+        margin-right: 10px;
+      }
+
+      i {
+        margin-left: 5px;
+      }
+
+      .text {
+        @media(min-width: $small-device) {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}

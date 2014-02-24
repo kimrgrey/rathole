@@ -26,6 +26,8 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'delayed-web', github: 'thebestday/delayed-web'
 gem 'sitemap_generator'
+gem 'redis', '~> 3.0.1'
+gem 'hiredis', '~> 0.4.5'
 
 group :doc do
   gem 'sdoc', require: false

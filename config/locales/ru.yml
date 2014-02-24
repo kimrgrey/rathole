@@ -185,7 +185,10 @@ ru:
       instructions: 'Чтобы загрузить аватар, выберите изображение с вашего компьютера и нажмите "Загрузить"'
       upload: 'Загрузить'
       close: 'Закрыть'
+    events:
+      page_header: 'Последние события'
     my:
+      events: 'События'
       title: 'Мой блог'
       new_post: 'Новый пост'
       all_posts: 'Все мои посты'
@@ -223,6 +226,16 @@ ru:
       best_corrector: 'Самый злостый корректор на сайте'
     about:
       signature: 'Пользователь %{name} о себе'
+  events:
+    comment_created_event:
+      user: 'Пользователь'
+      comment_on_post: 'прокомментировал пост'
+    post_created_event:
+      user: 'Пользователь'
+      published_post: 'опубликовал пост'
+    user_created_event:
+      user: 'Пользователь'
+      created_account: 'зарегистрировался на сайте'
   pictures:
     create:
       success: 'Поздравляем! Файл был успешно загружен на сервер!'

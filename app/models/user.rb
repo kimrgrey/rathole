@@ -105,6 +105,18 @@ class User < ActiveRecord::Base
     Subscription.where(author_id: self.id).map(&:subscriber)
   end
 
+  def redis_events_key
+    "users:#{id}:events"
+  end
+
+  def add_event(event)
+    $redis.zadd(redis_events_key, event.updated_at.to_i, event.id)
+  end
+
+  def events(from, to)
+    Events::Event.where id: $redis.zrangebyscore(redis_events_key, from.to_i, to.to_i)
+  end
+
   private
 
   def create_default_section

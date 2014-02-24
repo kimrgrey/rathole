@@ -7,6 +7,7 @@ Rathole::Application.routes.draw do
   end
   
   resource :user do
+    get :events
     post :avatar
     post :subscribe
     post :unsubscribe
