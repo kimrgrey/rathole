@@ -7,6 +7,8 @@ class Subscription < ActiveRecord::Base
 
   delegate :title, to: :post, prefix: true
 
+  scope :in_order, -> { order('subscriptions.updated_at DESC') }
+
   def on_author?
     author.present?
   end

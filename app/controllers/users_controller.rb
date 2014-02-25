@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @sections = @user.sections
     @stickers = @user.stickers
     @subscriptions = @user.subscriptions
+    @subscriptions = @subscriptions.in_order
   end
 
   def update
