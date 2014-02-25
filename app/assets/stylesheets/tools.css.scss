@@ -1,0 +1,50 @@
+@import 'commons';
+
+$extra-small-device: 560px;
+$small-device: 780px;
+$medium-device: 995px;
+$large-device: 1400px;
+
+#tools {
+  position: fixed;
+  right: 0px;
+  top: 35%;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #E9E9E9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.75);
+  
+  hr {
+    margin: 5px 0px;
+  }
+
+  @media(max-width: $extra-small-device) {
+    display: none;
+  }
+
+  @media(min-width: $extra-small-device) {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+
+  @media(min-width: $small-device) {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+
+  @media(min-width: $medium-device) {
+    font-size: 25px;
+    padding: 5px 15px;
+    hr {
+      margin: 10px 0px;
+    }
+  }
+
+  @media(min-width: $large-device) {
+    font-size: 30px;
+    padding: 5px 15px;
+  }
+
+  a {
+    display: block;
+  }
+}

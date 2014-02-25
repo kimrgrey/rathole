@@ -16,6 +16,6 @@
     %section#content
       = render partial: 'shared/flash'
       = yield
-  
+  = render partial: 'users/tools', locals: { user: current_user } if user_signed_in?
   = scroll_to_top
   = render partial: 'shared/footer'
