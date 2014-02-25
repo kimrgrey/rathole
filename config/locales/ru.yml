@@ -402,6 +402,9 @@ ru:
     dashboard:
       home:
         page_header: 'Панель управления'
+        tabs:
+          users: 'Пользователи'
+          posts: 'Посты'
         users:
           total: 'Всего пользователей: %{count}'
         posts:

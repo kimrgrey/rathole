@@ -6,14 +6,18 @@
   = clip_and_clamp
   .dashboard
     #statistics-flot-placeholder{data: {url: admin_statistics_url}}
-    .row
-      %strong= t('.users.total', count: User.count)
-      = render partial: 'admin/users/table', locals: { users: @users }
-      = paginate @users
-    
-    %hr
-    
-    .row
-      %strong= t('.posts.total', count: Post.count)
-      = render partial: 'admin/posts/table', locals: { posts: @posts }
-      = paginate @posts
+    %ul.nav.nav-tabs
+      %li{class: ('active' if params[:tab].nil? || params[:tab] == 'users')}
+        %a{href: '#posts', data: {toggle: 'tab'}}= t('.tabs.posts')
+      %li{class: ('active' if params[:tab] == 'posts')}
+        %a{href: '#users', data: {toggle: 'tab'}}= t('.tabs.users')
+    .tab-content
+      #posts.tab-pane{class: ('active' if params[:tab].nil? || params[:tab] == 'users')}
+        %strong= t('.users.total', count: User.count)
+        = render partial: 'admin/users/table', locals: { users: @users }
+        = paginate @users, param_name: 'users_page', params: {tab: 'users'}
+      #users.tab-pane{class: ('active' if params[:tab] == 'posts')}
+        %strong= t('.posts.total', count: Post.count)
+        = render partial: 'admin/posts/table', locals: { posts: @posts }
+        = paginate @posts, param_name: 'posts_page', params: {tab: 'posts'}
+      
