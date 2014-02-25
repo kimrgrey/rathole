@@ -9,4 +9,8 @@ class Events::UserCreatedEvent < Events::Event
       admin.add_event(self)
     end
   end
+
+  def export_to_redis
+    User.admins.each { |admin|  admin.add_event(self) }
+  end
 end

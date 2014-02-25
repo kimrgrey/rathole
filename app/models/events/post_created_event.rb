@@ -22,4 +22,9 @@ class Events::PostCreatedEvent < Events::Event
       end
     end
   end
+
+  def export_to_redis
+    User.admins.each { |admin| admin.add_event(self) if admin != author }
+    author.subscribers.each { |subscriber| subscriber.add_event(self) unless subscriber.admin? }
+  end
 end

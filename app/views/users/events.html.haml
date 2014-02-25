@@ -2,8 +2,11 @@
   = render partial: 'users/my', locals: { user: @user }
   
 #events.container
-  = page_header
-  #events-list
-    - @events.each do |event|
-      = render partial: event.type.underscore, locals: { event: event }
-      .clearfix
+  - if @events.any?
+    = page_header
+    #events-list
+      - @events.each do |event|
+        = render partial: event.type.underscore, locals: { event: event }
+        .clearfix
+  - else
+    = render partial: 'events/greeting'

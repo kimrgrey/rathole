@@ -3,6 +3,10 @@
 #events {
   min-width: 400px;
 
+  .jumbotron {
+    margin-top: 40px;
+  }
+
   #events-list {
     padding: 45px 0px;
     background: image-url('timeline.png') 25px 0 repeat-y;

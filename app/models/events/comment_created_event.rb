@@ -14,4 +14,8 @@ class Events::CommentCreatedEvent < Events::Event
       end
     end
   end
+
+  def export_to_redis
+    post.subscriptions.each { |subscription| subscription.subscriber.add_event(self) if subscription.subscriber != author }
+  end
 end
