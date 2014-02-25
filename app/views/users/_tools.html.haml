@@ -1,6 +1,7 @@
 #tools
   %a{href: new_user_post_path, title: t('.post')}= icon 'pencil'
   %hr
+  %a{href: root_path, title: t('.home')}= icon 'home'
   %a{href: events_user_path, title: t('.globe')}= icon 'globe'
   - if user.admin?
     %a{href: admin_root_path, title: t('.dashboard')}= icon 'dashboard'
