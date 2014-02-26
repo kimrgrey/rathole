@@ -40,6 +40,8 @@ Rathole::Application.routes.draw do
     end
   end
 
+  resources :bugs
+
   post '/posts/:post_id/comment', to: 'comments#create', as: 'create_comment'
   post '/posts/:post_id/comment/:id/destroy', to: 'comments#destroy', as: 'destroy_comment'
 

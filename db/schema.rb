@@ -11,11 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221130843) do
+ActiveRecord::Schema.define(version: 20140226115920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "bugs", force: true do |t|
+    t.integer "reporter_id",              null: false
+    t.integer "post_id",                  null: false
+    t.integer "author_id",                null: false
+    t.integer "state",       default: 0
+    t.text    "note"
+    t.text    "note_html"
+    t.text    "tags",        default: [],              array: true
+  end
+
+  add_index "bugs", ["author_id"], name: "index_bugs_on_author_id", using: :btree
+  add_index "bugs", ["post_id"], name: "index_bugs_on_post_id", using: :btree
+  add_index "bugs", ["reporter_id"], name: "index_bugs_on_reporter_id", using: :btree
+  add_index "bugs", ["tags"], name: "index_bugs_on_tags", using: :gin
 
   create_table "comments", force: true do |t|
     t.text     "body"
