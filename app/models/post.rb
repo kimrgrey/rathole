@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   delegate :avatar_url, to: :user, prefix: true
   delegate :name, to: :section, prefix: true
 
-  enum state: [ :draft, :published ]
+  enum state: [ :draft, :published, :hidden ]
   
   scope :in_order, ->{ order('posts.created_at DESC') }
   scope :draft_only, ->{ where('posts.state = ?', Post.states[:draft]) }
@@ -34,7 +34,6 @@ class Post < ActiveRecord::Base
   before_validation :extract_preview_from_body!
 
   after_create :subscribe_author!
-  after_save :fire_post_created_event!
 
   include Redcarpeted
 
@@ -57,12 +56,15 @@ class Post < ActiveRecord::Base
   end
 
   def toggle
-    if self.draft?
+    if draft?
       self.state = :published
-    else
-      self.state = :draft
+      fire_post_created_event!
+    elsif published?
+      self.state = :hidden
+    elsif hidden?
+      self.state = :published
     end
-    self.save
+    save
   end
 
   def show_on_main
@@ -102,7 +104,7 @@ class Post < ActiveRecord::Base
   end
 
   def fire_post_created_event!
-    if state_changed? && published?
+    if published?
       event = Events::PostCreatedEvent.new
       event.post = self
       event.author = self.user
