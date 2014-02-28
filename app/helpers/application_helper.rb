@@ -43,11 +43,11 @@ module ApplicationHelper
     content_tag :a, icon('arrow-circle-o-up'), href: '#scroll-to-top', id: 'scroll-to-top', title: I18n.t('links.back_to_top')
   end
 
-  def subscription_link(user)
+  def user_subscription_link(user)
     if current_user.subscribed_on?(user)
-      link_to icon('unlink', t('users.avatar.unsubscribe')), unsubscribe_user_path(author_id: user.id), class: 'btn btn-success', method: 'post'
+      link_to icon('bookmark', t('users.avatar.unsubscribe')), subscriptions_user_path(author_id: user.id), title: I18n.t('users.unsubscribe.title.author'), class: 'btn btn-success', method: 'delete'
     else
-      link_to icon('link', t('users.avatar.subscribe')), subscribe_user_path(author_id: user.id), class: 'btn btn-success', method: 'post'
+      link_to icon('bookmark-o', t('users.avatar.subscribe')), subscriptions_user_path(author_id: user.id), title: I18n.t('users.subscribe.title.author'), class: 'btn btn-success', method: 'post'
     end
   end
 end

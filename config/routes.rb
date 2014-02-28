@@ -9,8 +9,6 @@ Rathole::Application.routes.draw do
   resource :user do
     get :events
     post :avatar
-    post :subscribe
-    post :unsubscribe
     resources :posts do 
       member do
         post :publish
@@ -18,6 +16,9 @@ Rathole::Application.routes.draw do
     end
     resources :imports, only: [:index, :new, :create]
     resources :sections, except: [:index, :show]
+    
+    post '/subscriptions', to: 'subscriptions#subscribe'
+    delete '/subscriptions', to: 'subscriptions#unsubscribe'
   end
 
   authenticated :user, -> (user) { user.admin? } do

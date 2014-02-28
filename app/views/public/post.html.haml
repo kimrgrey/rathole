@@ -3,5 +3,7 @@
   = render partial: 'posts/opengraph', locals: { post: @post }
 = content_for :nav do
   = render partial: 'public/nav', locals: { user: @user }
+= content_for :launchpad do
+  = render partial: 'posts/launchpad', locals: { user: current_user, post: @post } 
   
 = render partial: 'posts/post', locals: {post: @post, preview: false}

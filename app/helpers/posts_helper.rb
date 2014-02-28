@@ -42,4 +42,12 @@ module PostsHelper
       link_to icon('eye'), show_on_main_admin_post_path(post), method: 'post'
     end
   end
+
+  def post_subscription_link(user, post)
+    if user.subscribed_on?(post)
+      link_to icon('bookmark'), subscriptions_user_path(post_id: post.id), title: I18n.t('users.subscribe.title.post'), method: 'delete'
+    else
+      link_to icon('bookmark-o'), subscriptions_user_path(post_id: post.id), title: I18n.t('users.unsubscribe.title.post'), method: 'post'
+    end
+  end
 end
