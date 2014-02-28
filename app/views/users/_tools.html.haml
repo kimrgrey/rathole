@@ -1,6 +1,10 @@
 #tools
   %a{href: new_user_post_path, title: t('.post')}= icon 'pencil'
   
+  - if content_for(:launchpad)
+    %hr
+    = yield(:launchpad)
+  
   %hr
   
   %a{href: root_path, title: t('.home')}= icon 'home'
@@ -11,10 +15,6 @@
   
   %a{href: user_posts_path, title: t('.blog')}= icon 'book'
   %a{href: user_path, title: t('.profile')}= icon 'user'
-  
-  - if content_for(:launchpad)
-    %hr
-    = yield(:launchpad)
   
   %hr
   
