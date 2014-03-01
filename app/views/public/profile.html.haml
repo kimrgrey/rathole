@@ -13,3 +13,4 @@
   = render partial: 'users/stickers', locals: { stickers: @stickers }
   = render partial: 'posts/list', locals: { posts: @posts, preview: true }
   = paginate @posts
+  = render partial: 'shared/google_analytics' if Rails.env.production?
