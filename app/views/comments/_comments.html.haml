@@ -9,7 +9,8 @@
 #comments-list
   - @comments.each do |comment|
     = render partial: 'comments/comment', locals: { comment: comment }
-
+  
+  = paginate @comments
 
 - if user_signed_in?
   = render partial: 'comments/form', locals: { post: post }
