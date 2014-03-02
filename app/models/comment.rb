@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  paginates_per 50
+
   include Authority::Abilities
   include Redcarpeted
   
