@@ -50,4 +50,8 @@ module PostsHelper
       link_to icon('bookmark-o'), subscriptions_user_path(post_id: post.id), title: I18n.t('users.unsubscribe.title.post'), method: 'post'
     end
   end
+
+  def post_bug_link(post)
+    link_to icon('bug'), bugs_path, class: 'bug-in-post'
+  end
 end
