@@ -3,16 +3,14 @@ class CreateBugs < ActiveRecord::Migration
     create_table :bugs do |t|
       t.integer :reporter_id, null: false
       t.integer :post_id, null: false
-      t.integer :author_id, null: false
       t.integer :state, default: 0
+      t.text :fragment
+      t.text :fragment_html
       t.text :note
       t.text :note_html
-      t.text :tags, array: true, default: '{}'
-      t.timestamp
+      t.timestamps
     end
     add_index :bugs, :reporter_id
     add_index :bugs, :post_id
-    add_index :bugs, :author_id
-    add_index :bugs, :tags, using: 'gin'
   end
 end

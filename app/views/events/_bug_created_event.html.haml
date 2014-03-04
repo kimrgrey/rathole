@@ -1,0 +1,10 @@
+.event
+  = image_tag event.reporter.avatar_url(:small)
+  .text
+    = icon 'clock-o', l(event.updated_at) + ':'
+    = t('.user')
+    = link_to icon('user', event.reporter.user_name), public_profile_path(event.reporter)
+    = t('.notify_about_bug_in_post')
+    = link_to icon('book', event.post.title), public_post_path(event.post)
+    
+    

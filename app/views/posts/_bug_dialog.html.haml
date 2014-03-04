@@ -1,0 +1,23 @@
+#post-bug-dialog.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: 'modal'}}
+          &times;
+        %h2.modal-title= t('.dialog_title')
+      .modal-body
+        %h3= t('.body_title')
+        %p
+          = t('.instructions')
+        = form_tag bugs_path(post_id: post.id) do
+          .form-group
+            = label_tag :fragment, t('.text'), id: 'label-for-fragment'
+            = text_area_tag :fragment, '', class: 'form-control', rows: 5, readonly: true
+          .form-group
+            = label_tag :note, t('.note')
+            = text_area_tag :note, '', class: 'form-control', rows: 5, placeholder: t('.placeholder')
+      .modal-footer
+        %a#go.btn.btn-success{href: '#'}= icon 'link', t('.go')
+        %button.btn.btn-default{data: {dismiss: 'modal'}}
+          = t('.close')
+      

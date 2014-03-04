@@ -1,0 +1,25 @@
+@import 'commons';
+
+.bug {
+  table {
+    margin-top: 40px;
+
+    th {
+      width: 25%;
+    }
+
+    td.number {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .actions {
+    text-align: right;
+    margin-top: 25px;
+    @media(min-width: $medium-device) {
+      margin-top: 45px;
+    }
+  }
+}

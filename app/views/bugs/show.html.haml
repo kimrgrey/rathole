@@ -1,0 +1,9 @@
+= content_for :nav do
+  = render partial: 'users/my', locals: { user: @user }
+
+.bug.container
+  = clip_and_clamp
+  = page_header
+  
+  = render partial: 'bugs/table', locals: { bug: @bug }
+  = render partial: 'bugs/actions', locals: { bug: @bug }

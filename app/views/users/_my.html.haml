@@ -9,6 +9,8 @@
     - user.sections.in_order.each do |section|
       = menu_item section.name, public_section_path(section), 'folder-open' 
     = menu_divider
+    = menu_item t('nav.blog.bugs'), bugs_path, 'bug'
+    = menu_divider
     = menu_item t('nav.blog.imports'), user_imports_path, 'upload'
     
 - if user.admin?

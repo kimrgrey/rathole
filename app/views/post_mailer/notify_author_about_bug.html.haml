@@ -1,0 +1,12 @@
+%p
+  %b= t(".greeting", name: @author.user_name)
+%p
+  = t(".text", title: @post.title, reporter: @reporter.user_name)
+%p
+  = t(".note")
+%p
+  = @bug.note
+%p
+  = link_to t('.bug'), bug_path(@bug)
+%p{style: 'text-align: right'}
+  = t('.signature')

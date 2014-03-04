@@ -21,10 +21,12 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :pictures
   has_many :subscriptions, dependent: :destroy
+  has_many :bugs
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_url, to: :user, prefix: true
   delegate :name, to: :section, prefix: true
+  delegate :email, to: :user, prefix: true
 
   enum state: [ :draft, :published, :hidden ]
   
@@ -55,6 +57,10 @@ class Post < ActiveRecord::Base
     result = body[0...size]
     result << Post::READ_MORE if size < body.size
     result
+  end
+
+  def has_bugs?
+    bugs.any?
   end
 
   def toggle

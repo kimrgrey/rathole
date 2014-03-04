@@ -1,0 +1,19 @@
+%table.table
+  %tr
+    %th= Bug.human_attribute_name(:id)
+    %td.number= link_to bug_id(bug), bug_path(bug)
+  %tr
+    %th= Bug.human_attribute_name(:state)
+    %td= bug_state_label(bug)
+  %tr
+    %th= Bug.human_attribute_name(:reporter)
+    %td= link_to icon('user', bug.reporter_user_name), public_profile_path(bug.reporter)
+  %tr
+    %th= Bug.human_attribute_name(:post)
+    %td= link_to icon('book', bug.post_title), user_post_path(bug.post)
+  %tr
+    %th= Bug.human_attribute_name(:fragment)
+    %td= sanitize(bug.fragment_html)
+  %tr
+    %th= Bug.human_attribute_name(:note)
+    %td= sanitize(bug.note_html)

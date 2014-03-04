@@ -18,19 +18,19 @@ ActiveRecord::Schema.define(version: 20140226115920) do
   enable_extension "hstore"
 
   create_table "bugs", force: true do |t|
-    t.integer "reporter_id",              null: false
-    t.integer "post_id",                  null: false
-    t.integer "author_id",                null: false
-    t.integer "state",       default: 0
-    t.text    "note"
-    t.text    "note_html"
-    t.text    "tags",        default: [],              array: true
+    t.integer  "reporter_id",               null: false
+    t.integer  "post_id",                   null: false
+    t.integer  "state",         default: 0
+    t.text     "fragment"
+    t.text     "fragment_html"
+    t.text     "note"
+    t.text     "note_html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "bugs", ["author_id"], name: "index_bugs_on_author_id", using: :btree
   add_index "bugs", ["post_id"], name: "index_bugs_on_post_id", using: :btree
   add_index "bugs", ["reporter_id"], name: "index_bugs_on_reporter_id", using: :btree
-  add_index "bugs", ["tags"], name: "index_bugs_on_tags", using: :gin
 
   create_table "comments", force: true do |t|
     t.text     "body"
