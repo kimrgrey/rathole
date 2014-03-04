@@ -12,12 +12,12 @@
         = form_tag bugs_path(post_id: post.id) do
           .form-group
             = label_tag :fragment, t('.text'), id: 'label-for-fragment'
-            = text_area_tag :fragment, '', class: 'form-control', rows: 5, readonly: true
+            = text_area_tag :fragment, '', class: 'form-control', rows: 3, readonly: true
           .form-group
             = label_tag :note, t('.note')
-            = text_area_tag :note, '', class: 'form-control', rows: 5, placeholder: t('.placeholder')
+            = text_area_tag :note, '', class: 'form-control', rows: 3, placeholder: t('.placeholder')
       .modal-footer
-        %a#go.btn.btn-success{href: '#'}= icon 'link', t('.go')
+        %a#go.btn.btn-success{href: '#post-new-bug'}= icon 'bug', t('.go')
         %button.btn.btn-default{data: {dismiss: 'modal'}}
           = t('.close')
       
