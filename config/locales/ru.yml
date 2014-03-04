@@ -305,7 +305,8 @@ ru:
       created_account: 'зарегистрировался на сайте'
     bug_created_event:
       user: 'Пользователь'
-      notify_about_bug_in_post: 'сообщил вам об ошибке в посте'
+      notify_about_bug: 'сообщил вам о баге'
+      in_post: 'в посте'
     bug_fixed_event:
       user: 'Пользователь'
       fixed_bug: 'исправил указанный вами баг'
