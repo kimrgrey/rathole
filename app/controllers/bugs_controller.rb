@@ -16,15 +16,14 @@ class BugsController < ApplicationController
   end
 
   def show
-    @bug = Bug.for_author(@user).find(params[:id])
+    @bug = Bug.find(params[:id])
     authorize_action_for(@bug)
   end
 
   def fix
     @bug = Bug.for_author(@user).find(params[:id])
     authorize_action_for(@bug)
-    @bug.state = :fixed
-    if @bug.save
+    if @bug.fix
       flash[:notice] = I18n.t('bugs.fix.success')
     else
       flash[:error] = I18n.t('bugs.fix.failed')
@@ -35,8 +34,7 @@ class BugsController < ApplicationController
   def reject
     @bug = Bug.for_author(@user).find(params[:id])
     authorize_action_for(@bug)
-    @bug.state = :rejected
-    if @bug.save
+    if @bug.reject
       flash[:notice] = I18n.t('bugs.reject.success')
     else
       flash[:error] = I18n.t('bugs.reject.failed')

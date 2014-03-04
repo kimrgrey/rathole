@@ -27,10 +27,42 @@ class Bug < ActiveRecord::Base
     fragment.present?
   end
 
+  def fix
+    self.state = :fixed
+    saved = self.save
+    fire_bug_fixed_event! if saved
+    saved
+  end
+
+  def reject
+    self.state = :rejected
+    saved = self.save
+    fire_bug_rejected_event! if saved
+    saved
+  end
+
   private
 
   def fire_bug_created_event!
     event = Events::BugCreatedEvent.new
+    event.bug = self
+    event.reporter = reporter
+    event.post = post
+    event.author = post.user
+    event.save!
+  end
+
+  def fire_bug_fixed_event!
+    event = Events::BugFixedEvent.new
+    event.bug = self
+    event.reporter = reporter
+    event.post = post
+    event.author = post.user
+    event.save!
+  end
+
+  def fire_bug_rejected_event!
+    event = Events::BugRejectedEvent.new
     event.bug = self
     event.reporter = reporter
     event.post = post
