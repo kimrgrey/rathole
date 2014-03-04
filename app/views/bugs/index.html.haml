@@ -1,14 +1,22 @@
 = content_for :nav do
   = render partial: 'users/my', locals: { user: @user }
 
-.container
+.bugs.container
   = clip_and_clamp
   = page_header
-
-  - @bugs.each do |bug|
-    .bug
-      = render partial: 'bugs/table', locals: { bug: bug }
-      = render partial: 'bugs/actions', locals: { bug: bug }
-    %hr
+  
+  %ul.nav.nav-tabs
+    %li{class: ('active' if params[:for].nil? || params[:for] == 'author')}
+      = link_to t('.for_author'), url_for(params.merge(for: 'author'))
+    %li{class: ('active' if params[:for] == 'reporter')}
+      = link_to t('.for_reporter'), url_for(params.merge(for: 'reporter'))
+  - if @bugs.any?
+    - @bugs.each do |bug|
+      .bug
+        = render partial: 'bugs/table', locals: { bug: bug }
+        = render partial: 'bugs/actions', locals: { bug: bug }
+      %hr
+  - else
+    = render partial: 'bugs/greeting'
     
 = paginate @bugs

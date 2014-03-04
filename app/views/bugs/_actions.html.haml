@@ -1,4 +1,4 @@
 - if bug.open?
   .actions
-    = link_to icon('check', t('.fix')), '#', class: 'btn btn-success'
-    = link_to icon('ban', t('.reject')), '#', class: 'btn btn-default'
+    = link_to icon('check', t('.fix')), fix_bug_path(bug), method: 'post', class: 'btn btn-success'
+    = link_to icon('ban', t('.reject')), reject_bug_path(bug), method: 'post', class: 'btn btn-default'

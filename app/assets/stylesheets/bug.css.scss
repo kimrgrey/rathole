@@ -1,5 +1,13 @@
 @import 'commons';
 
+.bugs {
+  min-height: 400px;
+  
+  .jumbotron {
+    margin-top: 45px;
+  }
+}
+
 .bug {
   table {
     margin-top: 40px;

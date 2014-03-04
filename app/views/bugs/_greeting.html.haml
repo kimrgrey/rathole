@@ -1,0 +1,5 @@
+.jumbotron
+  %h2
+    = t('.header')
+  %p
+    = params[:for].nil? || params[:for] == 'author' ? t('.details.for_author') : t('.details.for_reporter')

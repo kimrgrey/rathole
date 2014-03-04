@@ -3,7 +3,11 @@ class BugsController < ApplicationController
   before_action :load_user
 
   def index
-    @bugs = Bug.for_author(@user)
+    if params[:for].nil? || params[:for] == 'author'
+      @bugs = Bug.for_author(@user)
+    else
+      @bugs = Bug.for_reporter(@user)
+    end
     @bugs = @bugs.where(post_id: params[:post_id]) if params[:post_id].present?
     @bugs = @bugs.in_order
     @bugs = @bugs.page(params[:page]).per(params[:per])
@@ -11,6 +15,28 @@ class BugsController < ApplicationController
 
   def show
     @bug = Bug.for_author(@user).find(params[:id])
+  end
+
+  def fix
+    @bug = Bug.for_author(@user).find(params[:id])
+    @bug.state = :fixed
+    if @bug.save
+      flash[:notice] = I18n.t('bugs.fix.success')
+    else
+      flash[:error] = I18n.t('bugs.fix.failed')
+    end
+    redirect_to :back
+  end
+
+  def reject
+    @bug = Bug.for_author(@user).find(params[:id])
+    @bug.state = :rejected
+    if @bug.save
+      flash[:notice] = I18n.t('bugs.reject.success')
+    else
+      flash[:error] = I18n.t('bugs.reject.failed')
+    end
+    redirect_to :back
   end
     
   def create
