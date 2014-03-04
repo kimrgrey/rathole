@@ -17,6 +17,7 @@ class BugsController < ApplicationController
 
   def show
     @bug = Bug.for_author(@user).find(params[:id])
+    authorize_action_for(@bug)
   end
 
   def fix
