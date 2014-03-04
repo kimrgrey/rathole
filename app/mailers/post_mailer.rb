@@ -25,12 +25,4 @@ class PostMailer < ActionMailer::Base
     @subscriber = subscriber
     mail(to: @subscriber.email, subject: I18n.t('post_mailer.notify_admin_about_post.subject')) unless @author == @subscriber
   end
-
-  def notify_author_about_bug(post, bug)
-    @post = post
-    @bug = bug
-    @reporter = bug.reporter
-    @author = @post.user
-    mail(to: @author.email, subject: I18n.t('post_mailer.notify_author_about_bug.subject'))
-  end
 end

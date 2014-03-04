@@ -374,12 +374,25 @@ ru:
       text: 'Спешим вам сообщить, что автор %{name}, на которого вы подписаны, только что опубликовал новый пост "%{title}" на rathole.io.'
       post: 'А вот ссылка на этот пост.'
       signature: 'С уважением, команда rathole.io.'
+  bug_mailer:
     notify_author_about_bug:
       subject: 'Вам сообщили об ошибке!'
       greeting: 'Уважаемый %{name}!'
       text: 'Спешим уведомить вас о том, что пользователь %{reporter} сообщил вам об ошибке в посте "%{title}" на rathole.io'
       note: 'Вот, какое замечание прилагается к сообщению:'
       bug: 'Обратите внимание на эту ошибку.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_reporter_about_fixed_bug:
+      subject: 'Вам сообщили об ошибке!'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{author} исправил указанную вами ошибку в посте "%{title}" на rathole.io'
+      bug: 'Вот ссылка на страницу ошибки.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_reporter_about_rejected_bug:
+      subject: 'Вам сообщили об ошибке!'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{author} отклонил указанную вами ошибку в посте "%{title}" на rathole.io'
+      bug: 'Вот ссылка на страницу ошибки.'
       signature: 'С уважением, команда rathole.io.'
   user_mailer:
     notify_admin_about_registration:

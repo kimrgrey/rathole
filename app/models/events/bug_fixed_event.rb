@@ -7,6 +7,7 @@ class Events::BugFixedEvent < Events::Event
   after_create :deliver_event_to_reporter
 
   def deliver_event_to_reporter
+    BugMailer.delay.notify_reporter_about_fixed_bug(bug)
     reporter.add_event(self)
   end
 end

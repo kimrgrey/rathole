@@ -7,7 +7,7 @@ class Events::BugCreatedEvent < Events::Event
   after_create :deliver_event_to_author
 
   def deliver_event_to_author
-    PostMailer.delay.notify_author_about_bug(post, bug)
+    BugMailer.delay.notify_author_about_bug(bug)
     author.add_event(self)
   end
 end

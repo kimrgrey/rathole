@@ -7,6 +7,7 @@ class Events::BugRejectedEvent < Events::Event
   after_create :deliver_event_to_reporter
 
   def deliver_event_to_reporter
+    BugMailer.delay.notify_reporter_about_rejected_bug(bug)
     reporter.add_event(self)
   end
 end
