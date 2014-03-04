@@ -2,6 +2,8 @@ class BugsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_user
 
+  authorize_actions_for Bug, actions: {:fix => :update, :reject => :update}
+
   def index
     if params[:for].nil? || params[:for] == 'author'
       @bugs = Bug.for_author(@user)
@@ -19,6 +21,7 @@ class BugsController < ApplicationController
 
   def fix
     @bug = Bug.for_author(@user).find(params[:id])
+    authorize_action_for(@bug)
     @bug.state = :fixed
     if @bug.save
       flash[:notice] = I18n.t('bugs.fix.success')
@@ -30,6 +33,7 @@ class BugsController < ApplicationController
 
   def reject
     @bug = Bug.for_author(@user).find(params[:id])
+    authorize_action_for(@bug)
     @bug.state = :rejected
     if @bug.save
       flash[:notice] = I18n.t('bugs.reject.success')
