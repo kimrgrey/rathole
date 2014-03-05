@@ -3,6 +3,6 @@
 %p
   = t(".text", title: @post.title, author: @author.user_name)
 %p
-  = link_to t('.bug'), bug_path(@bug)
+  = link_to t('.bug'), bug_url(@bug)
 %p{style: 'text-align: right'}
   = t('.signature')
