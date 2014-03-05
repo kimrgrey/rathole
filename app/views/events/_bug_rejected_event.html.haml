@@ -3,7 +3,7 @@
   .text
     = icon 'clock-o', l(event.updated_at) + ':'
     = t('.user')
-    = link_to icon('user', event.reporter.user_name), public_profile_path(event.reporter)
+    = link_to icon('user', event.author.user_name), public_profile_path(event.reporter)
     = t('.rejected_bug')
     = link_to icon('bug', bug_id(event.bug)), bug_path(event.bug)
     = t('.in_post')
