@@ -17,6 +17,9 @@ class Bug < ActiveRecord::Base
   scope :in_order, -> { order('bugs.created_at DESC') }
   scope :for_author, -> (user) { joins(:post).where(posts: {user_id: user.id}) }
   scope :for_reporter, -> (user) { where(bugs: {reporter_id: user.id}) }
+  scope :open_only, ->{ where('bugs.state = ?', Bug.states[:open]) }
+  scope :fixed_only, ->{ where('bugs.state = ?', Bug.states[:fixed]) }
+  scope :rejected_only, ->{ where('bugs.state = ?', Bug.states[:rejected]) }
 
   delegate :user_name, to: :reporter, prefix: true
   delegate :title, to: :post, prefix: true

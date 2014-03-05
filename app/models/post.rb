@@ -60,7 +60,7 @@ class Post < ActiveRecord::Base
   end
 
   def has_bugs?
-    bugs.any?
+    bugs.open_only.any?
   end
 
   def toggle
