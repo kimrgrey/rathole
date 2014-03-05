@@ -40,7 +40,7 @@ Rathole::Application.routes.draw do
     end
   end
 
-  resources :bugs do 
+  resources :bugs, except: [:new, :edit, :update, :destroy] do 
     member do 
       post :fix
       post :reject
