@@ -13,6 +13,6 @@
   = paginate @comments
 
 - if user_signed_in?
-  = render partial: 'comments/form', locals: { post: post }
+  = render partial: 'comments/new_comment_form', locals: { post: post}
 - else
   = render partial: 'comments/greeting'

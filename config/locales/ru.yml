@@ -334,10 +334,15 @@ ru:
       new: 'Новый комментарий'
     greeting:
       sign_in_to_comment: "Может быть, вы хотите оставить комментарий? Войдите на сайт или зарегистрируйтесь."
-    form:
+    new_comment_form:
       save: 'Отправить'
       placeholders:
         body: 'Может быть как-то прокомментируете пост?'
+    edit_comment_form:
+      save: 'Сохранить'
+      cancel: 'Отмена'
+      placeholders:
+        body: 'Что бы вы хотели исправить?'
   imports:
     index:
       page_header: 'Список импортов'

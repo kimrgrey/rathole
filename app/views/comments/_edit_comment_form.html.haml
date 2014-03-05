@@ -1,0 +1,8 @@
+= form_tag  comment_path(comment), method: 'patch', remote: true, id: 'edit-comment-form', class: 'form-horizontal' do
+  .form-group
+    .col-sm-12
+      = text_area_tag :body, comment.body, rows: 15, class: 'form-control', placeholder: t('.placeholders.body')
+  .form-group
+    .col-sm-12
+      = submit_tag t('.save'), class: 'btn btn-primary'
+      = link_to t('.cancel'), "#comment-#{comment.id}", class: 'btn btn-default comment-edit-cancel'

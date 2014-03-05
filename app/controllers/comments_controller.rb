@@ -7,9 +7,15 @@ class CommentsController < ApplicationController
   authorize_actions_for Comment
 
   def create  
-    @post = Post.find(params[:post_id])
+    @post = Post.published_only.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = @user
+    @comment.save
+  end
+
+  def update
+    @comment = @user.comments.find(params[:id])
+    @comment.attributes = comment_params
     @comment.save
   end
 

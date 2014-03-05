@@ -142,6 +142,21 @@
       }
     }
 
+    #comments-list {
+      form {
+        display: none;
+      }
+
+      form.visible {
+        display: block;
+      }
+
+      a.comment-edit-cancel{
+        color: #333;
+      }
+
+    }
+
     .header {
       padding-top: 5px;
       margin-bottom: 5px;

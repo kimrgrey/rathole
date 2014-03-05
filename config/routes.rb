@@ -47,8 +47,7 @@ Rathole::Application.routes.draw do
     end
   end
 
-  post '/posts/:post_id/comment', to: 'comments#create', as: 'create_comment'
-  post '/posts/:post_id/comment/:id/destroy', to: 'comments#destroy', as: 'destroy_comment'
+  resources :comments, only: [:create, :update, :destroy]
 
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'

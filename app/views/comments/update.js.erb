@@ -1,0 +1,5 @@
+var comment = "<%= j render(partial: 'comments/comment', locals: { comment: @comment }) %>";
+$('#comments-list #<%= "comment-#{@comment.id}" %>').replaceWith(comment);
+$('#new-comment-form').show();
+
+
