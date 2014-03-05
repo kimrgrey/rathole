@@ -3,6 +3,8 @@ class Admin::PostsController < Admin::AdminController
 
   def show
     @comments = @post.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
   end
 
   def show_on_main
