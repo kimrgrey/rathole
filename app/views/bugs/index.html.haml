@@ -7,9 +7,9 @@
   
   %ul.nav.nav-tabs
     %li{class: ('active' if params[:for].nil? || params[:for] == 'author')}
-      = link_to t('.for_author'), url_for(params.merge(for: 'author'))
+      = link_to t('.for_author'), url_for(params.merge(for: 'author', page: 1))
     %li{class: ('active' if params[:for] == 'reporter')}
-      = link_to t('.for_reporter'), url_for(params.merge(for: 'reporter'))
+      = link_to t('.for_reporter'), url_for(params.merge(for: 'reporter', page: 1))
   - if @bugs.any?
     - @bugs.each do |bug|
       .bug
