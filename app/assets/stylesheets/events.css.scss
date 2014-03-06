@@ -1,5 +1,15 @@
 @import 'commons';
 
+.events-filter {
+  padding-left: 20px;
+  margin: 25px 0px;
+
+  #types {
+    margin-right: 20px;
+    float: left;
+  }
+}
+
 #events {
   min-width: 400px;
 

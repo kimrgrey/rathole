@@ -25,12 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def events
-    @events = @user.events(Time.now - 1.week, Time.now)
-    @events = @events.order('events.updated_at DESC')
-    @events = @events.page(params[:page]).per(params[:per])
-  end
-
   def avatar
     input = request.body.read
     tmp = Tempfile.new('avatar')
@@ -65,9 +59,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :user_name, :about, :password, :password_confirmation)
-  end
-
-  def load_user
-    @user = current_user
   end
 end

@@ -243,8 +243,6 @@ ru:
       instructions: 'Чтобы загрузить аватар, выберите изображение с вашего компьютера и нажмите "Загрузить"'
       upload: 'Загрузить'
       close: 'Закрыть'
-    events:
-      page_header: 'Последние события'
     tools:
       home: 'Хотите попасть на главную?'
       globe: 'Хотите узнать последние события?'
@@ -294,6 +292,24 @@ ru:
     about:
       signature: 'Пользователь %{name} о себе'
   events:
+    index:
+      events:
+      page_header: 'Последние события'
+    filter:
+      periods:
+        hour: 'За час'
+        day: 'За день'
+        week: 'За неделю'
+        month: 'За месяц'
+      types:
+        all_events: 'Все события'
+        post_created_event: 'Новые посты'
+        comment_created_event: 'Новые комментарии'
+        bug_rejected_event: 'Баг отклонен'
+        bug_fixed_event: 'Баг принят'
+        bug_created_event: 'Новые баги'
+        bug_commented_event: 'Комментарии к багам'
+        user_created_event: 'Новые пользователи'
     comment_created_event:
       user: 'Пользователь'
       comment_on_post: 'прокомментировал пост'
