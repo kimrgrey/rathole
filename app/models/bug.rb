@@ -14,7 +14,7 @@ class Bug < ActiveRecord::Base
   redcarpet :note
   redcarpet :fragment
 
-  scope :in_order, -> { order('bugs.created_at DESC') }
+  scope :in_order, -> { order('bugs.state, bugs.created_at DESC') }
   scope :for_author, -> (user) { joins(:post).where(posts: {user_id: user.id}) }
   scope :for_reporter, -> (user) { where(bugs: {reporter_id: user.id}) }
   scope :open_only, ->{ where('bugs.state = ?', Bug.states[:open]) }
