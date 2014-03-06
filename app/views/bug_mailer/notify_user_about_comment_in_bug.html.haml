@@ -1,0 +1,12 @@
+%p
+  %b= t(".greeting", name: @user.user_name)
+%p
+  = t(".text", name: @comment.user_name, bug: bug_id(@bug))
+%p
+  = t(".comment")
+%p
+  = sanitize @comment.body_html
+%p
+  = link_to t('.bug'), bug_url(@bug)
+%p{style: 'text-align: right'}
+  = t('.signature')

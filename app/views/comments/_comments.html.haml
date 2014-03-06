@@ -7,12 +7,12 @@
   %a{id: 'comments', href: '#comments'}= t('.comments')
 
 #comments-list
-  - @comments.each do |comment|
+  - comments.each do |comment|
     = render partial: 'comments/comment', locals: { comment: comment }
   
-  = paginate @comments
+  = paginate comments
 
 - if user_signed_in?
-  = render partial: 'comments/new_comment_form', locals: { post: post}
+  = render partial: 'comments/new_comment_form', locals: { owner: owner }
 - else
   = render partial: 'comments/greeting'

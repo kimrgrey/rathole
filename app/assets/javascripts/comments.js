@@ -1,6 +1,6 @@
 (function() {
   function initComments() {
-    $('.post').on('click', '.edit-comment-link', function(event){
+    $('.comments').on('click', '.edit-comment-link', function(event){
       event.preventDefault();
       var comment = $($(this).attr('href'));
       comment.find('.text').hide();
@@ -9,7 +9,7 @@
       return false;
     });
 
-    $('.post').on('click', '.comment-edit-cancel', function(event){
+    $('.comments').on('click', '.comment-edit-cancel', function(event){
       event.preventDefault();
       var comment = $($(this).attr('href'));
       comment.find('form').removeClass('visible');

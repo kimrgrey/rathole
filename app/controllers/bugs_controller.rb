@@ -17,6 +17,9 @@ class BugsController < ApplicationController
 
   def show
     @bug = Bug.find(params[:id])
+    @comments = @bug.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
     authorize_action_for(@bug)
   end
 

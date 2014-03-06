@@ -4,7 +4,7 @@
       - if user_signed_in? && current_user.can_delete?(comment)
         %span.badge.pull-right
           = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
-      %span.badge.pull-right= icon 'calendar', l(comment.created_at)
+      %span.badge.pull-right= icon 'calendar', l(comment.created_at) 
       %span.badge.pull-right
         = public_comment_link(comment)
       %span.badge.pull-right

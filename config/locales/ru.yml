@@ -307,6 +307,9 @@ ru:
       user: 'Пользователь'
       notify_about_bug: 'сообщил вам о баге'
       in_post: 'в посте'
+    bug_commented_event:
+      user: 'Пользователь'
+      commented_bug: 'прокомментировал баг'
     bug_fixed_event:
       user: 'Пользователь'
       fixed_bug: 'исправил указанный вами баг'
@@ -337,7 +340,7 @@ ru:
     new_comment_form:
       save: 'Отправить'
       placeholders:
-        body: 'Может быть как-то прокомментируете пост?'
+        body: 'Как насчет комментария?'
     edit_comment_form:
       save: 'Сохранить'
       cancel: 'Отмена'
@@ -397,6 +400,13 @@ ru:
       subject: 'Вам сообщили об ошибке!'
       greeting: 'Уважаемый %{name}!'
       text: 'Спешим уведомить вас о том, что пользователь %{author} отклонил указанную вами ошибку в посте "%{title}" на rathole.io'
+      bug: 'Вот ссылка на страницу ошибки.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_user_about_comment_in_bug:
+      subject: 'Новый комментарий к багу'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{name} оставил комментарий к багу %{bug} на rathole.io'
+      comment: 'Вот, что он написал:'
       bug: 'Вот ссылка на страницу ошибки.'
       signature: 'С уважением, команда rathole.io.'
   user_mailer:

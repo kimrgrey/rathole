@@ -2,6 +2,8 @@ class Bug < ActiveRecord::Base
   belongs_to :reporter, class_name: 'User'
   belongs_to :post
 
+  has_many :comments, class_name: 'Comments::BugComment'
+
   validates :reporter, presence: true
   validates :post, presence: true
 
@@ -25,6 +27,10 @@ class Bug < ActiveRecord::Base
   delegate :title, to: :post, prefix: true
 
   after_create :fire_bug_created_event!
+
+  def author
+    post.user
+  end
 
   def has_fragment?
     fragment.present?

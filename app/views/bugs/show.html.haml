@@ -7,3 +7,9 @@
   
   = render partial: 'bugs/table', locals: { bug: @bug }
   = render partial: 'bugs/actions', locals: { bug: @bug }
+
+.container
+  .row.comments
+    = render partial: 'comments/comments', locals: { owner: @bug, comments: @comments }
+
+= render partial: 'shared/public_link_dialog'

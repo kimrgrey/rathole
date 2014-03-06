@@ -43,7 +43,7 @@
 - unless preview
   .container.post
     .row.comments
-      = render partial: 'comments/comments', locals: { post: post }
+      = render partial: 'comments/comments', locals: { comments: @comments, owner: post }
 
   = render partial: 'posts/bug_dialog', locals: { post: post }
   = render partial: 'shared/public_link_dialog'

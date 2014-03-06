@@ -1,4 +1,4 @@
-- if current_user.can_update?(bug) && bug.open?
+- if current_user.can_update?(bug)
   .actions
-    = link_to icon('check', t('.fix')), fix_bug_path(bug), method: 'post', class: 'btn btn-success'
-    = link_to icon('ban', t('.reject')), reject_bug_path(bug), method: 'post', class: 'btn btn-default'
+    = link_to icon('check', t('.fix')), fix_bug_path(bug), method: 'post', class: 'btn btn-success' if bug.open? || bug.rejected?
+    = link_to icon('ban', t('.reject')), reject_bug_path(bug), method: 'post', class: 'btn btn-default' if bug.open? || bug.fixed?
