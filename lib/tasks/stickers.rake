@@ -57,6 +57,12 @@ namespace :stickers do
   desc "Distribute stickers to best correctors"
   task best_corrector: [:environment] do 
     Rails.logger.info "Distribute stickers to best correctors..."
+    sticker = Sticker.with_code(Sticker::BEST_CORRECTOR)
+    if sticker
+      max_bugs_count = User.maximum(:bugs_count) || 0
+      User.joins(:stickers).where('users.bugs_count < ?', max_bugs_count).where(stickers: {code: Sticker::BEST_CORRECTOR}).find_each { |user| user.remove_sticker!(sticker) }
+      User.where(bugs_count: max_bugs_count).find_each { |user| user.assign_sticker!(sticker) }
+    end
   end
 
   desc "Distribute all stickers"

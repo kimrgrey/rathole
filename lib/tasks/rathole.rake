@@ -4,6 +4,7 @@ namespace :rathole do
     User.find_each do |user|
       User.reset_counters(user.id, :comments)
       User.reset_counters(user.id, :posts)
+      User.reset_counters(user.id, :bugs)
     end
     Post.find_each do |post|
       Post.reset_counters(post.id, :comments)

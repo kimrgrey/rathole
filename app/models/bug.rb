@@ -1,5 +1,5 @@
 class Bug < ActiveRecord::Base
-  belongs_to :reporter, class_name: 'User'
+  belongs_to :reporter, class_name: 'User', counter_cache: 'bugs_count'
   belongs_to :post
 
   has_many :comments, class_name: 'Comments::BugComment'

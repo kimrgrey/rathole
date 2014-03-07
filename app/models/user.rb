@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :subscriptions, foreign_key: 'subscriber_id'
   has_many :invites
+  has_many :bugs, foreign_key: 'reporter_id'
 
   has_and_belongs_to_many :stickers
 
