@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    attributes:
+      import:
+        lj_user: 'Логин в ЖЖ'
+        state: 'Статус'
+        updated_at: 'Обновлен'

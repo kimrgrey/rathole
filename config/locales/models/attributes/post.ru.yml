@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    attributes:
+      post:
+        id: 'Номер'
+        title: 'Заголовок'
+        body: 'Текст'
+        body_html: 'Текст'
+        section: 'Тематика'
+        section_id: 'Тематика'
+        tag_list: 'Теги'
+        created_at: 'Дата публикации'
+        user_name: 'Автор'

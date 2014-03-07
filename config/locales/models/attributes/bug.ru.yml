@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      bug:
+        id: 'Номер'
+        state: 'Статус'
+        reporter: 'От пользователя'
+        post: 'Пост'
+        fragment: 'Фрагмент'
+        note: 'Замечение'

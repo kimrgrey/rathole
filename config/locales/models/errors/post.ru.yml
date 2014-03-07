@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: 'должен быть указан.'
+            body:
+              blank: 'должен что-то содержать.'
+            section:
+              blank: 'должна быть указана.'

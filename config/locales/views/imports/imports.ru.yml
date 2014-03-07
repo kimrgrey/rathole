@@ -1,0 +1,18 @@
+ru:
+  imports:
+    index:
+      page_header: 'Список импортов'
+      new_import: 'Импортировать'
+    table:
+      states:
+        created: 'Ожидает'
+        started: 'Начался'
+        working: 'В процессе'
+        finished: 'Закончен'
+    new:
+      page_header: 'Импорт постов'
+    create:
+      success: 'Поздравляем! Иморт постов из ЖЖ успешно запущен! Мы сообшим вам, когда все будет готово.'
+    form:
+      legend: 'Укажите ваш логин в LiveJournal, этого достаточно, чтобы выполнить импорт постов'
+      submit: 'Импортировать'

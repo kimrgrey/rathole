@@ -1,0 +1,11 @@
+ru:
+  errors:
+    messages:
+      already_confirmed: "был уже подтвержден, попробуйте войти на сайт"
+      confirmation_period_expired: "требует подтверждения в течение %{period}"
+      expired: "истек, пожалуйста, повторите запрос"
+      not_found: "не был найден"
+      not_locked: "не был заблокирован"
+      not_saved:
+        one: "%{resource} не может быть сохранен из-за одной ошибки:"
+        other: "%{resource} не может быть сохранен из-за %{count} ошибок:"

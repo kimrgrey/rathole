@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        section:
+          attributes:
+            base:
+              restrict_dependent_destroy:
+                many: 'Увы, но нельзя удалять разделы, в которых уже есть посты...'
+            name:
+              blank: 'должно быть указано.'

@@ -1,0 +1,33 @@
+ru:
+  nav:
+    menu: 'Меню'
+    home: 'Главная'
+    profile: 
+      main: 'Профиль'
+      of: 'Профиль %{user_name}'
+      account: 'Аккаунт'
+      logout: 'Выйти'
+    blog: 
+      main: 'Блог'
+      my: 'Мой блог'
+      of: 'Все посты %{user_name}'
+      all: 'Все посты'
+      post: 'Новый пост'
+      imports: 'Импорт'
+      bugs: 'Ошибки'
+    personal: 'Про жизнь'
+    work: 'Про работу'
+    films: 'Про фильмы'
+    books: 'Про книги'
+    projects: 'Про проекты'
+    sections: 
+      main: 'Разделы'
+      of: 'Разделы %{user_name}'
+    sign_in: 'Вход на сайт'
+    sign_up: 'Регистрация'
+    admin:
+      title: 'Админка'
+      dashboard: 'Панель управления'
+      users: 'Пользователи'
+      posts: 'Посты'
+      jobs: 'Очередь задач'

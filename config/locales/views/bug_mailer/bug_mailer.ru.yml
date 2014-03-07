@@ -1,0 +1,28 @@
+ru:
+  bug_mailer:
+    notify_author_about_bug:
+      subject: 'Вам сообщили об ошибке!'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{reporter} сообщил вам об ошибке в посте "%{title}" на rathole.io'
+      note: 'Вот, какое замечание прилагается к сообщению:'
+      bug: 'Обратите внимание на эту ошибку.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_reporter_about_fixed_bug:
+      subject: 'Вам сообщили об ошибке!'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{author} исправил указанную вами ошибку в посте "%{title}" на rathole.io'
+      bug: 'Вот ссылка на страницу ошибки.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_reporter_about_rejected_bug:
+      subject: 'Вам сообщили об ошибке!'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{author} отклонил указанную вами ошибку в посте "%{title}" на rathole.io'
+      bug: 'Вот ссылка на страницу ошибки.'
+      signature: 'С уважением, команда rathole.io.'
+    notify_user_about_comment_in_bug:
+      subject: 'Новый комментарий к багу'
+      greeting: 'Уважаемый %{name}!'
+      text: 'Спешим уведомить вас о том, что пользователь %{name} оставил комментарий к багу %{bug} на rathole.io'
+      comment: 'Вот, что он написал:'
+      bug: 'Вот ссылка на страницу ошибки.'
+      signature: 'С уважением, команда rathole.io.'
