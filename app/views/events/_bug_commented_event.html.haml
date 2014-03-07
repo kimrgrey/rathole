@@ -1,5 +1,5 @@
 .event
-  = image_tag event.user.avatar_url(:small)
+  = image_tag event.author.avatar_url(:small)
   .text
     = icon 'clock-o', l(event.updated_at) + ':'
     = t('.user')
