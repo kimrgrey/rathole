@@ -57,6 +57,10 @@ class UsersController < ApplicationController
 
   private
 
+  def load_user
+    @user = current_user
+  end
+
   def user_params
     params.require(:user).permit(:email, :user_name, :about, :password, :password_confirmation)
   end
