@@ -1,6 +1,6 @@
 .events-filter
   #types.btn-group
-    %a.btn.btn-default{href: events_user_path(type: @selected_type)} 
+    %a.btn.btn-default{href: url_for(params.merge(type: @selected_type))} 
       = t(".types.#{@selected_type}")
     %a.btn.btn-default.dropdown-toggle{data: {toggle: 'dropdown'}}
       %span.caret
@@ -9,7 +9,7 @@
         %li= link_to t(".types.#{event_name}"), url_for(params.merge(type: event_name))
   
   #periods.btn-group
-    %a.btn.btn-default{href: events_user_path(period: @selected_period)} 
+    %a.btn.btn-default{href: url_for(params.merge(period: @selected_period))} 
       = t(".periods.#{@selected_period}")
     %a.btn.btn-default.dropdown-toggle{data: {toggle: 'dropdown'}}
       %span.caret
