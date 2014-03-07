@@ -11,4 +11,4 @@
         %td= post.id
         %td= post.title
         %td= post.user_name
-        %td= l post.created_at
+        %td= l(post.published_at.present? ? post.published_at : post.created_at)

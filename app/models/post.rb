@@ -30,7 +30,7 @@ class Post < ActiveRecord::Base
 
   enum state: [ :draft, :published, :hidden ]
   
-  scope :in_order, ->{ order('posts.created_at DESC') }
+  scope :in_order, ->{ order('posts.published_at DESC') }
   scope :draft_only, ->{ where('posts.state = ?', Post.states[:draft]) }
   scope :published_only, ->{ where('posts.state = ?', Post.states[:published]) }
   scope :visible_on_main, ->{ where('posts.visible_on_main = ?', true) }
@@ -66,13 +66,17 @@ class Post < ActiveRecord::Base
   def toggle
     if draft?
       self.state = :published
-      fire_post_created_event!
+      self.published_at = Time.now
+      saved = save
+      fire_post_created_event! if saved
+      saved
     elsif published?
       self.state = :hidden
+      save
     elsif hidden?
       self.state = :published
+      save
     end
-    save
   end
 
   def show_on_main
