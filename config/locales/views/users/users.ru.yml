@@ -75,6 +75,7 @@ ru:
       never: 'никогда'
       sign_up_at: 'Присоединился'
       comments: 'Комментариев'
+      bugs: 'Нашел багов'
       posts: 'Постов'
       about: 'О себе'
     sections:
