@@ -12,10 +12,7 @@
   
   - if user.admin?
     %a{href: admin_root_path, title: t('.dashboard')}= icon 'dashboard'
-  
-  %a{href: user_posts_path, title: t('.blog')}= icon 'book'
-  %a{href: user_path, title: t('.profile')}= icon 'user'
-  
+    
   %hr
   
   %a{href: destroy_user_session_path, title: t('.logout'), data: {method: 'delete'}}= icon 'power-off'
