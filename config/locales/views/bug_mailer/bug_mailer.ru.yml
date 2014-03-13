@@ -8,13 +8,13 @@ ru:
       bug: 'Обратите внимание на эту ошибку.'
       signature: 'С уважением, команда rathole.io.'
     notify_reporter_about_fixed_bug:
-      subject: 'Вам сообщили об ошибке!'
+      subject: 'Ошибка была исправлена'
       greeting: 'Уважаемый %{name}!'
       text: 'Спешим уведомить вас о том, что пользователь %{author} исправил указанную вами ошибку в посте "%{title}" на rathole.io'
       bug: 'Вот ссылка на страницу ошибки.'
       signature: 'С уважением, команда rathole.io.'
     notify_reporter_about_rejected_bug:
-      subject: 'Вам сообщили об ошибке!'
+      subject: 'Ошибка была отклонена'
       greeting: 'Уважаемый %{name}!'
       text: 'Спешим уведомить вас о том, что пользователь %{author} отклонил указанную вами ошибку в посте "%{title}" на rathole.io'
       bug: 'Вот ссылка на страницу ошибки.'
