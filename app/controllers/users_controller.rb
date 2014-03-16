@@ -1,27 +1,26 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:avatar]
 
-  before_action :authenticate_user!
-  before_action :load_user
+  before_action :authenticate_user!, except: [:show]
 
   def show
-    @posts = @user.last_posts
-    @sections = @user.sections
-    @stickers = @user.stickers
-    @subscriptions = @user.subscriptions
-    @subscriptions = @subscriptions.in_order
+    if params[:user_name].present?
+      @user = User.find_by(user_name: params[:user_name])
+    else
+      @user = current_user
+    end
+    do_show
   end
 
   def update
-    @user.attributes = user_params
-    if @user.save
+    current_user.attributes = user_params
+    if current_user.save
       flash[:notice] = I18n.t('users.update.success')
       redirect_to user_path
     else
       flash[:error] = I18n.t('users.update.failed')
-      @posts = @user.last_posts
-      @sections = @user.sections
-      render :show
+      @user = current_user
+      do_show
     end
   end
 
@@ -57,8 +56,15 @@ class UsersController < ApplicationController
 
   private
 
-  def load_user
-    @user = current_user
+  def do_show
+    @posts = @user.last_posts
+    @posts = @posts.in_order
+    @posts = @posts.page(params[:page]).per(params[:per])
+    @sections = @user.sections
+    @stickers = @user.stickers
+    @subscriptions = @user.subscriptions
+    @subscriptions = @subscriptions.in_order
+    render :show
   end
 
   def user_params

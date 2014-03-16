@@ -1,5 +1,5 @@
 = image_tag subscription.post.user_avatar_url(:small)
-= t('.you_subscribed_on_post')
+= t('.subscribed_on_post')
 = link_to icon('book', subscription.post_title), public_post_path(subscription.post)
 = t('.of_author')
 = link_to icon('user', subscription.post.user_name), public_profile_path(subscription.post.user)

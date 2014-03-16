@@ -1,6 +1,6 @@
 module RoutesHelper
   def public_profile_path(user, options = nil)
-    args = { controller: '/public', action: 'profile'}
+    args = { controller: '/users', action: 'show'}
     args = args.merge(user_name: user.user_name)
     args = args.merge(options) if options
     url_for args

@@ -1,5 +1,10 @@
 = content_for :nav do
-  = render partial: 'users/my', locals: { user: @user }
+  = render partial: 'public/nav', locals: { user: @user }
+  = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
+
+= content_for :meta do
+  = render partial: 'users/opengraph', locals: { user: @user }
+
 .profile.container
   = clip_and_clamp
   = page_header
@@ -8,12 +13,14 @@
       %a{href: '#profile', data: {toggle: 'tab'}}= t('.tabs.profile')
     %li
       %a{href: '#subscriptions', data: {toggle: 'tab'}}= t('.tabs.subscriptions')
-    %li
-      %a{href: '#settings', data: {toggle: 'tab'}}= t('.tabs.settings')
+    - if user_signed_in? && current_user.can_update?(@user)
+      %li
+        %a{href: '#settings', data: {toggle: 'tab'}}= t('.tabs.settings')
   .tab-content
     #profile.tab-pane.active
       = render partial: 'users/profile', locals: {user: @user, stickers: @stickers}
     #subscriptions.tab-pane
       = render partial: 'users/subscriptions', locals: {user: @user, subscriptions: @subscriptions}
-    #settings.tab-pane
-      = render partial: 'users/settings', locals: {user: @user}
+    - if user_signed_in? && current_user.can_update?(@user)
+      #settings.tab-pane
+        = render partial: 'users/settings', locals: {user: @user}

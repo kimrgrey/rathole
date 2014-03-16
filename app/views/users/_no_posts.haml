@@ -1,0 +1,11 @@
+.jumbotron
+  %h2= t('.header')
+  - if user_signed_in? && current_user == @user
+    %p
+      = t('.my_details')
+    %p
+      %a.btn.btn-success.btn-lg{href: new_user_post_path}= t('.create_post')
+      %a.btn.btn-info.btn-lg{href: new_user_import_path}= t('.start_import')
+  - else
+    %p
+      = t('.other_details')
