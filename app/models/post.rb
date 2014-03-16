@@ -30,10 +30,11 @@ class Post < ActiveRecord::Base
 
   enum state: [ :draft, :published, :hidden ]
   
-  scope :in_order, ->{ order('posts.published_at DESC') }
-  scope :draft_only, ->{ where('posts.state = ?', Post.states[:draft]) }
-  scope :published_only, ->{ where('posts.state = ?', Post.states[:published]) }
-  scope :visible_on_main, ->{ where('posts.visible_on_main = ?', true) }
+  scope :in_order, -> { order('posts.published_at DESC') }
+  scope :draft_only, -> { where('posts.state = ?', Post.states[:draft]) }
+  scope :published_only, -> { where('posts.state = ?', Post.states[:published]) }
+  scope :visible_on_main, -> { where('posts.visible_on_main = ?', true) }
+  scope :my_or_published, -> (user) { where('posts.user_id = ? OR posts.state = ?', user.id, Post.states[:published]) }
 
   before_validation :extract_preview_from_body!
 

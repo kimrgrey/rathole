@@ -9,7 +9,7 @@ Rathole::Application.routes.draw do
   resource :user do
     get :events, to: 'events#index'
     post :avatar
-    resources :posts do 
+    resources :posts, except: [:index, :show] do 
       member do
         post :publish
       end
@@ -53,10 +53,10 @@ Rathole::Application.routes.draw do
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'
 
   get '/:user_name', to: 'public#profile'
-  get '/:user_name/posts', to: 'public#posts'
-  get '/:user_name/posts/:id', to: 'public#post'
+  get '/:user_name/posts', to: 'posts#index'
+  get '/:user_name/posts/:id', to: 'posts#show'
   get '/:user_name/sections/:id', to: 'public#section'
-  get '/tag/:tag', to: 'public#posts'
+  get '/tag/:tag', to: 'posts#index'
 
   # support for legacy public routes
 
@@ -66,5 +66,5 @@ Rathole::Application.routes.draw do
   get '/public/:user_name/section/:id', to: redirect('/%{user_name}/sections/%{id}')
   get '/public/tag/:tag', to: redirect('/tag/%{tag}')
 
-  root to: 'public#posts'
+  root to: 'posts#index'
 end

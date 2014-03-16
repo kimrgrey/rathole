@@ -1,5 +1,5 @@
 Authority.configure do |config|
-  config.user_method = :current_user
+  config.user_method = :current_or_null_user
   config.controller_action_map = {
     :index   => 'read',
     :show    => 'read',

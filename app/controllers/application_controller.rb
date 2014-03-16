@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   protected 
 
+  def current_or_null_user
+    user_signed_in? ? current_user : User.new
+  end
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end

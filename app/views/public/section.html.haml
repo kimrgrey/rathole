@@ -1,6 +1,0 @@
-= content_for :nav do
-  = render partial: 'public/nav', locals: { user: @user }
-
-= render partial: 'posts/list', locals: { posts: @posts, preview: true }
-= paginate @posts
-= render partial: 'shared/google_analytics' if Rails.env.production?

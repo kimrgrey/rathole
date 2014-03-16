@@ -123,6 +123,24 @@ class User < ActiveRecord::Base
     Events::Event.where id: $redis.zrangebyscore(redis_events_key, from.to_i, to.to_i)
   end
 
+  def is_author_of?(post_or_comment)
+    if post_or_comment.is_a?(Post)
+      is_author_of_post?(post_or_comment)
+    elsif post_or_comment.is_a?(Comment)
+      is_author_of_comment?(post_or_comment)
+    else
+      false
+    end
+  end
+
+  def is_author_of_post?(post)
+    post.user == self
+  end
+
+  def is_author_of_comment?(comment)
+    comment.user == comment
+  end
+
   private
 
   def create_default_section

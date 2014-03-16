@@ -1,7 +1,10 @@
 = content_for :title, @post.title
+
 = content_for :meta do 
   = render partial: 'posts/opengraph', locals: { post: @post }
+
 = content_for :nav do
-  = render partial: 'users/my', locals: { user: @user }
+  = render partial: 'public/nav', locals: { user: @user }
+  = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
 
 = render partial: 'posts/post', locals: {post: @post, preview: false}

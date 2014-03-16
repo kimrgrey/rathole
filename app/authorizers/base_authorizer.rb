@@ -1,18 +1,18 @@
 class BaseAuthorizer < ApplicationAuthorizer
 	def self.readable_by?(user)
-		user.present?
+		user.persisted?
 	end
 
 	def self.updatable_by?(user)
-		user.present?
+		user.persisted?
 	end
 
 	def self.creatable_by?(user)
-		user.present?
+		user.persisted?
 	end
 
 	def self.deletable_by?(user)
-		user.present?
+		user.persisted?
 	end
 
 	def readable_by?(user)

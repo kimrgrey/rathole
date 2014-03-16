@@ -3,6 +3,7 @@
 
 = content_for :nav do
   = render partial: 'public/nav', locals: { user: @user }
+  = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
   
 .profile.container
   = clip_and_clamp

@@ -1,5 +1,5 @@
 = content_for :nav do
-  = render partial: 'users/my', locals: { user: @user }
+  = render partial: 'users/my', locals: { user: current_user }
 
 .container
   = clip_and_clamp
