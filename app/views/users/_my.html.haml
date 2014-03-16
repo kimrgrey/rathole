@@ -6,7 +6,7 @@
     = menu_item t('.new_post'), new_user_post_path, 'pencil'
     = menu_item t('nav.blog.bugs'), bugs_path, 'bug'
     = menu_divider
-    = menu_item t('nav.blog.my'), user_posts_path, 'book'
+    = menu_item t('nav.blog.my'), public_posts_path(user), 'book'
     - user.sections.in_order.each do |section|
       = menu_item section.name, public_section_path(section), 'folder-open' 
     = menu_divider
