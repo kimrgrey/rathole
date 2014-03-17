@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def avatar
+    @user = current_user
     input = request.body.read
     tmp = Tempfile.new('avatar')
     begin  
