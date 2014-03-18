@@ -13,25 +13,9 @@ class PicturesController < ApplicationController
       tmp.binmode
       tmp.write(input)
       tmp.rewind
-      picture = @user.pictures.build
-      picture.image = tmp
-      if picture.save
-        result = {
-          message: I18n.t('pictures.create.success'),
-          urls: {
-            original: full_image_url(picture.image_url),
-            thumb: full_image_url(picture.image_url(:thumb)),
-            destroy: destroy_picture_path(picture)
-          }
-        }
-        render json: result, status: 200
-      else
-        result = {
-          message: I18n.t('pictures.create.failed'),
-          errors: picture.errors.full_messages
-        }
-        render json: result, status: 422
-      end
+      @picture = @user.pictures.build
+      @picture.image = tmp
+      @picture.save
     ensure
       tmp.close
       tmp.unlink
@@ -41,15 +25,9 @@ class PicturesController < ApplicationController
   def destroy
     picture = @user.pictures.find(params[:id])
     if picture.destroy 
-      result = {
-        message: I18n.t('pictures.destroy.success')
-      }
-      render json: result, status: 200
+      render nothing: true, status: 200
     else
-      result = {
-        message: I18n.t('pictures.destroy.failed')
-      }
-      render json: result, status: 422
+      render nothing: true, status: 422
     end
   end
 

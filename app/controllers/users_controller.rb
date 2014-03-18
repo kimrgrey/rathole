@@ -33,22 +33,7 @@ class UsersController < ApplicationController
       tmp.write(input)
       tmp.rewind
       @user.avatar = tmp
-      if @user.save
-        result = {
-          message: I18n.t('users.avatar.success'),
-          urls: {
-            original: @user.avatar_url,
-            thumb: @user.avatar_url(:thumb)
-          }
-        }
-        render json: result, status: 200
-      else
-        result = {
-          message: I18n.t('users.avatar.failed'),
-          errors: @user.errors.full_messages
-        }
-        render json: result, status: 422
-      end
+      @user.save
     ensure
       tmp.close
       tmp.unlink

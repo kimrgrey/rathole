@@ -28,6 +28,7 @@ function createItem(urls) {
 function startFileUpload(url, method, file, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open(method, url, true);
+  xhr.setRequestHeader("Accept","application/json");
   xhr.onload = function() {
     result = JSON.parse(xhr.responseText)
     if (this.status == 200) {
