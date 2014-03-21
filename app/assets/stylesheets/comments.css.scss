@@ -21,6 +21,12 @@
     margin: 0;
   }
 
+  div.pagination ul.pagination {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: none;
+    box-shadow: none;
+  }
+
   #comments-list {
     form {
       display: none;

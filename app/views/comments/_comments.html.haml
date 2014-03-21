@@ -18,6 +18,8 @@
 
   %hr
 
+  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name }
+
   #comments-list
     - comments.each do |comment|
       = render partial: 'comments/comment', locals: { comment: comment }
