@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comments = @comments.includes(:user)
     @comments = @comments.in_order
-    @comments = @comments.page(params[:page]).per(params[:per])
+    @comments = @comments.page(1).per(params[:per])
   end
 
   def new

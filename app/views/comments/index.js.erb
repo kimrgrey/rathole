@@ -1,0 +1,2 @@
+var comments = "<%= j render(partial: 'comments/comments', locals: { owner: @owner, comments: @comments }) %>";
+$('#comments-container').replaceWith(comments);

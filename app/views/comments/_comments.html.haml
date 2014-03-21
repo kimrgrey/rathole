@@ -1,19 +1,24 @@
-- unless user_signed_in?
-  .user-links
-    = link_to t('nav.sign_in'), new_user_session_path, class: 'sign-in'  
-    = link_to t('nav.sign_up'), new_user_registration_path, class: 'sign-up'
+#comments-container
+  - unless user_signed_in?
+    .user-links
+      = link_to t('nav.sign_in'), new_user_session_path, class: 'sign-in'  
+      = link_to t('nav.sign_up'), new_user_registration_path, class: 'sign-up'
 
-%h2
-  %a{id: 'comments', href: '#comments'}= t('.comments')
+  %h2
+    %a{id: 'comments', href: '#comments'}= t('.comments')
 
-#comments-list
-  - comments.each do |comment|
-    = render partial: 'comments/comment', locals: { comment: comment }
+  - if user_signed_in? 
+    - if comments.first_page?
+      = render partial: 'comments/new_comment_form', locals: { owner: owner }
+    - else
+      .greeting
+        = link_to icon('comments',  t('.want_to_leave_comment')), comments_path(owner_id: owner.id, class_name: owner.class.name, page: 1, per: params[:per]), remote: true
+  - else
+    .greeting= t('.sign_in_to_comment')
+
+
+  #comments-list
+    - comments.each do |comment|
+      = render partial: 'comments/comment', locals: { comment: comment }
   
-
-= paginate comments
-
-- if user_signed_in?
-  = render partial: 'comments/new_comment_form', locals: { owner: owner }
-- else
-  = render partial: 'comments/greeting'
+  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name }

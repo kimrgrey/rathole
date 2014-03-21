@@ -6,6 +6,32 @@ class CommentsController < ApplicationController
 
   authorize_actions_for Comments::PostComment
 
+  def index
+    if params[:class_name] == Post.name
+      index_for_post
+    elsif params[:class_name] == Bug.name
+      index_for_bug
+    else
+      redirect_to :back
+    end
+  end
+
+  def index_for_post
+    @owner = Post.find(params[:owner_id])
+    @comments = @owner.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
+    render :index
+  end
+
+  def index_for_bug
+    @owner = Bug.find(params[:owner_id])
+    @comments = @owner.comments
+    @comments = @comments.in_order
+    @comments = @comments.page(params[:page]).per(params[:per])
+    render :index
+  end
+
   def create  
     if params[:class_name] == Post.name
       create_for_post
@@ -17,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def create_for_post
-    @post = Post.published_only.find(params[:owner_id])
+    @post = Post.find(params[:owner_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = @user
     @comment.save
