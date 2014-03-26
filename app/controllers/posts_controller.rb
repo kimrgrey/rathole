@@ -35,7 +35,7 @@ class PostsController < ApplicationController
       flash[:notice] = I18n.t('posts.create.success') 
       redirect_to user_post_path(@post)
     else
-      @pictures = @user.pictures
+      @pictures = current_user.pictures
       render :new
     end
   end
