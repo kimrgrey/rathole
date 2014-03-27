@@ -11,3 +11,5 @@
   = render partial: 'posts/launchpad', locals: { user: current_user, post: @post } if user_signed_in?
 
 = render partial: 'posts/post', locals: { post: @post, preview: false }
+
+= render partial: 'shared/google_analytics' if Rails.env.production?
