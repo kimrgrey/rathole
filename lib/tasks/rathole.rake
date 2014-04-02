@@ -29,7 +29,7 @@ namespace :rathole do
       post.convert_body_to_html!(true)
       post.save!
     end
-    Comment.find_each do |comment|
+    Comments::PostComment.find_each do |comment|
       comment.convert_body_to_html!(true)
       comment.save!
     end

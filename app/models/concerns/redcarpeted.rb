@@ -22,7 +22,7 @@ module Redcarpeted
       name = $1
       if Emoji.names.include?(name) 
         src = "/images/emoji/#{name}.png"
-        "<img src = '#{src}' class = 'emoji' alt='#{name}' />"
+        "<img src = '#{src}' class = 'emoji' alt='#{name}' style='width:20px; height:20px;' />"
       else
         match
       end
