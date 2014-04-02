@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include RoutesHelper
   
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :load_user
 
   authorize_actions_for Comments::PostComment
