@@ -12,6 +12,7 @@ class Admin::DashboardController < Admin::AdminController
 
   def statistics
     records = StatisticalRecord.order(:date)
+    records = records.limit(params[:limit].to_i) if params[:limit].present?
     events = records.map { |event| [event.date.to_time.to_i * 1000, event.events_count] }
     users = records.map { |event| [event.date.to_time.to_i * 1000, event.users_count] }
     posts = records.map { |event| [event.date.to_time.to_i * 1000, event.posts_count] }
