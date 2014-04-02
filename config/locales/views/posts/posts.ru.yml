@@ -58,3 +58,8 @@ ru:
       placeholder: 'Что бы вы хотели сообщить автору?'
       go: 'Отправить'
       close: 'Закрыть'
+    rss:
+      title_for_user: 'Посты %{name} на rathole.io'
+      title_for_main: 'Посты на rathole.io'
+      description_for_user: 'Посты %{name} на rathole.io'
+      description_for_main: 'Добро пожаловать в крысиную нору!'
