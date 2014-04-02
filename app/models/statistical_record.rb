@@ -10,7 +10,7 @@ class StatisticalRecord < ActiveRecord::Base
     record = StatisticalRecord.new
     record.users_count = User.where('users.created_at::date = ?', date).count
     record.posts_count = Post.where('posts.created_at::date = ?', date).count
-    record.comments_count = Comment.where('comments.created_at::date = ?', date).count
+    record.comments_count = Comments::PostComment.where('comments.created_at::date = ?', date).count
     record.events_count = Events::Event.where('events.created_at::date = ?', date).count
     record.date = date
     record.save!
