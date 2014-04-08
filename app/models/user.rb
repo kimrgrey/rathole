@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   self.authorizer = UserAuthorizer
 
-  validates :user_name, uniqueness: true, format: {with: /\A[a-zA-Z0-9_-]{3,100}$\Z/}, user_name: true
+  validates :user_name, uniqueness: true, format: {with: /\A[a-zA-Z0-9_-]{2,100}$\Z/}, user_name: true
 
   has_many :posts
   has_many :sections, dependent: :destroy
