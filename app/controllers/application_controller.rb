@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   protected 
 
+  def store_current_url_in_session
+    session[:previous_url] = request.fullpath if !request.fullpath.match("/users") && !request.xhr?
+  end
+
   def current_or_null_user
     user_signed_in? ? current_user : User.new
   end
@@ -18,6 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    events_user_path
+    session[:previous_url] || events_user_path
   end
 end

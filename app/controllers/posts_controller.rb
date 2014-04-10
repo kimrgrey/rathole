@@ -1,4 +1,5 @@
 class PostsController < ApplicationController  
+  before_action :store_current_url_in_session, only: [:index, :show]
   before_action :authenticate_user!, except: [:index, :show]
 
   authorize_actions_for Post, actions: {:publish => :update}

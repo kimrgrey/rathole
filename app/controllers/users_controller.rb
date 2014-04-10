@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:avatar]
 
+  before_action :store_current_url_in_session, only: [:show]
   before_action :authenticate_user!, except: [:show]
 
   def show
