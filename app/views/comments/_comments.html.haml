@@ -16,8 +16,6 @@
   - else
     .greeting= t('.sign_in_to_comment')
 
-  %hr
-
   = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name }
 
   #comments-list
