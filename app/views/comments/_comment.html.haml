@@ -22,6 +22,9 @@
         %span.badge.pull-right
           %a.reply-comment-link{href: "#comment-#{comment.id}", data: {author: comment.user_name}}
             = icon 'reply'
+      - else
+        %span.badge.pull-right
+          = link_to icon('sign-in', t('nav.sign_in')), new_user_session_path
   .row.body  
     .col-md-3.col-sm-4.hidden-xs
       = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
