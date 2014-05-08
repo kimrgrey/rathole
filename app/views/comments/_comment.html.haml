@@ -1,17 +1,27 @@
 .comment{id: "comment-#{comment.id}"}
-  .row.header
-    .col-md-12
-      - if user_signed_in? && current_user.can_delete?(comment)
-        %span.badge.pull-right
-          = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
-      %span.badge.pull-right= icon 'calendar', l(comment.created_at) 
-      %span.badge.pull-right
-        = public_comment_link(comment)
-      %span.badge.pull-right
-        %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
-      - if user_signed_in? && current_user.can_delete?(comment)
-        %span.badge.pull-right
+  .row.header  
+    .col-md-3.col-sm-4.hidden-xs  
+    .col-md-9.col-sm-8 
+      - if user_signed_in? && current_user.can_update?(comment)
+        %span.badge.pull-left
           = link_to icon('edit'), "#comment-#{comment.id}", class: 'edit-comment-link'
+      
+      %span.badge.pull-left
+        %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
+      
+      %span.badge.pull-left
+        = public_comment_link(comment)
+
+      %span.badge.pull-left= icon 'calendar', l(comment.created_at) 
+      
+      - if user_signed_in? && current_user.can_delete?(comment)
+        %span.badge.pull-left
+          = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
+      
+      - if user_signed_in?
+        %span.badge.pull-right
+          %a.reply-comment-link{href: "#comment-#{comment.id}", data: {author: comment.user_name}}
+            = icon 'reply'
   .row.body  
     .col-md-3.col-sm-4.hidden-xs
       = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
