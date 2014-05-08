@@ -26,7 +26,7 @@
       if (commentText.length > 0) {
         commentText += "\r\n\r\n";
       }
-      commentText += "**" + author + "**";
+      commentText += "**" + author + ":**";
       var selectedText = getSelection().toString();
       if (selectedText.length > 0) {
         commentText += "\r\n\r\n" + "> " + selectedText;
