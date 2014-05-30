@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
   def overview
     @users = User.all
-    @users = @users.order('users.last_published_at DESC NULLS LAST')
+    @users = @users.in_featured_order
   end
 end
