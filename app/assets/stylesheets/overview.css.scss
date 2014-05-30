@@ -47,7 +47,21 @@
     display: none;
   }
 
+  @media(max-width: $medium-device) {
+    .all-users {
+      display: none;
+    }
+  }
+
   .placeholder {
     margin-bottom: 0px;
+  }
+
+  .all-users {
+    position: absolute;
+    font-size: 18px;
+    left: 10px;
+    top: 5px;
+    z-index: 100;
   }
 }
