@@ -15,5 +15,5 @@
             %h4= link_to icon('user', user.user_name), public_profile_url(user)
             %span.text-muted= user.has_publications? ? link_to(icon('book', l(user.last_published_at)), public_post_url(user.last_post)) : t('.never')
             %span.text-muted= t('.posts_count', count: user.posts_count)
-            %span.text-muted= t('.comments_count', count: user.posts_count)
+            %span.text-muted= t('.comments_count', count: user.comments_count)
         
