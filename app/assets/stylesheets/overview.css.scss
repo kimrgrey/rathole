@@ -1,0 +1,33 @@
+.overview {
+  margin-top: 45px;
+
+  .placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .placeholders h4 {
+    margin-bottom: 0;
+  }
+
+  .placeholder {
+    margin-bottom: 20px;
+  }
+
+  .placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+    border: #FFF solid 5px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,.4);
+  }
+
+  .placeholder img:hover {
+    display: inline-block;
+    border-radius: 50%;
+    border: #DDD solid 5px;
+  }
+
+  span {
+    display: block;
+  }
+}

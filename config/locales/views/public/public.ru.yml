@@ -2,3 +2,9 @@ ru:
   public:
     profile:
       page_header: 'Профиль пользователя'
+    overview:
+      page_header: 'Перепись жителей Норы'
+      posts_count: 'Количество постов: %{count}'
+      comments_count: 'Количество комментариев: %{count}'
+      last_published_at: 'Последняя публикация: %{date}'
+      never: 'Никогда не публиковался'

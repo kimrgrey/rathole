@@ -1,3 +1,5 @@
+= menu_item t('nav.overview'), overview_path
+
 - if user.present? && user != current_user
   = render partial: 'public/profile', locals: { user: user }
 

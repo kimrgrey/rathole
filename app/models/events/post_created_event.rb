@@ -2,8 +2,13 @@ class Events::PostCreatedEvent < Events::Event
   hstore :properties, :post
   hstore :properties, :author, class_name: 'User'
 
+  after_create :update_last_published_at
   after_create :deliver_event_to_admins
   after_create :deliver_event_to_subscribers
+
+  def update_last_published_at
+    author.update last_published_at: post.published_at
+  end
   
   def deliver_event_to_admins
     User.admins.each do |admin| 

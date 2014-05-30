@@ -48,6 +48,8 @@ Rathole::Application.routes.draw do
   end
 
   resources :comments, only: [:index, :create, :update, :destroy]
+  
+  get '/overview', to: 'public#overview', as: 'overview'
 
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
 
   scope :with_role, -> (role_name) { where("users.roles @> ARRAY[?]", role_name) }
   scope :admins, -> { with_role(:admin) }
+  scope :in_order, -> { order('users.posts_count DESC, users.comments_count DESC') }
 
   mount_uploader :avatar, AvatarUploader
 
@@ -48,11 +49,19 @@ class User < ActiveRecord::Base
   end
 
   def last_posts(count = 5) 
-    posts.published_only.order('posts.created_at DESC').limit(count)
+    posts.published_only.order('posts.published_at DESC').limit(count)
+  end
+
+  def last_post
+    posts.published_only.order('posts.published_at DESC').first
   end
 
   def has_role?(role_name)
     roles.include?(role_name.to_s)
+  end
+
+  def has_publications?
+    last_published_at.present?
   end
 
   def admin?

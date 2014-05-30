@@ -2,6 +2,7 @@ ru:
   nav:
     menu: 'Меню'
     home: 'Главная'
+    overview: 'Жители'
     profile: 
       main: 'Профиль'
       of: 'Профиль %{user_name}'
