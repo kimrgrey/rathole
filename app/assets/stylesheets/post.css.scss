@@ -32,6 +32,10 @@
     @media(min-width: $small-device) {
       margin: 5px 45px;
     }
+    
+    border-radius: 50%;
+    border: #FFF solid 5px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,.4);
   }
 
   .details {
