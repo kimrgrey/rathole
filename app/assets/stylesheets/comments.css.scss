@@ -42,9 +42,31 @@
 
   }
 
-  .text {
-    a {
-      text-decoration: underline;
+  .comment {
+    .text {
+      a {
+        text-decoration: underline;
+      }
+
+      p {
+        img {
+          max-width: 200px;
+          margin: 10px 10px; 
+
+          @media(min-width: $extra-small-device) {
+            max-width: 200px;
+            margin: 10px 40px; 
+          }
+
+          @media(min-width: $small-device) {
+            max-width: 400px;
+          }
+
+          @media(min-width: $medium-device) {
+            max-width: 600px;
+          }
+        }
+      }
     }
   }
 
