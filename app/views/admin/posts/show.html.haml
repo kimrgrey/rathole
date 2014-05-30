@@ -1,5 +1,6 @@
 = content_for :title, @post.title
 = content_for :nav do
+  = render partial: 'public/nav', locals: { user: current_user }
   = render partial: 'users/my', locals: { user: current_user }
 
 = content_for :actions do
