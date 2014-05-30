@@ -10,7 +10,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
-    @posts = @posts.visible_on_main unless @user
+    unless @user
+      @posts = @posts.visible_on_main 
+      @featured_users = User.featured 
+    end
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
   end

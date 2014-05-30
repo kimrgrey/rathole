@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   scope :with_role, -> (role_name) { where("users.roles @> ARRAY[?]", role_name) }
   scope :admins, -> { with_role(:admin) }
   scope :in_order, -> { order('users.posts_count DESC, users.comments_count DESC') }
+  scope :featured, -> (count = 4) { order('users.last_published_at DESC').limit(count) }
 
   mount_uploader :avatar, AvatarUploader
 

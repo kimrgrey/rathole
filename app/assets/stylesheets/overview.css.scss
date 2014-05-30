@@ -1,4 +1,6 @@
-.overview {
+@import 'commons';
+
+.overview, .featured {
   margin-top: 45px;
 
   .placeholders {
@@ -29,5 +31,23 @@
 
   span {
     display: block;
+  }
+}
+
+.featured {
+  @include container; 
+  text-align: justify;
+  padding-top: 15px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #E9E9E9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.75);
+  margin-bottom: 50px;
+
+  @media(max-width: $small-device) {
+    display: none;
+  }
+
+  .placeholder {
+    margin-bottom: 0px;
   }
 }

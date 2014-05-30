@@ -4,6 +4,7 @@ ru:
       page_header: 'Профиль пользователя'
     overview:
       page_header: 'Перепись жителей Норы'
+    overview_row:
       posts_count: 'Количество постов: %{count}'
       comments_count: 'Количество комментариев: %{count}'
       last_published_at: 'Последняя публикация: %{date}'
