@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   scope :admins, -> { with_role(:admin) }
   scope :in_order, -> { order('users.posts_count DESC, users.comments_count DESC') }
   scope :in_featured_order, -> { order('users.last_published_at DESC NULLS LAST') }
-  scope :featured, -> (count = 4) { in_featured_order.limit(count) }
+  scope :featured, -> (count = 4) { in_order.limit(count) }
 
   mount_uploader :avatar, AvatarUploader
 
