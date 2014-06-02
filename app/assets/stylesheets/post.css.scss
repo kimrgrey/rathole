@@ -252,10 +252,16 @@
 
     .body {
       text-align: justify;
+      padding: 10px;
+      font-size: 13px;
+      @media(min-width: $large-device) {
+       font-size: 14px;
+      }
+
       img {
         display: none;
       }
-      
+
       ul {
         li {
           list-style-type: none;
