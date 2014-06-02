@@ -76,12 +76,14 @@ ActiveRecord::Schema.define(version: 20140530153948) do
 
   create_table "invites", force: true do |t|
     t.integer  "user_id"
+    t.integer  "target_id"
     t.string   "token",      null: false
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
+
+  add_index "invites", ["target_id"], name: "index_invites_on_target_id", unique: true, using: :btree
 
   create_table "pictures", force: true do |t|
     t.string   "image"
