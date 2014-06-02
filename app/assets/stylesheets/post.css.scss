@@ -255,6 +255,17 @@
       img {
         display: none;
       }
+      
+      ul {
+        li {
+          list-style-type: none;
+        }
+
+        li:before {
+          content: "\2014";
+          margin-right: 5px;
+        }
+      }
     }
 
     .actions {
