@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  paginates_per 15
+  paginates_per 25
 
   DEFAULT_PREVIEW_SIZE = 750
   SHORT_PREVIEW_SIZE   = 550
