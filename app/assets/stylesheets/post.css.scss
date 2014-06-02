@@ -222,3 +222,42 @@
     margin: 25px 0px; 
   }
 }
+
+#posts-wall {
+  margin: 0 auto;
+
+  .posts-wall-item {
+    @include paper;
+    
+    width: 370px;
+    padding: 10px !important;
+    margin-bottom: 40px;
+
+
+    h2 {
+      font-size: 16px;
+    }
+
+    .info {
+      text-align: center;
+      margin-bottom: 15px;
+      img.avatar {
+        width: 100px;
+        margin: 10px 0px;
+        border-radius: 50%;
+        border: #FFF solid 5px;
+        box-shadow: 0px 3px 3px rgba(0,0,0,.4);
+      }
+    }
+
+    .body {
+      text-align: justify;
+    }
+
+    .actions {
+      a.more {
+        float: right; 
+      }
+    }
+  }
+}

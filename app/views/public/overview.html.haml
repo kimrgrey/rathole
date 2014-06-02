@@ -7,5 +7,13 @@
   = page_header
   .overview
     - @users.in_groups_of(4, false).each do |group|
-      = render partial: 'public/overview_row', locals: { users: group }
+      .row.placeholders
+        - group.each do |user|
+          .col-xs-6.col-sm-3.placeholder
+            %a{href: public_profile_url(user)}
+              %img.img-responsive{:alt => user.user_name, :src => user.avatar_url(:thumb)}
+            %h4= link_to icon('user', user.user_name), public_profile_url(user)
+            %span.text-muted= user.has_publications? ? link_to(icon('book', l(user.last_published_at)), public_post_url(user.last_post)) : t('.never')
+            %span.text-muted= t('.posts_count', count: user.posts_count)
+            %span.text-muted= t('.comments_count', count: user.comments_count)
         

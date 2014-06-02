@@ -63,3 +63,5 @@ ru:
       title_for_main: 'Посты на rathole.io'
       description_for_user: 'Посты %{name} на rathole.io'
       description_for_main: 'Добро пожаловать в крысиную нору!'
+    wall:
+      more: 'Читать еще...'

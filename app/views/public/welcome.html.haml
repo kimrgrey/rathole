@@ -1,7 +1,7 @@
 = content_for :nav do
-  = render partial: 'public/nav', locals: { user: @user }
+  = render partial: 'public/nav', locals: { user: current_user }
   = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
 
-= render partial: 'posts/list', locals: { posts: @posts, preview: true }
+= render partial: 'posts/wall', locals: { posts: @posts, preview: true }
 = paginate @posts
 = render partial: 'shared/google_analytics' if Rails.env.production?

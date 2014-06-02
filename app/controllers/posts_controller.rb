@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
     unless @user
       @posts = @posts.visible_on_main 
-      @featured_users = User.featured 
     end
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])

@@ -69,5 +69,5 @@ Rathole::Application.routes.draw do
   get '/public/:user_name/section/:id', to: redirect('/%{user_name}/sections/%{id}')
   get '/public/tag/:tag', to: redirect('/tag/%{tag}')
 
-  root to: 'posts#index'
+  root to: 'public#welcome'
 end
