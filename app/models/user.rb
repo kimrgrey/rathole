@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def has_publications?
-    last_published_at.present?
+    posts.published_only.any?
   end
 
   def admin?
