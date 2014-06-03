@@ -125,4 +125,8 @@ footer#footer {
   @media(min-width: $medium-device) {
     font-size: 14px;    
   } 
+
+  a {
+    border-bottom: 1px dashed #000;
+  }
 }
