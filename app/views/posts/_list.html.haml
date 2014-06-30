@@ -1,5 +1,8 @@
-- posts.each do |post|
-  = render partial: 'posts/post', locals: {post: post, preview: preview}
-  = spacer
+- if posts.any?
+  - posts.each do |post|
+    = render partial: 'posts/post', locals: {post: post, preview: preview}
+    = spacer
+- else
+  = render partial: 'posts/placeholder'
 
 = render partial: 'shared/public_link_dialog'

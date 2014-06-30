@@ -286,3 +286,23 @@
     }
   }
 }
+
+.no-posts {
+  img {
+    display: block;
+    margin: 25px auto;
+    @media(max-width: $extra-small-device) {
+      width: 200px;
+    }
+    @media(min-width: $extra-small-device) {
+      width: 400px;
+    }
+    @media(min-width: $small-device) {
+      width: 600px;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+}
