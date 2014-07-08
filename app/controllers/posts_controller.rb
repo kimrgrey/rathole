@@ -99,7 +99,7 @@ class PostsController < ApplicationController
   def load_posts
     if @user
       @posts = @user.posts
-      @posts = @posts.published_only if user_signed_in? && current_user != @user
+      @posts = @posts.published_only if current_user != @user
     else
       @posts = user_signed_in? ? Post.my_or_published(current_user) : Post.published_only
     end
