@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    do_show
+    @user.present? ? do_show : not_found 
   end
 
   def update
