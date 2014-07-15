@@ -93,7 +93,10 @@ class PostsController < ApplicationController
   end
 
   def load_user
-    @user = User.find_by(user_name: params[:user_name]) if params[:user_name].present?
+    if params[:user_name].present?
+      @user = User.find_by(user_name: params[:user_name])
+      @user || not_found
+    end
   end
 
   def load_posts
