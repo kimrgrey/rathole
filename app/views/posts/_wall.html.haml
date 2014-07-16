@@ -1,7 +1,7 @@
 #posts-wall
   - posts.each do |post|
     .posts-wall-item
-      %span.clamp
+      = random_rat [:chump, :pen]
       %h2
         %a{href: public_post_path(post)}= post.title
       .info

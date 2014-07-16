@@ -1,13 +1,24 @@
 module RatsHelper
+  RATS = [:rap, :chump, :keys, :painter, :pen]
+
+  def rat(name)
+    content_tag(:span, '', class: "rat #{name.to_s}") if RATS.include?(name)
+  end
+
+  def random_rat(variants = nil)
+    variants ||= RATS
+    rat(variants.sample)
+  end
+
   def clip_and_clamp
-    content_tag(:span, '', class: 'clip') + content_tag(:span, '', class: 'clamp')
+    random_rat([:rap]) + random_rat([:chump, :pen])
   end
 
   def keys
-    content_tag(:span, '', class: 'keys')
+    rat(:keys)
   end
 
   def painter
-    content_tag(:span, '', class: 'painter')
+    rat(:painter)
   end
 end

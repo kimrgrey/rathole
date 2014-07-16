@@ -1,6 +1,6 @@
 @import 'commons';
 
-.clip {
+.rat.rap {
   background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   height: 150px;
   left: 33px;
@@ -13,7 +13,7 @@
   }
 }
 
-.clamp {
+.rat.chump {
   background: image-url("rat-chump.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   height: 100px;
   position: absolute;
@@ -23,7 +23,17 @@
   z-index: 10;
 }
 
-.keys {
+.rat.pen {
+  background: image-url("rat-pen.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+  height: 100px;
+  position: absolute;
+  right: -45px;
+  top: -75px;
+  width: 115px;
+  z-index: 10;
+}
+
+.rat.keys {
   background: image-url("rat-keys.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   height: 120px;
   position: absolute;
@@ -36,7 +46,7 @@
   }
 }
 
-.painter {
+.rat.painter {
   background: image-url("rat-painter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   height: 120px;
   position: absolute;
