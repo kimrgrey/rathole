@@ -16,10 +16,10 @@
   - else
     .greeting= t('.sign_in_to_comment')
 
-  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name }
+  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name, scroll_bottom: false }
 
   #comments-list
     - comments.each do |comment|
       = render partial: 'comments/comment', locals: { comment: comment }
   
-  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name }
+  = paginate comments, remote: true, :params => { :controller => 'comments', :action => 'index', owner_id: owner.id, class_name: owner.class.name, scroll_bottom: true }
