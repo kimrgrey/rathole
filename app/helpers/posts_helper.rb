@@ -56,6 +56,6 @@ module PostsHelper
   end
 
   def post_bug_link(post)
-    link_to icon('bug'), '#show-bug-dialog', class: 'bug-in-post'
+    link_to icon('bug'), '#show-bug-dialog', class: 'bug-in-post', title: I18n.t('users.tools.bug')
   end
 end
