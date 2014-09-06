@@ -57,7 +57,7 @@ Rathole::Application.routes.draw do
   get '/posts', to: 'posts#index'
   get '/user/posts/:id', to: 'posts#show'
   get '/:user_name', to: 'users#show'
-  get '/:user_name/posts', to: 'posts#index'
+  get '/:user_name/posts', to: 'posts#index', :as => 'user_posts_index'
   get '/:user_name/posts/:id', to: 'posts#show'
   get '/:user_name/sections/:id', to: 'public#section'
   get '/tag/:tag', to: 'posts#index'

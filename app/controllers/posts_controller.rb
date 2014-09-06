@@ -68,7 +68,7 @@ class PostsController < ApplicationController
     authorize_action_for(@post)
     if @post.destroy
       flash[:notice] = I18n.t('posts.destroy.success')
-      redirect_to user_posts_path
+      redirect_to user_posts_index_path(:user_name => current_user.user_name)
     else
       flash[:error] = @section.errors[:base].any? ? @section.errors[:base].join : I18n.t('posts.destroy.failed')
       redirect_to :back
