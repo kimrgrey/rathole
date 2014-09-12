@@ -3,7 +3,7 @@ Rathole::Application.routes.draw do
   
   devise_for :users, skip: [:registrations]
   devise_scope :user do
-    resource :registration, only: [:new, :create], path: 'users', controller: 'devise/registrations', as: :user_registration
+    resource :registration, only: [:new, :create], path: 'users', controller: 'registrations', as: :user_registration
   end
   
   resource :user do
