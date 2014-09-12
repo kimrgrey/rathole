@@ -1,6 +1,0 @@
-ru:
-  activerecord:
-    attributes:
-      section:
-        name: 'Название'
-        posts_count: 'Постов'
