@@ -1,20 +1,28 @@
-function initPublicLink() {
-  var dialog = $('#public-link-dialog').modal({show: false});
+(function() {
+  $(document).on('setup', '#public-link-dialog', function(event){
+    event.stopPropagation();
+    var $dialog = $(this);
+    $dialog.find('input').focus(function(){
+      $(this).select();
+    });
+    $dialog.modal({show: false});
+  });
+
+  $(document).on('show', '#public-link-dialog', function(event, href){
+    event.stopPropagation();
+    var $dialog = $(this);
+    $dialog.find('input#link').val(href);
+    $dialog.find('a#go').attr('href', href);
+    $dialog.modal('show');
+  });
+
   $(document).on('click', '.public-link', function(event) {
     event.preventDefault();
-    dialog.find('input#link').val($(this).attr('href'));
-    dialog.find('a#go').attr('href', $(this).attr('href'));
-    dialog.modal('show');
+    $('#public-link-dialog').trigger('show', $(this).attr('href'));
     return false;
   });
 
-  $('#public-link-dialog input').focus(function(){
-    $(this).select();
+  $(document).ready(function(){
+    $('#public-link-dialog').trigger('setup');
   });
-
-  $('#public-link-dialog input').click(function(){
-    $(this).select();
-  });
-}
-
-$(document).ready(initPublicLink);
+})();
