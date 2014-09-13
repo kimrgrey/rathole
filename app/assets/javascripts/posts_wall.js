@@ -1,5 +1,6 @@
 (function(){
-  $(document).on('setup', '#posts-wall', function(){
+  $(document).on('setup', '#posts-wall', function(event){
+    event.stopPropagation();
     var $wall = $(this);  
     var options = {
       itemSelector: '.posts-wall-item',
