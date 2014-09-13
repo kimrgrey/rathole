@@ -1,7 +1,6 @@
 (function(){
   $(document).on('setup', '.admin .dashboard', function(event){
     event.stopPropagation();
-    
     var $dashboard = $(this);
     $dashboard.find('tbody tr').click(function(event){
       event.preventDefault();
