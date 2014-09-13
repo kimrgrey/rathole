@@ -1,39 +1,46 @@
 (function() {
-  function initBugs() {
-    var dialog = $('#post-bug-dialog').modal({show: false});
+  $(document).on('setup', '#post-bug-dialog', function(event){
+    event.stopPropagation();
 
-    function showBugDialog(text) {
-      dialog.find('#fragment').val(text);
-      if (text && text.length > 0) {
-        dialog.find('#label-for-fragment').show();
-        dialog.find('#fragment').show();
-      } else {
-        dialog.find('#label-for-fragment').hide();
-        dialog.find('#fragment').hide();
-      }
-      dialog.find('#note').val('');
-      dialog.find('.form-group').removeClass('has-error');
-      dialog.modal('show');
-    }
+    var $dialog = $(this).modal({show: false});
 
-    dialog.find('#go').click(function(event){
+    $dialog.on('click', '#go', function(event){
       event.preventDefault();
-      var note = dialog.find('#note');
-      if (note.val().length == 0) {
-        note.closest('.form-group').addClass('has-error');
+      var $note = $dialog.find('#note');
+      if ($note.val().length == 0) {
+        $note.closest('.form-group').addClass('has-error');
       } else  {
-        dialog.find('form').submit();
+        $dialog.find('form').submit();
       }
       return false;
     });
+  });
 
+  $(document).on('show', '#post-bug-dialog', function(event){
+    event.stopPropagation();
+
+    var $dialog = $(this);
+    var text = getSelection().toString();
+
+    $dialog.find('#fragment').val(text);
+    if (text && text.length > 0) {
+      $dialog.find('#label-for-fragment').show();
+      $dialog.find('#fragment').show();
+    } else {
+      $dialog.find('#label-for-fragment').hide();
+      $dialog.find('#fragment').hide();
+    }
+    $dialog.find('#note').val('');
+    $dialog.find('.form-group').removeClass('has-error');
+    $dialog.modal('show');
+  });
+
+  $(document).ready(function(){
+    $('#post-bug-dialog').trigger('setup');
     $('.bug-in-post').click(function(event){
       event.preventDefault();
-      var text = getSelection().toString();
-      showBugDialog(text);
+      $('#post-bug-dialog').trigger('show');
       return false;
     });
-  }
-
-  $(document).ready(initBugs);
+  });
 })();
