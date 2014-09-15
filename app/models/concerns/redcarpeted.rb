@@ -20,7 +20,7 @@ module Redcarpeted
   def self.emojify(text)
     text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
       name = $1
-      if Emoji.names.include?(name) 
+      if Emoji.find_by_alias(name) 
         src = "/images/emoji/#{name}.png"
         "<img src = '#{src}' class = 'emoji' alt='#{name}' style='width:20px; height:20px;' />"
       else
