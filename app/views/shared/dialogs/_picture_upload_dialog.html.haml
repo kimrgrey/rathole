@@ -12,6 +12,7 @@
         %p
           = form_tag upload_picture_path, id: 'upload-form' do
             = file_field_tag :files, multiple: true
+            = hidden_field_tag :authenticity_token, form_authenticity_token
             %button#select.btn.btn-success{type: 'button', data: {default: t('.browse'), selected: t('.selected')}}= icon 'picture-o', t('.browse')
             %button#upload.btn.btn-primary.hidden{type: 'button'}= icon 'upload', t('.upload')
             

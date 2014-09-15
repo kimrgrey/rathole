@@ -1,4 +1,4 @@
-function uploadFiles(url, method, files, callback) {
+function uploadFiles(url, token, method, files, callback) {
   var formData = new FormData();
   
   for (var i = 0; i < files.length; ++i) {
@@ -8,6 +8,7 @@ function uploadFiles(url, method, files, callback) {
     }
     formData.append('files[]', file, file.name);
   }
+  formData.append('authenticity_token', token)
 
   var xhr = new XMLHttpRequest();
   xhr.open(method, url, true);

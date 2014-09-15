@@ -51,7 +51,8 @@
       var files = $(this).find('#files').get(0).files;
       var url = $(this).attr('action');
       var method = $(this).attr('method');
-      uploadFiles(url, method, files, function(pictures) {
+      var token = $form.find('#authenticity_token').val();
+      uploadFiles(url, token, method, files, function(pictures) {
         $placeholder = $dialog.find('.picture.placeholder');
         for (var i = 0; i < pictures.length; ++i) {
           var picture = pictures[i];
