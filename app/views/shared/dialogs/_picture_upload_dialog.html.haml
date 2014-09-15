@@ -1,0 +1,31 @@
+#picture-upload-dialog.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: 'modal'}}
+          &times;
+        %h2.modal-title= t('.dialog_title')
+      .modal-body
+        %h3= t('.body_title')
+        %p
+          = t('.instructions')
+        %p
+          = form_tag upload_picture_path, id: 'upload-form' do
+            = file_field_tag :files, multiple: true
+            %button#select.btn.btn-success{type: 'button', data: {default: t('.browse'), selected: t('.selected')}}= icon 'picture-o', t('.browse')
+            %button#upload.btn.btn-primary.hidden{type: 'button'}= icon 'upload', t('.upload')
+            
+        %p.pictures
+          .picture.placeholder
+            %img.placeholder{src: image_url('image-placeholder.png'), title: t('.placeholder_title')}
+            %a.public-link{href: '#', title: t('.public_link_title')}= icon 'link'
+            %a.delete-link{href: '#', title: t('.hide_title')}= icon 'times'
+          - current_user.pictures.in_order.each do |picture|
+            .picture
+              %img{src: picture.image_url(:thumb), data: {id: picture.id, original: picture.image_url}}
+              %a.public-link{href: full_image_url(picture.image_url), title: t('.public_link_title')}= icon 'link'
+              %a.delete-link{href: destroy_picture_url(picture), title: t('.hide_title')}= icon 'times'
+
+      .modal-footer
+        %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}}= t('.close')
+      

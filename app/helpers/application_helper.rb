@@ -50,4 +50,16 @@ module ApplicationHelper
       link_to icon('bookmark-o', t('users.avatar.subscribe')), subscriptions_user_path(author_id: user.id), title: I18n.t('users.subscribe.title.author'), class: 'btn btn-success', method: 'post'
     end
   end
+
+  def upload_picture_link(target, title, options = {}, &block)
+    attrs = options || {}
+    attrs[:title] = title if title.present?
+    attrs[:class] = "#{attrs[:class]} upload-picture"
+    attrs[:data] = (attrs[:data] || {}).merge(target: target, title: title)
+    if block
+      link_to upload_picture_path, attrs, &block
+    else
+      link_to icon('upload'), upload_picture_path, attrs
+    end
+  end
 end

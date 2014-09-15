@@ -1,0 +1,53 @@
+@import 'commons';
+
+#picture-upload-dialog {
+  .modal-content {
+    @media(min-width: $small-device) {
+      width: 750px;
+    }
+    @media(min-width: $medium-device) {
+      width: 950px;
+      margin-left: -150px;
+    }
+    text-align: center;
+  }
+
+  #upload-form {
+    margin: 5px 0px; 
+    
+    #files { display: none; }
+  }
+
+  img {
+    cursor: pointer;
+  }
+
+  .picture {
+    display: inline-block;
+    margin: 5px;
+    padding-right: 25px;
+    position: relative;
+
+    a.public-link {
+      position: absolute;
+      top: 0px;
+      right: 5px;
+    }
+    a.delete-link {
+      position: absolute;
+      top: 20px;
+      right: 5px;
+    }
+  }
+
+  .placeholder {
+    a.public-link { display: none; }
+    a.delete-link { display: none; }
+  }
+}
+
+#public-link-dialog {
+  input#link[readonly] {
+    cursor: pointer;
+  }
+}

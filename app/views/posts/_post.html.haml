@@ -11,7 +11,7 @@
     %a{href: public_post_path(post)}= post.title
   
   .row.avatar
-    = image_tag post.user_avatar_url(:thumb), class: 'avatar'
+    = image_tag post.user_avatar_path, class: 'avatar'
   .row.details
     %span.user 
       %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
@@ -44,8 +44,5 @@
     .row.comments
       = render partial: 'comments/comments', locals: { comments: @comments, owner: post }
 
-  = render partial: 'posts/bug_dialog', locals: { post: post }
-  = render partial: 'shared/public_link_dialog'
-
-    
+  = render partial: 'posts/bug_dialog', locals: { post: post }    
       

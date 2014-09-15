@@ -6,7 +6,7 @@
         %a{href: public_post_path(post)}= post.title
       .info
         %a{href: public_profile_path(post.user)}
-          = image_tag post.user_avatar_url(:thumb), class: 'avatar'
+          = image_tag post.user_avatar_path, class: 'avatar'
         %div.date
           %span.badge= icon 'calendar', l(post.published_at.present? ? post.published_at : post.created_at)
       .body

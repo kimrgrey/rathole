@@ -14,5 +14,5 @@ class Comments::Comment < ActiveRecord::Base
   scope :in_order, ->{ order('comments.created_at DESC') }
 
   delegate :user_name, to: :user, prefix: false
-  delegate :avatar_url, to: :user, prefix: true
+  delegate :avatar_path, to: :user, prefix: true
 end

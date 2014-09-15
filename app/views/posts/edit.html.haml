@@ -2,6 +2,13 @@
   = render partial: 'public/nav', locals: { user: current_user }
   = render partial: 'users/my', locals: { user: current_user }
 
+= content_for :launchpad do 
+  = upload_picture_link '#post-form', t('.insert_image_title'), title: t('.upload_title') do
+    = icon 'image'
+
+= content_for :dialogs do
+  = render partial: 'shared/dialogs/picture_upload_dialog'
+
 .container
   = clip_and_clamp
   = page_header

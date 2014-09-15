@@ -1,0 +1,3 @@
+.dialogs
+  = render partial: 'shared/dialogs/public_link_dialog'
+  = yield(:dialogs) if content_for?(:dialogs)

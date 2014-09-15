@@ -1,9 +1,13 @@
 .row.avatar
-  = image_tag user.avatar_url(:thumb), class: 'avatar'
+  = image_tag user.avatar_path, class: 'user-avatar avatar', data: { url: avatar_user_path }
   .actions
     - if user_signed_in?
       - if user != current_user
         = user_subscription_link(user)  
       - if user.updatable_by?(current_user)
-        %a{href: '#', id: 'upload-avatar', class: 'btn btn-success'}= icon 'upload', t('.upload')
-        = render partial: 'users/avatar_upload_dialog'
+        = content_for :dialogs do
+          = render partial: 'shared/dialogs/picture_upload_dialog'
+
+        = upload_picture_link '.user-avatar', t('.select_avatar_title'), class: 'btn btn-success' do
+          = t('.upload')
+        

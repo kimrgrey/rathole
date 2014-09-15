@@ -29,10 +29,10 @@
       if (commentText.length > 0) {
         commentText += "\r\n\r\n";
       }
-      commentText += "**" + author + ":**";
+      commentText += Markdown.bold(author);
       var selectedText = getSelection().toString();
       if (selectedText.length > 0) {
-        commentText += "\r\n\r\n" + "> " + selectedText;
+        commentText += "\r\n\r\n" + Markdown.blockquote(selectedText);
       }
       $textArea.val(commentText);
       $('html, body').animate({ scrollTop: $textArea.offset().top - 200}, 500);
@@ -72,6 +72,40 @@
     $dialog.modal('show');
   });
 
+  $(document).on('picture', '#post-form', function(event, picture){
+    event.stopPropagation();
+    var $textArea = $(this).find('#post_body');
+    var postText = $textArea.val();
+    var imgText = Markdown.image(picture.original, picture.original);
+    if ($textArea.get(0).selectionStart || $textArea.get(0).selectionStart == '0') {
+      var startPos = $textArea.get(0).selectionStart;
+      var endPos = $textArea.get(0).selectionEnd;
+      postText = postText.substring(0, startPos) + imgText + postText.substring(endPos, postText.length);
+      $textArea.val(postText);
+      $textArea.get(0).setSelectionRange(startPos, startPos + imgText.length);
+      $textArea.get(0).focus();
+    } else {
+      if (postText.length > 0) { 
+        postText += "\r\n\r\n"; 
+      }
+      postText += imgText;
+      $textArea.val(postText);
+      $('html, body').animate({ scrollTop: $textArea.offset().top + $textArea.height() + 300}, 500);
+    }
+  });
+
+  $(document).on('setup', '#posts-wall', function(event){
+    event.stopPropagation();
+    var $wall = $(this);  
+    var options = {
+      itemSelector: '.posts-wall-item',
+      isFitWidth: true,
+      gutter: 30
+    };
+    $wall.masonry(options);
+  });
+  
+
   $(document).ready(function() {
     $('.comments').trigger('setup');
     $('#post-bug-dialog').trigger('setup');
@@ -80,5 +114,6 @@
       $('#post-bug-dialog').trigger('show');
       return false;
     });
+    $('#posts-wall').trigger('setup');  
   });
 })();

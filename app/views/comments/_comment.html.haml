@@ -27,7 +27,7 @@
           = link_to icon('sign-in', t('nav.sign_in')), new_user_session_path
   .row.body  
     .col-md-3.col-sm-4.hidden-xs
-      = image_tag comment.user_avatar_url(:thumb), class: 'avatar'
+      = image_tag comment.user_avatar_path, class: 'avatar'
     .col-md-9.col-sm-8 
       - cache comment_cache_key(comment) do
         .text

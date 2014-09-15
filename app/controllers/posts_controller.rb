@@ -28,7 +28,6 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
-    @pictures = current_user.pictures
   end
 
   def create
@@ -46,7 +45,6 @@ class PostsController < ApplicationController
   def edit
     @post = current_user.posts.find(params[:id])
     authorize_action_for(@post)
-    @pictures = current_user.pictures
   end
 
   def update

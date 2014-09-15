@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   has_many :bugs
 
   delegate :user_name, to: :user, prefix: false
-  delegate :avatar_url, to: :user, prefix: true
+  delegate :avatar_path, to: :user, prefix: true
   delegate :name, to: :section, prefix: true
   delegate :email, to: :user, prefix: true
 

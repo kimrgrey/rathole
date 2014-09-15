@@ -1,3 +1,3 @@
-= image_tag subscription.author.avatar_url(:small)
+= image_tag subscription.author.avatar_path
 = t('.subscribed_on_author')
 = link_to icon('book', subscription.author.user_name), public_profile_path(subscription.author)

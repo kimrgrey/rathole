@@ -7,8 +7,8 @@ Rathole::Application.routes.draw do
   end
   
   resource :user do
-    get :events, to: 'events#index'
     post :avatar
+    get :events, to: 'events#index'
     resources :posts, except: [:index, :show] do 
       member do
         post :publish

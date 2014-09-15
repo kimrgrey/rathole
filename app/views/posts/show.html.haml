@@ -8,7 +8,9 @@
   = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
 
 = content_for :launchpad do 
-  = render partial: 'posts/launchpad', locals: { user: current_user, post: @post } if user_signed_in?
+  - if user_signed_in?
+    = post_bug_link(@post)
+    = post_subscription_link(current_user, @post)
 
 = render partial: 'posts/post', locals: { post: @post, preview: false }
 

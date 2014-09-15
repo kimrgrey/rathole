@@ -1,46 +1,36 @@
-%ul#post-form-tabs.nav.nav-tabs
-  %li.active
-    %a{href: '#form', data: {toggle: 'tab'}}= t('.tabs.form')
-  %li
-    %a{href: '#pictures', data: {toggle: 'tab'}}= t('.tabs.pictures')
+= form_for [:user, post], html: {id: 'post-form', class: 'form-horizontal'} do |f|
+  = render partial: 'shared/errors', locals: { model: post }
+  .form-group
+    = f.label :title, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :title, class: 'form-control', placeholder: t('.placeholders.title')
+  .form-group
+    = f.label :section, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.collection_select :section_id, @sections, :id, :name, {}, class: 'form-control'
+  
+  .form-group  
+    %span#body-format
+      %a.active{href: '#markdown', data: {toggle: 'tab'}}= t('.formats.markdown')
+      %a{href: '#html', data: {toggle: 'tab'}}= t('.formats.html')
+    .clearfix
+    .tab-content
+      #markdown.tab-pane.active
+        = f.label :body, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area :body, rows: 50, class: 'form-control', placeholder: t('.placeholders.body')
+      #html.tab-pane
+        = f.label :body_html, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area :body_html, rows: 50, disabled: true, class: 'form-control', placeholder: t('.placeholders.body')
+  .form-group
+    = f.label :tag_list, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :tag_list, class: 'form-control', placeholder: t('.placeholders.tags')
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('.save'), class: 'btn btn-primary'
+      = link_to t('.cancel'), user_posts_path, class: 'btn btn-default'
+      = link_to t('.delete'), user_post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
 
-#post-form-tabs-content.tab-content
-  #form.tab-pane.active
-    = form_for [:user, post], html: {id: 'post-form', class: 'form-horizontal'} do |f|
-      = render partial: 'shared/errors', locals: { model: post }
-      .form-group
-        = f.label :title, class: 'col-sm-2 control-label'
-        .col-sm-10
-          = f.text_field :title, class: 'form-control', placeholder: t('.placeholders.title')
-      .form-group
-        = f.label :section, class: 'col-sm-2 control-label'
-        .col-sm-10
-          = f.collection_select :section_id, @sections, :id, :name, {}, class: 'form-control'
-      .form-group
-        %ul#body-format
-          %li
-            %a{href: '#html', data: {toggle: 'tab'}}= t('.formats.html')
-          %li.active
-            %a{href: '#markdown', data: {toggle: 'tab'}}= t('.formats.markdown')
-          .clearfix
-        .tab-content
-          #markdown.tab-pane.active
-            = f.label :body, class: 'col-sm-2 control-label'
-            .col-sm-10
-              = f.text_area :body, rows: 50, class: 'form-control', placeholder: t('.placeholders.body')
-          #html.tab-pane
-            = f.label :body_html, class: 'col-sm-2 control-label'
-            .col-sm-10
-              = f.text_area :body_html, rows: 50, disabled: true, class: 'form-control', placeholder: t('.placeholders.body')
-      .form-group
-        = f.label :tag_list, class: 'col-sm-2 control-label'
-        .col-sm-10
-          = f.text_field :tag_list, class: 'form-control', placeholder: t('.placeholders.tags')
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = f.submit t('.save'), class: 'btn btn-primary'
-          = link_to t('.cancel'), user_posts_path, class: 'btn btn-default'
-          = link_to t('.delete'), user_post_path(post), class: 'btn btn-danger pull-right', method: 'delete' if params[:action] == 'edit'
-  #pictures.tab-pane
-    = render partial: 'posts/pictures'
 .clearfix

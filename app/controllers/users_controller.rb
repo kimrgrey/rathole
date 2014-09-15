@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:avatar]
-
   before_action :store_current_url_in_session, only: [:show]
   before_action :authenticate_user!, except: [:show]
 
@@ -27,18 +25,9 @@ class UsersController < ApplicationController
 
   def avatar
     @user = current_user
-    input = request.body.read
-    tmp = Tempfile.new('avatar')
-    begin  
-      tmp.binmode
-      tmp.write(input)
-      tmp.rewind
-      @user.avatar = tmp
-      @user.save
-    ensure
-      tmp.close
-      tmp.unlink
-    end
+    @picture = current_user.pictures.find(params[:picture_id])
+    @user.avatar_path = @picture.image_url(:thumb)
+    @user.save ? head(200) : head(422)
   end
 
   private

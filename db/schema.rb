@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912184019) do
+ActiveRecord::Schema.define(version: 20140915191828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140912184019) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hidden",     default: false
   end
 
   create_table "posts", force: true do |t|
@@ -174,7 +175,7 @@ ActiveRecord::Schema.define(version: 20140912184019) do
     t.string   "user_name",                           null: false
     t.integer  "posts_count",            default: 0
     t.integer  "comments_count",         default: 0
-    t.string   "avatar"
+    t.string   "avatar_path"
     t.text     "roles",                  default: [],              array: true
     t.text     "about"
     t.text     "about_html"

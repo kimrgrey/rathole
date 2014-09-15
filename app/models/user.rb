@@ -27,8 +27,6 @@ class User < ActiveRecord::Base
   scope :in_featured_order, -> { order('users.last_published_at DESC NULLS LAST') }
   scope :featured, -> (count = 4) { in_order.limit(count) }
 
-  mount_uploader :avatar, AvatarUploader
-
   after_create :create_default_section
   after_create :fire_user_created_event!
 
