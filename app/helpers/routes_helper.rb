@@ -53,6 +53,10 @@ module RoutesHelper
   end
 
   def full_image_url(path)
-    request.protocol + request.host_with_port + path
+    if path.present?
+      request.protocol + request.host_with_port + path
+    else
+      request.protocol + request.host_with_port + image_path('thumb_avatar_default.png')
+    end
   end
 end
