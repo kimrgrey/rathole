@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 
   redcarpet :about
 
+  def avatar_path
+    self.attributes['avatar_path'] || 'thumb_avatar_default.png'
+  end
+
   def assign_sticker!(sticker)
     unless stickers.include?(sticker) 
       stickers << sticker 
