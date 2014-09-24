@@ -35,7 +35,7 @@ module PostsHelper
   def without_emoji(text)
     text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
       name = $1
-      Emoji.names.include?(name) ? '' : name
+      Emoji.find_by_alias(name)  ? '' : name
     end
   end
 
