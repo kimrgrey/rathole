@@ -5,9 +5,11 @@ module PostsHelper
 
   def post_css_class(post)
     if post.draft? || post.hidden?
-      'warning'
+      'draft'
     elsif post.published? && !post.visible_on_main?
-      'info'
+      'important'
+    elsif post.visible_on_main?
+      'on-main'
     end
   end
   

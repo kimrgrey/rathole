@@ -32,11 +32,28 @@
     }
 
     tr {
-      a { text-decoration: underline; }
+      a { 
+        text-decoration: underline; 
+      }
     }
 
-    tbody tr.info td {
-      background-color: #D9EDF7;
+    tr.on-main {
+      td {
+        background-color: #33ED1F;
+      }
+    }
+
+    tr.draft td {
+      background-color: #DDD;
+    }
+
+    tr.important td {
+      background-color: #190DFF;
+      color: #FFF;
+
+      a { 
+        color: #FFF; 
+      }
     }
   }
 }
