@@ -9,7 +9,7 @@
         %h3= t('.body_title')
         %p
           = t('.instructions')
-        = form_tag bugs_path(post_id: post.id) do
+        = form_tag bugs_path(post_id: post.id), remote: true do
           .form-group
             = label_tag :fragment, t('.text'), id: 'label-for-fragment'
             = text_area_tag :fragment, '', class: 'form-control', rows: 3, readonly: true

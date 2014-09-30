@@ -54,7 +54,10 @@ class BugsController < ApplicationController
     else
       flash[:error] = I18n.t('bugs.create.failed')
     end
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render :create }
+    end
   end
 
   private
