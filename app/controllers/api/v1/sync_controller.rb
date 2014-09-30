@@ -17,7 +17,7 @@ class Api::V1::SyncController < Api::ApiController
     @users = @users.where(id: @post.comments.map(&:user_id))
     @users = @users.in_order
     respond_to do |format|
-      format.json { render :sync }
+      format.json { render :post }
     end
   end
 
