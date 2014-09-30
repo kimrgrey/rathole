@@ -7,8 +7,8 @@
       %th= User.human_attribute_name(:created_at)
   %tbody
     - users.each do |user|
-      %tr{data: {url: admin_user_url(user)}}
-        %td= user.id
-        %td= user.user_name
-        %td= user.email
+      %tr
+        %td= link_to user.id, admin_user_url(user)
+        %td= link_to user.user_name, admin_user_url(user)
+        %td= mail_to user.email
         %td= l user.created_at

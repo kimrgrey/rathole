@@ -31,8 +31,8 @@
       box-shadow: none;
     }
 
-    tbody tr {
-      cursor: pointer;
+    tr {
+      a { text-decoration: underline; }
     }
 
     tbody tr.info td {

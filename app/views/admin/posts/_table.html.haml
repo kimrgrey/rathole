@@ -7,8 +7,8 @@
       %th= Post.human_attribute_name(:created_at)
   %tbody
     - posts.each do |post|
-      %tr{class: post_css_class(post), data: {url: admin_post_url(post)}}
-        %td= post.id
-        %td= post.title
-        %td= post.user_name
+      %tr{class: post_css_class(post)}
+        %td= link_to post.id, admin_post_url(post)
+        %td= link_to post.title, admin_post_url(post)
+        %td= link_to post.user_name, admin_user_url(post.user)
         %td= l(post.published_at.present? ? post.published_at : post.created_at)
