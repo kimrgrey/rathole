@@ -35,6 +35,7 @@ class Post < ActiveRecord::Base
   scope :published_only, -> { where('posts.state = ?', Post.states[:published]) }
   scope :visible_on_main, -> { where('posts.visible_on_main = ?', true) }
   scope :my_or_published, -> (user) { where('posts.user_id = ? OR posts.state = ?', user.id, Post.states[:published]) }
+  scope :recently_updated, -> (from, to) { where('posts.updated_at >= :from AND posts.updated_at < :to', from: from, to: to) }
 
   before_validation :extract_preview_from_body!
 

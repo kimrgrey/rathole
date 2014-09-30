@@ -46,11 +46,11 @@ module Redcarpeted
   module ClassMethods
     def redcarpet(field_name)
       method_name = "convert_#{field_name}_to_html!".to_sym
-      html_field_name = "#{field_name}_html".to_sym
       define_method method_name do |force = false|
         if force || send("#{field_name}_changed?".to_sym)
           text = read_attribute(field_name)
-          write_attribute(html_field_name, Redcarpeted.md2html(text))
+          write_attribute("#{field_name}_html".to_sym, Redcarpeted.md2html(text))
+          write_attribute("#{field_name}_updated_at".to_sym, Time.now)
         end
       end
 

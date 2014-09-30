@@ -48,6 +48,13 @@ Rathole::Application.routes.draw do
   end
 
   resources :comments, only: [:index, :create, :update, :destroy]
+
+  namespace :api do
+    namespace :v1 do
+      get '/sync', to: 'sync#sync'
+      get '/post/:id', to: 'sync#post'
+    end
+  end
   
   get '/overview', to: 'public#overview', as: 'overview'
 

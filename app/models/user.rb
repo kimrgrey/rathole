@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   scope :in_order, -> { order('users.posts_count DESC, users.comments_count DESC') }
   scope :in_featured_order, -> { order('users.last_published_at DESC NULLS LAST') }
   scope :featured, -> (count = 4) { in_order.limit(count) }
+  scope :recently_updated, -> (from, to) { where('users.updated_at >= :from AND users.updated_at < :to', from: from, to: to) }
 
   after_create :create_default_section
   after_create :fire_user_created_event!
