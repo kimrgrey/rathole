@@ -2,6 +2,14 @@ module PostsHelper
   def tags(tags)
     icon 'tags', tags.map{|tag| content_tag :a, tag, href: public_tag_path(tag)}.join(', ')
   end
+
+  def post_css_class(post)
+    if post.draft? || post.hidden?
+      'warning'
+    elsif post.published? && !post.visible_on_main?
+      'info'
+    end
+  end
   
   def publish_link(post)
     options = {

@@ -7,7 +7,7 @@
       %th= Post.human_attribute_name(:created_at)
   %tbody
     - posts.each do |post|
-      %tr{class: ('info' unless post.visible_on_main?), data: {url: admin_post_url(post)}}
+      %tr{class: post_css_class(post), data: {url: admin_post_url(post)}}
         %td= post.id
         %td= post.title
         %td= post.user_name
