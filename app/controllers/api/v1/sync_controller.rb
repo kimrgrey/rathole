@@ -7,12 +7,18 @@ class Api::V1::SyncController < Api::ApiController
     @users = @users.in_order
     @posts = Post.published_only.recently_updated(@lsd, @next_lsd)
     @posts = @posts.in_order
+    respond_to do |format|
+      format.json { render :sync }
+    end
   end
 
   def post
     @users = User.recently_updated(@lsd, @next_lsd)
     @users = @users.where(id: @post.comments.map(&:user_id))
     @users = @users.in_order
+    respond_to do |format|
+      format.json { render :sync }
+    end
   end
 
   private
