@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915191828) do
+ActiveRecord::Schema.define(version: 20140930133753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140915191828) do
     t.text     "body_html"
     t.string   "type"
     t.integer  "bug_id"
+    t.datetime "body_updated_at"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -100,14 +101,16 @@ ActiveRecord::Schema.define(version: 20140915191828) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "section_id"
-    t.integer  "comments_count",  default: 0
-    t.text     "tags",            default: [],    array: true
-    t.integer  "state",           default: 0
+    t.integer  "comments_count",     default: 0
+    t.text     "tags",               default: [],    array: true
+    t.integer  "state",              default: 0
     t.text     "body_html"
     t.text     "preview"
     t.text     "preview_html"
-    t.boolean  "visible_on_main", default: false
+    t.boolean  "visible_on_main",    default: false
     t.datetime "published_at"
+    t.datetime "body_updated_at"
+    t.datetime "preview_updated_at"
   end
 
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
