@@ -11,22 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930133753) do
+ActiveRecord::Schema.define(version: 20140930174650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "bugs", force: true do |t|
-    t.integer  "reporter_id",               null: false
-    t.integer  "post_id",                   null: false
-    t.integer  "state",         default: 0
+    t.integer  "reporter_id",                     null: false
+    t.integer  "post_id",                         null: false
+    t.integer  "state",               default: 0
     t.text     "fragment"
     t.text     "fragment_html"
     t.text     "note"
     t.text     "note_html"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "note_updated_at"
+    t.datetime "fragment_updated_at"
   end
 
   add_index "bugs", ["post_id"], name: "index_bugs_on_post_id", using: :btree
