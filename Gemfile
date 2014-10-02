@@ -35,7 +35,7 @@ end
 group :development do 
   gem 'spring', github: 'rails/spring'
   gem 'therubyracer', platforms: :ruby
-  gem 'letter_opener_web', github: 'kimrgrey/letter_opener_web'
+  gem 'letter_opener_web'
   gem 'hirb-unicode'
   gem 'capistrano', '~> 3.0', require: false
   gem 'capistrano-rails', '~> 1.1', require: false

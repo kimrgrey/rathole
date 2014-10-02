@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/kimrgrey/letter_opener_web.git
-  revision: 7b1bf4af43a291435206ad2369268b06cae1501b
-  specs:
-    letter_opener_web (1.2.1)
-      letter_opener (~> 1.0)
-      rails (>= 3.2)
-
-GIT
   remote: git://github.com/rails/spring.git
   revision: c57942857210d1ed6c242b140f81cd5147cccb32
   specs:
@@ -129,6 +121,9 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.2.0)
       launchy (~> 2.2)
+    letter_opener_web (1.2.1)
+      letter_opener (~> 1.0)
+      rails (>= 3.2)
     libv8 (3.16.14.7)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
@@ -237,7 +232,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
-  letter_opener_web!
+  letter_opener_web
   mini_magick
   newrelic_rpm
   pg
