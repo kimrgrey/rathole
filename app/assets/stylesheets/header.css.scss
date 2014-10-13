@@ -3,8 +3,12 @@
 header {
   @include paper;
 
-  position: fixed;
-  min-width: 300px;
+  position: absolute;    
+
+  @media(min-width: $small-device) {
+    position: fixed;
+  }
+
   left: 0px;
   top: 0px;
   width: 100%;
