@@ -4,6 +4,7 @@ ru:
       new: 
         page_header: 'Вход на сайт'
         submit: 'Войти'
+        sign_in_via: 'Войти через %{provider}'
       signed_in: "Добро пожаловать на сайт!"
       signed_out: "До скорой встречи!"
     confirmations:
@@ -75,13 +76,13 @@ ru:
         instructions: "Судя по всему ваш аккаунт был заблокирован? Это не проблема! Чтобы разблокировать его, просто пройдите по ссылке ниже."
         unlock: "Вперед!"
     omniauth_callbacks:
-      failure: "Не удалось войти на сайт при помощи %{kind}% %{reason}"
+      failure: "Не удалось войти на сайт при помощи %{kind}"
       success: "Вы успешно вошли на сайт при помощи %{kind}"
     shared:
       links:
         sign_in: 'Хотите войти на сайт?'
+        sign_in_with: 'Войти через %{provider}'
         sign_up: 'Хотите пройти регистрацию?'
         forget_password: 'Забыли свой пароль?'
         confirmation_instructions: "Не получили инструкции по активации аккаунта?"
         unlock_instructions: "Не получили инструкции по разблокировке аккаунта?"
-        sign_in_with: "Войти при помощи %{provider}"

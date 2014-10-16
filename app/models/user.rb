@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, 
          :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :timeoutable
+         :confirmable, :lockable, :timeoutable, :omniauthable
 
   include Authority::UserAbilities
   include Authority::Abilities
@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, foreign_key: 'subscriber_id'
   has_many :invites
   has_many :bugs, foreign_key: 'reporter_id'
+  has_many :identities, inverse_of: :user
 
   has_and_belongs_to_many :stickers
 
@@ -34,6 +35,42 @@ class User < ActiveRecord::Base
   include Redcarpeted
 
   redcarpet :about
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      auth = session['devise.omniauth']
+      if auth.present?
+        user.user_name = [auth.info.nickname, auth.extra.raw_info.screen_name].find(&:present?)
+        user.email = auth.info.email
+      end
+      user.valid?
+    end
+  end
+
+  def self.find_or_create_by_auth(auth, current_user = nil)
+    identity = Identity.find_by_auth(auth)
+    user = User.initialize_from_auth(auth, current_user)
+    if identity.blank? || identity.user != user
+      identity = user.identities.build(:uuid => auth.uid, :provider => auth.provider)
+      user.persisted? ? identity.save : user.save
+    end
+    identity.user
+  end
+
+  def self.initialize_from_auth(auth, user = nil)
+    email = auth.info.email
+    user_name = [auth.info.nickname, auth.extra.raw_info.screen_name].find(&:present?)
+    if user.blank? && email.present?
+      user = User.find_for_authentication(email: email)
+    end
+    if user.blank? && user_name.present?
+      user = User.find_by(user_name: user_name)
+    end
+    if user.blank?
+      user = User.new(user_name: user_name, email: email)
+    end
+    user
+  end
 
   def avatar_path
     self.attributes['avatar_path'] || 'thumb_avatar_default.png'
@@ -153,6 +190,20 @@ class User < ActiveRecord::Base
 
   def is_author_of_comment?(comment)
     comment.user == comment
+  end
+
+  protected
+
+  def email_required?
+    if identities.empty?
+      super
+    end
+  end
+
+  def password_required?
+    if identities.empty?
+      super
+    end
   end
 
   private

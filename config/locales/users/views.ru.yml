@@ -81,6 +81,8 @@ ru:
       bugs: 'Нашел багов'
       posts: 'Постов'
       about: 'О себе'
+      sign_in_via: 'Войти через %{provider}'
+      connected_to: 'Подключен к %{provider}'
     sections:
       new: 'Создать'
     subscriptions:

@@ -30,6 +30,17 @@
     td {
       padding-right: 25px;
     }
+
+    .social {
+      cursor: pointer;
+      font-size: 20px;
+      margin-right: 10px;
+      color: #DDD;
+    }
+
+    .social.connected {
+      color: #000;
+    }
   }
 
   .stickers {
