@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930174650) do
+ActiveRecord::Schema.define(version: 20141016221358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20140930174650) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "identities", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "uuid",       null: false
+    t.string   "provider",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+  add_index "identities", ["uuid", "provider"], name: "index_identities_on_uuid_and_provider", using: :btree
 
   create_table "imports", force: true do |t|
     t.datetime "created_at"
@@ -186,6 +197,7 @@ ActiveRecord::Schema.define(version: 20140930174650) do
     t.text     "about_html"
     t.integer  "bugs_count",             default: 0
     t.datetime "last_published_at"
+    t.datetime "about_updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
