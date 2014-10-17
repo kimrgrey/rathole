@@ -4,16 +4,16 @@
       %tr
         %th= t('.user_name')
         %td= user.user_name
-      %tr
-        %th= 'Соц. сети'
-        %td
-          - identities = user.identities.map(&:provider)
-          - Devise.omniauth_providers.each do |provider|
-            - if identities.include?(provider.to_s)
-              = omniauth_logo(provider, class: 'social connected')
-            - else
-              = omniauth_link(provider, class: 'social')
-
+      - if current_user && current_user.can?(:edit, user)
+        %tr
+          %th= 'Соц. сети'
+          %td
+            - identities = user.identities.map(&:provider)
+            - Devise.omniauth_providers.each do |provider|
+              - if identities.include?(provider.to_s)
+                = omniauth_logo(provider, class: 'social connected')
+              - else
+                = omniauth_link(provider, class: 'social')
       - if user.about.present?        
         %tr
           %th= t('.about')
