@@ -58,13 +58,9 @@ class User < ActiveRecord::Base
   end
 
   def self.initialize_from_auth(auth, user = nil)
-    email = auth.info.email
-    user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, email.gsub('.','_').split('@').first].find(&:present?)
-    if user.blank? && email.present?
-      user = User.find_for_authentication(email: email)
-      user.lock_access!
-    end
     if user.blank?
+      email = auth.info.email
+      user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, email.gsub('.','_').split('@').first].find(&:present?)
       user = User.new(user_name: user_name, email: email)
     end
     user
