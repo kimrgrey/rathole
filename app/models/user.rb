@@ -62,10 +62,10 @@ class User < ActiveRecord::Base
     user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, email.gsub('.','_').split('@').first].find(&:present?)
     if user.blank? && email.present?
       user = User.find_for_authentication(email: email)
+      user.lock_access!
     end
     if user.blank?
       user = User.new(user_name: user_name, email: email)
-      user.skip_confirmation!
     end
     user
   end
