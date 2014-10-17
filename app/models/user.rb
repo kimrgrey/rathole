@@ -38,12 +38,12 @@ class User < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      auth = session['devise.omniauth']
+      auth = session.delete('devise.omniauth')
       if auth.present?
         user.user_name = user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, auth.info.email.gsub('.','_').split('@').first].find(&:present?)
         user.email = auth.info.email
+        user.valid?
       end
-      user.valid?
     end
   end
 
