@@ -63,9 +63,6 @@ class User < ActiveRecord::Base
     if user.blank? && email.present?
       user = User.find_for_authentication(email: email)
     end
-    if user.blank? && user_name.present?
-      user = User.find_by(user_name: user_name)
-    end
     if user.blank?
       user = User.new(user_name: user_name, email: email)
       user.skip_confirmation!
