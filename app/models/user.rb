@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_auth(auth, current_user = nil)
     identity = Identity.find_by_auth(auth)
     user = User.initialize_from_auth(auth, current_user)
-    if identity.blank? || identity.user != user
+    if identity.blank? || (user.persisted? && identity.user != user)
       identity = user.identities.build(:uuid => auth.uid, :provider => auth.provider)
       user.persisted? ? identity.save : user.save
     end
