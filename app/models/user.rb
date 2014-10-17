@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     super.tap do |user|
       auth = session['devise.omniauth']
       if auth.present?
-        user.user_name = [auth.info.nickname, auth.extra.raw_info.screen_name].find(&:present?)
+        user.user_name = user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, auth.info.email.gsub('.','_').split('@').first].find(&:present?)
         user.email = auth.info.email
       end
       user.valid?
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
 
   def self.initialize_from_auth(auth, user = nil)
     email = auth.info.email
-    user_name = [auth.info.nickname, auth.extra.raw_info.screen_name].find(&:present?)
+    user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, email.gsub('.','_').split('@').first].find(&:present?)
     if user.blank? && email.present?
       user = User.find_for_authentication(email: email)
     end
@@ -68,6 +68,7 @@ class User < ActiveRecord::Base
     end
     if user.blank?
       user = User.new(user_name: user_name, email: email)
+      user.skip_confirmation!
     end
     user
   end
