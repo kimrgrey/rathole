@@ -11,7 +11,8 @@
     %a{href: public_post_path(post)}= post.title
   
   .row.avatar
-    = image_tag post.user_avatar_path, class: 'avatar'
+    %a{href: public_profile_path(post.user)}
+      = image_tag post.user_avatar_path, class: 'avatar'
   .row.details
     %span.user 
       %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
