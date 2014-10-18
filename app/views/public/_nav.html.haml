@@ -1,4 +1,4 @@
-= menu_item t('nav.overview'), overview_path
+= menu_item t('nav.overview'), overview_path, nil, { class: 'citizanse' }
 
 - if user.present? && user != current_user
   = render partial: 'public/profile', locals: { user: user }
