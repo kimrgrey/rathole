@@ -96,7 +96,15 @@
       display: none;
       @media(min-width: $small-device) {
         display: inline-block;
+        float: right;
       }
+    }
+
+    .reply {
+      @media(min-width: $small-device) {
+        display: inline-block;
+        float: right;
+      } 
     }
 
     .date {

@@ -19,11 +19,11 @@
           = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
       
       - if user_signed_in?
-        %span.info.pull-right
+        %span.info.reply
           %a.reply-comment-link{href: "#comment-#{comment.id}", data: {author: comment.user_name}}
             = icon 'reply'
       - else
-        %span.info.pull-right.sign-in
+        %span.info.sign-in
           = link_to icon('sign-in', t('nav.sign_in')), new_user_session_path
   .row.body  
     .col-md-3.col-sm-4.hidden-xs
