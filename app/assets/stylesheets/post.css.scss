@@ -61,7 +61,7 @@
       }
     }
 
-    span.date, span.comments {
+    span.user, span.comments {
       @media(max-width: $extra-small-device) {
         display: none;
       }
