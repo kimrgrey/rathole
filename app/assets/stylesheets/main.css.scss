@@ -38,6 +38,16 @@ body {
     padding: 0 0 $footer-height;
   }
 
+  
+  blockquote {
+    color: #737373;
+    font-size: 12px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
   .container {
     @include paper;
     @include container; 
