@@ -66,6 +66,7 @@
   }
 
   .body {
+    margin: 0;
     color: #000;
 
     ul {
@@ -174,10 +175,13 @@
     @include paper;
     
     width: 250px;
+    padding: 0;
+
     @media(min-width: $extra-small-device) {
       width: 350px;
+      padding: 10px !important;
     }
-    padding: 10px !important;
+    
     margin-bottom: 40px;
 
 
