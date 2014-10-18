@@ -175,7 +175,8 @@
   .posts-wall-item {
     @include paper;
     
-    width: 250px;
+    
+    width: 100%;
     padding: 0;
 
     @media(min-width: $extra-small-device) {
