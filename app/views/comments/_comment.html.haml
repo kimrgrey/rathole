@@ -3,27 +3,27 @@
     .col-md-3.col-sm-4.hidden-xs
     .col-md-9.col-sm-8 
       - if user_signed_in? && current_user.can_update?(comment)
-        %span.badge
+        %span.info
           = link_to icon('edit'), "#comment-#{comment.id}", class: 'edit-comment-link'
       
-      %span.badge.user
+      %span.info.user
         %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
       
-      %span.badge.link
+      %span.info.link
         = public_comment_link(comment)
 
-      %span.badge.date= icon 'calendar', l(comment.created_at)
+      %span.info.date= icon 'calendar', l(comment.created_at)
       
       - if user_signed_in? && current_user.can_delete?(comment)
-        %span.badge
+        %span.info
           = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
       
       - if user_signed_in?
-        %span.badge.pull-right
+        %span.info.pull-right
           %a.reply-comment-link{href: "#comment-#{comment.id}", data: {author: comment.user_name}}
             = icon 'reply'
       - else
-        %span.badge.pull-right.sign-in
+        %span.info.pull-right.sign-in
           = link_to icon('sign-in', t('nav.sign_in')), new_user_session_path
   .row.body  
     .col-md-3.col-sm-4.hidden-xs

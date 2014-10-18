@@ -44,6 +44,8 @@
 
   .comment {
     .text {
+      margin-top: 5px;
+
       a {
         text-decoration: underline;
       }
@@ -79,8 +81,15 @@
     border-bottom: 1px solid #DDD;
 
     @media(min-width: $small-device) {
-      padding: 10px 0px;
       text-align: inherit;
+    }
+
+    .info {
+      margin: 0 10px;
+      font-size: 10px;
+      @media(min-width: $extra-small-device) {
+        font-size: 14px;
+      }
     }
 
     .sign-in {
@@ -129,17 +138,6 @@
       margin-left: 8px;
       margin-right: 5px;
       margin-top: 3px;
-    }
-  }
-
-  span.badge {
-    font-size: 10px;
-    @media(min-width: $extra-small-device) {
-      font-size: 12px;
-    }
-    margin-left: 5px;
-    a {
-      color: #FFF;
     }
   }
 

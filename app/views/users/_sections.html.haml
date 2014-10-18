@@ -1,6 +1,6 @@
 .row.sections
   - user.sections.each do |section|
-    %span.badge
+    %span.section
       - if user_signed_in? && section.updatable_by?(current_user)
         %a{href: edit_user_section_path(section)}= icon('pencil')
       
