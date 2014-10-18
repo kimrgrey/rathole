@@ -25,6 +25,7 @@ ru:
       main: 'Разделы'
       of: 'Разделы %{user_name}'
     sign_in: 'Вход на сайт'
+    sign_in_short: 'Вход'
     sign_up: 'Регистрация'
     admin:
       title: 'Админка'

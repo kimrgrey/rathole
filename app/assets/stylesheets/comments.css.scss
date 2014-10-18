@@ -71,10 +71,38 @@
   }
 
   .header {
-    padding: 10px 0px;
+    padding: 5px 0px;
+    margin: 0;
+    text-align: center;
     margin-bottom: 5px;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
+
+    @media(min-width: $extra-small-device) {
+      padding: 10px 0px;
+      text-align: inherit;
+    }
+
+    .sign-in {
+      display: none;
+      @media(min-width: $extra-small-device) {
+        display: inline-block;
+      }
+    }
+
+    .date {
+      display: none;
+      @media(min-width: $extra-small-device) {
+        display: inline-block;
+      }
+    }
+
+    .link {
+      display: none;
+      @media(min-width: $extra-small-device) {
+        display: inline-block;
+      }
+    }
   }
 
   .greeting {

@@ -4,4 +4,5 @@
   = render partial: 'public/profile', locals: { user: user }
 
 - unless user_signed_in?
-  = menu_item t('nav.sign_up'), new_user_registration_path
+  = menu_item t('nav.sign_in_short'), new_user_session_path, nil, { class: 'sign-in' }
+  = menu_item t('nav.sign_up'), new_user_registration_path, nil, { class: 'sign-up' }

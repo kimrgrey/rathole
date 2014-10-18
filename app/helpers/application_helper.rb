@@ -30,9 +30,9 @@ module ApplicationHelper
     content_tag :div, '', class: 'spacer'
   end
 
-  def menu_item(title, href, icon_name = nil)
+  def menu_item(title, href, icon_name = nil, options = {})
     text = icon_name ? icon(icon_name, title) : title
-    content_tag :li, content_tag(:a, text, href: href)
+    content_tag :li, content_tag(:a, text, href: href), options
   end
 
   def menu_divider

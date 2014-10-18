@@ -15,7 +15,10 @@
   }
 
   h2 {
-    padding: 0px 80px;
+    padding: 0;
+    @media(min-width: $extra-small-device) {
+      padding: 0px 80px;
+    }
   }
 
   .actions {
@@ -170,7 +173,10 @@
   .posts-wall-item {
     @include paper;
     
-    width: 370px;
+    width: 250px;
+    @media(min-width: $extra-small-device) {
+      width: 350px;
+    }
     padding: 10px !important;
     margin-bottom: 40px;
 
