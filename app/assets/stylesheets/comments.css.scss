@@ -78,28 +78,28 @@
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
 
-    @media(min-width: $extra-small-device) {
+    @media(min-width: $small-device) {
       padding: 10px 0px;
       text-align: inherit;
     }
 
     .sign-in {
       display: none;
-      @media(min-width: $extra-small-device) {
+      @media(min-width: $small-device) {
         display: inline-block;
       }
     }
 
     .date {
       display: none;
-      @media(min-width: $extra-small-device) {
+      @media(min-width: $small-device) {
         display: inline-block;
       }
     }
 
     .link {
       display: none;
-      @media(min-width: $extra-small-device) {
+      @media(min-width: $small-device) {
         display: inline-block;
       }
     }

@@ -1,5 +1,12 @@
 @import 'commons';
 
+.rat {
+  display: none;
+  @media(min-width: $extra-small-device) {
+    display: inherit;
+  }
+}
+
 .rat.rap {
   background: image-url("rat-rap.png") no-repeat scroll center center rgba(0, 0, 0, 0);
   height: 150px;
@@ -8,9 +15,6 @@
   top: -60px;
   width: 100px;
   z-index: 10;
-  @media(max-width: $small-device) {
-    display: none;
-  }
 }
 
 .rat.chump {

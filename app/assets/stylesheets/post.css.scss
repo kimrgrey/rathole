@@ -1,12 +1,9 @@
 @import 'commons';
 
-.container.post {
-  width: auto !important;
-}
 
 .post {
-  
   font-size: 12px;
+
   @media(min-width: $extra-small-device) {
     font-size: 14px;
   }
@@ -19,6 +16,10 @@
     @media(min-width: $extra-small-device) {
       padding: 0px 80px;
     }
+  }
+
+  .row {
+    margin: 0;
   }
 
   .actions {
