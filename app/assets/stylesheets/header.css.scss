@@ -64,6 +64,13 @@ header {
       }      
     }
 
+    .admin {
+      display: none;
+      @media(min-width: $extra-small-device) {
+        display: inline-block;
+      }      
+    }
+
     .sign-in {
       display: inline-block;
       @media(min-width: $extra-small-device) {
