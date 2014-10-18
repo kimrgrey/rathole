@@ -32,11 +32,13 @@
   }
 
   img.avatar {
-    @media(max-width: $extra-small-device) {
-      display: none;
-    }
-    width: 150px;
+    width: 100px;
     margin: 5px 25px;
+    
+    @media(min-width: $small-device) {
+      width: 200px;
+    }
+
     @media(min-width: $small-device) {
       margin: 5px 45px;
     }
