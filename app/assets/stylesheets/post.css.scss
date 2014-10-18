@@ -100,12 +100,12 @@
     }
 
     p img {
+      display: block;
       max-width: 200px;
-      margin: 10px 10px; 
+      margin: 10px auto;
 
       @media(min-width: $extra-small-device) {
         max-width: 400px;
-        margin: 10px 40px; 
       }
       @media(min-width: $small-device) {
         max-width: 600px;
