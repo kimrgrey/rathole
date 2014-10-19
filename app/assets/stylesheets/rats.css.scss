@@ -2,7 +2,7 @@
 
 .rat {
   display: none;
-  @media(min-width: $extra-small-device) {
+  @media(min-width: $small-device) {
     display: inherit;
   }
 }
