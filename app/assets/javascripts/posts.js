@@ -96,7 +96,7 @@
 
   $(document).on('setup', '#posts-wall', function(event){
     event.stopPropagation();
-    if ($(window).width() > 560) {
+    if ($(window).width() > 780) {
       var $wall = $(this);  
       var options = {
         itemSelector: '.posts-wall-item',
