@@ -19,6 +19,11 @@ json.css do
       margin: 10px auto;
       max-width: 200px;
     }
+
+    img.emoji {
+      margin: 0;
+      display: inline;
+    }
   CSS
   
 
@@ -31,6 +36,11 @@ json.css do
       display: block;
       margin: 10px auto;
       max-width: 200px;
+    }
+
+    img.emoji {
+      margin: 0;
+      display: inline;
     }
   CSS
 end
