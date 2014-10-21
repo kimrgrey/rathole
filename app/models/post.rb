@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
   has_many :pictures
   has_many :subscriptions, dependent: :destroy
   has_many :bugs
+  has_many :claims, inverse_of: :post, dependent: :destroy
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_path, to: :user, prefix: true

@@ -1,6 +1,6 @@
 class Api::V1::SyncController < Api::ApiController
-  before_action :load_sync_dates
-  before_action :load_post, only: [:post]
+  before_action :load_sync_dates, except: [:claim]
+  before_action :load_post, only: [:post, :claim]
 
   def sync
     @users = User.recently_updated(@lsd, @next_lsd)
@@ -18,6 +18,14 @@ class Api::V1::SyncController < Api::ApiController
     @users = @users.in_order
     respond_to do |format|
       format.json { render :post }
+    end
+  end
+
+  def claim
+    @claim = @post.claims.build(body: params[:body])
+    saved = @claim.save
+    respond_to do |format|
+      format.json { head (saved ? 200 : 400) }
     end
   end
 

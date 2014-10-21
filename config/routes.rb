@@ -53,6 +53,8 @@ Rathole::Application.routes.draw do
     namespace :v1 do
       get '/sync', to: 'sync#sync'
       get '/post/:id', to: 'sync#post'
+
+      post '/post/:id/claim', to: 'sync#claim'
     end
   end
   
