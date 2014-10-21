@@ -23,6 +23,7 @@ json.css do
     img.emoji {
       margin: 0;
       display: inline;
+      vertical-align: bottom;
     }
   CSS
   
@@ -41,6 +42,7 @@ json.css do
     img.emoji {
       margin: 0;
       display: inline;
+      vertical-align: bottom;
     }
   CSS
 end
