@@ -12,6 +12,8 @@
         %a{href: '#posts', data: {toggle: 'tab'}}= t('.tabs.posts')
       %li{class: ('active' if params[:tab] == 'users')}
         %a{href: '#users', data: {toggle: 'tab'}}= t('.tabs.users')
+      %li{class: ('active' if params[:tab] == 'claims')}
+        %a{href: '#claims', data: {toggle: 'tab'}}= t('.tabs.claims')
     .tab-content
       #posts.tab-pane{class: ('active' if params[:tab].nil? || params[:tab] == 'posts')}
         %strong= t('.posts.total', count: Post.count)
@@ -21,5 +23,9 @@
         %strong= t('.users.total', count: User.count)
         = render partial: 'admin/users/table', locals: { users: @users }
         = paginate @users, param_name: 'users_page', params: {tab: 'users'}
+      #claims.tab-pane{class: ('active' if params[:tab] == 'claims')}
+        %strong= t('.claims.total', count: Claim.count)
+        = render partial: 'admin/claims/table', locals: { claims: @claims }
+        = paginate @claims, param_name: 'claims_page', params: {tab: 'claims'}
       
       

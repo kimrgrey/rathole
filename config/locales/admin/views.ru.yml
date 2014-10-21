@@ -6,10 +6,13 @@ ru:
         tabs:
           users: 'Пользователи'
           posts: 'Посты'
+          claims: 'Жалобы'
         users:
           total: 'Всего пользователей: %{count}'
         posts:
           total: 'Всего постов: %{count}'
+        claims:
+          total: 'Всего жалоб: %{count}'
       statistics:
         events_count: 'События'
         posts_count: 'Посты'

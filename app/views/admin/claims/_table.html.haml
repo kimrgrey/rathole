@@ -1,0 +1,7 @@
+%table.table
+  - claims.each do |claim|
+    %tr
+      %td= claim.id
+      %td= sanitize(claim.body)
+      %td= l(claim.created_at)
+      
