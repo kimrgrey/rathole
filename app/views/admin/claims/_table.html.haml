@@ -2,6 +2,7 @@
   - claims.each do |claim|
     %tr
       %td= claim.id
+      %td= link_to claim.post_title, admin_post_path(claim.post)
       %td= sanitize(claim.body)
       %td= l(claim.created_at)
       
