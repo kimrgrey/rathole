@@ -1,6 +1,6 @@
 class Comments::PostComment < Comments::Comment
   belongs_to :user, counter_cache: 'comments_count'
-  belongs_to :post, counter_cache: 'comments_count'
+  belongs_to :post, counter_cache: 'comments_count', touch: true
 
   after_create :subscribe_user_on_post!
   after_create :fire_comment_created_event!

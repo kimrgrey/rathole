@@ -1,6 +1,6 @@
 class Comments::BugComment < Comments::Comment
   belongs_to :user
-  belongs_to :bug
+  belongs_to :bug, touch: true
 
   validates :user, presence: true
   validates :bug, presence: true
