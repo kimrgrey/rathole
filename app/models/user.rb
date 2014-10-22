@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar_path
-    self.attributes['avatar_path'] || 'thumb_avatar_default.png'
+    self.attributes['avatar_path'] || '/assets/thumb_avatar_default.png'
   end
 
   def assign_sticker!(sticker)
