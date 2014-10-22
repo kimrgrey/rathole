@@ -7,7 +7,10 @@ json.user_id post.user_id
 json.visible_on_main post.visible_on_main
 json.created_at post.created_at.to_i
 json.updated_at post.updated_at.to_i
-json.comments post.comments do |comment|
+
+comments = post.comments.recently_updated(@lsd, @next_lsd).in_order
+
+json.comments comments do |comment|
   json.id comment.id
   json.user_id comment.user_id
   json.body comment.body_html if comment.body_updated_at >= @lsd
