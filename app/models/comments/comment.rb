@@ -18,4 +18,13 @@ class Comments::Comment < ActiveRecord::Base
   delegate :avatar_path, to: :user, prefix: true
 
   acts_as_paranoid
+
+  after_restore :touch_self
+
+  private
+
+  def touch_self
+    time = Time.now
+    update(updated_at: time, body_updated_at: time)
+  end
 end
