@@ -7,7 +7,12 @@ json.user_id post.user_id
 json.visible_on_main post.visible_on_main
 json.created_at post.created_at.to_i
 json.updated_at post.updated_at.to_i
-json.deleted_at post.deleted_at.to_i if post.deleted?
+
+if post.deleted?
+  json.deleted_at post.deleted_at.to_i 
+elsif post.hidden?
+  json.deleted_at post.updated_at.to_i 
+end
 
 comments = post.comments.with_deleted.recently_updated(@lsd, @next_lsd).in_order
 

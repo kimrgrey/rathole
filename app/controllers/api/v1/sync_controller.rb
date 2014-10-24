@@ -1,6 +1,5 @@
 class Api::V1::SyncController < Api::ApiController
   before_action :load_sync_dates, except: [:claim]
-  before_action :load_post, only: [:post, :claim]
 
   def sync
     @users = User.recently_updated(@lsd, @next_lsd)
@@ -39,6 +38,6 @@ class Api::V1::SyncController < Api::ApiController
   end
 
   def posts
-    Post.with_deleted.published_only
+    Post.with_deleted.published_and_hidden
   end
 end
