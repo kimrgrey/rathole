@@ -16,4 +16,6 @@ class Comments::Comment < ActiveRecord::Base
 
   delegate :user_name, to: :user, prefix: false
   delegate :avatar_path, to: :user, prefix: true
+
+  acts_as_paranoid
 end

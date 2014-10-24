@@ -5,7 +5,7 @@ class Api::V1::SyncController < Api::ApiController
   def sync
     @users = User.recently_updated(@lsd, @next_lsd)
     @users = @users.in_order
-    @posts = Post.published_only.recently_updated(@lsd, @next_lsd)
+    @posts = posts.recently_updated(@lsd, @next_lsd)
     @posts = @posts.in_order
     respond_to do |format|
       format.json { render :sync }
@@ -13,6 +13,7 @@ class Api::V1::SyncController < Api::ApiController
   end
 
   def post
+    @post = posts.find_by(id: params[:id])
     @users = User.recently_updated(@lsd, @next_lsd)
     @users = @users.where(id: @post.comments.map(&:user_id))
     @users = @users.in_order
@@ -22,6 +23,7 @@ class Api::V1::SyncController < Api::ApiController
   end
 
   def claim
+    @post = posts.find_by(id: params[:id])
     @claim = @post.claims.build(body: params[:body])
     saved = @claim.save
     respond_to do |format|
@@ -36,7 +38,7 @@ class Api::V1::SyncController < Api::ApiController
     @next_lsd = Time.now
   end
 
-  def load_post
-    @post = Post.published_only.find_by(id: params[:id])
+  def posts
+    Post.with_deleted.published_only
   end
 end

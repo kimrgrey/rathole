@@ -42,6 +42,10 @@ class Post < ActiveRecord::Base
 
   after_create :subscribe_author!
 
+  acts_as_paranoid
+
+  after_restore :restore_comments
+
   include Redcarpeted
 
   redcarpet :body
@@ -125,5 +129,11 @@ class Post < ActiveRecord::Base
       event.author = self.user
       event.save!
     end
+  end
+
+  private
+
+  def restore_comments
+    comments.with_deleted.each { |c| c.restore }
   end
 end
