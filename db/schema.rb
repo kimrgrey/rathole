@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021174610) do
+ActiveRecord::Schema.define(version: 20141024174030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,10 @@ ActiveRecord::Schema.define(version: 20141021174610) do
     t.string   "type"
     t.integer  "bug_id"
     t.datetime "body_updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "comments", ["deleted_at"], name: "index_comments_on_deleted_at", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -131,8 +134,10 @@ ActiveRecord::Schema.define(version: 20141021174610) do
     t.datetime "published_at"
     t.datetime "body_updated_at"
     t.datetime "preview_updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "posts", ["deleted_at"], name: "index_posts_on_deleted_at", using: :btree
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
 
   create_table "sections", force: true do |t|
