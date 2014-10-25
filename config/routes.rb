@@ -63,6 +63,9 @@ Rathole::Application.routes.draw do
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
   post '/pictures/:id/destroy', to: 'pictures#destroy', as: 'destroy_picture'
 
+  get '/help', to: 'public#help'
+  post '/claim', to: 'public#claim'
+
   get '/posts', to: 'posts#index'
   get '/user/posts/:id', to: 'posts#show'
   get '/:user_name', to: 'users#show'

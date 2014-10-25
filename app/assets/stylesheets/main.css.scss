@@ -119,18 +119,23 @@ footer#footer {
   height: $footer-height;
   text-align: center; 
 
-  font-size: 10px;  
+  font-size: 10px;
   padding-top: 10px;
 
   @media(min-width: $extra-small-device) {
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 12px;
   }
+
   @media(min-width: $medium-device) {
     font-size: 14px;    
   } 
 
   a {
     border-bottom: 1px dashed #000;
+  }
+
+  .help {
+    font-size: 10px;
   }
 }

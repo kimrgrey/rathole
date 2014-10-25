@@ -11,4 +11,30 @@ class PublicController < ApplicationController
     @users = User.all
     @users = @users.in_featured_order
   end
+
+  def help
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def claim
+    @claim = Claim.new(claim_params)
+    if @claim.save
+      flash[:notice] = I18n.t('public.claim.success')
+      respond_to do |format|
+        format.html { redirect_to :back }
+      end
+    else
+      respond_to do |format|
+        format.html { render :help }
+      end
+    end
+  end
+
+  private
+
+  def claim_params
+    params.permit(:email, :body)
+  end
 end

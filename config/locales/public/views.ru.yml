@@ -8,3 +8,12 @@ ru:
       comments_count: 'Количество комментариев: %{count}'
       last_published_at: 'Последняя публикация: %{date}'
       never: 'Никогда не публиковался'
+    help:
+      page_header: 'Нужна помощь?'
+      email: 'Email'
+      email_placeholder: 'Какой у вас email?'
+      body: 'Сообщение'
+      body_placeholder: 'В чем суть вашего вопроса?'
+      submit: 'Отправить'
+    claim:
+      success: 'Спасибо за вопрос! Мы очень скоро свяжемся с вами!'

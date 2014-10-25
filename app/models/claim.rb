@@ -1,9 +1,7 @@
 class Claim < ActiveRecord::Base
-  belongs_to :post, touch: true
+  belongs_to :post
 
-  validates :post, presence: true
+  validates :email, format: { with: Devise.email_regexp }, allow_blank: true
 
   scope :in_order, -> { order('claims.created_at DESC') }
-
-  delegate :title, to: :post, prefix: true
 end

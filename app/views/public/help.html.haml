@@ -1,0 +1,21 @@
+= content_for :nav do
+  = render partial: 'public/nav', locals: { user: @user }
+  = render partial: 'users/my', locals: { user: current_user } if user_signed_in?
+
+.container
+  = clip_and_clamp
+  = page_header
+
+  = form_tag claim_path, class: 'form-horizontal' do |f|
+    .form-group
+      = label_tag :email, t('.email'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = email_field_tag :email, nil, autofocus: true, class: 'form-control', placeholder: t('.email_placeholder')
+    .form-group
+      = label_tag :body, t('.body'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = text_area_tag :body, nil, rows: 10, class: 'form-control', placeholder: t('.body_placeholder')
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = submit_tag t('.submit'), class: 'btn btn-primary'
+  

@@ -1,5 +1,7 @@
 ru:
   shared:
+    footer:
+      help: 'Нужна помощь?'
     dialogs:
       public_link_dialog:
         dialog_title: 'Публичная ссылка'
