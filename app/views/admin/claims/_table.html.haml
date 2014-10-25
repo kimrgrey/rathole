@@ -2,7 +2,12 @@
   - claims.each do |claim|
     %tr
       %td= claim.id
-      %td= link_to claim.post_title, admin_post_path(claim.post)
+      %td
+        - if claim.post.present?
+          = link_to claim.post.title, admin_post_path(claim.post)
+        - elsif claim.email.present?
+          = mail_to claim.email
+
       %td= sanitize(claim.body)
       %td= l(claim.created_at)
       
