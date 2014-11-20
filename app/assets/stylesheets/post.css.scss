@@ -2,6 +2,9 @@
 
 
 .post {
+  @include paper;
+  @include container;
+
   font-size: 12px;
 
   @media(min-width: $extra-small-device) {
