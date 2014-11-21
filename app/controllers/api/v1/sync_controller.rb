@@ -14,7 +14,7 @@ class Api::V1::SyncController < Api::ApiController
   def post
     @post = posts.find_by(id: params[:id])
     @users = User.recently_updated(@lsd, @next_lsd)
-    @users = @users.where(id: @post.comments.map(&:user_id))
+    @users = @users.where(id: [@post.user_id] + @post.comments.map(&:user_id))
     @users = @users.in_order
     respond_to do |format|
       format.json { render :post }
