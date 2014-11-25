@@ -13,3 +13,4 @@
 /config/database.yml
 /config/newrelic.yml
 /config/redis.conf
+.DS_Store
