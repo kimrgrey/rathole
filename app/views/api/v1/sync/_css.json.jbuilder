@@ -7,6 +7,15 @@ json.css do
     img {
       display: none;
     }
+
+    ul li {
+      list-style-type: none;
+    }
+
+    ul li:before {
+      content: "\2014";
+      margin-right: 5px;
+    }
   CSS
 
   json.post <<-CSS
@@ -24,6 +33,15 @@ json.css do
       margin: 0;
       display: inline;
       vertical-align: bottom;
+    }
+
+    ul li {
+      list-style-type: none;
+    }
+
+    ul li:before {
+      content: "\2014";
+      margin-right: 5px;
     }
   CSS
   
@@ -43,6 +61,15 @@ json.css do
       margin: 0;
       display: inline;
       vertical-align: bottom;
+    }
+
+    ul li {
+      list-style-type: none;
+    }
+
+    ul li:before {
+      content: "\2014";
+      margin-right: 5px;
     }
   CSS
 end
