@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
   scope :in_order, -> { order('posts.published_at DESC') }
   scope :draft_only, -> { where('posts.state = ?', Post.states[:draft]) }
   scope :published_only, -> { where('posts.state = ?', Post.states[:published]) }
-  scope :published_and_hidden, -> { where('posts.state IN (?)', [Post.states[:published], Post.states[:draft]]) }
+  scope :published_and_hidden, -> { where('posts.state IN (?)', [Post.states[:published], Post.states[:hidden]]) }
   scope :visible_on_main, -> { where('posts.visible_on_main = ?', true) }
   scope :my_or_published, -> (user) { where('posts.user_id = ? OR posts.state = ?', user.id, Post.states[:published]) }
   scope :recently_updated, -> (from, to) { where('posts.updated_at >= :from AND posts.updated_at < :to', from: from, to: to) }
