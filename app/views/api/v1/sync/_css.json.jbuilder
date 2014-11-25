@@ -13,7 +13,7 @@ json.css do
     }
 
     ul li:before {
-      content: "\2014";
+      content: "-";
       margin-right: 5px;
     }
   CSS
@@ -40,7 +40,7 @@ json.css do
     }
 
     ul li:before {
-      content: "\2014";
+      content: "-";
       margin-right: 5px;
     }
   CSS
@@ -68,7 +68,7 @@ json.css do
     }
 
     ul li:before {
-      content: "\2014";
+      content: "-";
       margin-right: 5px;
     }
   CSS
