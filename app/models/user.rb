@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   scope :featured, -> (count = 4) { in_order.limit(count) }
   scope :recently_updated, -> (from, to) { where('users.updated_at >= :from AND users.updated_at < :to', from: from, to: to) }
 
+  before_save :set_default_avatar, :on => :create
+
   after_create :create_default_section
   after_create :fire_user_created_event!
 
@@ -67,7 +69,11 @@ class User < ActiveRecord::Base
   end
 
   def avatar_path
-    self.attributes['avatar_path'] || '/assets/thumb_avatar_default.png'
+    self.attributes['avatar_path'] || 'thumb_avatar_default.png'
+  end
+
+  def set_default_avatar
+    self.avatar_path = 'thumb_avatar_default.png' if avatar_path.blank?
   end
 
   def assign_sticker!(sticker)
