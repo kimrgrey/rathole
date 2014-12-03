@@ -53,7 +53,7 @@ module RoutesHelper
   end
 
   def full_image_url(path)
-    unless path.starts_with?('/assets/')
+    if path == 'thumb_avatar_default.png'
       path = '/assets/' + path
     end
     request.protocol + request.host_with_port + path
