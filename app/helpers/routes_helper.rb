@@ -53,8 +53,8 @@ module RoutesHelper
   end
 
   def full_image_url(path)
-    unless path.starts_with?('/')
-      path = '/' + path
+    unless path.starts_with?('/assets/')
+      path = '/assets/' + path
     end
     request.protocol + request.host_with_port + path
   end
