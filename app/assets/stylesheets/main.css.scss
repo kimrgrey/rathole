@@ -43,8 +43,24 @@ body {
     color: #737373;
     font-size: 12px;
 
+    @media(min-width: $extra-small-device) {
+      font-size: 14px;
+    }
+
+    @media(min-width: $medium-device) {
+      font-size: 16px;
+    }
+
     p {
       font-size: 12px;
+
+      @media(min-width: $extra-small-device) {
+        font-size: 14px;
+      }
+
+      @media(min-width: $medium-device) {
+        font-size: 16px;
+      }
     }
   }
 
