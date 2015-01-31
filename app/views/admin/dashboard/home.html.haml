@@ -6,7 +6,6 @@
   = page_header
   = clip_and_clamp
   .dashboard
-    #statistics-flot-placeholder{data: {url: admin_statistics_url}}
     %ul.nav.nav-tabs
       %li{class: ('active' if params[:tab].nil? || params[:tab] == 'posts')}
         %a{href: '#posts', data: {toggle: 'tab'}}= t('.tabs.posts')
