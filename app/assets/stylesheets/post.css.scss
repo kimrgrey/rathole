@@ -222,10 +222,12 @@
   flex-flow: row wrap;
   justify-content: center;
   padding: 20px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 
   .posts-wall-item {
+    flex: 1 300px;
     max-width: 600px;
-    flex: 1 400px;
     margin: 0 15px;
   }
 
