@@ -94,20 +94,6 @@
     }
   });
 
-  $(document).on('setup', '#posts-wall', function(event){
-    event.stopPropagation();
-    if ($(window).width() > 780) {
-      var $wall = $(this);  
-      var options = {
-        itemSelector: '.posts-wall-item',
-        isFitWidth: true,
-        gutter: 30
-      };
-      $wall.masonry(options);
-    }
-  });
-  
-
   $(document).ready(function() {
     $('.comments').trigger('setup');
     $('#post-bug-dialog').trigger('setup');
@@ -116,6 +102,5 @@
       $('#post-bug-dialog').trigger('show');
       return false;
     });
-    $('#posts-wall').trigger('setup');  
   });
 })();
