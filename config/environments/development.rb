@@ -7,7 +7,7 @@ Rathole::Application.configure do
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
-  config.action_mailer.default_url_options = { :host => 'rathole.dev:3000' }
+  config.action_mailer.default_url_options = { :host => 'rathole.dev' }
   config.action_mailer.delivery_method = :letter_opener_web
   Hirb.enable if Object.const_defined?('Hirb')
 end
