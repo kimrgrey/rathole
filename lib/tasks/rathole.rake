@@ -55,10 +55,4 @@ namespace :rathole do
       post.subscribe_commentators!
     end
   end
-
-  desc "Collects statistical data"
-  task collect_statistic: [:environment] do 
-    date = Time.zone.today - 1.day
-    StatisticalRecord.collect_and_save!(date) if StatisticalRecord.find_by(date: date).nil?
-  end
 end

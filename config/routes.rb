@@ -34,7 +34,6 @@ Rathole::Application.routes.draw do
       end
       
       get '/jobs', to: redirect('/jobs'), as: 'jobs'
-      get '/statistics', to: 'dashboard#statistics'
       
       root to: 'dashboard#home'
     end
