@@ -4,28 +4,6 @@
   .dashboard {
     margin-top: 45px;
 
-    #statistics-flot-placeholder {
-      display: none;  
-      margin: 0 auto;
-      margin-bottom: 25px;
-      
-      @media(min-width: $extra-small-device) {
-        display: block;
-        width: 400px;
-        height: 300px;
-      }
-      @media(min-width: $small-device) {
-        display: block;
-        width: 600px;
-        height: 400px;
-      }
-      @media(min-width: $medium-device) {
-        display: block;
-        width: 800px;
-        height: 400px;
-      }
-    }
-
     div.pagination ul.pagination {
       border: none;
       box-shadow: none;
