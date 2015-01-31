@@ -1,19 +1,25 @@
 @import 'commons';
 
-
 .post {
   @include paper;
   @include container;
 
+  padding: 15px 5px;
   font-size: 12px;
-
+  
   @media(min-width: $extra-small-device) {
     font-size: 14px;
+    padding: 15px 25px;
   }
   @media(min-width: $medium-device) {
+    padding: 15px 50px;
     font-size: 16px;
   }
 
+  @media(min-width: $large-device) {
+    padding: 15px 100px;
+  }
+  
   h2 {
     padding: 0;
     @media(min-width: $extra-small-device) {
@@ -142,6 +148,21 @@
       }
     }
   }
+
+  .comments  {
+    @media(min-width: $extra-small-device) {
+      font-size: 14px;
+      padding: 15px 25px;
+    }
+    @media(min-width: $medium-device) {
+      padding: 15px 50px;
+      font-size: 16px;
+    }
+
+    @media(min-width: $large-device) {
+      padding: 15px 100px;
+    }
+  }
 }
 
 .post-space {
@@ -174,73 +195,6 @@
   }
 }
 
-#posts-wall {
-  margin: 0 auto;
-
-  .posts-wall-item {
-    @include paper;
-    
-    
-    width: 100%;
-    padding: 0;
-
-    @media(min-width: $small-device) {
-      width: 350px;
-      padding: 10px !important;
-    }
-    
-    margin-bottom: 40px;
-
-
-    h2 {
-      font-size: 16px;
-    }
-
-    .info {
-      text-align: center;
-      margin-bottom: 15px;
-      img.avatar {
-        width: 100px;
-        height: 100px;
-        margin: 10px 0px;
-        border-radius: 50%;
-        border: #FFF solid 5px;
-        box-shadow: 0px 3px 3px rgba(0,0,0,.4);
-      }
-    }
-
-    .body {
-      text-align: justify;
-      padding: 10px;
-      font-size: 13px;
-      @media(min-width: $large-device) {
-       font-size: 14px;
-      }
-
-      img {
-        display: none;
-      }
-
-      ul {
-        li {
-          list-style-type: none;
-        }
-
-        li:before {
-          content: "\2014";
-          margin-right: 5px;
-        }
-      }
-    }
-
-    .actions {
-      a.more {
-        float: right; 
-      }
-    }
-  }
-}
-
 .no-posts {
   img {
     display: block;
@@ -258,5 +212,43 @@
 
   p {
     text-align: center;
+  }
+}
+
+.posts-wall {
+  @include paper;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 20px 10px;
+
+  .posts-wall-item {
+    max-width: 600px;
+    flex: 1 400px;
+    margin: 0 15px;
+  }
+
+  .info {
+    margin: 10px 0px;
+    text-align: center;
+
+    .avatar{
+      width: 150px;
+    }
+  }
+
+  .body {
+    text-align: justify;
+  }
+
+  .actions {
+    .comments {
+      float: left;
+    }
+
+    .more {
+      float: right;
+    }
   }
 }

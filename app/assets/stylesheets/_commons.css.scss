@@ -9,23 +9,11 @@ $medium-device: 995px;
 $large-device: 1400px;
 
 @mixin paper {
-  display: block;
   background: none repeat scroll 0 0 #FFFFFF;
   border: 1px solid #E9E9E9;
   box-shadow: 0 0 10px rgba(0,0,0,0.75);
   color: $text-color;
-  
-  padding: 15px 5px;
-  
-  @media(min-width: $extra-small-device) {
-    padding: 15px 25px;
-  }
-  @media(min-width: $medium-device) {
-    padding: 15px 50px;
-  }
-  @media(min-width: $large-device) {
-  	padding: 15px 100px;
-  }
+  padding: 10px 5px;
 }
 
 @mixin container {

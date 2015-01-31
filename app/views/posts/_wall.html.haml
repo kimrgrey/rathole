@@ -1,7 +1,6 @@
-#posts-wall
+.posts-wall
   - posts.each do |post|
     .posts-wall-item
-      = random_rat [:chump, :pen]
       %h2
         %a{href: public_post_path(post)}= post.title
       .info
@@ -13,5 +12,5 @@
         - cache post_cache_key(post, true) do
           = sanitize(post.preview_html)
       .actions
-        %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
+        %a.comments{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
         %a.more{href: public_post_path(post)}= icon 'book', t('.more')
