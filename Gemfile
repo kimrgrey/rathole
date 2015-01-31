@@ -27,24 +27,24 @@ gem 'newrelic_rpm'
 gem 'whenever', :require => false
 gem 'daemons'
 gem 'delayed_job_active_record'
-gem 'delayed-web', github: 'thebestday/delayed-web'
+gem 'delayed-web', :github => 'thebestday/delayed-web'
 gem 'sitemap_generator'
 gem 'redis', '~> 3.0.1'
 gem 'hiredis', '~> 0.4.5'
 gem 'paranoia', '~> 2.0'
 
 group :doc do
-  gem 'sdoc', require: false
+  gem 'sdoc', :require => false
 end
 
 group :development do 
-  gem 'spring', github: 'rails/spring'
-  gem 'therubyracer', platforms: :ruby
+  gem 'spring', :github => 'rails/spring'
+  gem 'therubyracer', :platforms => :ruby
   gem 'letter_opener_web'
   gem 'hirb-unicode'
-  gem 'capistrano', '~> 3.0', require: false
-  gem 'capistrano-rails', '~> 1.1', require: false
-  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano', '~> 3.0', :require => false
+  gem 'capistrano-rails', '~> 1.1', :require => false
+  gem 'capistrano-bundler', '~> 1.1', :require => false
   gem 'capistrano3-puma'
   gem 'ffaker'
 end
