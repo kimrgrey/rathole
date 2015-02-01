@@ -4,8 +4,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :load_user
 
-  authorize_actions_for Comments::PostComment
-
   def index
     if params[:class_name] == Post.name
       index_for_post
@@ -60,14 +58,12 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comments::Comment.find(params[:id])
-    authorize_action_for(@comment)
     @comment.attributes = comment_params
     @comment.save
   end
 
   def destroy
     @comment = Comments::Comment.find(params[:id])
-    authorize_action_for(@comment)
     @comment.destroy
   end
 

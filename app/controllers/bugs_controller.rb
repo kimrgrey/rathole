@@ -2,8 +2,6 @@ class BugsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_user
 
-  authorize_actions_for Bug, actions: {:fix => :update, :reject => :update}
-
   def index
     if params[:for].nil? || params[:for] == 'author'
       @bugs = Bug.for_author(@user)
@@ -20,12 +18,10 @@ class BugsController < ApplicationController
     @comments = @bug.comments
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
-    authorize_action_for(@bug)
   end
 
   def fix
     @bug = Bug.for_author(@user).find(params[:id])
-    authorize_action_for(@bug)
     if @bug.fix
       flash[:notice] = I18n.t('bugs.fix.success')
     else
@@ -36,7 +32,6 @@ class BugsController < ApplicationController
 
   def reject
     @bug = Bug.for_author(@user).find(params[:id])
-    authorize_action_for(@bug)
     if @bug.reject
       flash[:notice] = I18n.t('bugs.reject.success')
     else
