@@ -1,10 +1,6 @@
 class Comments::Comment < ActiveRecord::Base
   paginates_per 50
 
-  include Authority::Abilities
-
-  self.authorizer_name = 'CommentAuthorizer'
-
   include Redcarpeted
   
   redcarpet :body

@@ -9,8 +9,6 @@ class Bug < ActiveRecord::Base
 
   enum state: [ :open, :fixed, :rejected ]
 
-  include Authority::Abilities
-  
   include Redcarpeted
 
   redcarpet :note
