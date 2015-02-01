@@ -1,8 +1,6 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!
-  
-  authorize_actions_for Section
-  
+    
   before_action :load_user
   before_action :load_sections
 
@@ -12,7 +10,6 @@ class SectionsController < ApplicationController
 
   def create
     @section = @sections.build(section_params)
-    authorize_action_for(@section)
     if @section.save
       flash[:notice] = I18n.t('sections.create.success') 
       redirect_to user_path
@@ -23,12 +20,10 @@ class SectionsController < ApplicationController
 
   def edit
     @section = @sections.find(params[:id])
-    authorize_action_for(@section)
   end
 
   def update
     @section = @sections.find(params[:id])
-    authorize_action_for(@section)
     @section.attributes = section_params
     if @section.save
       flash[:notice] = I18n.t('sections.update.success') 
@@ -40,7 +35,6 @@ class SectionsController < ApplicationController
 
   def destroy
     @section = @sections.find(params[:id])
-    authorize_action_for(@section)
     if @section.destroy
       flash[:notice] = I18n.t('sections.destroy.success')
       redirect_to user_path

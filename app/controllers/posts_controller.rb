@@ -1,8 +1,6 @@
 class PostsController < ApplicationController  
   before_action :store_current_url_in_session, only: [:index, :show]
   before_action :authenticate_user!, except: [:index, :show]
-
-  authorize_actions_for Post, actions: {:publish => :update}
   
   before_action :load_user, only: [:index, :show]
   before_action :load_posts, only: [:index, :show]
@@ -19,7 +17,6 @@ class PostsController < ApplicationController
 
   def show
     @post = @posts.find(params[:id])
-    authorize_action_for(@post)
     @comments = @post.comments
     @comments = @comments.includes(:user)
     @comments = @comments.in_order
@@ -44,12 +41,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-    authorize_action_for(@post)
   end
 
   def update
     @post = current_user.posts.find(params[:id])
-    authorize_action_for(@post)
     @post.attributes = post_params
     @post.section = @section
     if @post.save
@@ -63,7 +58,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
-    authorize_action_for(@post)
     if @post.destroy
       flash[:notice] = I18n.t('posts.destroy.success')
       redirect_to user_posts_index_path(:user_name => current_user.user_name)
@@ -75,7 +69,6 @@ class PostsController < ApplicationController
 
   def publish
     @post = current_user.posts.find(params[:id])
-    authorize_action_for(@post)
     if @post.toggle
       flash[:notice] = I18n.t("posts.publish.#{@post.state}.success")
     else
