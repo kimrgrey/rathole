@@ -1,8 +1,4 @@
-class Section < ActiveRecord::Base
-  include Authority::Abilities
-  
-  self.authorizer = BaseAuthorizer
-  
+class Section < ActiveRecord::Base  
   validates :name, presence: true
 
   belongs_to :user

@@ -6,10 +6,6 @@ class Post < ActiveRecord::Base
   LONG_PREVIEW_SIZE    = 750
   READ_MORE = "..."
 
-  include Authority::Abilities
-  
-  self.authorizer = PostAuthorizer
-
   validates :title, presence: true
   validates :body, presence: true
   validates :section, presence: true
