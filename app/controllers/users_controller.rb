@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :store_current_url_in_session, only: [:show]
-  before_action :authenticate_user!, except: [:show]
+  before_action :store_current_url_in_session, :only => [:show]
+  before_action :authenticate_user!, :except => [:show]
 
   def show
     if params[:user_name].present?
-      @user = User.find_by(user_name: params[:user_name])
+      @user = User.accessible_by(current_ability).find_by(:user_name => params[:user_name])
     else
       @user = current_user
     end
@@ -33,12 +33,12 @@ class UsersController < ApplicationController
   private
 
   def do_show
-    @posts = @user.last_posts
+    @posts = @user.last_posts.accessible_by(current_ability)
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
-    @sections = @user.sections
-    @stickers = @user.stickers
-    @subscriptions = @user.subscriptions
+    @sections = @user.sections.accessible_by(current_ability)
+    @stickers = @user.stickers.accessible_by(current_ability)
+    @subscriptions = @user.subscriptions.accessible_by(current_ability)
     @subscriptions = @subscriptions.in_order
     render :show
   end
