@@ -1,4 +1,4 @@
-- if current_user.can_update?(post)
+- if can?(:update, post)
   = edit_link(post)
   = publish_link(post)
   - if post.published?
