@@ -3,17 +3,17 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable
 
-  validates :user_name, uniqueness: true, format: {with: /\A[a-zA-Z0-9_-]{2,100}$\Z/}, user_name: true
+  validates :user_name, :uniqueness => true, :format => {with: /\A[a-zA-Z0-9_-]{2,100}$\Z/}, :user_name => true
 
   has_many :posts
-  has_many :sections, dependent: :destroy
-  has_many :comments, class_name: 'Comments::PostComment'
+  has_many :sections, :dependent => :destroy
+  has_many :comments, :class_name => 'Comments::PostComment'
   has_many :imports
   has_many :pictures
-  has_many :subscriptions, foreign_key: 'subscriber_id'
+  has_many :subscriptions, :foreign_key => 'subscriber_id'
   has_many :invites
-  has_many :bugs, foreign_key: 'reporter_id'
-  has_many :identities, inverse_of: :user
+  has_many :bugs, :foreign_key => 'reporter_id'
+  has_many :identities, :inverse_of => :user
 
   has_and_belongs_to_many :stickers
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   scope :in_order, -> { order('users.posts_count DESC, users.comments_count DESC') }
   scope :in_featured_order, -> { order('users.last_published_at DESC NULLS LAST') }
   scope :featured, -> (count = 4) { in_order.limit(count) }
-  scope :recently_updated, -> (from, to) { where('users.updated_at >= :from AND users.updated_at < :to', from: from, to: to) }
+  scope :recently_updated, -> (from, to) { where('users.updated_at >= :from AND users.updated_at < :to', :from => from, :to => to) }
 
   before_save :set_default_avatar, :on => :create
 
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
     if user.blank?
       email = auth.info.email
       user_name = [auth.info.nickname, auth.extra.raw_info.screen_name, email.gsub('.','_').split('@').first].find(&:present?)
-      user = User.new(user_name: user_name, email: email)
+      user = User.new(:user_name => user_name, :email => email)
     end
     user
   end
@@ -110,29 +110,29 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_on_post(post)
-    subscriptions.find_or_create_by(post_id: post.id)
+    subscriptions.find_or_create_by(:post_id => post.id)
   end
 
   def unsubscribe_from_post(post)
-    subscription = subscriptions.find_by(post_id: post.id)
+    subscription = subscriptions.find_by(:post_id => post.id)
     subscription.destroy if subscription.present?
   end
 
   def subscribe_on_post!(post)
-    subscriptions.find_or_create_by!(post_id: post.id)
+    subscriptions.find_or_create_by!(:post_id => post.id)
   end
 
   def subscribe_on_author(author)
-    subscriptions.find_or_create_by(author_id: author.id)
+    subscriptions.find_or_create_by(:author_id => author.id)
   end
 
   def unsubscribe_from_author(author)
-    subscription = subscriptions.find_by(author_id: author.id)
+    subscription = subscriptions.find_by(:author_id => author.id)
     subscription.destroy if subscription.present?
   end
 
   def subscribe_from_author!(author)
-    subscriptions.find_or_create_by!(author_id: author.id)
+    subscriptions.find_or_create_by!(:author_id => author.id)
   end
 
   def subscribed_on?(user_or_post)
@@ -146,15 +146,15 @@ class User < ActiveRecord::Base
   end
 
   def subscribed_on_user?(user)
-    subscriptions.find_by(author_id: user.id).present?
+    subscriptions.find_by(:author_id => user.id).present?
   end
 
   def subscribed_on_post?(post)
-    subscriptions.find_by(post_id: post.id).present?
+    subscriptions.find_by(:post_id => post.id).present?
   end
 
   def subscribers
-    Subscription.where(author_id: self.id).map(&:subscriber)
+    Subscription.where(:author_id => self.id).map(&:subscriber)
   end
 
   def redis_events_key
