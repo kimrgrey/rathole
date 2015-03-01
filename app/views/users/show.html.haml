@@ -13,7 +13,7 @@
       %a{href: '#profile', data: {toggle: 'tab'}}= t('.tabs.profile')
     %li
       %a{href: '#subscriptions', data: {toggle: 'tab'}}= t('.tabs.subscriptions')
-    - if user_signed_in? && current_user.can_update?(@user)
+    - if user_signed_in? && can?(:update, @user)
       %li
         %a{href: '#settings', data: {toggle: 'tab'}}= t('.tabs.settings')
   .tab-content
@@ -21,6 +21,6 @@
       = render partial: 'users/profile', locals: {user: @user, stickers: @stickers}
     #subscriptions.tab-pane
       = render partial: 'users/subscriptions', locals: {user: @user, subscriptions: @subscriptions}
-    - if user_signed_in? && current_user.can_update?(@user)
+    - if user_signed_in? && can?(:update, @user)
       #settings.tab-pane
         = render partial: 'users/settings', locals: {user: @user}

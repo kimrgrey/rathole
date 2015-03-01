@@ -1,10 +1,10 @@
 .row.sections
   - user.sections.each do |section|
     %span.section
-      - if user_signed_in? && section.updatable_by?(current_user)
+      - if user_signed_in? && can?(:update, section)
         %a{href: edit_user_section_path(section)}= icon('pencil')
-      
+
       %a{href: public_section_path(section)}= section.name
-  
-  - if user_signed_in? && current_user.can_update?(user)
+
+  - if user_signed_in? && can?(:update, user)
     %a.add{href: new_user_section_path}= icon('plus')

@@ -2,7 +2,7 @@
   .row.header  
     .col-md-3.col-sm-4.hidden-xs
     .col-md-9.col-sm-8 
-      - if user_signed_in? && current_user.can_update?(comment)
+      - if user_signed_in? && can?(:update, comment)
         %span.info
           = link_to icon('edit'), "#comment-#{comment.id}", class: 'edit-comment-link'
       
@@ -14,7 +14,7 @@
 
       %span.info.date= icon 'calendar', l(comment.created_at)
       
-      - if user_signed_in? && current_user.can_delete?(comment)
+      - if user_signed_in? && can?(:destroy, comment)
         %span.info
           = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
       
