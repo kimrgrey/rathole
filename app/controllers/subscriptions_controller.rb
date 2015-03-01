@@ -29,8 +29,9 @@ class SubscriptionsController < ApplicationController
   private
 
   def subscribe_on_post
+    authorize! :subscribe, @post
     if @user.subscribe_on_post(@post)
-      flash[:notice] = I18n.t('users.subscribe.success.post', title: @post.title)
+      flash[:notice] = I18n.t('users.subscribe.success.post', :title => @post.title)
     else
       flash[:error] = I18n.t('users.subscribe.success.post')
     end
@@ -38,8 +39,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def unsubscribe_from_post
+    authorize! :unsubscribe, @post
     if @user.unsubscribe_from_post(@post)
-      flash[:notice] = I18n.t('users.unsubscribe.success.post', title: @post.title)
+      flash[:notice] = I18n.t('users.unsubscribe.success.post', :title => @post.title)
     else
       flash[:error] = I18n.t('users.unsubscribe.failed.post')
     end
@@ -47,8 +49,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscribe_on_author
+    authorize! :subscribe, @author
     if @user.subscribe_on_author(@author)
-      flash[:notice] = I18n.t('users.subscribe.success.author', name: @author.user_name)
+      flash[:notice] = I18n.t('users.subscribe.success.author', :name => @author.user_name)
     else
       flash[:error] = I18n.t('users.subscribe.failed.author')
     end
@@ -56,8 +59,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def unsubscribe_from_author
+    authorize! :unsubscribe, @author
     if @user.unsubscribe_from_author(@author)
-      flash[:notice] = I18n.t('users.unsubscribe.success.author', name: @author.user_name)
+      flash[:notice] = I18n.t('users.unsubscribe.success.author', :name => @author.user_name)
     else
       flash[:error] = I18n.t('users.unsubscribe.failed.author')
     end
@@ -69,10 +73,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def load_author
-    @author = User.find(params[:author_id]) if params[:author_id].present?
+    @author = User.accessible_by(current_ability).find(params[:author_id]) if params[:author_id].present?
   end
 
   def load_post
-    @post = Post.find(params[:post_id]) if params[:post_id].present?
+    @post = Post.accessible_by(current_ability).find(params[:post_id]) if params[:post_id].present?
   end
 end
