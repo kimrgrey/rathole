@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include RoutesHelper
   
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, :except => [:index]
   before_action :load_user
 
   def index
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def index_for_post
-    @owner = Post.find(params[:owner_id])
+    @owner = Post.accessible_by(current_ability).find(params[:owner_id])
     @comments = @owner.comments
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def index_for_bug
-    @owner = Bug.find(params[:owner_id])
+    @owner = Bug.accessible_by(current_ability).find(params[:owner_id])
     @comments = @owner.comments
     @comments = @comments.in_order
     @comments = @comments.page(params[:page]).per(params[:per])
@@ -41,7 +41,8 @@ class CommentsController < ApplicationController
   end
 
   def create_for_post
-    @post = Post.find(params[:owner_id])
+    authorize! :create, Comments::PostComment
+    @post = Post.accessible_by(current_ability).find(params[:owner_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = @user
     @comment.save
@@ -49,7 +50,8 @@ class CommentsController < ApplicationController
   end
 
   def create_for_bug
-    @bug = Bug.find(params[:owner_id])
+    authorize! :create, Comments::BugComment
+    @bug = Bug.accessible_by(current_ability).find(params[:owner_id])
     @comment = @bug.comments.build(comment_params)
     @comment.user = @user
     @comment.save
@@ -58,12 +60,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comments::Comment.find(params[:id])
+    authorize! :update, @comment
     @comment.attributes = comment_params
     @comment.save
   end
 
   def destroy
     @comment = Comments::Comment.find(params[:id])
+    authorize! :destroy, @comment
     @comment.destroy
   end
 
