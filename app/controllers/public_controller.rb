@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
   def welcome
-    @posts = user_signed_in? ? Post.my_or_published(current_user) : Post.published_only
+    @posts = Post.accessible_by(current_ability)
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
     @posts = @posts.visible_on_main 
     @posts = @posts.in_order
@@ -19,6 +19,7 @@ class PublicController < ApplicationController
   end
 
   def claim
+    authorize! :create, Claim
     @claim = Claim.new(claim_params)
     if @claim.save
       flash[:notice] = I18n.t('public.claim.success')
