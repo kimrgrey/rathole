@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
   before_action :load_user
 
   def upload
+    authorize! :create, Picture
     @pictures = []
     params[:files].each do |file|
       picture = @user.pictures.build
@@ -16,6 +17,7 @@ class PicturesController < ApplicationController
 
   def destroy
     picture = @user.pictures.find(params[:id])
+    authorize! :destroy, picture
     picture.hide ? head(200) : head(422)
   end
 
