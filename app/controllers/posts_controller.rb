@@ -1,10 +1,10 @@
 class PostsController < ApplicationController  
-  before_action :store_current_url_in_session, only: [:index, :show]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :store_current_url_in_session, :only => [:index, :show]
+  before_action :authenticate_user!, :except => [:index, :show]
   
-  before_action :load_user, only: [:index, :show]
-  before_action :load_posts, only: [:index, :show]
-  before_action :load_sections, only: [:new, :create, :edit, :update]
+  before_action :load_user, :only => [:index, :show]
+  before_action :load_posts, :only => [:index, :show]
+  before_action :load_sections, :only => [:new, :create, :edit, :update]
 
   def index
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @posts.find(params[:id])
+    authorize! :show, @post
     @comments = @post.comments
     @comments = @comments.includes(:user)
     @comments = @comments.in_order
@@ -24,10 +25,12 @@ class PostsController < ApplicationController
   end
 
   def new
+    authorize! :new, Post
     @post = current_user.posts.build
   end
 
   def create
+    authorize! :create, Post
     @post = current_user.posts.build(post_params)
     @post.section = @section
     if @post.save
@@ -41,10 +44,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
+    authorize! :edit, @post
   end
 
   def update
     @post = current_user.posts.find(params[:id])
+    authorize! :update, @post
     @post.attributes = post_params
     @post.section = @section
     if @post.save
@@ -58,6 +63,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
+    authorize! :destroy, @post
     if @post.destroy
       flash[:notice] = I18n.t('posts.destroy.success')
       redirect_to user_posts_index_path(:user_name => current_user.user_name)
@@ -69,6 +75,7 @@ class PostsController < ApplicationController
 
   def publish
     @post = current_user.posts.find(params[:id])
+    authorize! :update, @post
     if @post.toggle
       flash[:notice] = I18n.t("posts.publish.#{@post.state}.success")
     else
@@ -91,12 +98,8 @@ class PostsController < ApplicationController
   end
 
   def load_posts
-    if @user
-      @posts = @user.posts
-      @posts = @posts.published_only if current_user != @user
-    else
-      @posts = user_signed_in? ? Post.my_or_published(current_user) : Post.published_only
-    end
+    @posts = @user.present? ? @user.posts : Post.all
+    @posts = @posts.accessible_by(current_ability)
     @posts = @posts.joins(:section).where(section_id: params[:section_id]) if params[:section_id].present?
   end
 
