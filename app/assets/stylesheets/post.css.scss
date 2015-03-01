@@ -242,6 +242,11 @@
     .avatar{
       width: 150px;
     }
+
+    .avatar:hover {
+      border-radius: 50%;
+      border: #000 solid 1px;
+    }
   }
 
   .body {
