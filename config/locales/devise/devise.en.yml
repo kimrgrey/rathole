@@ -1,0 +1,14 @@
+en:
+  devise:
+    registrations:
+      new: 
+        page_header: 'Sign up'
+        submit: 'Sign up'
+        sign_in_via: 'Sign up using %{provider}'
+      destroyed: "Your account was successfully destroyed."
+      signed_up: "Well done and welcome!"
+      signed_up_but_inactive: "Your registration was successfully finished, but you couldn't sign in because your account is waiting for confirmation."
+      signed_up_but_locked: "Your registration was successfully finished, but you couldn't sign in because your account was locked."
+      signed_up_but_unconfirmed: "We sent confirmation link on your email. Please, check it."
+      update_needs_confirmation: "Your account was successfully updated. And we sent confirmation link on your email. Please, check it."
+      updated: "Your account was successfully updated."
