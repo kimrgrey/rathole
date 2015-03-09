@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        id: 'ID'
+        email: 'Email'
+        user_name: 'Login'
+        about: 'About'
+        password: 'Password'
+        password_confirmation: 'Password again'
+        remember_me: 'Remember me'
+        confirmation_token: 'Confirmation token'
+        reset_password_token: 'Reset password token'
+        created_at: 'Sign up date'
