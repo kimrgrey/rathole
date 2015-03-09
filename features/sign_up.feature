@@ -1,7 +1,7 @@
 Feature: Sign up
-  In order to sign up rathole community
-  As an user
-  I want to be able to walk through via sign up
+  In order to join rathole community
+  As an anonymous user
+  I want to be able to walk through sign up
 
 Scenario: Sign up using email and password
   Given I am anonymous user
