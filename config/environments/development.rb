@@ -1,4 +1,5 @@
 Rathole::Application.configure do
+  config.i18n.default_locale = :ru
   config.cache_classes = false
   config.eager_load = false
   config.consider_all_requests_local       = true
