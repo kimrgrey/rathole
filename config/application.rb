@@ -7,7 +7,6 @@ Bundler.require(:default, Rails.env)
 module Rathole
   class Application < Rails::Application
     config.assets.precompile << 'delayed/web/application.css'
-    config.i18n.default_locale = :ru
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.time_zone = 'Moscow'
     config.after_initialize do
