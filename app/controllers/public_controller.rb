@@ -8,7 +8,7 @@ class PublicController < ApplicationController
   end
 
   def overview
-    @users = User.all
+    @users = User.accessible_by(current_ability)
     @users = @users.in_featured_order
   end
 
