@@ -7,4 +7,4 @@
       %a{href: public_section_path(section)}= section.name
   
   - if user_signed_in? && current_user.can_update?(user)
-    %a{href: new_user_section_path}= icon('plus')
+    %a.add{href: new_user_section_path}= icon('plus')
