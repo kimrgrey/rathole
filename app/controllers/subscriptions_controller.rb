@@ -29,7 +29,7 @@ class SubscriptionsController < ApplicationController
   private
 
   def subscribe_on_post
-    authorize! :subscribe, @post
+    # TODO Add authorize!(:show, @post) here when cancancan start support of enums
     if @user.subscribe_on_post(@post)
       flash[:notice] = I18n.t('users.subscribe.success.post', :title => @post.title)
     else
@@ -39,7 +39,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def unsubscribe_from_post
-    authorize! :unsubscribe, @post
+    # TODO Add authorize!(:show, @post) here when cancancan start support of enums
     if @user.unsubscribe_from_post(@post)
       flash[:notice] = I18n.t('users.unsubscribe.success.post', :title => @post.title)
     else

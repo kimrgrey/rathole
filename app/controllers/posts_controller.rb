@@ -1,7 +1,7 @@
-class PostsController < ApplicationController  
+class PostsController < ApplicationController
   before_action :store_current_url_in_session, :only => [:index, :show]
   before_action :authenticate_user!, :except => [:index, :show]
-  
+
   before_action :load_user, :only => [:index, :show]
   before_action :load_posts, :only => [:index, :show]
   before_action :load_sections, :only => [:new, :create, :edit, :update]
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def index
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
     unless @user
-      @posts = @posts.visible_on_main 
+      @posts = @posts.visible_on_main
     end
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @posts.find(params[:id])
-    authorize! :show, @post
+    # TODO Add authorize!(:show, @post) here when cancancan start support of enums
     @comments = @post.comments
     @comments = @comments.includes(:user)
     @comments = @comments.in_order
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.section = @section
     if @post.save
-      flash[:notice] = I18n.t('posts.create.success') 
+      flash[:notice] = I18n.t('posts.create.success')
       redirect_to user_post_path(@post)
     else
       @pictures = current_user.pictures
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     @post.attributes = post_params
     @post.section = @section
     if @post.save
-      flash[:notice] = I18n.t('posts.update.success') 
+      flash[:notice] = I18n.t('posts.update.success')
       redirect_to user_post_path(@post)
     else
       @pictures = current_user.pictures
@@ -103,7 +103,7 @@ class PostsController < ApplicationController
     @posts = @posts.joins(:section).where(section_id: params[:section_id]) if params[:section_id].present?
   end
 
-  def load_sections 
+  def load_sections
     @sections = current_user.sections
     @section = @sections.find(params[:post][:section_id]) if params[:post].present? && params[:post][:section_id].present?
   end
