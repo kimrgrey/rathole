@@ -14,6 +14,8 @@ class Ability
     can :read, Comments::PostComment, :deleted_at => nil
     can :crud, Bug, :post => { :user_id => user.id }
     can :read, Bug, :reporter_id => user.id
+    can :crud, Comments::BugComment, :user_id => user.id, :deleted_at => nil
+    can :read, Comments::BugComment, :deleted_at => nil
     can :crud, Picture, :user_id => user.id
     can :create, Claim
     can :read, Subscription
