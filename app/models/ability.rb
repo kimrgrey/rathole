@@ -9,6 +9,9 @@ class Ability
     can :crud, User, :id => user.id
     can [:read, :subscribe, :unsubscribe], User
     can :crud, Post, :user_id => user.id, :deleted_at => nil
+    can [:read, :subscribe, :unsubscribe], Post, :state => Post.states[:published], :deleted_at => nil
+    # We have to do this ugly stuff because CCC doesn't support enums at this moment
+    # See: https://github.com/CanCanCommunity/cancancan/pull/196
     can [:read, :subscribe, :unsubscribe], Post, :state => "published", :deleted_at => nil
     can :crud, Comments::PostComment, :user_id => user.id, :deleted_at => nil
     can :read, Comments::PostComment, :deleted_at => nil
