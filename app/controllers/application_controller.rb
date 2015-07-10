@@ -1,16 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery :with => :exception
-  
+
   before_filter :configure_permitted_parameters, :if => :devise_controller?
 
-  protected 
+  protected
 
   def store_current_url_in_session
     session[:previous_url] = request.fullpath if !request.fullpath.match("/users") && !request.xhr?
-  end
-
-  def current_or_null_user
-    user_signed_in? ? current_user : User.new
   end
 
   def not_found
