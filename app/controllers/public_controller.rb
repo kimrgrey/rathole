@@ -2,7 +2,7 @@ class PublicController < ApplicationController
   def welcome
     @posts = Post.accessible_by(current_ability)
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
-    @posts = @posts.visible_on_main 
+    @posts = @posts.visible_on_main
     @posts = @posts.in_order
     @posts = @posts.page(params[:page]).per(params[:per])
   end
