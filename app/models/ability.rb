@@ -6,7 +6,7 @@ class Ability
 
     alias_action :index, :show, :new, :create, :edit, :update, :destroy, :to => :crud
 
-    can :crud, User, :user_id => user.id
+    can :crud, User, :id => user.id
     can [:read, :subscribe, :unsubscribe], User
     can :crud, Post, :user_id => user.id, :deleted_at => nil
     can [:read, :subscribe, :unsubscribe], Post, :state => "published", :deleted_at => nil
