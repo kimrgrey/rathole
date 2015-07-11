@@ -3,11 +3,11 @@
   .actions
     - if user_signed_in?
       - if user != current_user
-        = user_subscription_link(user)  
-      - if can?(:update, current_user)
+        = user_subscription_link(user)
+      - if can?(:update, user)
         = content_for :dialogs do
           = render partial: 'shared/dialogs/picture_upload_dialog'
 
         = upload_picture_link '.user-avatar', t('.select_avatar_title'), class: 'btn btn-success' do
           = t('.upload')
-        
+
