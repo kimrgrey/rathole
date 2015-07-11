@@ -23,18 +23,15 @@ class Sync < ActiveRecord::Base
     }
     if post.blank?
       json[:users] = User.recently_updated(lsd, next_lsd)
-                      .in_order
                       .map { |u| u.to_sync_json(lsd, next_lsd) }
 
       json[:posts] = Post.with_deleted
                       .published_and_hidden
                       .recently_updated(lsd, next_lsd)
-                      .in_order
                       .map { |p| p.to_sync_json(lsd, next_lsd) }
     else
       json[:users] = User.recently_updated(lsd, next_lsd)
                       .where(:id => [post.user_id] + post.comments.map(&:user_id))
-                      .in_order
                       .map { |u| u.to_sync_json(lsd, next_lsd) }
 
       json[:post] = post.to_sync_json(lsd, next_lsd)
