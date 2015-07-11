@@ -51,6 +51,28 @@ class Post < ActiveRecord::Base
 
   include Taggable
 
+  def to_sync_json(lsd, next_lsd)
+    json = {
+      :id => id,
+      :title => title,
+      :tags => tags,
+      :user_id => user_id,
+      :visible_on_main => visible_on_main,
+      :created_at => created_at.to_i,
+      :updated_at => updated_at.to_i,
+      :published_at => published_at.to_i,
+    }
+    json[:preview] = preview_html if preview_updated_at >= lsd
+    json[:body] = body_html if body_updated_at >= lsd
+    json[:comments] = comments.with_deleted.recently_updated(lsd, next_lsd).in_order.map { |c| c.to_sync_json(lsd, next_lsd) }
+    if deleted?
+      json[:deleted_at] = deleted_at.to_i
+    elsif hidden?
+      json[:deleted_at] = updated_at.to_i
+    end
+    json
+  end
+
   def extract_preview(size = Post::DEFAULT_PREVIEW_SIZE)
     if size.is_a?(Symbol)
       size = case size

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, 
+  devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable
 
@@ -63,6 +63,17 @@ class User < ActiveRecord::Base
     user
   end
 
+  def to_sync_json(lsd, next_lsd)
+    {
+      :id => id,
+      :user_name => user_name,
+      :avatar => avatar_path,
+      :created_at => created_at.to_i,
+      :updated_at => updated_at.to_i,
+      :last_sign_in_at => last_sign_in_at.to_i
+    }
+  end
+
   def avatar_path
     self.attributes['avatar_path'] || 'thumb_avatar_default.png'
   end
@@ -72,20 +83,20 @@ class User < ActiveRecord::Base
   end
 
   def assign_sticker!(sticker)
-    unless stickers.include?(sticker) 
-      stickers << sticker 
+    unless stickers.include?(sticker)
+      stickers << sticker
       save!
     end
   end
 
   def remove_sticker!(sticker)
     if stickers.include?(sticker)
-      stickers.delete(sticker) 
+      stickers.delete(sticker)
       save!
     end
   end
 
-  def last_posts(count = 5) 
+  def last_posts(count = 5)
     posts.published_only.order('posts.published_at DESC').limit(count)
   end
 
@@ -106,7 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def grant(role_names)
-    write_attribute(:roles, Array(role_names).map(&:to_s)) 
+    write_attribute(:roles, Array(role_names).map(&:to_s))
   end
 
   def subscribe_on_post(post)

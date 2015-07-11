@@ -1,46 +1,46 @@
 Rathole::Application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letters" if Rails.env.development?
-  
+
   devise_for :users, skip: [:registrations], controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_scope :user do
     resource :registration, only: [:new, :create], path: 'users', controller: 'registrations', as: :user_registration
   end
-  
+
   resource :user do
     post :avatar
     get :events, to: 'events#index'
-    resources :posts, except: [:index, :show] do 
+    resources :posts, except: [:index, :show] do
       member do
         post :publish
       end
     end
     resources :imports, only: [:index, :new, :create]
     resources :sections, except: [:index, :show]
-    
+
     post '/subscriptions', to: 'subscriptions#subscribe'
     delete '/subscriptions', to: 'subscriptions#unsubscribe'
   end
 
   authenticated :user, -> (user) { user.admin? } do
     mount Delayed::Web::Engine, at: '/jobs'
-    
-    namespace :admin do 
+
+    namespace :admin do
       resources :users, only: [:show, :destroy]
       resources :posts, only: [:show, :destroy] do
-        member do 
+        member do
           post :hide_from_main
           post :show_on_main
         end
       end
-      
+
       get '/jobs', to: redirect('/jobs'), as: 'jobs'
-      
+
       root to: 'dashboard#home'
     end
   end
 
-  resources :bugs, except: [:new, :edit, :update, :destroy] do 
-    member do 
+  resources :bugs, except: [:new, :edit, :update, :destroy] do
+    member do
       post :fix
       post :reject
     end
@@ -55,8 +55,16 @@ Rathole::Application.routes.draw do
 
       post '/post/:id/claim', to: 'sync#claim'
     end
+
+    namespace :v2 do
+      get '/sync', :to => 'sync#start'
+      get '/post/:post_id', :to => 'sync#start'
+      get '/status/:token', :to => 'sync#status', :as => 'status'
+
+      post '/post/:id/claim', to: 'sync#claim'
+    end
   end
-  
+
   get '/overview', to: 'public#overview', as: 'overview'
 
   post '/pictures/upload', to: 'pictures#upload', as: 'upload_picture'
