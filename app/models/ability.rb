@@ -30,7 +30,7 @@ class Ability
 
   def admin(user)
     can :crud, User
-    can :crud, Post
+    can [:crud, :show_on_main], Post
     can :crud, Comments::PostComment
   end
 end
