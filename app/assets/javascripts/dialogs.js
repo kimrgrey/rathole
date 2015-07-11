@@ -26,7 +26,7 @@
     event.stopPropagation();
     var $dialog = $(this);
     var $form = $dialog.find('#upload-form')
-    
+
     $form.on('change', '#files', function(event){
       event.preventDefault();
       var $select = $form.find('#select');
