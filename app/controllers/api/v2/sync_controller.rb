@@ -3,7 +3,7 @@ class Api::V2::SyncController < Api::ApiController
 
   def start
     @sync = Sync.new(:lsd => @lsd, :next_lsd => @next_lsd)
-    @sync.post = posts.find(params[:post_id]) if params[:post_id].present?
+    @sync.post = Post.with_deleted.published_and_hidden.find(params[:post_id]) if params[:post_id].present?
     saved = @sync.save
     respond_to do |format|
       if saved
