@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :section, counter_cache: true
 
-  has_many :comments, class_name: 'Comments::PostComment', dependent: :destroy
+  has_many :comments, :as => :parent, :inverse_of => :parent, :dependent => :destroy
   has_many :pictures
   has_many :subscriptions, dependent: :destroy
   has_many :bugs

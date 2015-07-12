@@ -1,23 +1,23 @@
 .comment{id: "comment-#{comment.id}"}
-  .row.header  
+  .row.header
     .col-md-3.col-sm-4.hidden-xs
-    .col-md-9.col-sm-8 
+    .col-md-9.col-sm-8
       - if user_signed_in? && can?(:update, comment)
         %span.info
           = link_to icon('edit'), "#comment-#{comment.id}", class: 'edit-comment-link'
-      
+
       %span.info.user
         %a{href: public_profile_path(comment.user)}= icon 'user', comment.user_name
-      
+
       %span.info.link
         = public_comment_link(comment)
 
       %span.info.date= icon 'calendar', l(comment.created_at)
-      
+
       - if user_signed_in? && can?(:destroy, comment)
         %span.info
-          = link_to icon('times'), comment_path(comment), method: 'delete', remote: true
-      
+          = link_to icon('times'), comment_path(comment, :parent_type => comment.parent_type, :parent_id => comment.parent_id), method: 'delete', remote: true
+
       - if user_signed_in?
         %span.info.reply
           %a.reply-comment-link{href: "#comment-#{comment.id}", data: {author: comment.user_name}}
@@ -25,10 +25,10 @@
       - else
         %span.info.sign-in
           = link_to icon('sign-in', t('nav.sign_in')), new_user_session_path
-  .row.body  
+  .row.body
     .col-md-3.col-sm-4.hidden-xs
       = image_tag comment.user_avatar_path, class: 'avatar'
-    .col-md-9.col-sm-8 
+    .col-md-9.col-sm-8
       - cache comment_cache_key(comment) do
         .text
           = sanitize(comment.body_html)

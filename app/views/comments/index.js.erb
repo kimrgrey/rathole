@@ -1,3 +1,3 @@
-var comments = "<%= j render(partial: 'comments/comments', locals: { owner: @owner, comments: @comments }) %>";
+var comments = "<%= j render(partial: 'comments/comments', locals: { parent: @parent, comments: @comments }) %>";
 $('#comments-container').replaceWith(comments);
 if(<%= params[:scroll_bottom] || false%>){ window.scrollTo(0, $('.pagination:last').offset().top); };

@@ -1,5 +1,5 @@
 class Events::CommentCreatedEvent < Events::Event
-  hstore :properties, :comment, class_name: 'Comments::PostComment'
+  hstore :properties, :comment, class_name: 'Comment'
   hstore :properties, :author, class_name: 'User'
   hstore :properties, :post
 

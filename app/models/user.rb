@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :sections, :dependent => :destroy
-  has_many :comments, :class_name => 'Comments::PostComment'
+  has_many :comments, :class_name => 'Comment'
   has_many :imports
   has_many :pictures
   has_many :subscriptions, :foreign_key => 'subscriber_id'

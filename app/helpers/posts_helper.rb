@@ -12,32 +12,32 @@ module PostsHelper
       'on-main'
     end
   end
-  
+
   def publish_link(post)
     options = {
-      href: publish_user_post_path(post), 
+      href: publish_user_post_path(post),
       title: I18n.t("posts.publish.#{post.state}.hint"),
       data: { method: 'post'}
     }
-    content_tag :a, options do 
+    content_tag :a, options do
       icon(post.published? ? 'unlock' : 'lock')
     end
   end
 
   def public_link(post)
-    link_to  public_post_url(post), title: I18n.t("links.posts.public"), class: 'public-link' do 
+    link_to  public_post_url(post), title: I18n.t("links.posts.public"), class: 'public-link' do
       icon 'link'
     end
   end
 
-  def public_comment_link(comment) 
+  def public_comment_link(comment)
     id = "comment-#{comment.id}"
-    if comment.is_a?(Comments::PostComment)
-      url = public_post_url(comment.post) + "##{id}"
+    if comment.parent_type == "Post"
+      url = public_post_url(comment.parent) + "##{id}"
     else
-      url = bug_url(comment.bug) + "##{id}" 
+      url = bug_url(comment.parent) + "##{id}"
     end
-    link_to url, class: 'public-link' do 
+    link_to url, class: 'public-link' do
       icon 'link'
     end
   end

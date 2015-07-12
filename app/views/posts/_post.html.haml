@@ -7,18 +7,18 @@
           = yield(:actions)
         - else
           = render partial: 'posts/actions', locals: { post: post }
-    
+
     %a{href: public_post_path(post)}= post.title
-  
+
   .row.avatar
     %a{href: public_profile_path(post.user)}
       = image_tag post.user_avatar_path, class: 'avatar'
   .row.details
-    %span.user 
+    %span.user
       %a{href: public_profile_path(post.user)}= icon 'user', post.user_name
-    %span.date 
+    %span.date
       = icon 'calendar', l(post.published_at.present? ? post.published_at : post.created_at)
-    %span.comments 
+    %span.comments
       - if preview
         %a{href: public_post_path(post, anchor: "comments")}= icon 'comments', post.comments_count
       - else
@@ -43,7 +43,7 @@
 - unless preview
   .container.post
     .row.comments
-      = render partial: 'comments/comments', locals: { comments: @comments, owner: post }
+      = render partial: 'comments/comments', locals: { comments: @comments, parent: post }
 
-  = render partial: 'posts/bug_dialog', locals: { post: post }    
-      
+  = render partial: 'posts/bug_dialog', locals: { post: post }
+

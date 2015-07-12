@@ -18,7 +18,7 @@ module RoutesHelper
     args = args.merge(options) if options
     url_for args
   end
-  
+
   def public_post_path(post, options = nil)
     args = { controller: '/posts', action: 'show'}
     args = args.merge(user_name: post.user_name, id: post.id)
@@ -39,7 +39,7 @@ module RoutesHelper
     args = args.merge(options) if options
     url_for args
   end
-  
+
   def public_tag_path(tag, options = nil)
     args = { controller: '/posts', action: 'index'}
     args = args.merge(tag: tag)
@@ -49,7 +49,7 @@ module RoutesHelper
 
   def public_comment_url(comment)
     id = "comment-#{comment.id}"
-    url = public_post_url(comment.post) + "##{id}"
+    url = public_post_url(comment.parent) + "##{id}"
   end
 
   def full_image_url(path)
