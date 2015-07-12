@@ -22,4 +22,10 @@ Rathole::Application.configure do
     password: Rails.application.secrets.mandrill_key
   }
   config.action_mailer.raise_delivery_errors = true
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[Errors on rathole.io] ",
+      :sender_address => %{"Errors Notifier" <errors@rathole.io>},
+      :exception_recipients => %w{support@rathole.io}
+    }
 end

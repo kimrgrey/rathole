@@ -31,12 +31,13 @@ gem 'sitemap_generator'
 gem 'redis', '~> 3.0.1'
 gem 'hiredis', '~> 0.4.5'
 gem 'paranoia', '~> 2.0'
+gem 'exception_notification'
 
 group :doc do
   gem 'sdoc', :require => false
 end
 
-group :development do 
+group :development do
   gem 'spring', :github => 'rails/spring'
   gem 'therubyracer', :platforms => :ruby
   gem 'letter_opener_web'
@@ -55,5 +56,5 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-group :production do 
+group :production do
 end
