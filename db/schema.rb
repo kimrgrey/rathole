@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711185637) do
+ActiveRecord::Schema.define(version: 20150712002714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150711185637) do
     t.datetime "updated_at"
     t.datetime "note_updated_at"
     t.datetime "fragment_updated_at"
+    t.integer  "comments_count"
   end
 
   add_index "bugs", ["post_id"], name: "index_bugs_on_post_id", using: :btree
@@ -51,13 +52,15 @@ ActiveRecord::Schema.define(version: 20150711185637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body_html"
-    t.string   "type"
     t.integer  "bug_id"
     t.datetime "body_updated_at"
     t.datetime "deleted_at"
+    t.integer  "parent_id",       null: false
+    t.string   "parent_type",     null: false
   end
 
   add_index "comments", ["deleted_at"], name: "index_comments_on_deleted_at", using: :btree
+  add_index "comments", ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
