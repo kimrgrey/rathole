@@ -53,6 +53,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 end
 

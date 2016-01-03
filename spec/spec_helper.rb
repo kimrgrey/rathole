@@ -11,5 +11,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.disable_monkey_patching!
   config.order = :random
+  config.expose_dsl_globally = true
+
   Kernel.srand config.seed
 end
