@@ -35,7 +35,7 @@ describe "sign in", :type => :feature, :js => true do
     expect(page).to have_content(I18n.t("devise.failure.invalid"))
   end
 
-  it "should redirect to the last visited post page after success" do
+  it "should redirect to the previously visited profile page after success" do
     visit "/tom"
     visit '/users/sign_in'
 
