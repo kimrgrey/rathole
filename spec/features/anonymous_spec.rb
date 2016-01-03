@@ -3,14 +3,14 @@ require "rails_helper"
 describe "anonymous", :type => :feature, :js => true do
   fixtures :users
 
-  it "should able to visit sign in page" do
+  it "should be able to visit sign in page" do
     visit '/users/sign_in'
     within('h2') do
       expect(page).to have_content I18n.t("devise.sessions.new.page_header")
     end
   end
 
-  it "should able to visit sign up page" do
+  it "should be able to visit sign up page" do
     visit '/users/new'
     within('h2') do
       expect(page).to have_content I18n.t("devise.registrations.new.page_header")
