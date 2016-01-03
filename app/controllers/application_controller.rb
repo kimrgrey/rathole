@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def store_current_url_in_session
-    session[:previous_url] = request.fullpath if !request.fullpath.match("/users") && !request.xhr?
+    store_location_for :user, request.url if !request.fullpath.match("/users") && !request.xhr?
   end
 
   def not_found
@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || events_user_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || events_user_url
   end
 end

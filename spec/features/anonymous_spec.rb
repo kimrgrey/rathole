@@ -21,4 +21,9 @@ describe "anonymous", :type => :feature, :js => true do
       expect(page).to have_content I18n.t("public.overview.page_header")
     end
   end
+
+  it "should be redirected sign in page after attempt to access private page" do
+    visit '/user/imports'
+    expect(page.current_path).to eq("/users/sign_in")
+  end
 end

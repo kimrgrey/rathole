@@ -34,4 +34,25 @@ describe "sign in", :type => :feature, :js => true do
     expect(page.current_path).to eq("/users/sign_in")
     expect(page).to have_content(I18n.t("devise.failure.invalid"))
   end
+
+  it "should redirect to the last visited post page after success" do
+    visit "/tom"
+    visit '/users/sign_in'
+
+    fill_in I18n.t("activerecord.attributes.user.email"), :with => "tom@example.com"
+    fill_in I18n.t("activerecord.attributes.user.password"), :with => "password"
+    click_button I18n.t("devise.sessions.new.submit")
+
+    expect(page.current_path).to eq("/tom")
+  end
+
+  it "should redirect to last visited private page after success" do
+    visit '/user/imports'
+
+    fill_in I18n.t("activerecord.attributes.user.email"), :with => "tom@example.com"
+    fill_in I18n.t("activerecord.attributes.user.password"), :with => "password"
+    click_button I18n.t("devise.sessions.new.submit")
+
+    expect(page.current_path).to eq("/user/imports")
+  end
 end
