@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe "anonymous", :type => :feature, :js => true do
+  fixtures :users
+
   it "should able to visit sign in page" do
     visit '/users/sign_in'
     within('h2') do
@@ -19,6 +21,13 @@ describe "anonymous", :type => :feature, :js => true do
     visit '/overview'
     within('h2') do
       expect(page).to have_content I18n.t("public.overview.page_header")
+    end
+  end
+
+  it "should be able to visit user's public profile" do
+    visit '/tom'
+    within('.profile > h2') do
+      expect(page).to have_content I18n.t("users.show.page_header")
     end
   end
 
