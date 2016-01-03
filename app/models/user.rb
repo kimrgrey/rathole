@@ -173,11 +173,11 @@ class User < ActiveRecord::Base
   end
 
   def add_event(event)
-    $redis.zadd(redis_events_key, event.updated_at.to_i, event.id)
+    Rathole.redis.zadd(redis_events_key, event.updated_at.to_i, event.id)
   end
 
   def events(from, to)
-    Events::Event.where id: $redis.zrangebyscore(redis_events_key, from.to_i, to.to_i)
+    Events::Event.where id: Rathole.redis.zrangebyscore(redis_events_key, from.to_i, to.to_i)
   end
 
   def is_author_of?(post_or_comment)
