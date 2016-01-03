@@ -31,8 +31,8 @@ describe "anonymous", :type => :feature, :js => true do
     end
   end
 
-  it "should be redirected sign in page after attempt to access private page" do
-    visit '/user/imports'
+  it "should be redirected sign in page after attempt to access post's creating page" do
+    visit '/user/posts/new'
     expect(page.current_path).to eq("/users/sign_in")
   end
 end
