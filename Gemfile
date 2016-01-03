@@ -30,6 +30,7 @@ gem 'delayed-web', :github => 'thebestday/delayed-web'
 gem 'sitemap_generator'
 gem 'redis'
 gem 'hiredis'
+gem 'redis-namespace'
 gem 'paranoia', '~> 2.0'
 gem 'exception_notification'
 
