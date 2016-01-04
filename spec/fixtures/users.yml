@@ -1,5 +1,25 @@
+# This is Tom. He is an usual user. He has few sections, few posts and some comments.
+
 tom:
   user_name: tom
   email: tom@example.com
   confirmed_at: 2014-03-08 23:49:42.900367
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+# This is Bill. His favourite activity is commenting. He has a lot of comments, but no posts.
+
+bill:
+  user_name: bill
+  email: bill@example.com
+  confirmed_at: 2014-03-08 23:49:42.900367
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+# This is Harry. He is an admin. He has some posts and comments too, but not a lot.
+
+harry:
+  user_name: harry
+  email: harry@example.com
+  confirmed_at: 2014-03-08 23:49:42.900367
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  roles:
+    - admin
