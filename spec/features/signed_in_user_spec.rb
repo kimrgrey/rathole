@@ -42,4 +42,26 @@ describe "signed in user", :type => :feature do
       }.to raise_error ActionController::RoutingError
     end
   end
+
+  describe "who is an admin" do
+    before do
+      sign_in_as :harry
+    end
+
+    it "should be able to know about an amdin dashboard" do
+      visit "/admin"
+      expect(page.current_path).to eq("/admin")
+      within('.admin > h2') do
+        expect(page).to have_content I18n.t("admin.dashboard.home.page_header")
+      end
+    end
+
+    it "should be able to know about an queues monitor" do
+      visit "/admin/jobs"
+      expect(page.current_path).to eq("/jobs")
+      within('h1') do
+        expect(page).to have_content "Jobs"
+      end
+    end
+  end
 end
