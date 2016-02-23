@@ -2,6 +2,7 @@ json.id post.id
 json.title post.title
 json.preview post.preview_html if post.preview_updated_at >= @lsd
 json.body post.body_html if post.body_updated_at >= @lsd
+json.body_md post.body if post.body_updated_at >= @lsd
 json.tags post.tags
 json.user_id post.user_id
 json.visible_on_main post.visible_on_main
