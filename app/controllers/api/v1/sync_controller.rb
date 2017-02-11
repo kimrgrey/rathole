@@ -2,18 +2,7 @@ class Api::V1::SyncController < Api::ApiController
   before_action :load_sync_dates, except: [:claim]
 
   def sync
-    @users = User.recently_updated(@lsd, @next_lsd)
-    @users = @users.in_order
-
-    @posts = posts.recently_updated(@lsd, @next_lsd)
-    if params[:user_id].present?
-      @posts = @posts.where(:user_id => params[:user_id])
-    end
-    @posts = @posts.in_order
-
-    respond_to do |format|
-      format.json { render :sync }
-    end
+    redirect_to "/sync.json"
   end
 
   def post
